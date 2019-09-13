@@ -1,0 +1,13 @@
+Index: man-pages-4.13/man2/ioctl_tty.2
+===================================================================
+--- man-pages-4.13.orig/man2/ioctl_tty.2	2017-09-15 18:02:20.099259500 +0200
++++ man-pages-4.13/man2/ioctl_tty.2	2017-09-15 18:04:13.889351328 +0200
+@@ -10,6 +10,8 @@
+ ioctl_tty \- ioctls for terminals and serial lines
+ .SH SYNOPSIS
+ .B "#include <termios.h>"
++.br
++.B "#include <sys/ioctl.h>"
+ .PP
+ .BI "int ioctl(int " fd ", int " cmd ", ...);"
+ .SH DESCRIPTION
