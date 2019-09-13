@@ -1,0 +1,211 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9ca7eb0c0b48b3f11473efe907bcc78</srcmd5>
+    <version>1.94</version>
+    <time>1295881568</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56621 from user puzel
+</comment>
+    <requestid>56621</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d1a13dcf3a2496b71aeb4a0ae6279191</srcmd5>
+    <version>1.94</version>
+    <time>1295881576</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56621
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>d1a13dcf3a2496b71aeb4a0ae6279191</srcmd5>
+    <version>1.94</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>5e483076c61dd41fa0499a0bb049d04d</srcmd5>
+    <version>1.94</version>
+    <time>1314098100</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>78267</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>ae5c831d92da3dcce6568767b5cf4d1b</srcmd5>
+    <version>1.94</version>
+    <time>1314098108</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78267
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8a59c0934200cf05714065deab6f85ab</srcmd5>
+    <version>1.96</version>
+    <time>1316503674</time>
+    <user>lrupp</user>
+    <comment>update to 1.96</comment>
+    <requestid>83380</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>8a59c0934200cf05714065deab6f85ab</srcmd5>
+    <version>1.96</version>
+    <time>1319181764</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>bd50e7cd3146a5af3189e46ca326aa95</srcmd5>
+    <version>1.96</version>
+    <time>1330363973</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>107138</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>bd50e7cd3146a5af3189e46ca326aa95</srcmd5>
+    <version>1.96</version>
+    <time>1340183164</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>bd50e7cd3146a5af3189e46ca326aa95</srcmd5>
+    <version>1.96</version>
+    <time>1359108639</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4310a5023ce479c85bef4691612a7274</srcmd5>
+    <version>2.04</version>
+    <time>1374575377</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.0.4
+  * Major update, see http://beyondgrep.com/ack-2.0/ for details
+- Refresh ack-ignore-osc.patch, ack-add_spec.patch (forwarded request 184032 from namtrac)</comment>
+    <requestid>184034</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>522035b5a182b9bb65b06c7d0c436e52</srcmd5>
+    <version>2.04</version>
+    <time>1376589717</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add perl-File-Next runtime dependency (forwarded request 195298 from namtrac)</comment>
+    <requestid>195352</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>522035b5a182b9bb65b06c7d0c436e52</srcmd5>
+    <version>2.04</version>
+    <time>1379661947</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5169e4649ce93ec47b6187823df29350</srcmd5>
+    <version>2.10</version>
+    <time>1386182932</time>
+    <user>coolo</user>
+    <comment>- fix SLE build: File::Next does not have the required version. It
+  is only used in regression tests - skip them for SLE (forwarded request 205175 from AndreasStieger)</comment>
+    <requestid>205183</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>22d20514aa6868cc3eef89fde490a2b3</srcmd5>
+    <version>2.12</version>
+    <time>1390214481</time>
+    <user>coolo</user>
+    <comment>ack 2.12 [bnc#855340] [CVE-2013-7069] (forwarded request 214327 from AndreasStieger)</comment>
+    <requestid>214382</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>22d20514aa6868cc3eef89fde490a2b3</srcmd5>
+    <version>2.12</version>
+    <time>1409300467</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4ecf9f1379f919d0baa767ed57536348</srcmd5>
+    <version>2.14</version>
+    <time>1409998714</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247616</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>719c6c5c056a3aec5bb63252c2ec44dc</srcmd5>
+    <version>2.15_01</version>
+    <time>1425031200</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287841</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>37a9fc6bc2afd23415d1393b04954b2a</srcmd5>
+    <version>2.15_02</version>
+    <time>1454833373</time>
+    <user>dimstar_suse</user>
+    <comment>- ack 2.15_02
+- Bug fixes:
+  * Reverted an optimization to make \s work properly again
+- Enhancements:
+  * The JSP filetype (--jsp) now recognizes .jspf files.</comment>
+    <requestid>357709</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>034d7a06cc8d9198882c42dbeff5dbc4</srcmd5>
+    <version>2.16</version>
+    <time>1489345538</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478712</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>53573b3bb4a6507cfb87ce929a874550</srcmd5>
+    <version>2.18</version>
+    <time>1490965773</time>
+    <user>maxlin_factory</user>
+    <comment>ack 2.18 (forwarded request 482661 from AndreasStieger)</comment>
+    <requestid>482662</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e12e56e8cb61ae79c40d1c0b0524edc5</srcmd5>
+    <version>2.22</version>
+    <time>1516359059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560494</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0f680c13f510612fc94c63722828252b</srcmd5>
+    <version>2.24</version>
+    <time>1534100152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628728</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>97f1d67a79f9c5c4d0b4fd7e44ea577a</srcmd5>
+    <version>2.28</version>
+    <time>1554384138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689346</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>70405aac3da83f6345f099533416ac23</srcmd5>
+    <version>3.0.2</version>
+    <time>1564994568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720910</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3582134482a19cbf3f12044f4825bbfd</srcmd5>
+    <version>3.0.3</version>
+    <time>1566464084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725074</requestid>
+  </revision>
+</revisionlist>
