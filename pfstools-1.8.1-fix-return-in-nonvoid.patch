@@ -1,0 +1,38 @@
+Index: pfstools-2.1.0/src/hdrhtml/hdrhtml.cpp
+===================================================================
+--- pfstools-2.1.0.orig/src/hdrhtml/hdrhtml.cpp
++++ pfstools-2.1.0/src/hdrhtml/hdrhtml.cpp
+@@ -197,6 +197,7 @@ public:
+     this->y_i = new float[lut_size];
+     own_y_i = true;
+     memcpy(this->y_i, other.y_i, lut_size * sizeof(float));
++   return *this;
+   }
+ 
+   ~UniformArrayLUT()
+Index: pfstools-2.1.0/src/fileformat/pfsoutyuv.cpp
+===================================================================
+--- pfstools-2.1.0.orig/src/fileformat/pfsoutyuv.cpp
++++ pfstools-2.1.0/src/fileformat/pfsoutyuv.cpp
+@@ -215,7 +215,7 @@ class YUVWriter {
+   }
+ 
+   template<typename T>
+-  bool writeYuvImage(pfs::Array2D *R, pfs::Array2D *G, pfs::Array2D *B){
++  void writeYuvImage(pfs::Array2D *R, pfs::Array2D *G, pfs::Array2D *B){
+   //writes the entire image to fh R - Luminance, G - Cr, B - Cb
+   unsigned int width_chroma = R->getCols();
+   unsigned int height_chroma = R->getRows();
+Index: pfstools-2.1.0/src/pfs/pfsutils.cpp
+===================================================================
+--- pfstools-2.1.0.orig/src/pfs/pfsutils.cpp
++++ pfstools-2.1.0/src/pfs/pfsutils.cpp
+@@ -57,6 +57,8 @@ string getColorspaceString(ColorSpace cs
+         return "HLG YCbCr 2020";
+     case CS_RGB2020:
+         return "RGB2020";
++    default:
++        __builtin_unreachable();
+   }
+ }
+ 
