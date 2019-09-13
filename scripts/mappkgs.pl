@@ -7,20 +7,49 @@ our $indir=shift || "in";
 our $outdir=shift || "packages";
 our @list=();
 our $binaryre;
+our $maxaddsize = 1024*9000;
+our %md5cid;
 
 sub wanted
 {
   push @list, $File::Find::name;
 }
 
+sub get_md5($)
+{
+  my $path = shift;
+  my $dir = $path;
+  $dir =~s(/[^/]+$)();
+  my $file = $path;
+  $file =~s(.*/)();
+  open(my $f, "<", "$dir/MD5SUMS") or die "could not open $dir/MD5SUMS : $!";
+  while(<$f>) {
+    chomp;
+    my @a=split(" ", $_);
+    next unless $a[1] eq $file;
+    return $a[0];
+  }
+  die "pre-computed MD5 value of $path not found"
+}
+sub get_cid($)
+{
+  my $path = shift;
+  my $md5=get_md5($path);
+  my $cid=$md5cid{$md5};
+  if(!$cid) {
+    my $dontadd="";
+    $dontadd="-n" if (-s $path > $maxaddsize);
+    $cid=`ipfs add --cid-version 1 --raw-leaves -Q $dontadd $path`;
+    chomp($cid);
+    $md5cid{$md5}=$cid;
+  }
+}
+
 sub make_ipfs_link($$)
 {
   my ($in, $out) = @_;
   #print "would ipfs $in -> $out\n";
-  my $dontadd="";
-  $dontadd="-n" if (-s $in > 9000*1024);
-  my $cid=`ipfs add --cid-version 1 --raw-leaves -Q $dontadd $in`;
-  chomp($cid);
+  my $cid = get_cid($in);
   symlink("/ipfs/$cid", $out);
 }
 
