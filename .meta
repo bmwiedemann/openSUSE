@@ -1,0 +1,9 @@
+<package name="pfstools" project="openSUSE:Factory">
+  <title>High Dynamic Range Images and Video manipulation tools</title>
+  <description>pfstools package is a set of command line (and one GUI) programs for
+reading, writing, manipulating and viewing high-dynamic range (HDR)
+images and video frames. All programs in the package exchange data
+using a simple generic file format (pfs) for HDR data. The concept of
+the pfstools is similar to netpbm package for low-dynamic range images.</description>
+  <devel project="graphics" package="pfstools"/>
+</package>
