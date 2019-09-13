@@ -1,0 +1,198 @@
+-------------------------------------------------------------------
+Fri Jan 11 13:18:11 UTC 2019 - Fred kiefer <fredkiefer@gmx.de>
+
+- update to 1.26.0
+   * Improve utf8 validity checks.
+   * Make point and size subclasses for NSValue interchangable.
+   * Add support for TLS SNI. Always request certificate from client and
+     update certificates after 5 minutes.
+   * Don't write deprecated fields to desktop link file.
+   * Use NSLock instead of GSLazyLock and other improvements for
+     multithreaded processes.
+   * Clean up of NSString cluster.
+   * Update NSAssert() and NSCAssert() to handle variable arguments (as
+     OSX has done) and mark the numbered macros as obsolete.
+   * Various improvements in tests.
+   * Require ICU >= 50.
+   * ICU is now detected using pkg-config.
+   * Improve XML parsing.
+   * Make NSXMLNode ivar a union representing different types, instead
+     of assuming it will contain different underlying class types in
+     different contexts.  This is important for the new libobjc2 ABI.
+   * OSX compatibility changes to NSURL.
+   * NSFileManager call error handle on missing file.
+   * Dummy spinlock implementation for platforms that don't support it.
+   * Internationalization improvements: Japanese translation, Turkish
+     translation, Polish translation.
+   * Various improvements for new libobjc2 "v2 ABI", including things
+     like a new NSConstantString implementation, making
+     GS_REPLACE_CONSTANT_STRING a noop with the new ABI, etc.
+   * Improvements for stack traces, exception handling and dead lock
+     detection.
+   * Other more minor bugfixes and cleanups.  Many found by Coverity
+     scan results.
+   * As usual, this release also contains an update to include the most
+     recent international timezone data.
+
+
+-------------------------------------------------------------------
+Tue Jul 10 16:06:45 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove dependencies on insserv, not used. 
+
+-------------------------------------------------------------------
+Sun Dec 31 20:36:40 UTC 2017 - fredkiefer@gmx.de
+
+- update to 1.25.1
+ o Unicode fixes for characters outside the base plane
+ o Stubs for some new OSX methods
+ o Various new OSX compatibility macro and type definitions
+ o NSFileManager fixes and tweaks to match OSX implementation
+ o NSDistributedLock bugfix for pre-existing lock directories
+ o Alternative sort algorithms selectable at runtime
+ o Compatibility-related changes for environments not supporting weak
+   symbols
+ o Other more minor bugfixes and cleanups.
+ o As usual, this release also contains an update to include the most
+   recent international timezone data.
+
+-------------------------------------------------------------------
+Sat Sep  9 23:29:13 UTC 2017 - jengelh@inai.de
+
+- Implement shared library packaging guideline.
+  Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Sun Sep  3 21:19:02 UTC 2017 - fredkiefer@gmx.de
+
+- Remove scripts to start gdnc as daemon or on login. (Fixes boo#1055816)
+
+-------------------------------------------------------------------
+Sat Jul 22 17:41:59 UTC 2017 - fredkiefer@gmx.de
+
+- Change gnustep-make from BuildRequired to Required.
+
+-------------------------------------------------------------------
+Sun Apr 16 19:12:16 UTC 2017 - fredkiefer@gmx.de
+
+- update to 1.25.0
+
+-------------------------------------------------------------------
+Tue Jan 17 10:41:24 UTC 2017 - aloisio@gmx.com
+
+- Rename pl to pllist unconditionally.
+- Explicit filelist to better monitor conflicts between
+  packages.
+
+-------------------------------------------------------------------
+Sat Jan 14 18:18:14 UTC 2017 - aloisio@gmx.com
+
+- Reverted macros in comments
+
+-------------------------------------------------------------------
+Thu Jan 12 20:37:58 UTC 2017 - aloisio@gmx.com
+
+- Spec cleanup 
+- Removed _service file and added tarball so that
+  the package can be accepted into Factory
+
+-------------------------------------------------------------------
+Fri Mar 25 14:47:06 UTC 2016 - fredkiefer@gmx.de
+
+- disable icu on Suse systems before 12.
+
+-------------------------------------------------------------------
+Mon Mar 21 22:07:44 UTC 2016 - fredkiefer@gmx.de
+
+- update to 1.24.9
+  o Niels added support for generics
+  o Support for 'ng' runtime library (latest language features enabled)
+  o Performance optimisations and improved diagnostic messages
+  o Garbage Collection deprecated (support to be removed)
+  o As usual, this release also contains an update to include the most
+    recent international timezone data.
+
+
+-------------------------------------------------------------------
+Sat May 16 10:39:51 UTC 2015 - fredkiefer@gmx.de
+
+- update to 1.24.8
+  o Performance optimisations (particularly in the use of tiny string
+    objects by the new objc runtime on 64bit systems).
+  o Thread naming and logging of threads by NSLog() has been made
+    consistent with the latest OSX releases, making debugging of
+    multithreaded code a little easier.
+  o Sergei Golovin has added NSURLConnection regression tests (while
+    fixing a few bugs there).
+  o As usual, this release also contains an update to include the most
+    recent international timezone data.
+  o Various other bugfixes.
+  
+-------------------------------------------------------------------
+Sat Mar 21 12:35:48 UTC 2015 - fredkiefer@gmx.de
+
+- update to 1.24.7
+  o TLS and other security improvements (note, SSLv3.0 is disabled by default
+    in order to prevent the 'POODLE' attack).
+  o Latest timezone data included
+  o Various other bug fixes
+  o for more info please see ChangeLog file
+
+-------------------------------------------------------------------
+Tue Dec 24 11:05:02 UTC 2013 - fredkiefer@gmx.de
+
+- update to 1.24.6
+  o NSUUID implemented
+  o New OSX version macros
+  o TLS support improvements
+  o Various new methods for OSX compatibility
+  o for more info please see ChangeLog file
+
+-------------------------------------------------------------------
+Sat Aug 10 12:36:12 UTC 2013 - fredkiefer@gmx.de
+
+- update to 1.24.5
+  o for more info please see ChangeLog file
+
+-------------------------------------------------------------------
+Mon Apr  1 21:32:02 UTC 2013 - fredkiefer@gmx.de
+
+- update to 1.24.4
+  o for more info please see ChangeLog file
+
+-------------------------------------------------------------------
+Wed Mar  6 08:22:45 UTC 2013 - fredkiefer@gmx.de
+
+- update to 1.24.3
+  o for more info please see ChangeLog file
+
+-------------------------------------------------------------------
+Sat Aug  4 22:09:27 UTC 2012 - chris@computersalat.de
+
+- update to 1.24.0
+  o for more info please see ChangeLog file
+- remove obsolete enable-tls patch
+- add source signature file (tar.gz.sig)
+- enable parallel build
+- add BuildReq libicu-devel
+- rpmlint stuff
+  * fix Group
+  * add missing rcgdomap link
+  * remove setuid/setgid bit gdomap (6755 -> 0755)
+
+-------------------------------------------------------------------
+Thu Apr  7 23:04:29 UTC 2011 - chris@computersalat.de
+
+- update to 1.20.1
+  o for more info please see ChangeLog file
+- rework enable-tls patch
+- spec mod
+  o add header
+  o fix gs_library (/usr/lib/GNUstep)
+    see WindowMaker pkg: /usr/lib/GNUstep/Applications
+
+-------------------------------------------------------------------
+Sun Apr 12 21:28:33 CET 2009 - lars@linux-schulserver.de
+
+- initial version
+
