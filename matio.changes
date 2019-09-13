@@ -1,0 +1,210 @@
+-------------------------------------------------------------------
+Thu Oct  4 16:24:29 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix preprocessor check for availability of H5F_LIBVER_V18
+
+-------------------------------------------------------------------
+Tue Oct  2 19:45:32 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Force writing of backwards compatible files with HDF5 1.10.x
+  0001-Write-backwards-compatible-Mat7.3-files.patch
+  (gh#tbeu/matio#93).
+
+-------------------------------------------------------------------
+Fri Jun 29 12:58:18 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- BuildRequire p7zip-full instead of p7zip on TW, 7za was moved
+  from p7zip to the new package, breaking backwards compatibility.
+- use %license for COPYING
+
+-------------------------------------------------------------------
+Thu Apr 12 11:29:44 UTC 2018 - adrian@suse.de
+
+- enforce hdf5 1.8 to ensure that files can still be exchanged
+
+-------------------------------------------------------------------
+Tue Apr  3 22:54:27 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Trim redundant wording from summaries.
+
+-------------------------------------------------------------------
+Sat Mar 31 21:23:50 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Update to version 1.5.12:
+  * Updated Mat_VarWriteAppend: Added support to append a variable
+    to a previously written struct array in HDF5 MAT file
+  * Fixed bug reading MAT_T_UINT16 encoded character array from
+    HDF5 MAT file
+  * Fixed bug reading MAT_T_UTF16 encoded character array from
+    compressed v5 MAT file
+  * Fixed bug writing MAT_T_UTF16 encoded character array to HDF5
+    MAT file
+  * Fixed buffer overflow in Mat_VarGetCells/Mat_VarGetStructs
+- Reenable support for Mat v7.3
+- Use significantly smaller 7z compressed sources (2.7 vs 10 MByte)
+
+-------------------------------------------------------------------
+Thu Oct 26 17:20:18 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.5.11:
+  * Added new API function Mat_VarWriteAppend to append a numeric
+    array to a previously written variable in HDF5 MAT file.
+  * Fixed bug calculating sizes of cell/struct array with empty
+    cells/fields in Mat_VarGetSize.
+  * Fixed bug writing cell/struct array with empty cells/fields to
+    v5 MAT file.
+  * Fixed bug writing cell/struct array with empty cells/fields to
+    HDF5 MAT file.
+  * Fixed read performance of cell/struct array with empty
+    cells/fields from v5 MAT file.
+  * Fixed read performance of numeric array from uncompressed v5
+    MAT file.
+  * Fixed testsuite (if configured with the MATLAB application).
+  * Updated man pages.
+- Drop BuildRequires: libtool and the autoreconf run before
+  configure; the patches that needed these have been long gone.
+- Mat v7.3 tests fail, so turn off enable-mat73 for now.
+
+-------------------------------------------------------------------
+Mon Oct  2 15:04:51 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.5.10:
+  * Added new API function Mat_GetDir to retrieve all variable
+    names of a MAT file
+  * Fixed performance of repeated calls to Mat_VarWrite (broken by
+    v1.5.7)
+  * Fixed bugs reading (hyperslabs of) numeric arrays where the
+    variable data type differs from the desired output data type
+  * Increased testsuite coverage
+
+-------------------------------------------------------------------
+Mon Oct 24 20:15:27 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 1.5.9
+  * Bug fixes
+  * HDF5 1.10 support, drop obsolete matio-hdf5_110-support.patch
+    matio-disable-failing-hdf5-tests.patch
+
+-------------------------------------------------------------------
+Fri Aug  5 08:09:01 UTC 2016 - badshah400@gmail.com
+
+- Add matio-hdf5_110-support.patch to fix support for
+  hdf5 >= 1.10; patch taken from upstream git (gh#tbeu/matio#37).
+- Add matio-disable-failing-hdf5-tests.patch to disable "mat73"
+  tests that fail (apparently) due to bugs in hdf5 1.10
+  (gh#tbeu/matio#41); patch touches autotool files, add
+  BuildRequires on libtool and run "autoreconf -fi" before
+  configure.
+
+-------------------------------------------------------------------
+Fri Jul  8 09:30:31 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 1.5.8
+  * Bug fixes
+
+-------------------------------------------------------------------
+Thu Jun 23 08:11:32 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 1.5.7
+  * Added support for MAT_T_UTF16 when reading character array from v5 MAT file
+  * Added support of HDF5 v1.10.x (with deprecated v1.8.x symbols exported)
+  * Added warning on unsupported character data types when reading v5 MAT file
+  * Added error check if variable already exists when writing to MAT file
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon Mar 21 21:20:49 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 1.5.6
+  * Added support of reading sparse array from v4 MAT files
+  * Added support of writing sparse array to v4 MAT files
+  * Added support of writing character array to v4 MAT files
+  * Bug fixes
+
+-------------------------------------------------------------------
+Wed Feb  3 08:56:18 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 1.5.3
+  * Added support for writing numeric arrays to v4 MAT files
+  * Added new API functions Mat_CalcSingleSubscript2 and Mat_CalcSubscripts2 that
+  work on size_t type
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon Aug 31 16:39:35 UTC 2015 - toddrme2178@gmail.com
+
+- Avoid unresolvable errors from multiple providers of libhdf5
+
+-------------------------------------------------------------------
+Thu Aug  1 07:19:08 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 1.5.2
+  * Added support for linear data read for v4 and HDF5 MAT files
+  * Fixed bug reading slices of variables in matdump
+  * Fix feof calls so they compile on platforms that dereference
+  the argument in a macro
+  * More robust checking that file is MAT file and eliminates some
+  segmentation faults
+  * Various fixes for unused variables, unnecessary initializations,
+  etc. that cause compilers to issue diagnostices
+  * Several other fixes
+
+-------------------------------------------------------------------
+Sun Mar 10 18:19:52 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 1.5.1
+  * Fix bug writing compressed HDF5 files
+  * Fix bug reading cell array elements written with a non-empty
+    variable name
+  * Fix bug writing complex sparse matrices as struct fields or
+    cell elements to uncompressed v5 MAT files
+  * Fix a number of potential issues identified via static analysis
+  * Fix uninitialized pointers when creating structures through
+    Mat_VarCreateStruct, and fix a bug in the struct API testsuite
+  * Fix extended sparse support in v7.3 MAT files and add 64-bit
+    integer support for v5 MAT files
+  * Add missing support for reading hyperslabs from HDF5 MAT files
+  * Added variable indexing notation support to matdump to display
+    subsets of variables
+  * Added tests for extended sparse support in testsuite
+  * Add missing enumerations or default case in switch statements
+  * removed obsolete gcc-warnings-fix.patch
+  * removed obsolete matvar_struct.patch
+  * removed obsolete mat4_bigendian.patch
+
+-------------------------------------------------------------------
+Thu Dec 20 16:43:12 UTC 2012 - dvaleev@suse.com
+
+- Fix Big Endian issues in mat4. (mat4_bigendian.patch) 
+
+-------------------------------------------------------------------
+Thu Dec 20 14:59:20 UTC 2012 - dvaleev@suse.com
+
+- Fix failing 684 686 test (matvar_struct.patch)
+
+-------------------------------------------------------------------
+Fri Aug 17 09:12:59 UTC 2012 - toddrme2178@gmail.com
+
+- Various spec file cleanups
+
+-------------------------------------------------------------------
+Thu Aug 16 16:23:56 UTC 2012 - dmitry_r@opensuse.org
+
+- update to version 1.5.0
+  * Support for reading/writing HDF5 format MAT files
+  * Bug fixes for compressed variables that caused issues with 
+  matio reading them.
+  * Upgrade of dimensions in matvar_t structure to size_t enabling
+  support for large arrays.
+  * A testsuite
+- add gcc-warnings-fix.patch: fix implicit declaration
+- remove libmatio0-1.3.3-doxygen.patch: now matio doesn't use
+  doxygen
+
+-------------------------------------------------------------------
+Wed Jun 27 20:29:23 UTC 2012 - scorot@free.fr
+
+- fix documentation build thanks to a patch from debian
+- spec file reformating and cleanup
+
+
