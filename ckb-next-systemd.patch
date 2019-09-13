@@ -1,0 +1,35 @@
+Index: ckb-next-0.4.1/src/daemon/CMakeLists.txt
+===================================================================
+--- ckb-next-0.4.1.orig/src/daemon/CMakeLists.txt
++++ ckb-next-0.4.1/src/daemon/CMakeLists.txt
+@@ -294,7 +294,7 @@ elseif (LINUX)
+     endif ()
+ 
+     # A way to check for systemd
+-    if (EXISTS "/run/systemd/system" OR "systemd" IN_LIST FORCE_INIT_SYSTEM)
++    if (EXISTS "/usr/lib/systemd/system" OR "systemd" IN_LIST FORCE_INIT_SYSTEM)
+         message(STATUS "systemd detected")
+         set(CKB_NEXT_INIT_SYSTEM "systemd" CACHE INTERNAL "")
+         set(DISALLOW_SYSVINIT TRUE)
+@@ -406,7 +406,7 @@ if (MACOS)
+ elseif (LINUX)
+     install(
+         TARGETS ckb-next-daemon
+-        DESTINATION "bin")
++        DESTINATION "${CMAKE_INSTALL_LIBEXECDIR}")
+ endif ()
+ 
+ # Declare target's auxiliary files installation paths
+Index: ckb-next-0.4.1/linux/systemd/ckb-next-daemon.service.in
+===================================================================
+--- ckb-next-0.4.1.orig/linux/systemd/ckb-next-daemon.service.in
++++ ckb-next-0.4.1/linux/systemd/ckb-next-daemon.service.in
+@@ -5,7 +5,7 @@
+ Description=Corsair Keyboards and Mice Daemon
+ 
+ [Service]
+-ExecStart=@CMAKE_INSTALL_PREFIX@/bin/ckb-next-daemon
++ExecStart=@CMAKE_INSTALL_PREFIX@/lib/ckb-next-daemon
+ Restart=on-failure
+ 
+ [Install]

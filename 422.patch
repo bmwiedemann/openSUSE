@@ -1,0 +1,46 @@
+https://github.com/ckb-next/ckb-next/pull/422 
+
+From 257d39dc187f818c6c77a7fb50b994eaa613cbb1 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 29 May 2019 05:28:33 +0200
+Subject: [PATCH] Do not prepend /usr to libexecdir
+
+Fix #276
+
+Without this patch, compiling with -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir}
+expanded this to /usr//usr/lib/ckb-next-animations
+
+and there is no rpm macro to have libexecdir without /usr
+but we need to use these macros to be able to use the same .spec file
+across distributions (Fedora has /usr/libexec and openSUSE has /usr/lib )
+
+This matches usage in src/daemon/CMakeLists.txt
+---
+ src/CMakeLists.txt     | 2 +-
+ src/ckbnextconfig.h.in | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 07804972..1b9a9e59 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -27,7 +27,7 @@
+ 
+ # Export version, etc. to source code
+ set(CKB_NEXT_VERSION_STR "${ckb-next_VERSION}")
+-set(CKB_NEXT_ANIMATIONS_PATH "${CMAKE_INSTALL_PREFIX}/${INSTALL_DIR_ANIMATIONS}")
++set(CKB_NEXT_ANIMATIONS_PATH "${INSTALL_DIR_ANIMATIONS}")
+ configure_file(
+     ${CMAKE_CURRENT_LIST_DIR}/ckbnextconfig.h.in
+     ${CMAKE_BINARY_DIR}/ckbnextconfig.h)
+diff --git a/src/ckbnextconfig.h.in b/src/ckbnextconfig.h.in
+index 7842968a..ed5e2404 100644
+--- a/src/ckbnextconfig.h.in
++++ b/src/ckbnextconfig.h.in
+@@ -1,5 +1,5 @@
+ #cmakedefine CKB_NEXT_VERSION_STR "${ckb-next_VERSION}"
+-#cmakedefine CKB_NEXT_ANIMATIONS_PATH "${CMAKE_INSTALL_PREFIX}/${INSTALL_DIR_ANIMATIONS}"
++#cmakedefine CKB_NEXT_ANIMATIONS_PATH "${INSTALL_DIR_ANIMATIONS}"
+ 
+ #define CKB_NEXT_PROFILE_VER ${ckb-next_PROFILE_VER}
+ 

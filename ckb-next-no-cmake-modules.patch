@@ -1,0 +1,13 @@
+Index: ckb-next-0.3.2/src/libs/ckb-next/CMakeLists.txt
+===================================================================
+--- ckb-next-0.3.2.orig/src/libs/ckb-next/CMakeLists.txt
++++ ckb-next-0.3.2/src/libs/ckb-next/CMakeLists.txt
+@@ -67,7 +67,7 @@ configure_file(
+     COPYONLY)
+ 
+ # Ignore these for now on macOS
+-if(NOT MACOS)
++if(0)
+     install(
+         EXPORT ${PROJECT_NAME}Targets
+         FILE
