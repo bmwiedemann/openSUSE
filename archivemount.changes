@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Sat Feb  3 16:30:37 UTC 2018 - avindra@opensuse.org
+
+- Update to version 0.8.7
+  * corrected an ifdef
+- includes 0.8.6 
+  * adaptions for CentOS, RHEL and Scientific Linux
+- cleanup with spec-cleaner
+- rebase archivemount.dif
+  * dropped fchdir fix, merged upstream in
+    6839a38b570794d890ae1f0d94b41a2f0b7d23d2
+- simplify CFLAGS handling
+
+-------------------------------------------------------------------
+Wed Nov 11 18:44:05 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.8.5
+  * FormatRaw optimization
+  * bugfix : use of off_t to support 64bits
+- Update archivemount-0.8.4.dif > archivemount.dif
+
+-------------------------------------------------------------------
+Sun Mar 22 18:16:43 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.8.4
+  * added option -o formatraw for readonly support of the 
+    FormatRaw archive files supported by libarchive (kudos to Lee 
+    Leahu)
+  * bugfix: do not do the fuse mount when the archive cannot be read
+    (also kudos to Lee Leahu)
+- Cleanup spec file with spec-cleaner
+- Adapt patch to upstream changes
+  * archivemount-0.8.3.dif to archivemount-0.8.4.dif
+
+-------------------------------------------------------------------
+Tue Dec 16 22:07:30 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 0.8.3
+  + do not call fuse_main anymore
+  + force fuse into single-threaded mode due to libarchive not being
+	  thread-safe
+- Adapt patch to upstream changes
+  + archivemount-0.6.2.607cd0d.dif  > archivemount-0.8.3.dif
+- Use download Url as source
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Mon Oct 22 11:10:49 UTC 2012 - werner@suse.de
+
+- Update ot current github version 0.6.2.607cd0d (including BSD-2-Clause
+  licensed header file uthash.h in source tar ball)
+  + Based on version 0.6.2
+  + Added annotations to some variables to indicate what lock should wrap
+  + Refactored the trash to not be malloced each time it is used. Instead
+  + Moved the lock creation up, to ensure the fd variable is always wrapp
+  + Fixed a incorrect error check.
+  + Added trace logging.
+  + Changed the main locking mechansim to pthread_mutex_lock from pthread
+  + Cleaned up some unused variables.
+  + Cleaned up some comments used during benchmarking.
+  + Fixed some minor error handling conditions, spotted by the awesome cl
+  + Added some brackets to avoid paranoid complier warnings.
+  + Bumped the _XOPEN_SOURCE version so pthread_mutex_timedlock could be
+  + Fixed the link to libarchive.
+  + Changed the open operation to create a new private archive reader obj
+  + Ensure st_blocks, st_blksize are set when returned from archive_entry
+  + Use a full struct stat when running readdir.
+  + Add missing return type. Most likely from a typo.
+  + Ensure free_node() cleans up all children.
+  + Changed the main data structure from a double link list, to a hash ta
+  + Fixed log() lines that had more arguments than used in the format str
+  + Store the basename of a file in the Node struct. This speeds up build
+  + Store a pointer to the last child in a directory. This makes insertin
+  + Moved archive_entry_new into init_node. This again simplifies the cod
+  + Rearranged the build_tree code to avoid a call to archive_entry_clone
+  + Added a new free_node function to simplify freeing nodes.
+  + Changed init_node to malloc a NODE and return it. This simplied the c
+
+-------------------------------------------------------------------
+Tue May 15 08:37:53 UTC 2012 - werner@suse.de
+
+- Add -pthread to the gcc command line
+
+-------------------------------------------------------------------
+Mon May  7 08:37:31 UTC 2012 - werner@suse.de
+
+- Enforce usage of reentrant versions of libc functions 
+- Fix off by one error by providing enough room for the ascii zero
+  as well as for the new slash
+- Avoid crash even if str(r)chr does not find a slash
+
+-------------------------------------------------------------------
+Thu Dec  8 11:29:14 UTC 2011 - cfarrell@suse.com
+
+- license update: LGPL-2.1+
+  Package is LGPL-2.1+ according to the COPYING file. Use SPDX format
+
+-------------------------------------------------------------------
+Tue Dec  6 17:17:52 UTC 2011 - werner@suse.de
+
+- Initial package archivemount for openSUSE 
+
