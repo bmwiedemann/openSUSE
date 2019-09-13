@@ -1,0 +1,340 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>05853991dd0f56a5171582b54b599f40</srcmd5>
+    <version>1.8</version>
+    <time>1395405268</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>226881</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>05853991dd0f56a5171582b54b599f40</srcmd5>
+    <version>1.8</version>
+    <time>1409303012</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d4f9182c85314912763a1f65d2c20f35</srcmd5>
+    <version>1.9</version>
+    <time>1410509022</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248644</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0ab129efc1077956673dd68e2b71a766</srcmd5>
+    <version>1.12</version>
+    <time>1444285524</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>336812</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3bc8f8aa52626af6c525ee37181bd172</srcmd5>
+    <version>1.12</version>
+    <time>1445287874</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>338796</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>16441418af102e4fa395a55fe24a5edc</srcmd5>
+    <version>1.12</version>
+    <time>1448400819</time>
+    <user>coolo</user>
+    <comment>- removed python-certifi dependency, we don't want to use it
+- drop 0001-Don-t-pin-dependency-to-exact-version.patch because it's
+  not needed anymore
+- re-enable tests, re-add relevant dependencies
+  * don't exclude test_util.py
+  * exclude proxy timeout tests that fail for spurious reasons
+- urllib3-ssl-default-context.patch - use set_default_verify_paths()
+  if no certificate path specified and verification not explicitly
+  disabled
+- urllib3-test-ssl-drop-sslv3.patch - don't use &quot;SSLv3&quot; constants
+  in python 2.7.9 and up
+- ready-event.patch - fix race conditions in timeout tests
+- drop %pre section because apparently &quot;egg-info as file&quot; is no longer
+  true and this breaks builds</comment>
+    <requestid>345102</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c9062d101b534ba7cc2311e1980e6fa3</srcmd5>
+    <version>1.14</version>
+    <time>1459002216</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>372906</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>10c98659bbda58b899aff293472450f0</srcmd5>
+    <version>1.15.1</version>
+    <time>1464484398</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>398319</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5da1f66b344e721a3f1ee94a9f76ad30</srcmd5>
+    <version>1.16</version>
+    <time>1474623086</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424407</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6b1309c8800f4f7c595e14ea9f20288f</srcmd5>
+    <version>1.19.1</version>
+    <time>1483048364</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447979</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3056bed98c63c3f8ec2ee3ad9de47220</srcmd5>
+    <version>1.20</version>
+    <time>1493368720</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487848</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>27704f5a0f0949d68cd7debbce385c63</srcmd5>
+    <version>1.21.1</version>
+    <time>1498202235</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504336</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f40b7ae32531fdc4fd9a7244073689b0</srcmd5>
+    <version>1.22</version>
+    <time>1502707148</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516172</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>724548686df5fba2def3aac7430371f1</srcmd5>
+    <version>1.22</version>
+    <time>1509193054</time>
+    <user>dimstar_suse</user>
+    <comment>- use python3 for detection, in anticipation of python2 removal</comment>
+    <requestid>535198</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>c31fc9bf12c9ca70ed6a162fd74ee0dd</srcmd5>
+    <version>1.22</version>
+    <time>1514840990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560898</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>c1e9fb806a4914f099ea003146655197</srcmd5>
+    <version>1.22</version>
+    <time>1518697174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575768</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>b78135cb6f24e40aa86b501a85227b1b</srcmd5>
+    <version>1.22</version>
+    <time>1520852760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583999</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e15ee0252224c58b86931f6e7ff5838a</srcmd5>
+    <version>1.23</version>
+    <time>1531813081</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.23
+- add 1414.patch - fix tests with new tornado
+- refresh python-urllib3-recent-date.patch
+- drop urllib3-test-no-coverage.patch
+ * Allow providing a list of headers to strip from requests when redirecting 
+   to a different host. Defaults to the Authorization header. Different
+   headers can be set via Retry.remove_headers_on_redirect.
+ * Fix util.selectors._fileobj_to_fd to accept long
+ * Dropped Python 3.3 support.
+ * Put the connection back in the pool when calling stream()
+   or read_chunked() on a chunked HEAD response.
+ * Fixed pyOpenSSL-specific ssl client authentication issue when clients
+   attempted to auth via certificate + chain
+ * Add the port to the connectionpool connect print
+ * Don't use the uuid module to create multipart data boundaries.
+ * read_chunked() on a closed response returns no chunks.
+ * Add Python 2.6 support to contrib.securetransport
+ * Added support for auth info in url for SOCKS proxy (forwarded request 622951 from mimi_vx)</comment>
+    <requestid>622952</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>11f58b0eb1c7d581feb9b7497e49e1d9</srcmd5>
+    <version>1.23</version>
+    <time>1532160535</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop not needed devel and nose deps</comment>
+    <requestid>623593</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>158795ebd04285ef9728bbdb9d6f7f00</srcmd5>
+    <version>1.23</version>
+    <time>1534322308</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Relax python-nose version requirement on SLE 12 (fate#321630)</comment>
+    <requestid>629208</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>57d850599adbe6ceb03b37ac7757b95c</srcmd5>
+    <version>1.23</version>
+    <time>1535440815</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use ifpython2 for BRs where it does not work
+
+- add python-ipaddress dependency for python 2.x</comment>
+    <requestid>630478</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>0571edb050203a903ad03be984a9f65f</srcmd5>
+    <version>1.23</version>
+    <time>1535701895</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631981</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>2e360af3fc1e5d3b888ac036947cc58a</srcmd5>
+    <version>1.23</version>
+    <time>1537263410</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634983</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>eef4ad2133d5beb6a38b9900b57d397e</srcmd5>
+    <version>1.24</version>
+    <time>1541514904</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.24:
+  * Allow key_server_hostname to be specified when initializing a PoolManager to allow custom SNI to be overridden. (Pull #1449)
+  * Test against Python 3.7 on AppVeyor. (Pull #1453)
+  * Early-out ipv6 checks when running on App Engine. (Pull #1450)
+  * Change ambiguous description of backoff_factor (Pull #1436)
+  * Add ability to handle multiple Content-Encodings (Issue #1441 and Pull #1442)
+  * Skip DNS names that can't be idna-decoded when using pyOpenSSL (Issue #1405).
+  * Add a server_hostname parameter to HTTPSConnection which allows for overriding the SNI hostname sent in the handshake. (Pull #1397)
+  * Drop support for EOL Python 2.6 (Pull #1429 and Pull #1430)
+  * Fixed bug where responses with header Content-Type: message/* erroneously raised HeaderParsingError, resulting in a warning being logged. (Pull #1439)
+  * Move urllib3 to src/urllib3 (Pull #1409)
+- Drop patch 1414.patch merged upstream
+- Refresh patches:
+  * python-urllib3-recent-date.patch
+  * urllib3-ssl-default-context.patch</comment>
+    <requestid>645906</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>34274a59bbcd1822a26a941a68e4c7ab</srcmd5>
+    <version>1.24.1</version>
+    <time>1546535088</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.24.1:
+  * Remove quadratic behavior within GzipDecoder.decompress()
+    (Issue #1467)
+  * Restored functionality of ciphers parameter for
+    create_urllib3_context(). (Issue #1462)
+</comment>
+    <requestid>662088</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9076e063149ec0f4c60f69201c4d6734</srcmd5>
+    <version>1.24.2</version>
+    <time>1555773128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695347</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>79e7a6cbc7a8a5b594354eda9103014b</srcmd5>
+    <version>1.25.3</version>
+    <time>1560862086</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_source_address_error as we raise different error with
+  fixes that we provide in new python2/3
+
+- Add more test to skip as with new openssl some behaviour changed
+  and we can't rely on them anymore
+
+- Unbundle the six, rfc3986, and backports.ssl_match_hostname
+
+- Update to 1.25.3:
+  * Change HTTPSConnection to load system CA certificates when ca_certs, ca_cert_dir, and ssl_context are unspecified. (Pull #1608, Issue #1603)
+  * Upgrade bundled rfc3986 to v1.3.2. (Pull #1609, Issue #1605)
+
+- Update to 1.25.2:
+  * Change is_ipaddress to not detect IPvFuture addresses. (Pull #1583)
+  * Change parse_url to percent-encode invalid characters within the path, query, and target components. (Pull #1586)
+  * Add support for Google's Brotli package. (Pull #1572, Pull #1579)
+  * Upgrade bundled rfc3986 to v1.3.1 (Pull #1578)
+- Require all the deps from the secure list rather than Recommend.
+  This makes the check to be run always and ensure the urls are
+  &quot;secure&quot;.
+- Remove ndg-httpsclient as it is not needed since 2015
+
+- Add missing dependency on brotlipy
+- Fix the tests to pass again
+
+- update to 1.25 (bsc#1132663, CVE-2019-11236):
+  * Require and validate certificates by default when using HTTPS
+  * Upgraded ``urllib3.utils.parse_url()`` to be RFC 3986 compliant.
+  * Added support for ``key_password`` for ``HTTPSConnectionPool`` to use
+    encrypted ``key_file`` without creating your own ``SSLContext`` object.</comment>
+    <requestid>708287</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>213e9968cc59ff0a1d08f080c8750f24</srcmd5>
+    <version>1.25.3</version>
+    <time>1561007378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710980</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>f60c29cc8a413ae5e18c452df20ed380</srcmd5>
+    <version>1.25.3</version>
+    <time>1561021338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711042</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>12ce380aa15baa81334178dfd67fb0fc</srcmd5>
+    <version>1.25.3</version>
+    <time>1561103272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711280</requestid>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>c862e514b8d4f3b43bfd5c9404828d37</srcmd5>
+    <version>1.25.3</version>
+    <time>1564484629</time>
+    <user>dimstar_suse</user>
+    <comment>- Use old pytest 3.x as newer do not work with this release
+  * this will be fixed with next release, just spread among
+    numerous fixes in the git for quick backporting</comment>
+    <requestid>717462</requestid>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>d9dc873c79b0eb1ef068d331bf151d67</srcmd5>
+    <version>1.25.3</version>
+    <time>1566463983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724867</requestid>
+  </revision>
+</revisionlist>
