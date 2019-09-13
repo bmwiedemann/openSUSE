@@ -1,0 +1,129 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e62c0f94f11a04b1f4ff2fa1fe2aada</srcmd5>
+    <version>3.0.0</version>
+    <time>1539251918</time>
+    <user>dimstar_suse</user>
+    <comment>Update metadata</comment>
+    <requestid>641009</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c7f077010e88a03fd1e5046d31b64977</srcmd5>
+    <version>3.0.10+git.1539286261.2b549c5a</version>
+    <time>1539593380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.10+git.1539286261.2b549c5a:
+  * Bump Test Version 3.0.10
+  * Update strings to translate.
+  * Change adapter_lightnovelgatecom to adapter_novelonlinefullcom for site change.  Closes #346
+  * Bump Test Version 3.0.9
+  * Fix adapter_wuxiaworldco date formate for 24 hour clock.  Closes #345
+  * Bump Test Version 3.0.8
+  * Add max_zalgo feature.
+  * Bump Test Version 3.0.7
+  * Handle stories without cover correctly adapter_wwwlushstoriescom. Closes #344
+  * Bump Test Version 3.0.6
+</comment>
+    <requestid>641956</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02ce5d883a281155444b50aa00ab6cc2</srcmd5>
+    <version>3.2.1+git.1543262085.5eb1f1f3</version>
+    <time>1544441415</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>656744</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7971d2858a1306fab8789dda1846f86f</srcmd5>
+    <version>3.3.0</version>
+    <time>1546946864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662670</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b33fc9a914dfc3c31a150cbb3760666f</srcmd5>
+    <version>3.5.0</version>
+    <time>1552039362</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682353</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c9b1575cfbea1d6fb4fb951efd458068</srcmd5>
+    <version>3.6.0</version>
+    <time>1553635891</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.0:
+  * Install attached plugin zip file, or use Calibre's 'Get plugins' feature.
+- Use dos2unix for file conversions
+- Add missing runtime dependencies</comment>
+    <requestid>686456</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>690bdfe9f346350b457c44981993df52</srcmd5>
+    <version>3.7.0</version>
+    <time>1556475327</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698710</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>40ef34e4f0f659704b283b15ee548b13</srcmd5>
+    <version>3.7.6</version>
+    <time>1556916446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.6:
+  - Fix CLI Upload to have correct version.
+  - Fix for BS halping with string conversions on PI update from
+    Saved Meta Column.
+  - More improvements for adapter_asianfanficscom, including
+    auto_sub feature, thanks oh45454545
+  - Improvements for adapter_asianfanficscom, thanks oh45454545
+  - Update adapter_asianfanficscom to fetch chapter texts from
+    JSON url.
+  - Ad wall indicator has changed for adapter_webnovelcom.
+  - Fix use_archived_author in AO3. (forwarded request 700317 from mcepl)</comment>
+    <requestid>700318</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f2b130d306752b8da4c36edf5ab88459</srcmd5>
+    <version>3.8.0</version>
+    <time>1560337996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708362</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f9340c783987f2002abd876606add7c1</srcmd5>
+    <version>3.10.1</version>
+    <time>1564576084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719805</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cc8e8c2fbb1fa97ffb22dc1714af4720</srcmd5>
+    <version>3.10.5</version>
+    <time>1565105247</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.10.5.</comment>
+    <requestid>721277</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2d359d3ca91f53971c5012fe6b15bd32</srcmd5>
+    <version>3.11.0</version>
+    <time>1568379774</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 3.11.0:
+  * Install attached plugin zip file, or use Calibre's 'Get plugins' feature.
+  * Add URL prefix for XF2 authorUrl if relative. Circa Aug 23, 2019 SV changed the author URL FFF collects to a relative link and I didn't notice it until now.
+  * Add dedup_chapter_list option for buggy chapter lists. Optional in case they're not buggy.
+  * Add fetch_last_page for base_xenforo--SB doesn't send notice emails if user not up-to-date now.
+  * Fix for corner-case with deleting Rejects.
+  * Fix for XF1 regression caused by XF2 threadmarks metadata code.
+  * Add XF2 threadmarks_cover/status/desc/title options.</comment>
+    <requestid>730595</requestid>
+  </revision>
+</revisionlist>
