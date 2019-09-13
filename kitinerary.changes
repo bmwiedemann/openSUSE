@@ -1,0 +1,243 @@
+-------------------------------------------------------------------
+Thu Sep  5 14:00:38 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- No code change since 19.08.0
+
+-------------------------------------------------------------------
+Fri Aug  9 08:31:07 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- Changes since 19.07.80:
+  * Adapt to KCalendarCore namespace change
+  * Update Wikidata data tables for 19.08 release
+  * Hotfix for ZXing master breaking pure QR code decoding for some reason
+  * Fix another method name typo
+
+-------------------------------------------------------------------
+Tue Jul 23 11:59:08 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:39 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- No code changes since 19.04.2
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:57 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- Changes since 19.04.1:
+  * Check IATA BCBP input a bit more strictly (kde#407895)
+  * Add German language support for the A&O hostel extractor
+  * Handle line continuations in Deutsche Bahn tickets
+  * More robust line continuation detection for the DB extractor
+  * Keep the ticket token in the RCT2 extractor
+  * Fix PNR extraction for some sort of DB/ÖBB cross-over ticket
+  * PNR is optional in SNCF booking confirmations (kde#404451)
+
+-------------------------------------------------------------------
+Fri May 10 05:37:19 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Sat Apr 20 06:52:00 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- Changes since 19.03.90:
+  * Fix extraction of arrival/departure time for Brussels Airlines
+  * Add airline IATA code as trigger criteria for Brussels Airlines too
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:46 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Don't block airport name disambiguation on the "international" fragment
+  * Make the email parser handle all kinds of line breaks
+  * Normalize all place names, not just those of airports
+  * Extend Amadeus filter
+  * Support one more Lufthansa variation of this
+  * Support English BCD ical files too
+  * Fix compile, Qt5Widgets_VERSION isn't defined, use Qt5Core_VERSION instead
+  * Workaround qt5.13 bug
+
+-------------------------------------------------------------------
+Wed Mar 27 06:41:12 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:27 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:25:31 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * No code changes since 18.12.0
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:23 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * No code changes since 18.11.90
+
+-------------------------------------------------------------------
+Mon Dec 03 20:56:32 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Add missing comparison operators
+  * Fix compatibility with Poppler 0.72
+  * Fix FCM extractor for single digit flight numbers
+  * Remove obsolete todo
+  * Improve airport lookup by considering alternative umlaut transliterations
+  * Cleanup airport name lookup code a bit
+  * Fix flight calendar entries when IATA airport code is missing
+  * Add arrival terminal property
+  * Add Easyjet extractor
+
+-------------------------------------------------------------------
+Tue Nov 20 06:22:26 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:57:39 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 08 20:44:20 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * GBool -> bool
+  * Relax leading space offset detection for international tickets
+  * Auto-detect leading space in compact/international DB tickets
+
+-------------------------------------------------------------------
+Thu Oct 11 20:07:20 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * None
+
+-------------------------------------------------------------------
+Fri Sep 07 04:50:54 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * Run the generic IATA BCBP extractor also for Vueling
+  * Make the pdfdocumenttest pass without Poppler
+
+-------------------------------------------------------------------
+Thu Aug 16 22:04:47 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * Fix binary Aztec barcode encoding for ticket tokens
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * None
+
+-------------------------------------------------------------------
+Thu Apr 12 20:02:40 UTC 2018 - lbeltrame@kde.org
+
+- Initial package
