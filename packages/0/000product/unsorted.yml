@@ -4600,7 +4600,7 @@ unsorted:
   - grub2-i386-pc: [i586] 
   - grub2-i386-xen: [i586] 
   - grub2-snapper-plugin: [i586] 
-  - grub2-systemd-sleep-plugin 
+  - grub2-systemd-sleep-plugin: [i586] 
   - grub2-theme-breeze 
   - grubby 
   - gsequencer 
@@ -8199,6 +8199,8 @@ unsorted:
   - libdrm_intel1-32bit: [x86_64] 
   - libdrm_nouveau2-32bit: [x86_64] 
   - libdrm_radeon1-32bit: [x86_64] 
+  - libdrpm-devel 
+  - libdrpm0 
   - libdrumstick-alsa1 
   - libdrumstick-devel 
   - libdrumstick-doc 
@@ -11294,6 +11296,9 @@ unsorted:
   - libsuperlu5 
   - libsuperlu5-32bit: [x86_64] 
   - libsuperlu_5_2_1-gnu-hpc 
+  - libsvm-devel 
+  - libsvm-java 
+  - libsvm2 
   - libswitchboard-2_0-0 
   - libsword-1_8_1 
   - libswresample3-32bit: [x86_64] 
@@ -14473,6 +14478,7 @@ unsorted:
   - ogre-demos-devel 
   - ogre-docs 
   - ogre-tools 
+  - ohcount 
   - ohpc 
   - oidentd 
   - okteta-devel 
@@ -14820,7 +14826,7 @@ unsorted:
   - os-autoinst 
   - os-autoinst-distri-opensuse-deps 
   - os-autoinst-openvswitch 
-  - os-prober 
+  - os-prober: [i586] 
   - os-service-types-doc 
   - osc-plugin-collab 
   - osc-plugin-cycle: [x86_64] 
@@ -17185,6 +17191,7 @@ unsorted:
   - python-sqlalchemy-migrate-doc 
   - python-stevedore-doc 
   - python-sushy-doc 
+  - python-svm 
   - python-svneverever 
   - python-swiftclient-doc 
   - python-tables-doc 
@@ -18234,6 +18241,7 @@ unsorted:
   - python2-jenkinsapi 
   - python2-jgraph 
   - python2-jinja2-fsloader 
+  - python2-jinja2-pluralize 
   - python2-jinja2-time 
   - python2-jira 
   - python2-jirafs 
@@ -18301,6 +18309,7 @@ unsorted:
   - python2-ldap 
   - python2-ldap3 
   - python2-ldappool 
+  - python2-ldaptor 
   - python2-leather 
   - python2-lesscpy 
   - python2-leveldb 
@@ -18336,7 +18345,7 @@ unsorted:
   - python2-libvmdk 
   - python2-libvshadow 
   - python2-libvslvm 
-  - python2-libxml2-python 
+  - python2-libxml2 
   - python2-license-expression 
   - python2-limnoria 
   - python2-line_profiler 
@@ -20566,6 +20575,7 @@ unsorted:
   - python3-jenkinsapi 
   - python3-jgraph 
   - python3-jinja2-fsloader 
+  - python3-jinja2-pluralize 
   - python3-jinja2-time 
   - python3-jira 
   - python3-jirafs 
@@ -20644,6 +20654,7 @@ unsorted:
   - python3-ldap: [i586] 
   - python3-ldap3 
   - python3-ldappool 
+  - python3-ldaptor 
   - python3-ldb-32bit: [x86_64] 
   - python3-ldb-devel 
   - python3-ldns 
@@ -22050,7 +22061,6 @@ unsorted:
   - quimup 
   - quiterss 
   - quiterss-lang 
-  - quota-nfs 
   - quotatool 
   - qutebrowser 
   - quvi 
@@ -22223,10 +22233,10 @@ unsorted:
   - rmt-server-pubcloud: [x86_64] 
   - rnd_jue 
   - rnd_jue-data 
-  - robinhood 
-  - robinhood-tests 
-  - robinhood-tools 
-  - robinhood-webgui 
+  - robinhood: [x86_64] 
+  - robinhood-tests: [x86_64] 
+  - robinhood-tools: [x86_64] 
+  - robinhood-webgui: [x86_64] 
   - roccat-arvo 
   - roccat-isku 
   - roccat-iskufx 
@@ -23809,6 +23819,8 @@ unsorted:
   - stress-ng 
   - stress-ng-bash-completion 
   - stressapptest 
+  - stringtemplate 
+  - stringtemplate-javadoc 
   - strip-nondeterminism 
   - strongswan 
   - strongswan-doc 
@@ -23885,6 +23897,7 @@ unsorted:
   - svgcleaner-gui 
   - svgpart 
   - svgpart-lang 
+  - svm-tools 
   - svn2git 
   - svxlink-server 
   - sway 

@@ -428,7 +428,7 @@
     <package name="dleyna-connector-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dleyna-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dmidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="dmraid" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="dmraid" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="dmz-icon-theme-cursors" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dnsmasq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="docbook-dsssl-stylesheets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
@@ -658,7 +658,7 @@
     <package name="geoclue2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="geocode-glib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="geronimo-jms-1_1-api" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
-    <package name="gettext-runtime" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gettext-runtime" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="gettext-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="ghex" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ghex-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -702,8 +702,8 @@
     <package name="glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="glibc-extra" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="glibc-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
-    <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="glibc-locale-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="glibc-locale-base" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="gmenudbusmenuproxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gmp-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="gnome-backgrounds" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -941,7 +941,6 @@
     <package name="gucharmap-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="guile" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="guile-modules-2_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <!-- guota-nfs not found on i586,x86_64-->
     <package name="gupnp-av" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gutenprint" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gvfs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1959,7 +1958,7 @@
     <package name="libedc_ecc_dec1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libedit0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libeditorconfig0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libefivar1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libefivar1" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="libelf-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="libelf1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libenca0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3240,7 +3239,7 @@
     <package name="mpt-status" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mtd-utils" supportstatus="unsupported"/> <!-- reason: dvd:mtd-utils -->
     <package name="mtdev-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="mtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="mtools" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="mtpaint" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="mtpaint-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="mtr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
@@ -3429,20 +3428,17 @@
     <package name="patch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="patchutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="patterns-base-apparmor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <!-- patterns-base-apparmor_opt not found on i586,x86_64-->
     <package name="patterns-base-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="patterns-base-basesystem" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="patterns-base-basic_desktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
     <package name="patterns-base-console" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="patterns-base-documentation" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="patterns-base-enhanced_base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <!-- patterns-base-enhanced_base_opt not found on i586,x86_64-->
     <package name="patterns-base-minimal_base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="patterns-base-sw_management" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="patterns-base-transactional_base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="patterns-base-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="patterns-base-x11_enhanced" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <!-- patterns-base-x11_opt not found on i586,x86_64-->
     <package name="patterns-desktop-books" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-books -->
     <package name="patterns-desktop-imaging" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="patterns-desktop-laptop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-laptop -->
@@ -4138,7 +4134,7 @@
     <package name="python3-kiwisolver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-libvirt-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="python3-libxml2-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="python3-libxml2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python3-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-louis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-lxml" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
@@ -4243,6 +4239,7 @@
     <package name="quagga" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="quilt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="quota" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="quota-nfs" supportstatus="unsupported"/> <!-- reason: dvd:quota-nfs -->
     <package name="radvd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="rcc-runtime" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="rdma-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
@@ -5612,7 +5609,7 @@
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="fipscheck" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="firefox-uget-integrator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5621,6 +5618,12 @@
     <package name="gnome-keyring-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gnome-keyring-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gnutls" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="grub2" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="grub2-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="grub2-i386-pc" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="grub2-snapper-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="grub2-systemd-sleep-plugin" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="grub2-x86_64-efi" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="grub2-x86_64-xen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="gtk2-engine-cleanice-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gtk2-engine-murrine-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5796,6 +5799,7 @@
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="os-prober" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_apparmor-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pam_mount-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
