@@ -1,0 +1,35 @@
+could be upstreamed, but upstream seems dead
+with lists.windowmaker.org down and the last git commit is from March
+
+commit e9ab99877b71669a75c1c1a43c1fb24cb32c1bdf
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Tue Dec 19 21:13:21 2017 +0100
+
+    texi2txt: Use ChangeLog date instead of build date
+    
+    in order to make builds reproducible.
+    See https://reproducible-builds.org/ for why this is good.
+    
+    This date call works with GNU date and BSD date.
+    
+    Without this patch, /usr/share/doc/packages/WindowMaker/README.i18n
+    will differ in the line
+      Published by The Window Maker team on ...
+    
+    ---
+    An alternative solution could use the $SOURCE_DATE_EPOCH variable
+    defined in https://reproducible-builds.org/specs/source-date-epoch/
+
+diff --git a/script/generate-txt-from-texi.sh b/script/generate-txt-from-texi.sh
+index 3800c72c..ee4e8603 100755
+--- a/script/generate-txt-from-texi.sh
++++ b/script/generate-txt-from-texi.sh
+@@ -822,7 +822,7 @@ function execute_commands(line,               replaced_line, command) {
+     } else if (command == "today") {
+       # Make sure the date will be in english (we use "C" because it not certain
+       # that the English locale is enabled on the machine of the user)
+-      replaced_line = replaced_line "'"`LANG=C date '+%d %B %Y' | sed -e 's,^0,,' `"'";
++      replaced_line = replaced_line "'"`LANG=C date -u -r ../../ChangeLog '+%d %B %Y' | sed -e 's,^0,,' `"'";
+ 
+     # Commands to display text in a special style ##############################
+     } else if (command == "asis") {
