@@ -1,0 +1,16 @@
+--- src/cli_info.cc.orig	2015-09-20 11:02:13.178408646 +0200
++++ src/cli_info.cc	2015-09-20 11:00:44.483873257 +0200
+@@ -50,13 +50,6 @@ void FluxboxCli::showInfo(ostream &ostr)
+         ostr << _FB_CONSOLETEXT(Common, SvnRevision, "GIT Revision", "Revision number in GIT repositary") 
+             << ": " 
+             << gitrevision() << endl;
+-#if defined(__DATE__) && defined(__TIME__)
+-    ostr << _FB_CONSOLETEXT(Common, Compiled, "Compiled", "Time fluxbox was compiled")
+-        << ": " 
+-        << __DATE__ 
+-        << " "
+-        << __TIME__ << endl;
+-#endif
+ #ifdef __fluxbox_compiler
+     ostr << _FB_CONSOLETEXT(Common, Compiler, "Compiler", "Compiler used to build fluxbox")
+         << ": "
