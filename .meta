@@ -1,0 +1,5 @@
+<package name="libopenshot-audio" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:libs" package="libopenshot-audio"/>
+</package>
