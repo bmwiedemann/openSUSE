@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Aug 18 09:35:10 UTC 2016 - zaitor@opensuse.org
+
+- Add baselibs.conf to build 32-bit support. Also add to sources.
+
+-------------------------------------------------------------------
+Wed Dec 16 08:52:37 UTC 2015 - olaf@aepfle.de
+
+- Add BuildRoot: for SLE_11
+
+-------------------------------------------------------------------
+Tue Jul 20 13:01:18 UTC 2010 - reddwarf@opensuse.org
+
+- Initial package
+
