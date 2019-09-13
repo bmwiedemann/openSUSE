@@ -1,0 +1,5 @@
+<package name="at-spi-sharp" project="openSUSE:Factory">
+  <title>C# bindings for at-spi</title>
+  <description>C# mono bindings for at-spi</description>
+  <devel project="Mono:Factory" package="at-spi-sharp"/>
+</package>
