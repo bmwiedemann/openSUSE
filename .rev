@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8829a79a728429033603f918b6762851</srcmd5>
+    <version>0.4.1</version>
+    <time>1558515997</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename to to match jupyter package naming guidelines.
+- Update to 0.4.1
+  * Allow SyncTeX to work on windows by using absolute file paths.
+- Update to 0.4.0
+  * Fixes for Windows paths and line endings.
+  * Use absolute path in SyncTeX view command.
+  * Output synctex response when parse fails.
+  * Updates for JupyterLab v0.34.
+- Update to 0.3.1
+  * Flip the y coordinate for PDFJS, and add a margin when scrolling.
+- Don't need to manually enable extension.
+- Initial version
+</comment>
+    <requestid>698354</requestid>
+  </revision>
+</revisionlist>
