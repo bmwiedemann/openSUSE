@@ -1,0 +1,9 @@
+<package name="libsecret" project="openSUSE:Factory">
+  <title>GNOME Keyring Password Manager</title>
+  <description>GNOME Keyring Manager is a program that keeps passwords and other
+secrets for users. It is run as a daemon in the session, similar to
+ssh-agent, and other applications can locate it by an environment
+variable.
+</description>
+  <devel project="GNOME:Factory" package="libsecret"/>
+</package>
