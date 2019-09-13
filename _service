@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/libimobiledevice/libimobiledevice</param>
+    <param name="scm">git</param>
+    <param name="filename">libimobiledevice</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">1.2.0+git%cd.%h</param>
+    <param name="revision">master</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">libimobiledevice-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">libimobiledevice</param>
+  </service>
+</services>
