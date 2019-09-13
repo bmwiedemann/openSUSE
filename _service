@@ -1,0 +1,8 @@
+<services>
+    <service name="download_url" mode="disabled">
+        <param name="protocol">https</param>
+        <param name="host">github.com</param>
+        <param name="path">/keybase/kbfs/archive/v2.11.0.tar.gz</param>
+    </service>
+    <service name="set_version" mode="disabled" />
+</services>
