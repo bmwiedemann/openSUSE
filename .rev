@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c1841f7ed65c4b0d513cb3c19a71001a</srcmd5>
+    <version>2.0.0b1</version>
+    <time>1431668579</time>
+    <user>coolo</user>
+    <comment>factory inclusion</comment>
+    <requestid>306196</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c6b63d054500939538f3d37b46a00cd2</srcmd5>
+    <version>2.0.0b1</version>
+    <time>1444833880</time>
+    <user>dimstar_suse</user>
+    <comment>- softhsm-rsakeys.patch: do not test odd bit RSA keys, this breaks
+  with the FIPS enabled openssl from leap/sle12, as thats rounds
+  up the keylength to the next even number. bsc#949492</comment>
+    <requestid>337262</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9d869aee842a38a3299d7a4e212ddcd0</srcmd5>
+    <version>2.0.0b1</version>
+    <time>1494263045</time>
+    <user>dimstar_suse</user>
+    <comment>- softhsm-newcppunit.patch: new cppunit uses pkg-config now, not
+  cppunit-config (forwarded request 493356 from msmeissn)</comment>
+    <requestid>493357</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d41f547cdfea96aa83643ebde22312b7</srcmd5>
+    <version>2.3.0</version>
+    <time>1515876273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557872</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b67c357d8794e5549d4f9417bce264dc</srcmd5>
+    <version>2.4.0</version>
+    <time>1519844561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580779</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e4a0efbde3774f51bf3637a2ae66e961</srcmd5>
+    <version>2.5.0</version>
+    <time>1537964646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638263</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>226ccf62c6ca27326713d66b4bbc0aa1</srcmd5>
+    <version>2.5.0</version>
+    <time>1558532436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704679</requestid>
+  </revision>
+</revisionlist>
