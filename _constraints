@@ -1,0 +1,13 @@
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">19</size>
+    </disk>
+    <memory>
+      <size unit="G">9</size>
+    </memory>
+    <physicalmemory>
+      <size unit="G">7</size>
+    </physicalmemory>
+  </hardware>
+</constraints>
