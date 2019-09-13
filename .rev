@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d0164ebc35f60409513788e3e7aea5c1</srcmd5>
+    <version>0.02</version>
+    <time>1373396358</time>
+    <user>coolo</user>
+    <comment>split from perl-Plack</comment>
+    <requestid>182600</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d0164ebc35f60409513788e3e7aea5c1</srcmd5>
+    <version>0.02</version>
+    <time>1379663841</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>d0164ebc35f60409513788e3e7aea5c1</srcmd5>
+    <version>0.02</version>
+    <time>1409302482</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f6e7ced05010be971ff28336cd0386a</srcmd5>
+    <version>0.03</version>
+    <time>1410967546</time>
+    <user>coolo</user>
+    <comment>- updated to 0.03
+ - bump IO::File dep, since it fails with earlier versions (plack/#460)</comment>
+    <requestid>249354</requestid>
+  </revision>
+</revisionlist>
