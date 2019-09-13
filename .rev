@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>154bc416001aad389ab1629ca10bb540</srcmd5>
+    <version>0.15</version>
+    <time>1431365940</time>
+    <user>coolo</user>
+    <comment>New usefull package</comment>
+    <requestid>306184</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f298ee5206b6f70d171e6ec01c18c2d</srcmd5>
+    <version>0.18</version>
+    <time>1447696291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18
+  * Switched to CMake as the build system, it is more common than 
+		ninja-build and so more useful for those who build by hand 
+		(sysadmins).
+	* Fix build issues on FreeBSD.
+	* Fix disk on 4k granularity to avoid overwriting areas that are 
+		usable, this is useful on media errors.</comment>
+    <requestid>344280</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>89dcd31548749b8659023d4714614d56</srcmd5>
+    <version>0.19</version>
+    <time>1448720358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19
+  * When a partition is write mounted do not attempt to fix it as 
+    it will mess the filesystem.
+  * Also fix building on Debian/kFreeBSD.</comment>
+    <requestid>346381</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>aba1a5bff76be0ac2332a89b93dddb73</srcmd5>
+    <version>0.19</version>
+    <time>1471688843</time>
+    <user>dimstar_suse</user>
+    <comment>- Small spec file cleanup</comment>
+    <requestid>419909</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>57da1f1db5da55f8323cfb1f887d6ee4</srcmd5>
+    <version>0.19</version>
+    <time>1476997700</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust to latest cmake macros</comment>
+    <requestid>435475</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e0ef0f85bf691704cb90bb702e7e73b2</srcmd5>
+    <version>0.20</version>
+    <time>1503927189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.20:
+  * Misc internal changes
+  * Update libscsicmd</comment>
+    <requestid>519074</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0716b235cb7d7e018e1b6c5a6e9ee705</srcmd5>
+    <version>0.20</version>
+    <time>1520503168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies
+- Modernize spec file using spec-cleaner</comment>
+    <requestid>584029</requestid>
+  </revision>
+</revisionlist>
