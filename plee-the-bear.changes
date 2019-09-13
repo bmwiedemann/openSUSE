@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Tue Dec 26 16:06:18 UTC 2017 - dap.darkness@gmail.com
+
+- Cmake error and warnings fix.
+
+-------------------------------------------------------------------
+Sun Jun 18 17:52:09 UTC 2017 - dap.darkness@gmail.com
+
+- Added ptb-sequencer-gcc6.patch from Fedora.
+
+-------------------------------------------------------------------
+Mon Feb  6 22:38:52 UTC 2017 - jengelh@inai.de
+
+- Trim description according to guidelines
+- Remove unnecessary ldconfig call (there are no files matching
+  /usr/lib/*.so*)
+
+-------------------------------------------------------------------
+Mon Feb  6 16:44:36 UTC 2017 - mailaender@opensuse.org
+
+- https://en.opensuse.org/SourceUrls
+- use cmake macros
+- fix the .desktop category
+
+-------------------------------------------------------------------
+Thu Apr 10 18:03:42 UTC 2014 - dap.darkness@gmail.com
+
+- Updated to ver. 0.7.0:
+  * no upstream changelog.
+- Deleted no-return-in-nonvoid-function.patch &
+  plee-the-bear-boost-1.50-patch as merged by upstream.
+- Added icon_theme_cache_post(un) & desktop_database_post(un).
+- Let make be verbose.
+- Switched to download_url service.
+
+-------------------------------------------------------------------
+Wed Aug 14 19:45:50 UTC 2013 - dap.darkness@gmail.com
+
+- Initial build.
+
