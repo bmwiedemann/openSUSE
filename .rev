@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c98789ebd9f02679bdec0e3ebe61f973</srcmd5>
+    <version>0.94</version>
+    <time>1527605330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611063</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ab7143f15439f8db4bd8e0b239de386c</srcmd5>
+    <version>0.95</version>
+    <time>1560338058</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.95
+  * Handling of the Environment(create=True) flag was improved.
+  * Database names may be reused after they are dropped on CFFI,
+    without reopening the environment.
+</comment>
+    <requestid>708784</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>018c408cffde1083c591b287796249cc</srcmd5>
+    <version>0.96</version>
+    <time>1564137589</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.96
+  * Doc updates.
+  * More removal of code for now-unsupported Python versions.
+  * Only preload the value with the GIL unlocked when the value is
+    actually requested. This significantly improves read
+    performance to retrieve keys with large values when the value
+    isn't retrieved.
+</comment>
+    <requestid>718281</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>257b5cbe78e560472596aea4f458cd21</srcmd5>
+    <version>0.97</version>
+    <time>1565695334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.97
+  * Fix a missed GIL unlock sequence.
+  * Fix argv check in JEP (cpython under Java) environment.</comment>
+    <requestid>722569</requestid>
+  </revision>
+</revisionlist>
