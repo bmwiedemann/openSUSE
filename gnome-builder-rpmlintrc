@@ -1,0 +1,14 @@
+# gnome-builder is an IDE - it is for development purpose by definition
+addFilter("devel-file-in-non-devel-package")
+# Adding the next 2 filters for the following files under /usr/lib64/gnome-builder/plugins :
+# cargo_plugin.py, eslint_plugin.py, find_other_file.py, html_preview.py, jedi_plugin.py,
+# jhbuild_plugin.py, meson_templaties.py, mono_plugin.py, npm_plugin.py, phpize_plugin.py,
+# python_gi_imports_completion.py, rust_langserv_plugin.py, rustup_plugin.py.
+# And for Ide.py under the /usr/lib64/python3.6/site-packages/gi/overrides directory.
+addFilter("gnome-builder.* non-executable-script /usr/.*/gnome-builder/plugins/.*\.py 644 /usr/bin/env py.*")
+addFilter("gnome-builder.* non-executable-script /usr/.*/python3.6/site-packages/gi/overrides/Ide.py 644 /usr/bin/env python3")
+# Adding the next filter for the following plugins that got removed or bundled into
+# libgnome-builder-plugins.so:
+# gnome-builder-plugin-* clang, ctags, devhelp, fpaste, gettext, gnome-code-assitance,
+# mingw, symbol-tree, sysmon, todo and xml-pack.
+addFilter("gnome-builder.* obsolete-not-provided gnome-builder-plugin-.*")
