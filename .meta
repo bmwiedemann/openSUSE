@@ -1,0 +1,5 @@
+<package name="granite" project="openSUSE:Factory">
+  <title>Granite</title>
+  <description>Latest version</description>
+  <devel project="X11:Pantheon" package="granite"/>
+</package>
