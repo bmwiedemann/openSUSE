@@ -1,0 +1,8 @@
+<package name="figlet" project="openSUSE:Factory">
+  <title>Tool for Creating Cool ASCII-Art Signatures</title>
+  <description>FIGlet can create characters in many different styles and can kern and
+&quot;smush&quot; these characters together in various ways. FIGlet output is
+generally reminiscent of the sort of &quot;signatures&quot; many people like to
+put at the end of e-mail and UseNet messages.</description>
+  <devel project="Base:System" package="figlet"/>
+</package>
