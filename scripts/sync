@@ -7,5 +7,5 @@ rsync -a \
   /mounts/work/SRC/openSUSE\:Factory/ in/
 rm -rf packages
 scripts/mappkgs.pl in packages
-git add packages/*
+git add -f packages/*
 git commit -a -m "update $(date -u +"%Y-%m-%d %H:%M")"
