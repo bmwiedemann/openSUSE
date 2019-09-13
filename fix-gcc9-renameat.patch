@@ -1,0 +1,32 @@
+From fe440cf5f4c9a177e025dda870ace8f093f6632b Mon Sep 17 00:00:00 2001
+From: Igor Gnatenko <i.gnatenko.brain@gmail.com>
+Date: Mon, 9 Jul 2018 12:34:14 +0200
+Subject: [PATCH] build: check for renameat2()/copy_file_range() with
+ _GNU_SOURCE
+
+The config.h which we generate doesn't apply for checks and those
+functions are available only when _GNU_SOURCE is defined.
+
+Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=1599252
+Signed-off-by: Igor Gnatenko <i.gnatenko.brain@gmail.com>
+---
+ meson.build | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index f42ed16..9dd3ba0 100644
+--- a/meson.build
++++ b/meson.build
+@@ -74,8 +74,10 @@ conf.set('SIZEOF_UID_T', cc.sizeof('uid_t', prefix : '#include <sys/types.h>'))
+ conf.set('SIZEOF_GID_T', cc.sizeof('gid_t', prefix : '#include <sys/types.h>'))
+ 
+ foreach ident : [
+-        ['renameat2',         '''#include <stdio.h>'''],
+-        ['copy_file_range',   '''#include <sys/syscall.h>
++        ['renameat2',         '''#define _GNU_SOURCE
++                                 #include <stdio.h>'''],
++        ['copy_file_range',   '''#define _GNU_SOURCE
++                                 #include <sys/syscall.h>
+                                  #include <unistd.h>'''],
+ ]
+         have = cc.has_function(ident[0], prefix : ident[1])
