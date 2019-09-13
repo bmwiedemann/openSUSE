@@ -1,0 +1,11 @@
+--- giflib-5.1.2/configure.ac	2016-01-19 13:55:58.238147631 +0100
++++ giflib-5.1.2/configure.ac	2016-01-19 13:56:31.165397666 +0100
+@@ -8,7 +8,7 @@
+ 
+ dnl Note: config.h is not used in the current build
+ dnl We leave this in place only to suppress an error message at autogen time
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+ dnl Checks for programs.

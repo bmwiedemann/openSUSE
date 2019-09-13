@@ -1,0 +1,12 @@
+diff -Nur giflib-5.1.4/configure.ac new/configure.ac
+--- giflib-5.1.4/configure.ac	2016-05-13 17:43:01.232661891 +0200
++++ new/configure.ac	2016-05-13 17:42:47.136471014 +0200
+@@ -12,7 +12,7 @@
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+ dnl Checks for programs.
+-AM_PROG_AR
++m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+ AC_PROG_CC_STDC
+ AC_USE_SYSTEM_EXTENSIONS
+ AC_SYS_LARGEFILE
