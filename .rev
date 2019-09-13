@@ -1,0 +1,239 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>a5241eb35c29f2789c07a37190bb9b46</srcmd5>
+    <version>0.65</version>
+    <time>1168902633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="40">
+    <srcmd5>5030177ed4c4d4b300b716c4db7362fc</srcmd5>
+    <version>0.65</version>
+    <time>1171292206</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>91a9644625d54e4c6462a23d3b385e80</srcmd5>
+    <version>0.70</version>
+    <time>1173103101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="22">
+    <srcmd5>c4f584bb69696c659a5fea9bba32203a</srcmd5>
+    <version>0.70</version>
+    <time>1180105926</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>50f7931ca7d9fa9491596a03d0d72dd7</srcmd5>
+    <version>0.71</version>
+    <time>1185792671</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>37d13b9b2850e60b56088a08e4dc639e</srcmd5>
+    <version>0.72</version>
+    <time>1188319784</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="18">
+    <srcmd5>2135c311ac3aabacd9d3d04524ffe445</srcmd5>
+    <version>0.72</version>
+    <time>1192494265</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="34">
+    <srcmd5>9875968a7c351fd0da836bc12d9ca242</srcmd5>
+    <version>0.72</version>
+    <time>1196895718</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="140">
+    <srcmd5>9875968a7c351fd0da836bc12d9ca242</srcmd5>
+    <version>0.72</version>
+    <time>1196895718</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6dd8d1a3f022c75f9acd364f06651f5f</srcmd5>
+    <version>0.73</version>
+    <time>1243554193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>6dd8d1a3f022c75f9acd364f06651f5f</srcmd5>
+    <version>0.73</version>
+    <time>1243554193</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>4f918da877f672ad2d736120b7d889c8</srcmd5>
+    <version>0.73</version>
+    <time>1268923390</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4d3d93eebbce63af347156f19596b971</srcmd5>
+    <version>0.74</version>
+    <time>1274653589</time>
+    <user>autobuild</user>
+    <comment>Copy from Emulators/dosbox based on submit request 40358 from user lnussel
+</comment>
+    <requestid>40358</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>4d3d93eebbce63af347156f19596b971</srcmd5>
+    <version>0.74</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>4d3d93eebbce63af347156f19596b971</srcmd5>
+    <version>0.74</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>4d3d93eebbce63af347156f19596b971</srcmd5>
+    <version>0.74</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>da9b38f4db14901de2c8009375c247a0</srcmd5>
+    <version>0.74</version>
+    <time>1300281939</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64280 from user lnussel
+</comment>
+    <requestid>64280</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>3623a7c355b1f1c73df31ae891b3b8e2</srcmd5>
+    <version>0.74</version>
+    <time>1300281947</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64280
+</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>f5a85c6648cff1f1701eb11184747845</srcmd5>
+    <version>0.74</version>
+    <time>1316617247</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83289 from jengelh)</comment>
+    <requestid>84150</requestid>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>f5a85c6648cff1f1701eb11184747845</srcmd5>
+    <version>0.74</version>
+    <time>1319181854</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="12">
+    <srcmd5>2089a5c8b6db802bddbf0dd7a7a51637</srcmd5>
+    <version>0.74</version>
+    <time>1323340069</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94953 from coolo)</comment>
+    <requestid>95065</requestid>
+  </revision>
+  <revision rev="22" vrev="14">
+    <srcmd5>2089a5c8b6db802bddbf0dd7a7a51637</srcmd5>
+    <version>0.74</version>
+    <time>1340183289</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="15">
+    <srcmd5>cc801bdff00aa66c47e9d1b90a8a7297</srcmd5>
+    <version>0.74</version>
+    <time>1348421580</time>
+    <user>coolo</user>
+    <comment>- Add explicit glu dependency</comment>
+    <requestid>135215</requestid>
+  </revision>
+  <revision rev="24" vrev="16">
+    <srcmd5>fbd052f96795bc05371a515e9415f554</srcmd5>
+    <version>0.74</version>
+    <time>1349783293</time>
+    <user>coolo</user>
+    <comment>- improved dosbox icon, from wikipedia entry.
+- use pkgconfig(sdl) instead of SDL-devel buildrequires</comment>
+    <requestid>137507</requestid>
+  </revision>
+  <revision rev="25" vrev="18">
+    <srcmd5>fbd052f96795bc05371a515e9415f554</srcmd5>
+    <version>0.74</version>
+    <time>1359108824</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="20">
+    <srcmd5>fbd052f96795bc05371a515e9415f554</srcmd5>
+    <version>0.74</version>
+    <time>1379662248</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="21">
+    <srcmd5>3ecdfcfa7fb7271b114b667913018054</srcmd5>
+    <version>0.74</version>
+    <time>1387451290</time>
+    <user>coolo</user>
+    <comment>- added missing alsa dependency for midi support (bnc#855514)</comment>
+    <requestid>211313</requestid>
+  </revision>
+  <revision rev="28" vrev="23">
+    <srcmd5>3ecdfcfa7fb7271b114b667913018054</srcmd5>
+    <version>0.74</version>
+    <time>1409300783</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="24">
+    <srcmd5>00ebab6b75d999039971510de1f5887e</srcmd5>
+    <version>0.74</version>
+    <time>1491896672</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485194</requestid>
+  </revision>
+  <revision rev="30" vrev="25">
+    <srcmd5>70365ede9f6cda24fd3a76f0f70992cd</srcmd5>
+    <version>0.74</version>
+    <time>1503999907</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix desktop file category to sort below Game (boo#1055340)
+- directly use desktop-file-install instead of the old macro</comment>
+    <requestid>519121</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0baf8f59579339fd82353586f419f766</srcmd5>
+    <version>0.74.2</version>
+    <time>1537971051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636297</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6db3af104d584c2db04c5128d1ff8019</srcmd5>
+    <version>0.74.3</version>
+    <time>1561732614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712381</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>0211a6402f910ed654b444adca1a3dc2</srcmd5>
+    <version>0.74.3</version>
+    <time>1565097128</time>
+    <user>dimstar_suse</user>
+    <comment>retrofit boo#1140254</comment>
+    <requestid>721243</requestid>
+  </revision>
+</revisionlist>
