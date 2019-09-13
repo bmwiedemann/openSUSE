@@ -1,0 +1,5 @@
+<package name="canutils" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network" package="canutils"/>
+</package>
