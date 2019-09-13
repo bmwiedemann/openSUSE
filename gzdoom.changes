@@ -1,0 +1,387 @@
+-------------------------------------------------------------------
+Fri Aug 23 12:40:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 4.2.0
+  * The survey code has been re-enabled for this version: it sends
+    basic info about the operating system but no private data:
+    the number of CPU cores, the graphics card, and supported
+    OpenGL/Vulkan versions.
+  * Restored original vanilla behavior of Lost Souls' charging
+    attack.
+  * Exposed Append() method to ZScript dynamic array
+  * Fixed an inconsistency with missiles bouncing off actors.
+  * Added A_SoundPitch and an optional pitch parameter to
+    A_PlaySound and S_Sound.
+  * Attachable dynamic lights with ZScript or DECORATE.
+- Drop _service and gzdoom-wadsrc-extra.patch,
+  both unused since 4.1.3.
+
+-------------------------------------------------------------------
+Fri Aug 23 12:28:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Turn off LTO, it is broken. [boo#1142267]
+
+-------------------------------------------------------------------
+Sun Jun  9 11:31:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 4.1.3
+  * bug fixes for both zscript and vulkan (the vulkan renderer is
+    pretty much complete at this point)
+  * added native double round(double) function
+  * added a crosshair on/off toggle
+  * cl_blockcheats 2 blocks cheats without showing any messages,
+    useful for streamers who happen to be mappers/modders/etc
+- Update to new upstream release 4.1.0
+  * workaround buggy preprocessor in old AMD OpenGL drivers
+  * fix bloom pass regression
+  * fixed scale calculations for option menus.
+  * implement custom post process shaders for vulkan backend
+  * improve error handling during vulkan initialization
+  * fixed inverted logic for displaying the generic log in Strife.
+- Remove patch:
+  * gzdoom-staticlibs.patch (fixed by upstream)
+- Update patch:
+  * gzdoom-vulkan.patch
+
+-------------------------------------------------------------------
+Mon Apr 08 20:31:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 4.0.0
+  * Experimental Vulkan renderer (via "+vid_backend 0" console
+    option)
+  * Scaling has been changed. GZDoom now runs at a minimum of
+    640x400. An extra mode (960x600) has been added to replace the
+    lost 320x200 one.
+  * Added "cl_blockcheats" - useful for people who use debugging
+    keys, allows a user to consciously turn off cheats without
+    affecting the serveradd "cl_blockcheats" - useful for people
+    who use debugging keys, allows a user to consciously turn off
+    cheats without affecting the server
+  * "wait" console commands no longer execute inside the level,
+    and can run during intermissions and outside the game.
+- Folded gzdoom-asmjit.patch into gzdoom-staticlibs.patch.
+- Added gzdoom-vulkan.patch.
+
+-------------------------------------------------------------------
+Wed Jan 23 15:22:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.7.2
+  * The resolution selector now sets to auto detected resolution at
+    startup, no longer uses entries from the config file.
+  * Committing a scaling change for fullscreen sets scaling to 1.0
+    to guarantee the selected number of pixels are actually used.
+  * For details, see https://forum.zdoom.org/viewtopic.php?t=63346
+
+-------------------------------------------------------------------
+Thu Jan  3 01:37:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.7.1
+  * Expand UDMF and ZScript API for side's own additive colors
+  * Added NOFRICTION and NOFRICTIONBOUNCE actor flags
+  * Added an AMD64 JIT for DECORATE and ZScript
+  * Lights are now referenced by sections rather than surface, to
+    speed up light linking. This should allow a dynamically-lit
+    plasma bolt to pass over a 3D bridge in Frozen Time without
+    turning the game into a slide show.
+  * Add shader cache for Intel GPUs which should result in faster
+    startups.
+- Add gzdoom-asmjit.patch
+
+-------------------------------------------------------------------
+Wed Nov 14 09:58:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update description
+
+-------------------------------------------------------------------
+Tue Oct 16 11:52:51 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.6.0
+  * Add OBJ model support
+  * Add HITOWNER flag, when set, allows a projectile to collide
+    with its shooter.
+  * Enabled the linear shadowmap filter.
+  * Added 5x and 6x upscaling with xBRZ
+  * Exports various resurrection-related functions to ZScript.
+- Update to new upstream release 3.5.1
+  * Added post processing support to the software renderer and
+    softpoly.
+- Add fl2.patch
+
+-------------------------------------------------------------------
+Sun Aug  5 12:00:27 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.5.0
+  * (modern branch only) Fullscreen is now borderless window (which,
+    technically, it always has been, anyhow). Removed hacks which
+    changed the desktop resolution in order to simulate exclusive
+    fullscreen because they were a constant stability concern.
+  * (modern branch only) fixed a performance regression with the
+    software renderer, introduced by the recent changes to the video
+    backend in 3.4.
+  * Save item statistics - Items are now saved into save games and
+    are displayed on the statfile
+  * Upgrade libADLMIDI and libOPNMIDI
+  * Large number of MinGW fixes
+  * add tags for all Doom and Heretic monsters for mods that reveal
+    monster names
+  * various compatibility fixes for old maps and mods
+  * fixed titlepic animation
+  * Custom hardware shaders now can use custom texture units
+  * default to "fullscreen" display
+  * fixed a potential exploit with malformed WAD files.
+
+- Update to version 3.4.1
+  * fixed: redirect script access to the compatflags CVARs to their
+    internal shadow variables. This is needed so that MAPINFO settings
+    for these flags don't get ignored.
+  * fixed: flag CVars in ZScript referenced wrong addresses
+  * fixed: ZScript used the wrong variable for compatflags2.
+  * fixed: remove ARM specific gl_es definition since it's not even
+    really much different from the main line definition, anyhow
+  * fixed generation of brightmaps for sprites. This forgot to take
+    the added empty border for filtering improvement into account.
+  * fixed ADynamicLight's shadowmap index must be reset when loading
+    a savegame.
+  * fixed portal restoration on revisiting level in hub.
+  * Added function to FLevelLocals to test if map is being reentered.
+  * fixed crash with GL 3.x and fixed colormap active.
+
+- Update to version 3.4.0
+  * enable #include support in modeldef files
+  * removed DirectDraw and Direct3D backends, removed unaccerated SDL
+    framebuffer backend
+  * reorganization of 2D and 3D rendering code in preparation for Vulkan
+    in the future, performance improvements on newer hardware
+  * CVAR that handles it is now 'vid_rendermode' - vid_renderer,
+    swtruecolor, and r_polyrender have been removed and combined into
+    new CVAR
+  * added a 'lightsizefactor' command to gldefs.
+  * allow animated title pics.
+  * Add support for Unreal Engine 1 vertex mesh format.
+  * added LevelLocals vec2/3Offset(Z) functions for portal-aware
+    offsetting without needing actors
+  * Add "OnGiveSecret" virtual function on Actor for customizing behavior
+    of secret finding.
+  * BLOCKASPLAYER flag: treat non-player actors as blockable by
+    "block players" lines
+  * added 'revealed on automap' linedef flag, UDMF only
+  * added forced automap style to linedef, UDMF only
+  * Added startup song definition for custom IWADs
+  * This release contains a major render optimization for highly detailed
+    maps that may give a +20% performance improvement on Intel and AMD
+    hardware (less on NVidia because the driver has far less overhead that
+    could be optimized away.)
+
+- Update to version 3.3.2
+  * Fixed detection of .ipk7 custom IWADs
+  * Restored vanilla behavior of lightning for original Hexen
+  * Added loading of ZSDF lumps by full paths
+  * Disabled the survey code
+  * Exported P_ActivateLine() to ZScript along with constants for
+    activation type
+  * Increased size of the savegame comment area.
+
+- Update to version 3.3.1
+  * Better handling of defaults with some ZScript/DECORATE functions
+  * Many bug fixes since 3.3.0
+
+- Update to version 3.3.0
+  ZScript & Mapping Highlights
+  * Added dynamic spot lights, configurable in the UDMF map format
+  * Exported GetChecksum() function as part of FLevelLocals in ZScript
+  * Mod-defined aliases no longer permanently change CVARs
+  * Added FriendlySeeBlocks actor property that allows a modder to expand
+    the maximum radius that a friendly monster can see enemies. It's
+    accessible from both ZScript/DECORATE and UDMF
+  * Custom submenus are no longer removed from altered protected menu
+  * Exported S_GetMSLength() function to ZScript
+  * Added GetRadiusDamage() function. It returns the raw calculated
+    explosion damage falloff by distance only
+  * Added Screen.getViewWindow() function
+  * Exported Trace() interface to ZScript
+  * Added TeleportSpecial() as an alias for Teleport() in ZScript to
+    deconflict from Actor.Teleport() function
+  * Added Distance2DSquared() and Distance3DSquared() functions
+  * Fixed skip_super application for ZScript
+  * Split off the interface part of DHUDMessage
+  * Exported sector effect pointers
+  * Fixed missing pointer assignment on Lighting effect creation
+  * Made left button down event available to UI event handler
+  * Exported Inventory.AltHUDIcon field to ZScript
+  * Added WorldLinePreActivated to override line activation
+  * Added DI_MIRROR flag to statusbar image drawing, useful for rearview
+    mirrors
+  * Enabled string and float user_ properties in UDMF things
+  Other Highlights
+  * Added in-game reverb editor using the menu system
+  * Improved French translations
+  * Fixed 'precise' rendering in OpenGL
+  * Added new Materials Shader system to allow textures to show new
+    properties such as glossiness and specularity, affected by dynamic
+    lights, or with PBR, reflecting their direct surroundings
+  * Added new rocket smoke sprites by Talon1024
+  * Embedded Timidity++ into GZDoom directly
+  * Added light definition for megasphere
+  * Fixed midtex nowrap clipping bug when 3d floors are in view
+    (Software Renderer)
+  * Improved profilethinkers in various ways
+  * Added variables am_unexploredsecretcolor and am_ovunexploredsecretcolor
+    to mark undiscovered secrets differentl
+
+- Drop patch (Upstream updated to 18.05):
+  * 0001-Update-LZMA-SDK-to-version-17.01.patch
+- Rebase patch:
+  * gzdoom-lzma.patch
+
+-------------------------------------------------------------------
+Mon Jan  8 12:48:59 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream 3.2.5
+  * Implemented 'i_soundinbackground' to continue playing sounds
+    and music while in background.
+  * OpenGL rendering now continues even when losing focus if not
+    running fullscreen.
+  * Added 'playerrespawn' skill flag to allow gameplay mods to
+    retroactively enable player respawns in single player on
+    all maps.
+  * Improved Advanced Sound Options menu - added option for
+    FluidSynth chorus, removed fractional part from FluidSynth
+    voices option.
+  * Fixed applying of Doom 64 lighting to horizon portals.
+  * Particles are now interpolated.
+- Use system lzma-sdk
+- Add 0001-Update-LZMA-SDK-to-version-17.01.patch,
+  gzdoom-lzma.patch, gzdoom-wadsrc-extra.patch
+
+-------------------------------------------------------------------
+Tue Jan  2 13:14:54 UTC 2018 - jengelh@inai.de
+
+- Remove zdoom from the specfile (which had built both zdoom and
+  gzdoom due to their similarity) and rename to gzdoom.spec.
+- Update to new upstream release 3.2.4
+  * Recognition for the HacX 2.0 IWAD
+  * Recognition for the modified Doom 1/2/U IWADs and the "No Rest
+    for the Living" expansion pack shipped in the Doom3 BFG Edition.
+  * New GL3 node format for complex UDMF maps which need fractional
+    precision on node splitters.
+  * The ZScript scripting language has been added.
+  * A new 32-bit software renderer has been added.
+    The classic 8-bit renderer remains available.
+- Add gzdoom-waddir.patch, gzdoom-staticlibs.patch.
+
+-------------------------------------------------------------------
+Sun Mar 24 00:38:53 UTC 2013 - jengelh@inai.de
+
+- Standardize on /usr/share/doom for IWADs.
+- Per-user configuration is to be moved to ~/.config/zdoom
+  (XDG environment variables are not respected, though),
+  ~/.config/gzdoom and ~/.config/zandronum for the different
+  game engines respectively.
+
+-------------------------------------------------------------------
+Thu Mar 21 16:06:30 UTC 2013 - jengelh@medozas.de
+
+- Update to new upstream release zdoom-2.6.0+svn4191
+  and gzdoom-1.7.01+svn1526
+* berserk indicator on alternative HUD
+* support for BFG edition IWADs
+* sound precaching through MAPINFO.
+- Imported zandronum-1.0+hg3641 (formerly Skulltag)
+
+-------------------------------------------------------------------
+Tue Jul 10 14:12:20 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.6.0 (gzdoom-1.6.0)
+* Added Hacx IWAD support.
+* Added text-format Strife conversation system with USDF and ZSDF.
+* A textured automap is now available; automap graphics are now
+  externalized.
+* Rewritten menu system, which can now be defined with the MENUDEF
+  lump.
+* Externalized intermissions to MAPINFO.
+* Externalized IWAD detection and gave each IWAD its own
+  independent config section.
+* Added FluidSynth and GUS emulator softsynths; fixed issues with
+  TiMidity++.
+* Added VOC support and enhanced MIDI playback with support for
+  alternative formats such as XMI and HMI.
+* Action specials: Added Ceiling_LowerAndCrushDist and
+  Thing_SetConversation. Added console command to execute specials.
+* ACS: Increased maximum script number from 999 to 32767.
+* ACS: Named scripts allow to avoid script number conflicts
+  altogether.
+* ACS: Added StrCopy, CheckSight, SetActivator, SetPointer
+  functions.
+* ACS: Added APROP_ScaleX/Y and APROP_Mass actor properties.
+* ACS: Added temporary dynamic strings variables with StrParam.
+* ACS: Scripts can now have up to four parameters.
+* DECORATE: Added A_CheckFlag, A_FaceMaster, A_FaceTracer,
+  A_RadiusGive, A_SetMass, A_SetScale, A_Warp and A_WolfAttack...
+* DECORATE: Enhanced A_AlertMonsters, A_BFGSpray, A_Blast,
+  A_CustomBulletAttack, A_FireBullets, A_GunFlash, A_PainAttack,
+  A_RadiusThrust...
+* DECORATE: Added an actor pointer manipulation system with several
+  new codepointers...
+* DECORATE: Added DOHARMSPECIES, DONTCORPSE, SEEINVISIBLE and
+  INVENTORY.UNTOSSABLE
+* DECORATE: Increased damage type flexibility in several ways with
+  DeathType and PainType.
+* DECORATE: Added customizable fléchettes.
+* DECORATE: Made accuracy and stamina accessible through DECORATE
+  expressions.
+* DECORATE: Added ProjectileKickback, Inventory.RestrictedTo and
+  Inventory.ForbiddenTo class-based properties.
+* DECORATE: Backported VisibleToTeam, VisibleToPlayerClass and
+  weapon DropItem feature from Skulltag, and enhanced them.
+* DECORATE: Added "Fast" keyword for states and deprecated the
+  unreliable FASTER and FASTMELEE flags.
+* Added a secret hint system.
+* 3D floors support.
+* FraggleScript support.
+* Voxel support.
+* SBARINFO: Ammo 1/2 capacities added to DrawNumber, support for
+  color names in colored text.
+* SNDINFO: Added musicalias and attenuation.
+* Compatibility: fixed issues with Eternal Doom, Happy Time Circus,
+  Phobos, vanilla compat, Boom compat, light levels higher than
+  255, Heretic, Strife, MUSINFO, misnamed UDMF field.
+* Fixed loading of BMF palettes.
+* restart console command.
+* Added PALVERS lump for specifying alternate graphics to use with
+  a paletted render, in case the graphics you really want to use
+  look bad without true color.
+* Custom IWADs no longer need to include a COLORMAP, as ZDoom will
+  generate one automatically if it is missing.
+* Fixed vertical tiling of non-power-of-two textures.
+
+-------------------------------------------------------------------
+Sat Nov 27 22:30:43 UTC 2010 - jengelh@medozas.de
+
+- cmake is really weird when it comes to CFLAGS.
+  Pass :STRING= to make it actually use our flags.
+- set RPM group for gzdoom to one that rpmlint accepts
+- disable strip to make debuginfo packages work
+- fix a crash caused by an uninitialized variable
+
+-------------------------------------------------------------------
+Fri Sep 10 17:39:21 UTC 2010 - jengelh@medozas.de
+
+- Enable building with experimental fluidsynth support
+- Optimize PNGs before packing up
+- Do not use FMODEx for building on non-x86
+- Remove unneeded p7zip build dependency (repacked + patched
+  .tar.xz is used since a while)
+- Update to ZDoom 2.5.0
+* Obsoleted zdoom-binutils.diff
+- Update to GZDoom 1.5.02
+
+-------------------------------------------------------------------
+Fri Jul 30 12:56:27 UTC 2010 - jengelh@medozas.de
+
+- Add patch to workaround compile issues with binutils 2.20.0
+
+-------------------------------------------------------------------
+Wed Jul 28 12:44:57 UTC 2010 - jengelh@medozas.de
+
+- Split up zdoom package into its components
+- zdoom, gzdoom, zdoom-devel
