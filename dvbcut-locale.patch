@@ -1,0 +1,14 @@
+Index: dvbcut-deb-0.7.2/src/Makefile.in
+===================================================================
+--- dvbcut-deb-0.7.2.orig/src/Makefile.in
++++ dvbcut-deb-0.7.2/src/Makefile.in
+@@ -104,6 +104,9 @@ check:
+ 
+ install: all installdirs
+ 	$(INSTALL_PROGRAM) dvbcut$(EXEEXT) $(DESTDIR)$(bindir)
++	$(INSTALL_DATA) dvbcut.qm $(DESTDIR)$(helpdir)
++	$(INSTALL_DATA) dvbcut_cs.qm $(DESTDIR)$(helpdir)
++	$(INSTALL_DATA) dvbcut_de.qm $(DESTDIR)$(helpdir)
+ 	$(INSTALL_DATA) dvbcut_cs.html $(DESTDIR)$(helpdir)
+ 	$(INSTALL_DATA) dvbcut_en.html $(DESTDIR)$(helpdir)
+ 	$(INSTALL_DATA) dvbcut_de.html $(DESTDIR)$(helpdir)
