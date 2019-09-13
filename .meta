@@ -1,0 +1,6 @@
+<package name="perl-NetxAP" project="openSUSE:Factory">
+  <title>Interface to the protocol family IMAP, IMSP, ACAP, and ICAP</title>
+  <description>This module provides an interface to the protocol family represented by
+IMAP, IMSP, ACAP, and ICAP.  A usable IMAP module is also provide.</description>
+  <devel project="devel:languages:perl" package="perl-NetxAP"/>
+</package>
