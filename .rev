@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e39c3918f5b4f03d995754e57e2f6578</srcmd5>
+    <version>003.02</version>
+    <time>1333437583</time>
+    <user>coolo</user>
+    <comment>Moving M17N/IPAPGothic to M17N:fonts/ipa-fonts.</comment>
+    <requestid>112031</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e761ca4aceb2d01b2e413f7c1668b4e9</srcmd5>
+    <version>003.02</version>
+    <time>1338017149</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122158</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7468d4a95bb1c83b59705239c510b82f</srcmd5>
+    <version>003.02</version>
+    <time>1339531105</time>
+    <user>coolo</user>
+    <comment>- Fix ipa-hinting.conf priority from 21 to 51 for avoiding the
+  override by suse-hinting.conf (bnc#766319)</comment>
+    <requestid>124604</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>648fa16519b963602fa856c61777da02</srcmd5>
+    <version>003.02</version>
+    <time>1339761889</time>
+    <user>coolo</user>
+    <comment>- Drop ipsa-hinting.conf since the default config is included in
+  fontconfig package itself</comment>
+    <requestid>124900</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>648fa16519b963602fa856c61777da02</srcmd5>
+    <version>003.02</version>
+    <time>1340183464</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>b8e1ca65e4b3daf902cc830668a59298</srcmd5>
+    <version>003.02</version>
+    <time>1347618471</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133962</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e1d6cddcd1b4dc60929d230a8fd12bba</srcmd5>
+    <version>003.03</version>
+    <time>1347832017</time>
+    <user>namtrac</user>
+    <comment>upstream update (forwarded request 134452 from ftake)</comment>
+    <requestid>134453</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e1d6cddcd1b4dc60929d230a8fd12bba</srcmd5>
+    <version>003.03</version>
+    <time>1359109085</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>e1d6cddcd1b4dc60929d230a8fd12bba</srcmd5>
+    <version>003.03</version>
+    <time>1379662676</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>e1d6cddcd1b4dc60929d230a8fd12bba</srcmd5>
+    <version>003.03</version>
+    <time>1409301237</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>035e902d2be1927418cc729ce6301726</srcmd5>
+    <version>003.03</version>
+    <time>1474115633</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426979</requestid>
+  </revision>
+</revisionlist>
