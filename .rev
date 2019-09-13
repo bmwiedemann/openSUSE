@@ -1,0 +1,285 @@
+<revisionlist>
+  <revision rev="1" vrev="364">
+    <srcmd5>6845fa867da2fee03495f70c41d52946</srcmd5>
+    <version>2002.2.1</version>
+    <time>1168903268</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="413">
+    <srcmd5>6184024efb46427c98e3e5c16188f69e</srcmd5>
+    <version>2002.2.1</version>
+    <time>1171240413</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="422">
+    <srcmd5>7ed91f95770cf82c3404bbf939e998c7</srcmd5>
+    <version>2002.2.1</version>
+    <time>1177104466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="445">
+    <srcmd5>d91850d99bb5542417b978a15af6965b</srcmd5>
+    <version>2002.2.1</version>
+    <time>1182180115</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="535">
+    <srcmd5>4fd5b0ff18f4e59a7ac6abc4463240b5</srcmd5>
+    <version>2002.2.1</version>
+    <time>1205933006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="604">
+    <srcmd5>4fd5b0ff18f4e59a7ac6abc4463240b5</srcmd5>
+    <version>2002.2.1</version>
+    <time>1205933006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="605">
+    <srcmd5>6cb2afdd504e488c3d1f43267dd797b6</srcmd5>
+    <version>2002.2.1</version>
+    <time>1227997180</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fed957d06cc3ef92eb78e36757036ce8</srcmd5>
+    <version>2008</version>
+    <time>1232626263</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>32474887703a1d61cd44b3634d5163a4</srcmd5>
+    <version>2008</version>
+    <time>1233940403</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>32474887703a1d61cd44b3634d5163a4</srcmd5>
+    <version>2008</version>
+    <time>1233940403</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>5b63820065a57950602bdf38892d90ec</srcmd5>
+    <version>2008</version>
+    <time>1260956068</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/latex2html based on submit request 26616 from user coolo
+</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>a77f68b01e8fe5de92fd9bdb5e115972</srcmd5>
+    <version>2008</version>
+    <time>1268924470</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>a77f68b01e8fe5de92fd9bdb5e115972</srcmd5>
+    <version>2008</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>a77f68b01e8fe5de92fd9bdb5e115972</srcmd5>
+    <version>2008</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>a77f68b01e8fe5de92fd9bdb5e115972</srcmd5>
+    <version>2008</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>0bb1231a5a3a29a0dc617b6e0e0ff7b4</srcmd5>
+    <version>2008</version>
+    <time>1300981657</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65080 from user licensedigger
+</comment>
+    <requestid>65080</requestid>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>fad9fae7df7f4ecd389f5ca6cf659009</srcmd5>
+    <version>2008</version>
+    <time>1300981664</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65080
+</comment>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>fad9fae7df7f4ecd389f5ca6cf659009</srcmd5>
+    <version>2008</version>
+    <time>1319182064</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>f08b881d28c93484c8a2f4eaa11f1b2a</srcmd5>
+    <version>2008</version>
+    <time>1323192140</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="19">
+    <srcmd5>f08b881d28c93484c8a2f4eaa11f1b2a</srcmd5>
+    <version>2008</version>
+    <time>1340183546</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>f08b881d28c93484c8a2f4eaa11f1b2a</srcmd5>
+    <version>2008</version>
+    <time>1359109218</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>3f79f828fa260b7170a63330d8fce004</srcmd5>
+    <version>2008</version>
+    <time>1360241440</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 151131 from coolo)</comment>
+    <requestid>151323</requestid>
+  </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>fc22a163b78fc8fdc6aa7577d8096b85</srcmd5>
+    <version>2008</version>
+    <time>1365927402</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 163586 from m_meister)</comment>
+    <requestid>163680</requestid>
+  </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>2fcacc6cace4af3a5202d9fe8be41c8a</srcmd5>
+    <version>2008</version>
+    <time>1372413046</time>
+    <user>coolo</user>
+    <comment>- use \g syntax for \8 and \9 regexp backrefs to work around
+- add latex2html-fix-defined.patch from debian bug tracker to avoid
+- add apparmor's tex docu for better %check: testfile.tex</comment>
+    <requestid>180892</requestid>
+  </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>cefb97789421a05cf38720db4454f16f</srcmd5>
+    <version>2008</version>
+    <time>1378894661</time>
+    <user>coolo</user>
+    <comment>- Use kpsepath to determine texmf main location</comment>
+    <requestid>198218</requestid>
+  </revision>
+  <revision rev="26" vrev="27">
+    <srcmd5>cefb97789421a05cf38720db4454f16f</srcmd5>
+    <version>2008</version>
+    <time>1379662858</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c295e0983295cd82c8ad6231747ffca3</srcmd5>
+    <version>2012</version>
+    <time>1386224017</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>209170</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>dff0a6596fac9e25eb8d58686a36a822</srcmd5>
+    <version>2012</version>
+    <time>1397041265</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>229273</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>dff0a6596fac9e25eb8d58686a36a822</srcmd5>
+    <version>2012</version>
+    <time>1409301460</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>999af03182402ba23cba531be9293f2e</srcmd5>
+    <version>2012</version>
+    <time>1412699029</time>
+    <user>coolo</user>
+    <comment>- Remove BuildRequires on xorg-x11-*, noarch package 
+  does not require devel headers/libraries. (forwarded request 254352 from elvigia)</comment>
+    <requestid>254488</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7e10122253e2882cdbbd38653222ecfe</srcmd5>
+    <version>2015</version>
+    <time>1450605128</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2015: apply patches from Debian
+D    latex2html-2012-backref-workaround.diff
+D    latex2html-2012-binmode.diff
+D    latex2html-2012-dest-dir.diff
+D    latex2html-2012-gsout.diff (upstreamed)
+D    latex2html-2012-match-multiline.diff (upstreamed)
+D    latex2html-2012-perl-bindir.diff
+D    latex2html-2012-share-dir.diff
+A    latex2html-backref-workaround.diff
+A    latex2html-binmode.diff
+A    latex2html-dest-dir.diff
+A    latex2html-perl-bindir.diff
+A    latex2html-share-dir.diff</comment>
+    <requestid>349190</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>03aa95f57c3d36a4b90f00d7b23e654c</srcmd5>
+    <version>2016</version>
+    <time>1480018699</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2016:
+  * longtable: fix duplicate caption
+  * pstoimg: fix pstoimg -depth 24 -flip cw</comment>
+    <requestid>441199</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1c46a81e90743aff9c34737b494ca014</srcmd5>
+    <version>2017.2</version>
+    <time>1499754234</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509169</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>1a9f13f59c607979ae7a9ec79da4b413</srcmd5>
+    <version>2017.2</version>
+    <time>1506955387</time>
+    <user>dimstar_suse</user>
+    <comment>- add latex2html-perl526.patch to work with perl 5.26 (forwarded request 528505 from coolo)</comment>
+    <requestid>528581</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9d1b4785385a11a58f9cba96d8538bf4</srcmd5>
+    <version>2018</version>
+    <time>1546535110</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2018
+  * config: avoid warning &quot;untie attempted&quot;
+  * Handle . not in @INC for images.pl and internals.pl
+  * fix \graphicspath with relative path in preamble
+    https://github.com/latex2html/latex2html/issues/40
+  * \providecommand should not redefine existing command
+  * Picture generation via dvipng
+  * KOI8-R, CP1251 and UTF-8 support for Russian 
+  * default to white background for rendering images.
+    if $LATEX_COLOR set, pass as transparency color to pstoimg.
+    https://bugs.debian.org/188024
+  * usepackage xcolor.  uses rgb black rather than cmyk black.
+    fixes eqns appearing as dark grey rather than black.
+  * Fix stray comment mark: Issue #19
+- altered patches
+  % latex2html-perl-bindir.diff
+  % latex2html-perl526.patch</comment>
+    <requestid>662190</requestid>
+  </revision>
+</revisionlist>
