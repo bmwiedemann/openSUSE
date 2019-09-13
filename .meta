@@ -1,0 +1,13 @@
+<package name="dvbcut" project="openSUSE:Factory">
+  <title>Qt application for cutting parts out of DVB streams</title>
+  <description>DVBcut is a Qt application that allows you to select certain parts of an MPEG
+transport stream (as received via Digital Video Broadcasting, DVB) and save
+these parts into a single MPEG output file. It follows a `keyhole surgery''
+approach where the input video and audio data is mostly kept unchanged, and
+only very few frames at the beginning and/or end of the selected range are re-
+encoded in order to obtain a valid MPEG file.
+
+</description>
+  <devel project="multimedia:apps" package="dvbcut"/>
+  <url>https://github.com/bernhardu/dvbcut-deb</url>
+</package>
