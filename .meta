@@ -1,0 +1,5 @@
+<package name="shadowsocks-libev" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:proxy" package="shadowsocks-libev"/>
+</package>
