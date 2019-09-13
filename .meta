@@ -1,0 +1,5 @@
+<package name="yast2-sound" project="openSUSE:Factory">
+  <title>YaST2 - Sound Configuration</title>
+  <description>This package contains the YaST2 component for sound card configuration.</description>
+  <devel project="YaST:Head" package="yast2-sound"/>
+</package>
