@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f12c76616ed05e7db2f333a179108b49</srcmd5>
+    <version>1.18.1</version>
+    <time>1560861759</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.18.1
+- Rename to python-pycario to conform to python package naming guidelines
+- Expand summaries and descriptions.
+- Fix typos
+- Fixed conflicts with old python-cario-common-devel</comment>
+    <requestid>704551</requestid>
+  </revision>
+</revisionlist>
