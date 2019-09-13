@@ -1,0 +1,48 @@
+From 8db2a405634b0a98c78a8a1e0ebf339643a645b2 Mon Sep 17 00:00:00 2001
+From: Stasiek Michalski <hellcp@opensuse.org>
+Date: Thu, 14 Mar 2019 19:48:13 +0100
+Subject: [PATCH] [zypp] Perform actions disallowed by update in upgrade mode
+
+---
+ backends/zypp/pk-backend-zypp.cpp | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+Index: PackageKit-1.1.12/backends/zypp/pk-backend-zypp.cpp
+===================================================================
+--- PackageKit-1.1.12.orig/backends/zypp/pk-backend-zypp.cpp
++++ PackageKit-1.1.12/backends/zypp/pk-backend-zypp.cpp
+@@ -1470,7 +1470,7 @@ zypp_perform_execution (PkBackendJob *jo
+ 				case INSTALL:
+ 				case UPDATE:
+ 					// for updates we only care for updates
+-					if (it->status ().isToBeUninstalledDueToUpgrade ())
++					if (it->status ().isToBeUninstalledDueToUpgrade () && !zypp->resolver()->upgradeMode())
+ 						continue;
+ 					break;
+ 				}
+@@ -3305,6 +3305,10 @@ backend_update_packages_thread (PkBacken
+ 		}
+ 	}
+ 
++	if ( zypp->resolver()->upgradeMode() ) {
++		zypp->resolver()->dupSetAllowVendorChange ( ZConfig::instance().solver_dupAllowVendorChange() );
++	}
++
+ 	PoolStatusSaver saver;
+ 
+ 	for (guint i = 0; package_ids[i]; i++) {
+@@ -3323,12 +3327,12 @@ backend_update_packages_thread (PkBacken
+ 		// patches are special - they are not installed and can't have update candidates
+ 		if (sel->kind() != ResKind::patch) {
+ 			MIL << "sel " << sel->kind() << " " << sel->ident() << endl;
+-			if (sel->installedEmpty()) {
++			if (sel->installedEmpty() && !zypp->resolver()->upgradeMode()) {
+ 				zypp_backend_finished_error (job, PK_ERROR_ENUM_DEP_RESOLUTION_FAILED, "Package %s is not installed", package_ids[i]);
+ 				return;
+ 			}
+ 			item = sel->updateCandidateObj();
+-			if (!item) {
++			if (!item && !zypp->resolver()->upgradeMode()) {
+ 				 zypp_backend_finished_error(job, PK_ERROR_ENUM_DEP_RESOLUTION_FAILED, "There is no update candidate for %s", sel->installedObj().satSolvable().asString().c_str());
+ 				return;
+ 			}
