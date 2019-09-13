@@ -1,0 +1,1186 @@
+-------------------------------------------------------------------
+Sun Sep  1 19:44:57 UTC 2019 - wbauer@tmo.at
+
+- Update to version 5.1.2
+  * Fix memory corruption in ScanFolder plugin
+  * Fix a few issues found by clang-tidy
+  * Some build fixes (missing include headers) that get triggered
+    on certain versions of Qt/KF5 frameworks
+- Drop fix-build-with-qt5.6.patch, Leap 42 is EOL
+- Remove conditionals for no longer supported distribution versions
+- Use %kf5_find_htmldocs macro to autogenerate the translated docs
+  file list
+- Update URL, ktorrent.org doesn't exist any more
+
+-------------------------------------------------------------------
+Fri Aug 31 12:11:47 UTC 2018 - wbauer@tmo.at
+
+- Update to version 5.1.1
+  * Formatting torrent ratio as floating point number - no
+    scientific notation (kde#395525)
+  * Show high-resolution and vector logos properly in HighDPI mode
+    (kde#390605)
+  * Fix crash when changing file download order (kde#384371)
+  * Fix installation of icons
+  * Fix IPFilter plugin
+  * Fix toolbar button text hiding opt
+  * Remove unused KService dependency
+  * Set text and border color from palette for syndication preview
+  * Fix build against new Syndication library
+  * Fix build with Qt 5.11
+- Adjust initial-preference.diff to apply with -p1, and use
+  %autopatch to apply all patches
+- Drop patches merged upstream:
+  * fix-build.patch
+  * fix-build-with-Qt-5_11.patch
+  * Fix-build-against-new-Syndication-library.patch
+
+-------------------------------------------------------------------
+Sun Jul 29 08:19:21 UTC 2018 - wbauer@tmo.at
+
+- Add Fix-build-against-new-Syndication-library.patch to make it
+  compile with KDE Applications 18.08
+
+-------------------------------------------------------------------
+Mon Jun  4 05:39:50 UTC 2018 - christophe@krop.fr
+
+- Add a missing change to fix-build-with-Qt-5_11.patch
+
+-------------------------------------------------------------------
+Sat May 26 09:02:43 UTC 2018 - christophe@krop.fr
+
+- Add patches:
+  * fix-build.patch
+  * fix-build-with-Qt-5_11.patch
+
+-------------------------------------------------------------------
+Wed Jan 24 18:12:30 UTC 2018 - wbauer@tmo.at
+
+- Build with gcc7 on Leap 42.3, gcc5 no longer works because of a
+  change to the default compiler flags in openSUSE:Leap:42.3:Update
+  (boo#1077345)
+
+-------------------------------------------------------------------
+Sat Sep  2 09:19:00 UTC 2017 - wbauer@tmo.at
+
+- Update to version 5.1.0
+  * Multimedia, search, scanfolder, ipfilter, stats, scripting,
+    syndication (rss) plugins are now ported to Qt5. The only
+    missing bits are webinterface plugin and plasmoid.
+- Update build requirements
+- Add fix-build-with-qt5.6.patch to make it build with Qt < 5.7.0
+- Use gcc5 on Leap 42, it crashes on startup when built with 4.8.5
+- Update installed man pages
+- Drop upstream patches included in this release:
+  * fix-build-with-newer-kconfig.diff
+  * fix-crash-when-loading-bandwidth-scheduler-plugin.patch
+  * fix-crashes-in-bwscheduler-plugin.patch
+- Drop openSUSE patches that are no longer necessary:
+  * remove-links.diff - the corresponding URLs are no longer in the list
+  * suse-dht-warning.diff - it was broken anyway (boo#1002948)
+
+-------------------------------------------------------------------
+Tue May 23 10:55:02 UTC 2017 - wbauer@tmo.at
+
+- Add fix-crash-when-loading-bandwidth-scheduler-plugin.patch and
+  fix-crashes-in-bwscheduler-plugin.patch from upstream to fix
+  ktorrent crashing when the bandwidth scheduler plugin is
+  activated/used (kde#361863, boo#1040379)
+
+-------------------------------------------------------------------
+Wed Feb  1 11:54:27 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Sun Sep  4 14:55:52 UTC 2016 - astieger@suse.com
+
+- KTorrent 5.0.1:
+  * Store interface name as a string in cfg
+  * Port stats plugin
+
+-------------------------------------------------------------------
+Mon Jun 27 22:57:41 UTC 2016 - lbeltrame@kde.org
+
+- Add fix-build-with-newer-kconfig.diff: build (backwards-compatible)
+  with newer KConfig from frameworks
+
+-------------------------------------------------------------------
+Sat Apr 16 11:37:50 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to version 5.0
+  * Qt5/KF5 port
+  * QHttp-based tracker communication was dropped in favour of 
+    KIO-based one
+  * fix issues found by Coverity static analyzer
+  * improve naming of few UI items
+  * initiate sequential download of media content automatically 
+    when it is opened from filelist view
+
+- Drop upstream patches 
+  * ipfilter_bugfix.diff
+  * properly-support-x-scheme-handler-magnet-mimetype.patch
+
+- Drop patch no longer needed: 
+  * remove-plasma.diff
+  * icons.tar.bz2
+
+
+-------------------------------------------------------------------
+Tue Mar  8 21:11:46 UTC 2016 - bwiedemann@suse.com
+
+- Strip png timestamps to fix build-compare
+
+-------------------------------------------------------------------
+Sun Oct 11 09:51:39 UTC 2015 - lbeltrame@kde.org
+
+- Ensure the Plasma applet removal only occurs on Tumbleweed and 
+  Leap
+
+-------------------------------------------------------------------
+Sun Oct 11 09:12:07 UTC 2015 - lbeltrame@kde.org
+
+- Add remove-plasma.diff: Disable building the plasma applet,
+  which is totally non functional in Plasma 5 and adds an 
+  unnecessary dependency on kdebase4-workspace
+
+-------------------------------------------------------------------
+Sat Jan 31 19:48:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add properly-support-x-scheme-handler-magnet-mimetype.patch,
+  make ktorrent support magnet mimetype outside KDE4
+
+-------------------------------------------------------------------
+Mon Jun 16 18:52:08 UTC 2014 - coolo@suse.com
+
+- remove backup file of mogrify calls
+
+-------------------------------------------------------------------
+Wed Feb 19 10:23:39 UTC 2014 - vindex17@outlook.it
+
+- Added upstream bugfix patch - ipfilter_bugfix.diff:
+    Fix gzip not working in ipfilter plugin due to wrong mimetype,
+    kde#315239
+
+-------------------------------------------------------------------
+Fri Jan 18 10:36:46 UTC 2013 - nico.kruber@gmail.com
+
+- Update to version 4.3.1
+  * Fix new custom groups not appearing in add to group submenu
+    (kde#307230)
+  * Fix crash when right clicking on some locations in the
+    GroupView due to 0 pointer (kde#307160)
+  * Force KDirWatch to use polling when watching NFS filesystems
+    (kde#301381)
+  * Fix crash due to bus error in ip filter plugin (kde#307854)
+  * First check for missing files then for unmounted storage
+    (kde#308638)
+  * Use extended selection mode in syndication plugin so ctrl
+    key works as expected (kde#308672)
+  * Fix crash in GroupViewModel when dragging torrents over
+    groups (kde#308733)
+  * Sort by total leechers and seeders, if connected seeders and
+    leechers is equal (kde#311470)
+
+-------------------------------------------------------------------
+Fri Nov  2 15:56:48 UTC 2012 - ctrippe@opensuse.org
+
+- Install the english handbook only with the lang-package as otherwise
+  translations will not be displayed when they are provided by 
+  bundle-lang-kde-* (bnc#695108)
+
+-------------------------------------------------------------------
+Fri Sep  7 17:00:30 UTC 2012 - mlin@suse.com
+
+- give it hard build dependence with libktorrent
+
+-------------------------------------------------------------------
+Wed Sep  5 07:08:44 UTC 2012 - mlin@suse.com
+
+- Update to version 4.3.0
+  * Change default blocklist url to iblocklist.org (kde#305109)
+  * Add support for magnet links in the syndication plugin
+  * Add search line to download order dialog
+  * Add move top and bottom option to download order dialog (kde#295341)
+  * Make sure that move up and move down in the download order dialog 
+    work with multiple items (kde#295341)
+  * Also update file priorities when normal priority file completes 
+    downloading in download order plugin (kde#296576)
+  * Add automatic sorting options to download order plugin (name, 
+    seasons and episodes, album track number) (kde#295341)
+  * Make float comparison factor smaller in ViewModel when checking if 
+    share ratio has changed (kde#297931)
+  * Show torrent count next to group in GroupView (kde#176173)
+  * Add new GroupSwitcher widget
+  * Add edit group policy button to GroupSwitcher
+  * Remove html tooltips from ui files
+  * Tracker grouping script now uses the domain name of the tracker 
+    (kde#227430)
+  * Catch SIGINT and SIGTERM and do a clean shutdown (kde#296835)
+  * Add bytes left to download column in View (kde#152070)
+  * Add new add trackers dialog with url completion (kde#269563)
+  * Delete key now also works in the MagnetView (kde#295173)
+  * Fix sorting of time left column (kde#298542)
+  * Add support for removable storage (kde#286120)
+  * Fix typos in several strings (kde#300969, kde#300781, kde#300782)
+  * Fix suspended overlay not shown on tray icon when ktorrent is 
+    started up suspended (kde#301042)
+  * Make sure default size of main window, tracker column in tracker 
+    view and filename column in file view are sensible (kde#300057)
+  * Fix crash in syndication plugin (kde#301117)
+  * Fix close search tab button not getting disabled when only one is 
+    left after closing another one (kde#302896)
+  * Fix crash when looking up country for IP address (kde#303340)
+  * Fix size after download calculation in FileSelectDlg when file 
+    already exists (kde#304595)
+  * Use default browser instead of application associated to test/html 
+    when clicking on a links in the comments field of the status tab 
+    (kde#305005)
+
+-------------------------------------------------------------------
+Wed Jun 20 08:14:09 UTC 2012 - mlin@suse.com
+
+- Update to version 4.2.1
+  * Fix IP filter widget list not getting registered at startup (281245)
+  * Fix Queue Manager widget getting the priorities wrong (296536)
+
+-------------------------------------------------------------------
+Mon May  7 10:17:32 UTC 2012 - idonmez@suse.com
+
+- Fix taglib requires for older distros 
+
+-------------------------------------------------------------------
+Sun Apr 15 19:58:43 UTC 2012 - dmueller@suse.com
+
+- fix buildrequires (taglib->libtag) 
+
+-------------------------------------------------------------------
+Tue Mar  6 10:51:32 UTC 2012 - mlin@suse.com
+
+- Update to version 4.2.0, also lists changes what changed in rc1
+  * Add new group switcher combobox in toolbar
+  * Make kio-magnet optional
+  * Improve handing magnet uris in search plugin
+  * Fix bug causing kio-magnet to deselect all files
+  * Close current scan widget when a new one is started for a torrent
+  * Fix syndication plugin not handling relative urls properly
+  * Fix magnet uri's not being handled properly in load torrent feature of webinterface
+  * Make it possible to check individual files of a torrent
+  * Data checks for multiple torrents can now get started at the same time
+  * Make links clickable in the status tab comments field
+  * Revamp UPnP plugin
+  * Fix bug making it possible to add conflicting items to the schedule
+  * Make it possible for schedule items to span multiple days
+  * Include disk usage of existing files when calculating bytes left after download in FileSelectDlg
+  * Disable scripts in GUI, if no interpreter could be found for the script
+  * Show shutdown plugin's config dialog when no rules are present and the enable button is pressed
+  * Make it possible to wait for several events before activating the shutdown action
+  * Fix wrong required diskspace calculation in some rare circumstances
+  * Revamp scanfolder plugin
+  * Revamp GUI of mediaplayer plugin
+  * Make properties extender a dialog
+  * Fix bug causing scripts not to be selectable in scripting plugin
+  * Show info hash in status tab
+  * Improve video streaming support
+  * Add Open With option to FileView context menu
+  * Fix bug causing views to not get properly restored when the application language changes
+  * Check if new trackers have a supported protocol
+  * Remove usage of several deprecated KDE3 networking classes
+  * Remove obsolete config options of datacheck during upload feature
+  * Improve error display of syndication plugin errors
+  * Remove multiple views support
+  * Relabel Change Tracker button into Switch Tracker to avoid user confusion
+  * Revamp IP filter widget
+  * Fix scanfolder moving to loaded directory causing a flurry of popups about the torrent already being loaded
+  * Only enable the infowidget plugin by default
+  * Add force start option
+  * Add torrent search bar for view
+  * Make it possible to hide uploads, downloads and not queued torrents in the queue manager
+  * Merge status and name column into one column and use icons to show the status
+  * Highlight in bold and scroll to newly added torrents
+  * Show torrent names in remove torrent and data confirmation dialog
+  * Enable select new location button when all non excluded files are missing instead of when all files are missing
+  * Hide chunkbar when download of stream is complete
+  * Suspend/resume queue when middle clicking on tray icon
+  * Use dbus to show ktorrent window from plasma applet
+  * Fix crash due to dangling pointer
+  * Always make already loaded message of a torrent a passive popup
+  * Make torrent properties dialog modal
+  * Allow i2p addresses as a custom ip in tracker announces
+  * Fix bug causing homepage of search plugin not the render properly
+- Refresh suse-dht-warning.diff
+- Drop out ktorrent-bug287309.patch since its included
+
+-------------------------------------------------------------------
+Thu Jan 19 10:05:58 UTC 2012 - idonmez@suse.com
+
+- Add patch to fix kde#287309 
+
+-------------------------------------------------------------------
+Thu Nov 24 20:48:04 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 4.1.3:
+  * Fix statusbar hiding and showing not working (kde#281674)
+  * Fix missing items in tray menu (kde#282304)
+  * Fix move on completion location not being set when open all torrents
+    silently is enabled (kde#279582)
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Renamed License: to GPL-2.0+ (SPDX style).
+- Updated manpages.
+
+-------------------------------------------------------------------
+Wed Aug 17 07:50:17 UTC 2011 - javier@opensuse.org
+
+- Update to 4.1.2:
+  * Fix crash when duplicate trackers are added (bko#274413)
+  * Fix bug causing quit action not be shown in system tray when 
+    not using KDE
+  * Fix edit script not working in scripting plugin
+  * Make log output suspension work again
+  * Fix crash when shutdown_rules files becomes corrupted 
+    (bko#277602)
+  * Fix file rename leading to file being placed in the toplevel 
+    directory (bko#279926)
+
+-------------------------------------------------------------------
+Sun May  1 18:28:40 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 4.1.1:
+  * Make sure that libktorrent translation catalog is inserted (bko#269515)
+  * Fix wrong tooltip in QM preference page
+  * Make sure activities list is added again to the GUI after toolbars are
+    edited (bko#269727)
+  * Prevent port conflicts from happening (bko#268989)
+  * Clear labels of BasicJobProgressWidget in constructor (bko#270035)
+  * Make tabbar widget icons follow KDE size changes (bko#270277)
+  * Fix crash in search plugin (bko#271516)
+- Spec file updates:
+  * Simplified License: to GPLv2+ which is the main license.
+  * Better fix for wrong-icon-size.
+  * Fix locales removal if suse_version is not set.
+  * Minor other updates.
+- Updated manpages.
+
+-------------------------------------------------------------------
+Wed Mar 16 18:30:18 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 4.1.0:
+  * Check if source files are missing before moving them (bko#265607)
+  * Fix scanextender showing when they are not supposed to (bko#259483)
+  * Fix mediaplayer unable to stop in buffering mode when streaming
+    (bko#266100)
+  * KDE 4.4 compatibility fix in search plugin
+  * Make sure overwrite is possible for the torrent copy file feature
+  * Fix critical Qt warning when opening context menu in view
+- Spec file updates:
+  * Removed Authors: from %description (requirement for Factory submissions).
+  * Removed ktorrent-devel and libktcore12 subpackages and merged it in the
+    main package since the package doesn't actually provides any shared
+    libraries. Because of this also removed libktcore.so to fix rpmlint warning
+    "devel-file-in-non-devel-package".
+  * Minor update in %files section.
+- Rebased "initial-preference.diff" patch to apply cleanly.
+
+-------------------------------------------------------------------
+Thu Mar 10 10:35:59 UTC 2011 - coolo@novell.com
+
+- buildrequire a specific libktorrent
+
+-------------------------------------------------------------------
+Sat Feb 26 10:27:27 UTC 2011 - coolo@novell.com
+
+- switch back to recommending -lang package
+
+-------------------------------------------------------------------
+Fri Feb 25 22:32:07 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to 4.0.99rc1 (4.1rc1):
+  * Make sure that apply button of config dialog is enabled properly when the
+    group changes in the scanfolder settings
+  * Add kio-magnet
+  * Improve performance of ktorrent in situations where there are many torrent
+    (262571)
+  * Fix memory leak on exit (263802)
+  * Fix tab bar not matching TabBarWidget state in some circumstances (263068)
+  * Fix libktorrent not gettting updated when the download of a magnet link
+    finishes and the FileSelectDlg is shown
+  * Update view tab when switching to it, fixes data scan widget showing in the
+    wrong place (259483)
+  * Update view captions every GUI update (264215)
+  * Use user modified path for file column in chunks view (264814)
+  * Fix QM bug causing torrents to get started when it is not needed (262570)
+- Spec file updates:
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Changed License: to GPLv2+ and GPLv3 and LGPLv2 and LGPLv2+ and LGPLv2.1+
+    and BSD.
+  * Updates in Url: and %description.
+  * Added description for the patches based on openSUSE Patches Guidelines.
+  * Updates in Buildrequires:, Requires:, %build, %install and %files sections.
+  * Use Suggests: and not Recommends: for lang package.
+  * Removed %pre and %post /sbin/ldconfig section for main package (not
+    needed).
+  * Moved the english help files in the main package.
+- Removed ktorrent icons from icons.tar.bz2 (they are provided by the package).
+- Fixed rpmlint warning ("wrong-icon-size").
+
+-------------------------------------------------------------------
+Mon Feb  7 12:49:38 UTC 2011 - coolo@novell.com
+
+- fix file list
+
+-------------------------------------------------------------------
+Fri Jan  7 20:51:23 UTC 2011 - ctrippe@gmx.net
+
+- Fix version number (bnc#662786)
+
+-------------------------------------------------------------------
+Mon Jan  3 09:19:29 UTC 2011 - davejplater@gmail.com
+
+- Update to ktorrent-1.0.80 (1.1beta1) fix kde #(261679) crash with
+  rss syndication plugin.
+- Added "Requires libktcore12 = version-release to ensure the
+  correct libktcore12 is upgraded.
+- Upstream changes :
+- * Video streaming support
+  * Superseeding support
+  * Data file moves are now tracked in the GUI
+  * The GUI has been redesigned and now makes proper use of KDE's
+    KParts technologie
+  * The search plugin now uses webkit
+  * Exclusion patterns have been added to the syndication plugin
+    filters
+  * And many other smaller changes. For a full overview of all the
+    changes, take a look in the ChangeLog's of libktorrent and
+     ktorrent.
+
+-------------------------------------------------------------------
+Tue Dec 21 20:03:10 UTC 2010 - davejplater@gmail.com
+
+- Used kde macros in the files section and added man pages -
+  ktupnptest.1 and ktorrent.1 generated by help2man.
+
+-------------------------------------------------------------------
+Fri Dec 17 20:28:51 UTC 2010 - davejplater@gmail.com
+
+- Split off libktcore.so.12 into sub package libktcore12.
+- Update to 4.0.4.60git20101217 to fix crash #(kde#260338).
+- Removed new_kde_powermanagement.diff, incorporated upstream.
+- Upstream changes :
+  *Make it possible to add TorrentFileStream from the dbus interface
+   and also provide a dbus interface for this TorrentFileStream.
+  *Improve perfor.ance of View
+  *Remove unnecessary call to setEmitDownloadStatusChanged in
+   FileSelectDlg.
+  *Use QVector instead of in WebSeedsModel.
+  *Add do not ask again option to dialog shown when torrent file is
+   downloaded in the search plugin.
+  *Support data check queueing feature of libktorrent.
+  *Fix bug causing user modified filename not be shown for single
+   file torrents.
+  *Ensure that lastSaveDir is saved to the config.
+  *Make sure ktorrent compiles and works with new solid
+   powermanagement api introduced in KDE 4.6beta2.
+  *Fix bug with properties extender not setting uniform row heights
+   to false when it is shown.
+  *Add option to rename single file torrents to the file inside.
+  *Add patch from Duns Ens which adds a dbus call to remove the
+   TorrentFileStream in DBusTorrent.
+  *Fix bug causing the wrong path to be opened when opening a
+   nested directory in a multifile torrent.
+
+-------------------------------------------------------------------
+Thu Dec  9 12:59:58 UTC 2010 - tittiatcoke@gmail.com
+
+- Included patch to build against the new powermanagement 
+  (KDE 4.6)
+
+-------------------------------------------------------------------
+Tue Nov 30 20:23:20 UTC 2010 - davejplater@gmail.com
+
+- Update to 4.0.4.60git20101130 to fix crash #(kde#258078)
+- Upstream changes :
+  *Make homepage display properly with webkit
+  *Rename HomePage to WebView and remove HTMLPart
+  *Make search form in homepage work again
+  *Make sure that webkit requests to open new windows results in
+   new tabs being opened
+  *Saving links and images to disk now works
+  *Handle unsupported content by saving it to disk
+  *Make sure that the home page ends up in the browsing history of
+   a search.
+  *Update ChangeLog
+  *Merge branch 'webkit'
+  *SVN_SILENT made messages (.desktop file)
+  
+-------------------------------------------------------------------
+Tue Nov 23 08:27:33 UTC 2010 - tittiatcoke@gmail.com
+
+- Fix the filelist for the languages
+
+-------------------------------------------------------------------
+Mon Nov 22 19:13:39 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to the latest git snapshot in order to enable building 
+  for KDE 4.6 Beta 1.
+
+-------------------------------------------------------------------
+Mon Oct 18 19:35:48 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 4.0.4
+  * fixes several minor things, and improves the performance when 
+    there are many torrents
+
+-------------------------------------------------------------------
+Tue Sep 28 19:07:52 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang-package.
+
+-------------------------------------------------------------------
+Mon Aug 30 17:41:24 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 4.0.3
+  * Several crashes have been fixed, and some minor bugs were fixed
+  * KDE progress dialogs are now shown when moving files
+  * 2 digits of precision are now used when displaying sizes and 
+    speed.
+
+-------------------------------------------------------------------
+Fri Jul  9 09:13:31 UTC 2010 - beineri@opensuse.org
+
+- update to 4.0.2
+ * Fix wrong X-KDE-PluginInfo-Name in ktzeroconfplugin.desktop
+ * Fix crash caused by 0 pointer in webinterface plugin
+ * Increase auto update retry interval of ipfilter plugin to 15 min
+ * Fix bug causing groups file to grow very large over time
+
+-------------------------------------------------------------------
+Sun Jun 27 19:05:38 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 4.0.1
+  * bugfix release
+  * Several crashes have been fixed, as well as a problem which 
+    caused a lot of disk activity when downloading at high speed 
+    on certain filesystems.
+  * Authentication can now be disabled in the webinterface 
+    (use with care obviously)
+  * A new plugin to generate magnet URI's from torrents was added
+  * Events like hibernating and the network going down for some time, 
+    are now handled in a better way.
+
+-------------------------------------------------------------------
+Sat Jun 26 09:08:21 UTC 2010 - cmorve69@yahoo.es
+
+- Add InitialPreference to set it as the default torrent downloader
+
+-------------------------------------------------------------------
+Sun Feb  7 19:12:37 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 3.3.4
+  * Bugfix release
+      + this fixes a couple of crashes, 
+      + a sorting bug in the choker (which should improve seeding a lot)
+      + a problem where the global max share ratio and seed time 
+        could override group settings.
+
+-------------------------------------------------------------------
+Sun Jan 17 19:52:02 UTC 2010 - tittiatcoke@gmail.com
+
+- update to 3.3.3
+  - Fix crash caused by 0 pointer in Downloader::saveDownloads (bko#219019)
+  - Don't remove torrent when jobs are running, wait until they are done, 
+    this fixes a crash (bko#218853)
+  - Disable editing of items in ActivityListModel (bko#219355)
+  - Make sure checks for ftello and fseeko are done, fixes a problem with 
+    large file sizes on BSD (bko#217523)
+  - Make sure reannounce timer in UDPTracker is always stopped in the stop call (bko#219663)
+  - Fix broken FilterListModel::removeFilter fixes a crash (bko#219760)
+  - Revamp adding trackers to TrackerListModel, should fix a crash (bko#218738)
+  - Don't allow nested event loops when iterating over the incomplete url 
+    list in scanfolder plugin, fixes a crash (bko#219885)
+  - Fix crash due to uncaught exception in TorrentFileTreeModel::loadExpandedState
+  - Fix bug causing error message that the QM limits are reached to be shown 
+    instead of a torrent to be enqueued (bko#220171)
+  - Fix crash caused by not checking for 0 pointer (bko#221333)
+  - Fix crashes when DHT socket could not be bound (bko#221872)
+  - Fix bug causing files to be created which are to big in some rare 
+    circumstances (bko#222036)
+  - Fix bug causing wrong location hint to be used when no default save location 
+    is selected (bko#222783)
+
+-------------------------------------------------------------------
+Fri Dec 18 09:09:47 UTC 2009 - tittiatcoke@gmail.com
+
+- update to 3.3.2
+  several crash fixes (bko#216207, bko#216683)
+
+-------------------------------------------------------------------
+Wed Nov 25 09:16:18 UTC 2009 - wstephenson@novell.com
+
+- Re-enable DHT following legal advice, with warning popup
+
+-------------------------------------------------------------------
+Wed Nov 25 08:33:35 UTC 2009 - beineri@opensuse.org
+
+- update to 3.3.1: several crash and memory leaks fixes. Bandwidth
+  schedulers user interaction has been improved, and some other
+  minor issues have also been fixed.
+
+-------------------------------------------------------------------
+Wed Nov 11 23:38:30 UTC 2009 - tittiatcoke@gmail.com
+
+- update to 3.3
+  * Newly designed user interface
+  * Plugins have full window themselves
+  * New shutdown plugin, that allows you to shutdown, sleep or hibernate
+    when one or more torrents have finished seeding/downloading
+  * Mediaplayer plugin has it's own activity and gains a playlist widget
+  * File selection dialog now shows if existing files are found
+  * Queue Manager behaviour has been changed significantly and you can 
+    disable it completely
+  * see http://ktorrent.org/?q=node/35 or the Changelog
+
+-------------------------------------------------------------------
+Wed Oct 28 18:44:16 UTC 2009 - beineri@opensuse.org
+
+- update to 3.2.5:
+  * Fix crash caused by dangling pointer to already destroyed view
+  * Backport tracker timeout fix from trunk
+
+-------------------------------------------------------------------
+Thu Sep 24 11:02:45 UTC 2009 - beineri@opensuse.org
+
+- update to 3.2.4:
+  * Improve flexibility of IP blocklist parsing to support more formats
+  * Fix bug in TorrentFileListModel causing wrong state to be shown
+  * Fix very rare crash caused by 0 pointer
+  * Fix bug causing scheduler to not restart the schedule timer
+  * Unset Qt message handler when Log is destroyed
+
+-------------------------------------------------------------------
+Thu Aug 20 22:59:20 CEST 2009 - beineri@opensuse.org
+
+- unify all torrent clients in P2P category
+
+-------------------------------------------------------------------
+Wed Aug 12 00:06:04 CEST 2009 - beineri@opensuse.org
+
+- fix duplicate start menu appearance
+
+-------------------------------------------------------------------
+Mon Aug 10 22:54:49 CEST 2009 - beineri@opensuse.org
+
+- update to 3.2.3: a couple of rare crashes were fixed, global
+  shortcuts work again and the plasma applet can now display sizes
+  larger then 4GB properly
+
+-------------------------------------------------------------------
+Tue Jun  2 09:00:07 CEST 2009 - beineri@opensuse.org
+
+- update to 3.2.2: several crashes have been fixed, the plasma 
+  applet has seen some improvements and can now be placed in the
+  panel, and the configuration dialog can be made small enough to
+  be useful on small screens.
+
+-------------------------------------------------------------------
+Mon Apr 20 14:54:46 CEST 2009 - dmueller@suse.de
+
+- build for older distros again
+
+-------------------------------------------------------------------
+Fri Apr 17 14:11:13 CEST 2009 - dmueller@suse.de
+
+- remove extra filelist entries since hne has been added
+  to filesystem rpm
+
+------------------------------------------------------------------
+Mon Apr 06 14:45 CEST 2009 - mrdocs@opensuse.org
+
+- Bump version to 3.2.1
+- Webseeding has been improved considerably
+- Port switching no longer requires a restart and some minor
+  additions to the scripting API. 
+
+-------------------------------------------------------------------
+Tue Feb 17 20:12:40 CET 2009 - stbinner@suse.de
+
+- update to 3.2: several bugfixes since release candidate
+
+-------------------------------------------------------------------
+Mon Feb  2 13:40:13 CET 2009 - stbinner@suse.de
+
+- update to 3.2 RC1:
+   * Several memory leaks have been fixed
+   * CPU usage has been reduced
+   * The queue manager has been revamped
+   * Fixed a bug causing download speed to get stuck at 128 KB/s
+     with small chunks
+   * Moving files when the torrents is complete, now happens after
+     the data check when the torrent is complete
+   * The webgui has been revamped, PHP is ditched in favor of a
+     HTML and AJAX approach
+
+-------------------------------------------------------------------
+Sat Jan 17 20:24:22 CET 2009 - coolo@suse.de
+
+- apply trunk.diff to compile with plasma from 4.2
+
+-------------------------------------------------------------------
+Mon Jan 12 16:55:33 CET 2009 - dmueller@suse.de
+
+- update to 3.2 (beta1):
+  * Kross based scripting plugin
+  * Syndication plugin supporting RSS and Atom feeds
+  * Plugin to control the file download order of a multifile torrent
+  * Redesign of chunk memory management, resulting in a 
+    significant decrease in memory usage
+  * Plasma applet to monitor torrents on your desktop
+  * Performance improvements when handling torrents with a lot of
+    files
+  * Many smaller features
+
+-------------------------------------------------------------------
+Fri Nov 28 11:18:48 CET 2008 - wstephenson@suse.de
+
+- Reinstate geoIP database since license issues resolved
+  (bnc#188562)
+
+-------------------------------------------------------------------
+Sun Nov 16 11:16:09 CET 2008 - stbinner@suse.de
+
+- update to version 3.1.5:
+   * Make sure symlinks work when we create multifile torrents
+   * Fix redirect loop when torrent is loaded via url in webgui
+   * Fix infinite recursive loop in scanfolder plugin
+   * Fix crash in treeviews caused by Qt bug
+   * Prevent error messages when KT is started up via desktop file
+   * Use multiple tiers when creating torrents with multiple trackers
+   * Make sure stalled time is updated properly before resuming queue
+   * Prevent QM from starting torrents which are being removed
+   * Fix bug preventing max seed time to be set on newly opened torrents
+   * Fix bug causing torrent to be started when user chooses not to
+     start the torrent in the fileselectdlg
+
+-------------------------------------------------------------------
+Thu Oct 30 14:54:09 CET 2008 - stbinner@suse.de
+
+- fix error message appeared when ktorrent is launched (bnc#437840)
+
+-------------------------------------------------------------------
+Mon Oct 20 16:09:28 CEST 2008 - stbinner@suse.de
+
+- update to version 3.1.4:
+  * Make sure user is properly logged in when handling a torrent
+    post in webgui
+  * Prevent PHP injection attacks in webgui
+  * Update file size in CacheFile::growFile, this fixes a SIGBUS error
+  * Fix bug causing infinite DNS lookups in UDP tracker when lookup fails
+  * Remove default label text KSqueezedTextLabel in trackerview
+
+-------------------------------------------------------------------
+Tue Sep 30 10:59:39 CEST 2008 - stbinner@suse.de
+
+- update to version 3.1.3:
+  * Make login into webinterface secure
+  * Check if menus are created properly before showing them
+  * Stop KT from exiting when scanfolder loads a plugin silently and
+    KT is hidden in systray.
+  * Make sure duplicate URL's are not shown in trackerview
+  * Fix problem causing file priorities not to be read at startup
+  * Make sure added.f is filled in with the proper flags for each 
+    peer in the added field of a PEX message (169014)
+  * Make sure it is not required to put http:// for the proxy in
+    the config dialog (169133)
+  * Fix bug causing webseed not to download last chunk of a request
+  * Fix bug which resulted in speeds of webseed not getting calculated
+  * Fix rename of groups when edit is not initialized via context menu
+  * Make toolbars hideable
+  * Make sure that files can not be moved to the location they are
+    already in
+  * Don't start torrents at startup when a torrent is user controlled
+    and over limit
+  * Fix crash in logging code due to 0 pointer
+  * Remove bitoogle from default search engine list
+
+-------------------------------------------------------------------
+Mon Aug 18 23:04:47 CEST 2008 - schwab@suse.de
+
+- Fix use of function address.
+- Fix proxy setting.
+
+-------------------------------------------------------------------
+Sun Aug 17 17:55:14 CEST 2008 - stbinner@suse.de
+
+- update to version 3.1.2: the most notable fixes are a problem
+  which can cause a lot of memory usage, several crashes, and a 
+  bug in the file deselection code. The performance of the GUI
+  and the downloading code has also been improved.
+
+-------------------------------------------------------------------
+Mon Jul 14 11:56:20 CEST 2008 - stbinner@suse.de
+
+- update to version 3.1.1: several minor bugfixes
+
+-------------------------------------------------------------------
+Mon Jun 16 10:04:23 CEST 2008 - stbinner@suse.de
+
+- update to version 3.1:
+   * HTTP webseeding
+   * A mediaplayer plugin, supporting audio and video
+   * Preview sizes can now be configured
+   * A location column has been added in the main view
+   * Assured download and upload speeds per torrent
+   * Group policies, set default speed limits, max seed time, max 
+     ratio and default download location for all torrents of group
+   * A feature to suppress sleep when torrents are running
+   * A redesigned tracker tab, now also showing how many times a
+     torrent was downloaded
+   * Trackers can now be disabled or enabled
+
+-------------------------------------------------------------------
+Sat Jun 14 10:21:40 CEST 2008 - schwab@suse.de
+
+- Fix creation of dnd files.
+
+-------------------------------------------------------------------
+Fri May 16 19:43:25 CEST 2008 - aj@suse.de
+
+- Add missing new line to spec file.
+
+-------------------------------------------------------------------
+Thu May 15 15:33:22 CEST 2008 - dmueller@suse.de
+
+- fix largefile support (bnc#386475)
+- add missing runtime dependencies, remove deprected macro
+
+-------------------------------------------------------------------
+Fri Apr 25 19:23:53 CEST 2008 - stbinner@suse.de
+
+- update to 3.0.2: several crash and other bug fixes
+
+-------------------------------------------------------------------
+Tue Mar 25 13:18:57 CET 2008 - stbinner@suse.de
+
+- update to 3.0.1: long list of minor and less minor bugfixes
+
+-------------------------------------------------------------------
+Tue Feb 19 19:22:36 CET 2008 - stbinner@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Tue Feb 19 14:00:11 CET 2008 - stbinner@suse.de
+
+- update to 3.0, the first KDE4-based release
+
+-------------------------------------------------------------------
+Sun Jan 27 18:11:51 CET 2008 - stbinner@suse.de
+
+- update to 2.2.5, several minor bug fixes
+
+-------------------------------------------------------------------
+Thu Nov 22 04:52:19 CET 2007 - stbinner@suse.de
+
+- update to 2.2.4, fixes a major fileview crash in 2.2.3
+
+-------------------------------------------------------------------
+Wed Nov 21 10:36:10 CET 2007 - stbinner@suse.de
+
+- update to 2.2.3, third bugfix release for version 2.2
+
+-------------------------------------------------------------------
+Thu Oct 11 14:16:54 CEST 2007 - stbinner@suse.de
+
+- hide non-funtioncal DHT preference groupbox (#332221)
+
+-------------------------------------------------------------------
+Wed Sep 26 16:58:34 CEST 2007 - stbinner@suse.de
+
+- update to 2.2.2, second bugfix release for version 2.2
+
+-------------------------------------------------------------------
+Sun Aug 19 18:30:53 CEST 2007 - stbinner@suse.de
+
+- fix build on 10.0
+
+-------------------------------------------------------------------
+Tue Aug 14 09:31:59 CEST 2007 - stbinner@suse.de
+
+- add improved Hungarian translation (#295663)
+
+-------------------------------------------------------------------
+Tue Jul 24 10:51:45 CEST 2007 - bvirlet@suse.de
+
+- update to 2.2.1
+  * Fix file selection bug
+  * Fix several webgui bugs
+  * Make sure plugin list is sorted on the plugin name
+  * Fix bug with UPnP plugin not releasing ports when KT is shutdown
+
+-------------------------------------------------------------------
+Wed Jul  4 11:15:14 CEST 2007 - stbinner@suse.de
+
+- update to final 2.2 release
+
+-------------------------------------------------------------------
+Thu Jun 21 11:19:41 CEST 2007 - stbinner@suse.de
+
+- run fdupes and kde_post_install, fix invalid .desktop file
+
+-------------------------------------------------------------------
+Sun Jun 17 11:55:08 CEST 2007 - stbinner@suse.de
+
+- update to 2.2rc1:
+   * Improved and more consistant GUI
+   * Possibility to open as many views as needed. By default you now
+     get a downloads and uploads tab
+   * Improved search plugin with possibility to open multiple search tabs
+   * Option to fully preallocate diskspace to avoid fragmentation
+   * Option to move finished downloads to a different directory
+   * Progress bar in status bar when searching
+   * Redesigned file selection dialog
+   * Option to copy torrent files to user specified directory
+   * Speed limits for individual torrents
+   * Diskspace monitoring, with option to stop torrents when diskspace
+     is running low
+   * Improved system tray popup
+   * Autorotation of the log file when it gets larger then 10 MB
+   * Import dialog is now network transparent for the torrent file
+   * Statistics plugin which was developed by Krzysztof Kundzicz
+
+-------------------------------------------------------------------
+Mon Jun  4 10:57:58 CEST 2007 - stbinner@suse.de
+
+- fix build on older distributions
+
+-------------------------------------------------------------------
+Sun May 20 16:47:28 CEST 2007 - stbinner@suse.de
+
+- fix package requires
+
+-------------------------------------------------------------------
+Mon May 14 17:37:05 CEST 2007 - coolo@suse.de
+
+- split translations into special package
+
+-------------------------------------------------------------------
+Tue Apr 24 09:45:44 CEST 2007 - stbinner@suse.de
+
+- update to 2.1.4:
+   * Fixed crash in parsing of DHT messages
+   * Fixed problem with files with .. in their name
+   * ScanFolder can now handle incomplete torrent files properly
+
+-------------------------------------------------------------------
+Tue Apr  3 01:23:15 CEST 2007 - dmueller@suse.de
+
+- update to 2.1.3:
+   * really fix file overwriting vulnerability
+   * crash fix
+
+-------------------------------------------------------------------
+Sat Mar 10 15:15:55 CET 2007 - dmueller@suse.de
+
+- update to 2.1.2:
+  * file overwriting vulnerability
+  * chunk id overflow vulnerability
+
+-------------------------------------------------------------------
+Tue Mar  6 10:39:55 CET 2007 - stbinner@suse.de
+
+- update to version 2.1.1: 
+   * Rewrite of webserver
+   * New webgui : coldmilk
+   * Networking thread has been split up in 2 threads, one for 
+     upload, one for download
+   * Significant speed improvements when downloading over a LAN
+
+-------------------------------------------------------------------
+Fri Feb  9 12:21:30 CET 2007 - stbinner@suse.de
+
+- port and re-enable patch 16
+
+-------------------------------------------------------------------
+Mon Feb  5 20:55:04 CET 2007 - stbinner@suse.de
+
+- update to version 2.1 release
+
+-------------------------------------------------------------------
+Thu Jan  4 10:38:09 CET 2007 - stbinner@suse.de
+
+- update to version 2.1rc1:
+  * Peer Exchange (µTorrent compatible)
+  * Zeroconf plugin
+
+-------------------------------------------------------------------
+Sat Nov 25 21:58:08 CET 2006 - wstephenson@suse.de
+
+- update to version 2.1beta1
+  * Switched the GUI to an IDEAl style GUI (like KDevelop)
+  * WebGUI plugin
+  * RSS plugin
+  * Improvements in down and upload performance
+  * Grouping feature to put torrents into groups
+  * Improved search plugin, which now allows multiple searches
+  * Many bug fixes
+
+-------------------------------------------------------------------
+Tue Oct 17 11:58:08 CEST 2006 - dmueller@suse.de
+
+- remove geoIP database due to license issues (#188562)
+
+-------------------------------------------------------------------
+Mon Oct 16 12:09:07 CEST 2006 - dmueller@suse.de
+
+- fix build on PPC
+
+-------------------------------------------------------------------
+Tue Oct 10 21:13:45 CEST 2006 - stbinner@suse.de
+
+- update to version 2.0.3
+  - fixes some download speed issues
+  - fixes several other minor bugs
+
+-------------------------------------------------------------------
+Wed Aug 30 19:17:19 CEST 2006 - stbinner@suse.de
+
+- update to version 2.0.2
+  - fixes a data corruption bug
+  - should get the downloading working properly again
+  
+-------------------------------------------------------------------
+Mon Aug 21 22:02:10 CEST 2006 - stbinner@suse.de
+
+- update to version 2.0.1
+  - fixes several bugs
+  - features some performance improvements
+
+-------------------------------------------------------------------
+Wed Aug  9 02:48:29 CEST 2006 - stbinner@suse.de
+
+- update to version 2.0 (no changelog provided)
+  - bugfixes
+  - translation updates
+
+-------------------------------------------------------------------
+Wed Jul 19 09:27:59 CEST 2006 - stbinner@suse.de
+
+- update to version 2.0rc1
+   * bugfixes and polishing
+
+-------------------------------------------------------------------
+Tue Jun  6 13:30:26 CEST 2006 - stbinner@suse.de
+
+- don't install with kdelibs conflicting x-bittorrent.desktop
+
+-------------------------------------------------------------------
+Tue May 23 17:28:15 CEST 2006 - adrian@suse.de
+
+- update to version 2.0beta1
+  * Speed improvements
+  * Protocol encryption
+  * Bandwith scheduling
+  * File prioritization for multifile torrents
+  * Directory scanner for torrent files
+  * Many bug fixes
+- disable experimental DHT for now
+
+-------------------------------------------------------------------
+Sun Apr 16 22:01:49 CEST 2006 - dkukawka@suse.de
+
+- updated/added upstream commited changes:
+  - ktorrent-fix-german-translation.diff: updated german 
+    translation file
+  - ktorrent-fix-i18n-strings.diff: fixed typo in i18n string and 
+    merged back to translations 
+
+-------------------------------------------------------------------
+Tue Mar  7 02:28:18 CET 2006 - dkukawka@suse.de
+
+- fixed some strings in german translation (related to bug #154683
+  and upstram changes)
+
+-------------------------------------------------------------------
+Thu Mar  2 14:10:17 CET 2006 - dkukawka@suse.de
+
+- fixed german translation for the plugin settings
+
+-------------------------------------------------------------------
+Tue Feb  7 01:44:42 CET 2006 - ro@suse.de
+
+- fix build for < 10.1 
+
+-------------------------------------------------------------------
+Wed Feb  1 10:23:35 CET 2006 - stbinner@suse.de
+
+- update to 1.2 final
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 22:00:47 CET 2006 - stbinner@suse.de
+
+- update to 1.2rc2
+
+-------------------------------------------------------------------
+Mon Jan 16 14:33:38 CET 2006 - dmueller@suse.de
+
+- use -fstack-protector 
+
+-------------------------------------------------------------------
+Thu Jan  5 16:13:04 CET 2006 - dkukawka@suse.de
+
+- added patches:
+  - ktorrent-fix-columns.diff (Added focus to all collums in the 
+    ListView objects)
+  - ktorrent-fix-columns_save_restore_ktorrentview.diff (fix store
+    columns settings and enable change wide of columns)
+  - ktorrent-fix-KBytesPerSecToString.diff
+  - ktorrent-fix-keep_seeding.diff (fixed torrentFinished to 
+    respect "Keep seeding after download has finished")
+  - ktorrent-fix-remove-unneeded.diff (removed unneeded code)
+  - ktorrent-fix-compiler_warning.diff
+
+-------------------------------------------------------------------
+Mon Jan  2 11:27:26 CET 2006 - stbinner@suse.de
+
+- update to 1.2rc1 (#135481)
+
+-------------------------------------------------------------------
+Thu Oct 13 14:03:55 CEST 2005 - dmueller@suse.de
+
+- update to BRANCH 
+
+-------------------------------------------------------------------
+Tue Oct 11 15:37:11 CEST 2005 - dmueller@suse.de
+
+- update 1.1 final 
+
+-------------------------------------------------------------------
+Wed Sep  7 09:56:26 CEST 2005 - adrian@suse.de
+
+- remove links to some search engine with maybe legal problems
+
+-------------------------------------------------------------------
+Tue Sep  6 11:39:25 CEST 2005 - dmueller@suse.de
+
+- update 1.1rc1 (#104905) 
+
+-------------------------------------------------------------------
+Fri Aug  5 14:14:18 CEST 2005 - adrian@suse.de
+
+- fix build for released non-PLUS distributions
+
+-------------------------------------------------------------------
+Fri Jul 22 19:48:22 CEST 2005 - adrian@suse.de
+
+- fix file list
+
+-------------------------------------------------------------------
+Fri Jul 22 14:00:06 CEST 2005 - adrian@suse.de
+
+- create initial package of version 1.0
+
