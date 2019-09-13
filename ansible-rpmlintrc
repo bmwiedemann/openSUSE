@@ -1,0 +1,4 @@
+# Modules are scripts by definition but are executed from ansible not directly
+addFilter("non-executable-script.*/usr/lib/python.*/site-packages/ansible/modules/.*");
+# same as utils and runner script
+addFilter("non-executable-script.*/usr/lib/python.*/site-packages/ansible/(cli|galaxy|module_utils|plugins/action|runner|utils)/.*.py");
