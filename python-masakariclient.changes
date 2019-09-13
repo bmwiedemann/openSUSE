@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Mon Apr  8 12:19:25 UTC 2019 - cloud-devel@suse.de
+
+- update to version 5.4.0
+  - Add --os-interface and --os-region-name options
+  - Update the hacking to latest
+  - Update the outdated URL in HACKING.rst
+  - Add Python 3.6 classifier to setup.cfg
+  - Run all jobs by default using python3
+  - Fix osc command issue
+  - Change openstack-dev to openstack-discuss
+  - Add api_version support
+  - Update reno for stable/rocky
+  - Display progress_details of the notification
+  - Use template for lower-constraints
+  - Delete segment and host shouldn't ignore not found error
+  - Deprecate masakari CLI
+  - import zuul job settings from project-config
+
+-------------------------------------------------------------------
+Sat Sep  1 09:03:19 UTC 2018 - cloud-devel@suse.de
+
+- update to version 5.2.0
+  - fix tox python3 overrides
+  - Update for upcoming openstacksdk changes
+  - Re-factor test cases to reduce code
+  - Avoid tox_install.sh for constraints support
+  - Add support for auto_priority, rh_priority recovery method
+  - Updated from global requirements
+  - add lower-constraints job
+  - Remove masakariclient's proxy class
+
+-------------------------------------------------------------------
+Fri Feb 23 13:09:21 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Mon Jan 15 11:44:37 UTC 2018 - cloud-devel@suse.de
+
+- update to version 4.0.0
+  - Fix failing test case for PY3
+  - Bump openstacksdk to 0.9.13
+  - Use os-testr and add PY35 support
+  - Improve command arguments
+  - Change the base class of osc.v1.DeleteHost
+  - Add assertions to UT code
+  - Re-factor test cases to reduce code
+  - [Fix gate]Update test requirement
+  - Remove unnecessary return statement
+  - Fix failing gate jobs by fixing constraints support
+  - Add support for auto_priority, rh_priority recovery method
+  - Remove inproper comment for APIs.
+  - Enable to specify name and ID when operating segments and hosts
+
+-------------------------------------------------------------------
+Mon Aug  7 15:34:38 UTC 2017 - tbechtold@suse.com
+
+- Initial packaging (version 3.0.1)
