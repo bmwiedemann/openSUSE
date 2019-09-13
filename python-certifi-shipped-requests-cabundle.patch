@@ -1,0 +1,10 @@
+Index: certifi-2019.3.9/certifi/core.py
+===================================================================
+--- certifi-2019.3.9.orig/certifi/core.py
++++ certifi-2019.3.9/certifi/core.py
+@@ -12,4 +12,4 @@ import os
+ def where():
+     f = os.path.dirname(__file__)
+ 
+-    return os.path.join(f, 'cacert.pem')
++    return "/etc/ssl/ca-bundle.pem"
