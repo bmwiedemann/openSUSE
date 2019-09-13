@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7db201cb77836e6a3f381235d688a79f</srcmd5>
+    <version>0.003</version>
+    <time>1375783551</time>
+    <user>coolo</user>
+    <comment>needed by MooseX stack</comment>
+    <requestid>185465</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7db201cb77836e6a3f381235d688a79f</srcmd5>
+    <version>0.003</version>
+    <time>1379663760</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7db201cb77836e6a3f381235d688a79f</srcmd5>
+    <version>0.003</version>
+    <time>1409302398</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>
