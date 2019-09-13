@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2795cd46452c909806cdc97d8c1a4528</srcmd5>
+    <version>0.10.1</version>
+    <time>1532445098</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission</comment>
+    <requestid>623682</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c7fd97b5ec0a285770bd2f6d899bb68</srcmd5>
+    <version>0.10.1</version>
+    <time>1540448626</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643371</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5b65b65f9dca8d3abccef86aa464231d</srcmd5>
+    <version>0.11</version>
+    <time>1558129361</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>703472</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1392d198054142b947595dc85c9ee956</srcmd5>
+    <version>0.11.1</version>
+    <time>1567092038</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>726808</requestid>
+  </revision>
+</revisionlist>
