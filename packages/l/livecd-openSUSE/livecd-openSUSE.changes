@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 16 17:37:10 UTC 2019 - Yuchen Lin <mlin+factory@suse.de>
+
+- list-x11: ignore midori-lang and gparted-lang
+- list-gnome: ignore some more packages on GNOME Live
+  * gparted-lang, vinagre-lang, gedit-lang and fwupd-lang
+
+-------------------------------------------------------------------
 Mon Sep 16 06:52:25 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Add shim for x86_64 explicitly
