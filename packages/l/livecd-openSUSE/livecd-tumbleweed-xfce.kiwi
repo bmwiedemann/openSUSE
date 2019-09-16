@@ -157,6 +157,7 @@
     <ignore name="sane-backends"/>
     <package name="branding-openSUSE"/>
     <package name="gfxboot" arch="i686,x86_64"/>
+    <package name="shim" arch="x86_64"/>
     <package name="aaa_base" replaces="glibc-32bit"/>
     <ignore name="glibc-32bit"/>
     <package name="aaa_base" replaces="libvdpau_r300"/>

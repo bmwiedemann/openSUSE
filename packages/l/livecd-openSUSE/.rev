@@ -562,4 +562,12 @@
     <user>dimstar_suse</user>
     <comment>- Ignore evolution-data-server-lang on the GNOME live media.</comment>
   </revision>
+  <revision rev="65" vrev="65">
+    <srcmd5>ef17195a7a1f5d9267d29b5108a919e5</srcmd5>
+    <version>unknown</version>
+    <time>1568622937</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731144</requestid>
+  </revision>
 </revisionlist>
