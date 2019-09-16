@@ -584,4 +584,11 @@
     <user>maxlin_factory</user>
     <comment>fix typo</comment>
   </revision>
+  <revision rev="68" vrev="68">
+    <srcmd5>02988afe2fbc3f6c65d1301a36c1a7e6</srcmd5>
+    <version>unknown</version>
+    <time>1568655297</time>
+    <user>maxlin_factory</user>
+    <comment>remove gedit-lang and fwupd-lang on GNOME Live</comment>
+  </revision>
 </revisionlist>

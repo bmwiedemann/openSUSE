@@ -65,6 +65,8 @@ install gparted
 
 buildignore gparted-lang
 buildignore vinagre-lang
+buildignore gedit-lang
+buildignore fwupd-lang
 
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
