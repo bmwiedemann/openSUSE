@@ -46,7 +46,7 @@ buildignore vim-data
 install gparted
 install midori
 # Really ran of out space
-buildignore gpartd-lang
+buildignore gparted-lang
 buildignore midori-lang
 
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
