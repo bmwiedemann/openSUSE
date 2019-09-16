@@ -6,8 +6,10 @@ rsync="rsync -a \
   --delete \
   --delete-excluded"
 $rsync /mounts/work/SRC/openSUSE\:Factory/ in/
-( cd ~/f/_project ; osc up )
-$rsync ~/f/_project/ in/_project/
+p="openSUSE:Factory/_project"
+test -e $p || osc co "$p"
+osc up "$p"
+$rsync "./$p/" in/_project/
 mkdir -p ~/.cache
 rm -rf packages
 scripts/mappkgs.pl in packages
