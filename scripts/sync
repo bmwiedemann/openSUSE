@@ -10,6 +10,9 @@ p="openSUSE:Factory/_project"
 test -e $p || osc co "$p"
 osc up "$p"
 $rsync "./$p/" in/_project/
+test -e ${p}_meta || osc co -M "$p" -o ${p}_meta
+osc up "${p}_meta"
+rsync -a "./${p}_meta/"* in/_project/
 mkdir -p ~/.cache
 rm -rf packages
 scripts/mappkgs.pl in packages
