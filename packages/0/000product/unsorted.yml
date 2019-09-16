@@ -18927,7 +18927,6 @@ unsorted:
   - python2-python-openid-cla 
   - python2-python-openid-teams 
   - python2-python-pam 
-  - python2-python-pseudorandom 
   - python2-python-ptrace 
   - python2-python-qdatamatrix 
   - python2-python-qnotifications 
@@ -19206,7 +19205,6 @@ unsorted:
   - python2-storm-postgresql 
   - python2-storm-twisted 
   - python2-straight-plugin 
-  - python2-streamz 
   - python2-strict-rfc3339 
   - python2-structlog 
   - python2-subgrab 
@@ -20151,6 +20149,7 @@ unsorted:
   - python3-dephell-shells 
   - python3-dephell-specifier 
   - python3-dephell-venvs 
+  - python3-dephell-versioning 
   - python3-deprecation 
   - python3-derpconf 
   - python3-devel 
@@ -20337,6 +20336,7 @@ unsorted:
   - python3-finance_enums 
   - python3-fire 
   - python3-first 
+  - python3-fissix 
   - python3-fixtures 
   - python3-flake8 
   - python3-flake8-blind-except 
