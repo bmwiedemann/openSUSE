@@ -1,10 +1,13 @@
 #!/bin/sh
-rsync -a \
+rsync="rsync -a \
   --max-size=999000k \
   --exclude=DELETED \
+  --exclude=.osc \
   --delete \
-  --delete-excluded \
-  /mounts/work/SRC/openSUSE\:Factory/ in/
+  --delete-excluded"
+$rsync /mounts/work/SRC/openSUSE\:Factory/ in/
+( cd ~/f/_project ; osc up )
+$rsync ~/f/_project/ in/_project/
 mkdir -p ~/.cache
 rm -rf packages
 scripts/mappkgs.pl in packages
