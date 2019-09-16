@@ -132,4 +132,15 @@
     <comment></comment>
     <requestid>704261</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef3733f3568910b1f71e7c8599019dc0</srcmd5>
+    <version>2+a8f6c841</version>
+    <time>1568623976</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to revision a8f6c841 because of build errors on Tumbleweed.
+ - No changelog available.
+- remove fix-gcc9-renameat.patch
+</comment>
+    <requestid>730995</requestid>
+  </revision>
 </revisionlist>
