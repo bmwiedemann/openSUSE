@@ -17,7 +17,7 @@
 
 
 Name:           perl-Verilog-Perl
-Version:        3.466
+Version:        3.468
 Release:        0
 %define cpan_name Verilog-Perl
 Summary:        Verilog language utilities and parsing
@@ -31,7 +31,6 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(Pod::Usage) >= 1.34
-Requires:       perl(Digest::SHA)
 Requires:       perl(Pod::Usage) >= 1.34
 %{perl_requires}
 # MANUAL BEGIN
