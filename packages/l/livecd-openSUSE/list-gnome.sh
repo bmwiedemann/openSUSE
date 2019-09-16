@@ -63,6 +63,9 @@ buildignore gnome-weather
 
 install gparted
 
+buildignore gpartd-lang
+buildignore vinagre-lang
+
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
 
