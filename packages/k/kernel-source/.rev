@@ -4804,4 +4804,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>turn DTBs back on &amp; enable STACKPROTECTOR_STRONG &amp; 5.2.13 &amp; 5.2.12</comment>
     <requestid>728993</requestid>
   </revision>
+  <revision rev="505" vrev="1">
+    <srcmd5>40070cc6105466acba246dcaac270319</srcmd5>
+    <version>5.2.14</version>
+    <time>1568623747</time>
+    <user>maxlin_factory</user>
+    <comment>enable SLAB_FREELIST_HARDENED &amp; lower disk on ARM &amp; 5.2.14</comment>
+    <requestid>730082</requestid>
+  </revision>
 </revisionlist>

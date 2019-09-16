@@ -23,10 +23,10 @@ Release:        0
 Summary:        WebSocket and WAMP in Python for Twisted and asyncio
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://crossbar.io/autobahn
+URL:            https://github.com/crossbario/txaio
 Source:         https://files.pythonhosted.org/packages/source/t/txaio/txaio-%{version}.tar.gz
+Patch0:         pytest4.patch
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module mock}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python2-devel
@@ -34,14 +34,15 @@ BuildRequires:  python3-testsuite
 Requires:       python-six
 Recommends:     python-Twisted >= 12.1.0
 Recommends:     python-zope.interface >= 3.6
+BuildArch:      noarch
 %ifpython2
 Requires:       python-future
 Recommends:     python-trollius
 %endif
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Twisted >= 12.1.0}
-BuildRequires:  %{python_module pytest < 4}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
@@ -52,6 +53,7 @@ asynchronous Remote Procedure Calls and Publish & Subscribe on top of WebSocket.
 
 %prep
 %setup -q -n txaio-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -61,7 +63,7 @@ asynchronous Remote Procedure Calls and Publish & Subscribe on top of WebSocket.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m pytest -k 'not test_sdist'
+%pytest -k 'not test_sdist'
 
 %files %{python_files}
 %license LICENSE

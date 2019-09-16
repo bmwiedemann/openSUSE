@@ -40,15 +40,19 @@ Flask-RESTful provides the building blocks for creating a REST API.
 
 %prep
 %setup -q -n Flask-RESTful-%{version}
+sed -i '1{/^#!/d}' flask_restful/__version__.py
 
 %build
 %python_build
 
 %install
 %python_install
-%py_compile %{buildroot}%{python_sitelib}
-%py3_compile %{buildroot}%{python3_sitelib}/flask_restful/
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/flask_restful/
+%{python_expand \
+$python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/flask_restful/
+$python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/flask_restful/
+}
+
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %dir %{python_sitelib}/flask_restful

@@ -110,4 +110,16 @@
   * pytest5.patch</comment>
     <requestid>725261</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2a35ead7caf44997c11f965cd828e8f9</srcmd5>
+    <version>3.6.0</version>
+    <time>1568623841</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 3.6.0:
+  * Add support for Named Pipes
+  * Removed Transfer-Encoding: chunked header
+  * Accept non-GET request for starting websocket handshake on server side
+- Drop merged patch pytest5.patch</comment>
+    <requestid>730699</requestid>
+  </revision>
 </revisionlist>

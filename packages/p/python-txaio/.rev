@@ -32,4 +32,13 @@
     <comment></comment>
     <requestid>728517</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>04adde99b3dc36186939738ee9ded7ab</srcmd5>
+    <version>18.8.1</version>
+    <time>1568623836</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch to build with newer pytest releases:
+  * pytest4.patch</comment>
+    <requestid>730692</requestid>
+  </revision>
 </revisionlist>

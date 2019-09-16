@@ -50,6 +50,7 @@ BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(zlib)
 %if %{with qt5}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Network)

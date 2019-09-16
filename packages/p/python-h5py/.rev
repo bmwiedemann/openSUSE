@@ -114,4 +114,15 @@
     <comment></comment>
     <requestid>720115</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f65292f3125ee806767fc7d8e3720c7f</srcmd5>
+    <version>2.10.0</version>
+    <time>1568623874</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.10.0:
+  * no upstream changelog provided
+- Update patch remove_unittest2.patch
+- Remove upstream merged fix_failing_x86_test.patch</comment>
+    <requestid>730750</requestid>
+  </revision>
 </revisionlist>

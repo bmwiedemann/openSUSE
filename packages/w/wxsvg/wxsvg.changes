@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep 14 12:50:32 UTC 2019 - Mariusz Fik <fisiu@opensuse.org>
+
+- Update to 1.5.20:
+  * added handling of fill-rule
+  * added handling of spreadMethod
+  * added handling of clipPath
+  * added support of dash-offset
+  * added support of mask for path element
+  * fixed handling of pt units
+  * fixed fill pattern with opacity
+  * fixed handling of referenced patterns
+- Update to 1.5.19:
+  * fixed rendering polyline element
+  * fixed drawing a cubic Bézier curve if the previous command was not
+    an c or s
+- Update to 1.5.18:
+  * wxFfmpegMediaDecoder: fixed support of ffmpeg 3.4.x
+- Update to 1.5.17:
+  * wxSVGUseElement: fixed GetBBox() and GetResultBBox()
+
+-------------------------------------------------------------------
 Thu Feb 14 12:49:45 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.5.16

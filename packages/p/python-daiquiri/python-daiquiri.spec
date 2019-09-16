@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-daiquiri
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Library to configure Python logging
 License:        Apache-2.0
@@ -51,7 +51,7 @@ provides some custom formatters and handlers.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_version} daiquiri/tests
+%pytest daiquiri/tests
 
 %files %{python_files}
 %license LICENSE

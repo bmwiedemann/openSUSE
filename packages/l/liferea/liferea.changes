@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Sep 12 15:34:31 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.12.6:
+  * #658: Add confirmation dialog when adding duplicate subscription
+  * Fixes #689: When resuming from sleep feeds were being fetched
+    before Wifi came up
+  * Fixes #685: Headerbar plugin "Mark All Read" button is not
+    feed-specific
+  * Fixes #549: Scrollbars not always present in the headline area
+  * Fixes #543: Next update overrides HTML5 enrichment
+  * Fixes overly wide label in enclosure preferences dialog
+  * Dropped unencrypted warning from auth dialog (not true anymore)
+  * #688: Adding translatable tooltips for the headerbar plugin
+  * #665: Webkit browser now supplies 'Liferea' component in
+    user agent
+  * #664: Added "Mark All As Read" button to headerbar plugin
+  * #620: Added flatpak JSON
+  * #579: Added item list column drag and drop reordering
+  * #436, #662: Move from GnomeKeyring to libsecret
+  * Fixes #663: Correct instapaper sharing link
+  * Fixes #661: Update sharing links
+  * Fixes #271: Consistent over usage of CPU (trigger by
+    "Next Unread" loop)
+  * #472, #632: Dropping Inoreader support (API broke)
+  * Fixes #660: Added installable plugin to change accels
+  * Fixes #654: Segfault on date out of range
+  * Fixes #651: Fixes Free Music Archive link in default OPMLs
+  * Fixes #649: Switch from persistent to session-only cookies
+  * Fixes #645, #646: unread count of vfolder
+  * Fixes #637: Extra keywords in .desktop file
+    (syndication; rss; atom)
+  * Fixes #557: Updating counters for remote sources
+  * Updated cookie usage hint in FAQ
+  * #634: Added setting for custom download commands
+  * #614: GTK Headerbar support via plugin
+  * #608: Refactoring UI code to switch to GAction and GtkBuilder
+  * Note: this implies not having icons in the main menu anymore
+  * which were still there for all non-GNOME users (see #626).
+  * #589: Item list view column order rework as a preparation
+    for possible real column drag&drop. Introduces a new
+    DConf setting for the column order.
+  * Fixes #280: Mark read toolbar button always disabled for
+    search folders
+  * Fixes #591: Please add a safety question when
+    "marking all read"
+  * Fixes #625: Avoid exception in trayicon.py
+  * Fixes #627: GnomeKeyring plugin fails to activate when
+    keyring doesn't exist
+  * Fixes #630: Fix feed list selection after DnD
+  * Fixes #633: Big Memory leak in date code
+  * Adding a plugin installer plugin that allows discovering
+    and automatically installing 3rd party plugins
+  * #585: Drop language from user agent to increase privacy
+  * #583: Add transmission-gtk and aria2 as download tool options
+  * #495: New command line option --disable-plugins (-p) to start
+    with all plugins disabled.
+  * Fixes #610: Liferea not showing up in GNOME Software
+  * Fixes #604: Correctly print error message when failing to 
+    unlock GNOME keyring
+  * Fixes #602: CSS style for GTK link colors not used
+  * Fixes #581: Redirect location updates and adds HTTP 308
+    (RFC 7538) support
+  * Fixes #578: Unable to set unread items in bold
+  * #584: Fixes broken OPML feed list entries
+  * #577: Fixes newsbin doc typo
+  * #584: Added Norwegian feed list
+  * Translation updates
+- rebase liferea-openSUSE-feeds.patch
+- fixes boo#1150009
+
+-------------------------------------------------------------------
 Thu Dec 28 18:21:54 UTC 2017 - zaitor@opensuse.org
 
 - Update to version 1.12.1:

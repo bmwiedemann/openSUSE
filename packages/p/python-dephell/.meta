@@ -1,0 +1,5 @@
+<package name="python-dephell" project="openSUSE:Factory">
+  <title></title>
+  <description>Python project management. Manage packages: convert between formats, lock, install, resolve, isolate, test, build graph, show outdated, audit. Manage venvs, build package, bump version</description>
+  <devel project="devel:languages:python" package="python-dephell"/>
+</package>

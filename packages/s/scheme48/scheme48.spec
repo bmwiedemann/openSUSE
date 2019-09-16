@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 #!BuildIgnore:  scheme48-vm
 Name:           scheme48
@@ -103,6 +104,7 @@ Scheme process in a buffer.  Adapted from cmuscheme.el
 %patch4 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %add_optflags -Wall -Wno-return-type -fPIC -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=500
 
 %configure --docdir=%{_datadir}/doc/packages/%{name}

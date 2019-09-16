@@ -52,7 +52,7 @@ rm -rf pymediainfo.egg-info
 
 %check
 export LANG=en_US.UTF-8
-%{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python %{_bindir}/py.test -v \
+%{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{_bindir}/py.test-%{$python_version} -v \
   -k 'not MediaInfoURLTest and not MediaInfoLibraryTest'
 }
 

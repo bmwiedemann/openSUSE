@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aiohttp
-Version:        3.5.4
+Version:        3.6.0
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
-Patch0:         pytest5.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module async_timeout >= 3.0}
 BuildRequires:  %{python_module attrs >= 17.3.0}
@@ -94,7 +93,6 @@ HTML documentation on the API and examples for %{name}.
 
 %prep
 %setup -q -n aiohttp-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"

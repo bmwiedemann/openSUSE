@@ -1,7 +1,7 @@
 #
 # spec file for package pixmap
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pixmap
-Url:            ftp://ftp.x.org/contrib/applications/pixmap
-BuildRequires:  imake
-BuildRequires:  rgb
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xaw7)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xmu)
-BuildRequires:  pkgconfig(xpm)
-BuildRequires:  pkgconfig(xt)
-Provides:       pixmap26
-Conflicts:      mmextra
 Version:        2.6
 Release:        0
-Provides:       pixmp = %version
-Obsoletes:      pixmp <= %version
 Summary:        XPM Pixel Editor for the X Window System
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Bitmap Editors
+URL:            https://ftp.gwdg.de/pub/x11/x.org/contrib/applications/pixmap/
 Source:         pixmap2.6.tar.gz
 # upstream patches
 Patch0:         pixmap_2.6.patch1.gz
@@ -46,27 +34,39 @@ Patch4:         pixmap2.6.patch
 Patch5:         pixmap2.6-ia64.patch
 Patch6:         pixmap-nonvoid.patch
 Patch7:         pixmap-xorg7.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  imake
+BuildRequires:  pkgconfig
+BuildRequires:  rgb
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xaw7)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xmu)
+BuildRequires:  pkgconfig(xpm)
+BuildRequires:  pkgconfig(xt)
+Conflicts:      mmextra
+Provides:       pixmap26
+Provides:       pixmp = %{version}
+Obsoletes:      pixmp <= %{version}
 
 %description
 Pixmap is a program which enables you to edit XPM-files (colour
 bitmaps). You can use them with every commonly used iconmanager and
 even incorporate them in your own desktop environment.
 
-%define _xorg7libs %_lib
+%define _xorg7libs %{_lib}
 %define _xorg7libs32 lib
 %define _xorg7bin bin
-%define _xorg7_mandir %_mandir
+%define _xorg7_mandir %{_mandir}
 %define _xorg7pixmaps include
 %define _xorg7libshare share
-%define _xorg7_xkb /usr/share/X11/xkb
-%define _xorg7_termcap /usr/lib/X11/etc
-%define _xorg7_serverincl /usr/include/xorg
-%define _xorg7_fonts /usr/share/fonts
-%define _xorg7_prefix /usr
+%define _xorg7_xkb %{_datadir}/X11/xkb
+%define _xorg7_termcap %{_prefix}/lib/X11%{_sysconfdir}
+%define _xorg7_serverincl %{_includedir}/xorg
+%define _xorg7_fonts %{_datadir}/fonts
+%define _xorg7_prefix %{_prefix}
 
 %prep
-%setup -n pixmap
+%setup -q -n pixmap
 %patch0
 %patch1
 %patch2
@@ -80,25 +80,23 @@ even incorporate them in your own desktop environment.
 rm -rf X11
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 xmkmf -a
-make -C SelFile CCOPTIONS="$RPM_OPT_FLAGS -DPIC -fPIC"
-make CCOPTIONS="$RPM_OPT_FLAGS -DPIC -fPIC"
+make %{?_smp_mflags} -C SelFile CCOPTIONS="%{optflags} -DPIC -fPIC"
+make %{?_smp_mflags} CCOPTIONS="%{optflags} -DPIC -fPIC"
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
-make DESTDIR=$RPM_BUILD_ROOT install.man
+%make_install
+make DESTDIR=%{buildroot} install.man
 
 %files
-%defattr(-,root,root)
-/usr/%{_xorg7bin}/pixmap
-/usr/%{_xorg7libs32}/X11/Pixmap
-%dir /usr/%{_xorg7libshare}/X11/app-defaults
-%config /usr/%{_xorg7libshare}/X11/app-defaults/Pixmap
-/usr/%{_xorg7libs}/libXgnu.a
+%license COPYRIGHT
+%doc README CHANGES
+%config %{_prefix}/%{_xorg7libshare}/X11/app-defaults/Pixmap
+%dir %{_prefix}/%{_xorg7libshare}/X11/app-defaults
 %doc %{_xorg7_mandir}/man1/pixmap.1x.gz
-%doc README COPYRIGHT CHANGES  
-
-%clean
-rm -rf "$RPM_BUILD_ROOT"
+%{_prefix}/%{_xorg7bin}/pixmap
+%{_prefix}/%{_xorg7libs32}/X11/Pixmap
+%{_prefix}/%{_xorg7libs}/libXgnu.a
 
 %changelog

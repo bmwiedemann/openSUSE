@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.2
-%define patchversion 5.2.13
+%define patchversion 5.2.14
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules none
@@ -64,9 +64,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.2.13
+Version:        5.2.14
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gacd8e88
+Release:        <RELEASE>.g374b0ae
 %else
 Release:        0
 %endif
@@ -171,10 +171,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-acd8e88224e971d4efd3d9b1a86c87b58ac24561
-Provides:       kernel-srchash-acd8e88224e971d4efd3d9b1a86c87b58ac24561
+Provides:       kernel-%build_flavor-base-srchash-374b0aeb68b51de45c003859d7c4534017a89038
+Provides:       kernel-srchash-374b0aeb68b51de45c003859d7c4534017a89038
 # END COMMON DEPS
-Provides:       %name-srchash-acd8e88224e971d4efd3d9b1a86c87b58ac24561
+Provides:       %name-srchash-374b0aeb68b51de45c003859d7c4534017a89038
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
@@ -530,6 +530,9 @@ case %cpu_arch in
     armv*)
         MAKE_ARGS="$MAKE_ARGS ARCH=arm"
         ;;
+    riscv*)
+        MAKE_ARGS="$MAKE_ARGS ARCH=riscv"
+        ;;
     *)
         MAKE_ARGS="$MAKE_ARGS ARCH=%cpu_arch"
         ;;
@@ -707,6 +710,11 @@ add_vmlinux()
     add_vmlinux --compressed
     image=Image
     cp -p arch/arm64/boot/$image %buildroot/boot/$image-%kernelrelease-%build_flavor
+%endif
+%ifarch riscv64
+    add_vmlinux --compressed
+    image=Image
+    cp -p arch/riscv/boot/$image %buildroot/boot/$image-%kernelrelease-%build_flavor
 %endif
 
 # sign the modules, firmware and possibly the kernel in the buildservice

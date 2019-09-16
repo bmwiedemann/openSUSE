@@ -108,4 +108,13 @@ I have posted a mail introducing the package to the mailing list. You can find i
     <comment></comment>
     <requestid>577867</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>fcff38140ae9559b7aba603d1c04c8c9</srcmd5>
+    <version>0.37</version>
+    <time>1568623934</time>
+    <user>maxlin_factory</user>
+    <comment>- Added vorbisgain-c99.patch ensuring compatibility with C99.
+  This solves bsc#1150013.</comment>
+    <requestid>730808</requestid>
+  </revision>
 </revisionlist>

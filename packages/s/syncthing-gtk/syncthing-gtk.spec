@@ -1,7 +1,7 @@
 #
 # spec file for package syncthing-gtk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %global __requires_exclude typelib\\((Caja|Nautilus|Nemo)\\)
 %define _name   syncthing_gtk
 Name:           syncthing-gtk
-Version:        0.9.4.3
+Version:        0.9.4.4
 Release:        0
 Summary:        Syncthing Gtk-based graphical interface
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
-Url:            https://github.com/syncthing/syncthing-gtk
+URL:            https://github.com/syncthing/syncthing-gtk
 Source:         https://github.com/syncthing/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM syncthing-gtk-fix-config-read.patch sor.alexei@meowr.ru -- Fix configuration read with non-ASCII locales.
 Patch0:         syncthing-gtk-fix-config-read.patch
@@ -56,6 +56,7 @@ Requires:       python2-gobject
 Requires:       python2-gobject-Gdk
 Requires:       python2-gobject-cairo
 Requires:       python2-python-dateutil
+Requires:       python2-xml
 %else
 BuildRequires:  python-devel
 BuildRequires:  python-setuptools
@@ -65,6 +66,7 @@ Requires:       python-dateutil
 Requires:       python-gobject
 Requires:       python-gobject-Gdk
 Requires:       python-gobject-cairo
+Requires:       python-xml
 %endif
 
 %description
@@ -105,16 +107,6 @@ python2 setup.py install \
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}/
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
 %license LICENSE
 %doc README.md
@@ -126,6 +118,8 @@ python2 setup.py install \
 %{_datadir}/icons/hicolor/*/apps/%{name}*.png
 %{_datadir}/icons/hicolor/*/emblems/emblem-*.png
 %{_datadir}/icons/hicolor/*/status/si-*.png
+%dir %{_datadir}/metainfo/
+%{_datadir}/metainfo/*syncthingtk.appdata.xml
 %{_datadir}/pixmaps/*.png
 %{_mandir}/man1/%{name}.1%{?ext_man}
 

@@ -1,7 +1,7 @@
 #
 # spec file for package gflags
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,7 @@ This package contains the static libraries for gflags.
 %setup -q
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 CFLAGS="%{optflags} -pthread"
 CXXFLAGS="%{optflags} -pthread"
 export CFLAGS CXXFLAGS

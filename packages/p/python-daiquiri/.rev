@@ -50,4 +50,13 @@
     <comment>- Do not use %pytest to fix build with SLE12_SP4</comment>
     <requestid>692278</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>23bd68ca4ce42aad7de49fc18d46fc7e</srcmd5>
+    <version>1.6.0</version>
+    <time>1568623798</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.6.0:
+  * Fix getLogger when called twice and passing different extras</comment>
+    <requestid>730663</requestid>
+  </revision>
 </revisionlist>

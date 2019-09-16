@@ -26,7 +26,7 @@
 
 
 Name:           vagrant
-Version:        2.2.4
+Version:        2.2.5
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -44,19 +44,28 @@ Provides:       rubygem-vagrant = %{version}
 Obsoletes:      rubygem-vagrant < %{version}
 Recommends:     vagrant-libvirt
 #
-Patch2:         0002-bin-vagrant-silence-warning-about-installer.patch
-Patch3:         0003-Use-a-private-temporary-dir.patch
-Patch4:         0004-linux-cap-halt-don-t-wait-for-shutdown-h-now-to-fini.patch
-Patch9:         0009-plugins-don-t-abuse-require_relative.patch
+# Patches are maintained in the opensuse_package branch in the
+# https://github.com/dcermak/vagrant.git repository.
+# On every new release of vagrant, rebase them on top of the latest tag.
 #
-#
-# try building with ruby2.4
-Patch23:        0023-vbox-fix-package.patch
-Patch24:        0024-do-not-depend-on-wdm.patch
-Patch25:        0025-do-not-abuse-relative-paths-in-docker-plugin.patch
-Patch26:        0026-do-not-abuse-relative-paths-in-plugins.patch
-Patch27:        0027-Fix-unit-tests-for-GuestLinux-Cap-Halt.patch
-Patch28:        0028-Skip-failing-tests.patch
+Patch1:         0001-bin-vagrant-silence-warning-about-installer.patch
+Patch2:         0002-Use-a-private-temporary-dir.patch
+Patch3:         0003-linux-cap-halt-don-t-wait-for-shutdown-h-now-to-fini.patch
+Patch4:         0004-plugins-don-t-abuse-require_relative.patch.patch
+Patch5:         0005-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+Patch6:         0006-do-not-depend-on-wdm.patch
+Patch7:         0007-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+Patch8:         0008-Don-t-abuse-relative-paths-in-plugins.patch
+Patch9:         0009-Fix-unit-tests-for-GuestLinux-Cap-Halt.patch
+Patch10:        0010-Skip-failing-tests.patch
+# https://github.com/hashicorp/vagrant/pull/10991
+Patch11:        0011-Bump-rspec-its-dependency.patch
+# https://github.com/hashicorp/vagrant/pull/10945
+Patch12:        0012-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
+# https://github.com/hashicorp/vagrant/pull/10993
+Patch13:        0013-Only-return-interfaces-where-addr-is-not-nil.patch
+Patch14:        0014-Skip-docker-networking-test.patch
+Patch15:        0015-ARM-only-Disable-Subprocess-unit-test.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -129,8 +138,9 @@ BuildRequires:  %{rubygem vagrant_cloud:2.0 >= 2.0.2 }
 BuildRequires:  %{rubygem rake:12.0 }
 #  s.add_development_dependency "rspec", "~> 3.5.0"
 BuildRequires:  %{rubygem rspec:3.5 }
-#  s.add_development_dependency "rspec-its", "~> 1.2.0"
-BuildRequires:  %{rubygem rspec-its:1.2 }
+# PATCHED
+#  s.add_development_dependency "rspec-its", "~> 1.3.0"
+BuildRequires:  %{rubygem rspec-its:1.3 }
 #  s.add_dependency "ruby_dep", "<= 1.3.1"
 BuildRequires:  %{rubygem ruby_dep <= 1.3.1 }
 #  s.add_development_dependency "webmock", "~> 2.3.1"
@@ -146,8 +156,10 @@ BuildRequires:  %{rubygem builder:3.2 }
 BuildRequires:  %{rubygem ffi >= 1.9 }
 # Prevent have choice for rubygem(ruby:2.5.0:thor:0) >= 0.18
 BuildRequires:  %{rubygem thor:0.19}
-# have choice for rubygem(ruby:2.5.0:addressable) >= 2.3.6
+# Prevent have choice for rubygem(ruby:2.5.0:addressable) >= 2.3.6
 BuildRequires:  %{rubygem addressable >= 2.6}
+# Prevent have choice for rubygem(ruby:2.5.0:public_suffix) >= 2.0.2
+BuildRequires:  %{rubygem public_suffix:4}
 
 BuildRequires:  ruby-macros >= 5
 
@@ -263,7 +275,25 @@ BuildArch:      noarch
 Optional dependency offering bash completion for vagrant
 
 %prep
-%autosetup -p 1 -n %{mod_full_name}
+%setup -q -n %{mod_full_name}
+%patch1 -p 1
+%patch2 -p 1
+%patch3 -p 1
+%patch4 -p 1
+%patch5 -p 1
+%patch6 -p 1
+%patch7 -p 1
+%patch8 -p 1
+%patch9 -p 1
+%patch10 -p 1
+%patch11 -p 1
+%patch12 -p 1
+%patch13 -p 1
+%patch14 -p 1
+# disable the subprocess test only on ARM
+%ifarch %{arm}
+%patch15 -p 1
+%endif
 
 cp %{SOURCE98} .
 

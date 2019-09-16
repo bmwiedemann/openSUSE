@@ -1,0 +1,13 @@
+Index: cjose-0.6.1/test/check_cjose.h
+===================================================================
+--- cjose-0.6.1.orig/test/check_cjose.h	2018-04-12 00:39:58.000000000 +0200
++++ cjose-0.6.1/test/check_cjose.h	2019-09-09 16:37:01.830419011 +0200
+@@ -26,7 +26,7 @@ Suite *cjose_concatkdf_suite();
+         const uint8_t *_chk_y = (Y);                                                                                             \
+         const size_t _chk_len = (LEN);                                                                                           \
+         ck_assert_msg(0 OP memcmp(_chk_x, _chk_y, _chk_len),                                                                     \
+-                      "Assertion '" #X #OP #Y "' failed: " #LEN "==%z, " #X "==0x%zx, " #Y "==0x%zx",                           \
++                      "Assertion '" #X #OP #Y "' failed: " #LEN "==%zd, " #X "==0x%zx, " #Y "==0x%zx",                           \
+                       _chk_len, _chk_x, _chk_y);                                                                                 \
+     } while (0);
+ 

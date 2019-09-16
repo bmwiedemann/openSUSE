@@ -425,4 +425,14 @@
   jsc#SLE-7342)</comment>
     <requestid>724412</requestid>
   </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>4534731b063faf770b74849efe6bc694</srcmd5>
+    <version>18.08.8</version>
+    <time>1568623978</time>
+    <user>maxlin_factory</user>
+    <comment>- Edit sample configuration to deprecate &quot;ControlMachine&quot;,
+  &quot;ControlAddr&quot;, &quot;BackupController&quot; and &quot;BackupAddr&quot; in favor
+  &quot;SlurmctldHost&quot;. (forwarded request 731004 from eeich)</comment>
+    <requestid>731005</requestid>
+  </revision>
 </revisionlist>

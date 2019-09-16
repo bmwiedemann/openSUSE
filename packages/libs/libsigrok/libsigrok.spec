@@ -1,7 +1,7 @@
 #
 # spec file for package libsigrok
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          Productivity/Scientific/Electronics
 Url:            http://sigrok.org
 Source0:        http://sigrok.org/download/source/libsigrok/%{name}-%{version}.tar.gz
 Source1:        sigrok-mime.xml
+Patch0:         0001-Fix-link-errors-when-compiling-with-LTO-enabled.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -43,7 +44,6 @@ BuildRequires:  libusb-1_0-devel
 BuildRequires:  libzip-devel >= 0.10
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(glibmm-2.4)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libsigrok is a shared library written in C which provides the basic API
@@ -101,12 +101,13 @@ libraries.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
         --disable-static \
         --enable-fx2lafw
-make %{?_smp_mflags}
+%make_build
 
 %install
 make DESTDIR=%{buildroot} install

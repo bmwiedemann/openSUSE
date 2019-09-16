@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Image-Sane
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,43 +12,54 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define cpan_name Image-Sane
 Name:           perl-Image-Sane
-Version:        0.14
+Version:        4
 Release:        0
-Summary:        Perl extension for the SANE (Scanner Access Now Easy) Project
-License:        Artistic-1.0 or GPL-2.0+
+%define cpan_name Image-Sane
+Summary:        Perl extension for the SANE (Scanner Access Now Easy)
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Image-Sane/
-Source:         http://www.cpan.org/authors/id/R/RA/RATCLIFFE/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RA/RATCLIFFE/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  perl
+BuildRequires:  perl-macros
 BuildRequires:  perl(Exception::Class)
 BuildRequires:  perl(ExtUtils::Depends)
 BuildRequires:  perl(ExtUtils::PkgConfig)
 BuildRequires:  perl(Readonly)
 BuildRequires:  perl(Test::Requires)
 BuildRequires:  perl(Try::Tiny)
-BuildRequires:  pkgconfig(sane-backends)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       perl(Exception::Class)
+Requires:       perl(Readonly)
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  pkgconfig(sane-backends)
+# MANUAL END
 
 %description
-This module allows you to access SANE-compatible scanners in a Perlish and
-object-oriented way, freeing you from the casting and memory management in C,
-yet remaining very close in spirit to original API.
+These Perl bindings for the SANE (Scanner Access Now Easy) Project allow
+you to access SANE-compatible scanners in a Perlish and object-oriented
+way, freeing you from the casting and memory management in C, yet remaining
+very close in spirit to original API.
+
+Find out more about SANE at http://www.sane-project.org.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 make %{?_smp_mflags}
 
 %check
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install
@@ -57,6 +68,6 @@ make %{?_smp_mflags} test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes README
+%doc Changes examples README
 
 %changelog

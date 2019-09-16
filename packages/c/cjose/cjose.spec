@@ -1,7 +1,7 @@
 #
 # spec file for package cjose
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,6 +24,7 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/cisco/cjose
 Source:         https://github.com/cisco/cjose/archive/%{version}.tar.gz
+Patch0:         cjose-ck_assert_bin_eq.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(check) >= 0.9.4
@@ -51,6 +52,7 @@ C library implementing the Javascript Object Signing and Encryption (JOSE)
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %configure --disable-static
@@ -61,7 +63,10 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
+# the tests fail on s390
+%ifnarch s390 s390x
 make %{?_smp_mflags} check
+%endif
 
 %post -n libcjose0 -p /sbin/ldconfig
 %postun -n libcjose0 -p /sbin/ldconfig

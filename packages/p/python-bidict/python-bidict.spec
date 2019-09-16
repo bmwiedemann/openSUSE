@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bidict
-Version:        0.18.0
+Version:        0.18.2
 Release:        0
 Summary:        Bidirectional map implementation for Python
 License:        MPL-2.0

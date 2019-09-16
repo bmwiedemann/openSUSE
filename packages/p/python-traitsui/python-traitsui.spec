@@ -1,7 +1,7 @@
 #
 # spec file for package python-traitsui
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,14 +20,14 @@
 %define         oldpython python
 %define         X_display         ":98"
 Name:           python-traitsui
-Version:        6.1.2
+Version:        6.1.3
 Release:        0
 Summary:        Traits-capable windowing framework
-License:        BSD-3-Clause and EPL-1.0 and LGPL-2.1 and LGPL-3.0
-Group:          Development/Libraries/Python
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
-Url:            https://github.com/enthought/traitsui
+License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only AND LGPL-3.0-only
+Group:          Development/Libraries/Python
+URL:            https://github.com/enthought/traitsui
 Source:         https://files.pythonhosted.org/packages/source/t/traitsui/traitsui-%{version}.tar.gz
 BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module numpy}
@@ -37,21 +37,22 @@ BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module traits}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  Mesa-dri
-BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module qt5}
-BuildRequires:  %{python_module wxPython}
-BuildRequires:  python-mock
-BuildRequires:  xorg-x11-server
-# /SECTION
 Requires:       python-configobj
 Requires:       python-pyface
 Requires:       python-six
 Requires:       python-traits
 Recommends:     python-qt5
 Recommends:     python-wxWidgets
+BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module qt5}
+BuildRequires:  %{python_module wxPython}
+BuildRequires:  Mesa-dri
+BuildRequires:  python-mock
+BuildRequires:  xorg-x11-server
+# /SECTION
 %ifpython2
 Provides:       %{oldpython}-TraitsGUI = %{version}
 Obsoletes:      %{oldpython}-TraitsGUI < %{version}
@@ -60,8 +61,6 @@ Obsoletes:      %{oldpython}-TraitsBackendQt < %{version}
 Provides:       %{oldpython}-TraitsBackendWx = %{version}
 Obsoletes:      %{oldpython}-TraitsBackendWx < %{version}
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description

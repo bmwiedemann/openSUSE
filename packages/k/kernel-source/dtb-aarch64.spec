@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.2
-%define patchversion 5.2.13
+%define patchversion 5.2.14
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-aarch64
-Version:        5.2.13
+Version:        5.2.14
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gacd8e88
+Release:        <RELEASE>.g374b0ae
 %else
 Release:        0
 %endif
@@ -375,7 +375,7 @@ for dts in al/*.dts allwinner/*.dts altera/*.dts amd/*.dts amlogic/*.dts apm/*.d
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
     install -m 644 $target.dtb %{buildroot}%{dtbdir}/$(dirname $target)
-%ifarch aarch64
+%ifarch aarch64 riscv64
     # HACK: work around U-Boot ignoring vendor dir
     baselink=%{dtbdir}/$(basename $target).dtb
     vendordir=$(basename $(dirname $target))
@@ -546,7 +546,7 @@ cd /boot
 # Unless /boot/dtb exists as real directory, create a symlink.
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-al -f dtb-al.list
 %else
 %files -n dtb-al
@@ -557,7 +557,7 @@ cd /boot
 %dir %{dtbdir}/al
 %{dtbdir}/al/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-allwinner -f dtb-allwinner.list
 %else
 %files -n dtb-allwinner
@@ -568,7 +568,7 @@ cd /boot
 %dir %{dtbdir}/allwinner
 %{dtbdir}/allwinner/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-altera -f dtb-altera.list
 %else
 %files -n dtb-altera
@@ -579,7 +579,7 @@ cd /boot
 %dir %{dtbdir}/altera
 %{dtbdir}/altera/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-amd -f dtb-amd.list
 %else
 %files -n dtb-amd
@@ -590,7 +590,7 @@ cd /boot
 %dir %{dtbdir}/amd
 %{dtbdir}/amd/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-amlogic -f dtb-amlogic.list
 %else
 %files -n dtb-amlogic
@@ -601,7 +601,7 @@ cd /boot
 %dir %{dtbdir}/amlogic
 %{dtbdir}/amlogic/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-apm -f dtb-apm.list
 %else
 %files -n dtb-apm
@@ -612,7 +612,7 @@ cd /boot
 %dir %{dtbdir}/apm
 %{dtbdir}/apm/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-arm -f dtb-arm.list
 %else
 %files -n dtb-arm
@@ -623,7 +623,7 @@ cd /boot
 %dir %{dtbdir}/arm
 %{dtbdir}/arm/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-broadcom -f dtb-broadcom.list
 %else
 %files -n dtb-broadcom
@@ -634,7 +634,7 @@ cd /boot
 %dir %{dtbdir}/broadcom
 %{dtbdir}/broadcom/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-cavium -f dtb-cavium.list
 %else
 %files -n dtb-cavium
@@ -645,7 +645,7 @@ cd /boot
 %dir %{dtbdir}/cavium
 %{dtbdir}/cavium/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-exynos -f dtb-exynos.list
 %else
 %files -n dtb-exynos
@@ -656,7 +656,7 @@ cd /boot
 %dir %{dtbdir}/exynos
 %{dtbdir}/exynos/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-freescale -f dtb-freescale.list
 %else
 %files -n dtb-freescale
@@ -667,7 +667,7 @@ cd /boot
 %dir %{dtbdir}/freescale
 %{dtbdir}/freescale/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-hisilicon -f dtb-hisilicon.list
 %else
 %files -n dtb-hisilicon
@@ -678,7 +678,7 @@ cd /boot
 %dir %{dtbdir}/hisilicon
 %{dtbdir}/hisilicon/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-lg -f dtb-lg.list
 %else
 %files -n dtb-lg
@@ -689,7 +689,7 @@ cd /boot
 %dir %{dtbdir}/lg
 %{dtbdir}/lg/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-marvell -f dtb-marvell.list
 %else
 %files -n dtb-marvell
@@ -700,7 +700,7 @@ cd /boot
 %dir %{dtbdir}/marvell
 %{dtbdir}/marvell/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-mediatek -f dtb-mediatek.list
 %else
 %files -n dtb-mediatek
@@ -711,7 +711,7 @@ cd /boot
 %dir %{dtbdir}/mediatek
 %{dtbdir}/mediatek/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-nvidia -f dtb-nvidia.list
 %else
 %files -n dtb-nvidia
@@ -722,7 +722,7 @@ cd /boot
 %dir %{dtbdir}/nvidia
 %{dtbdir}/nvidia/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-qcom -f dtb-qcom.list
 %else
 %files -n dtb-qcom
@@ -733,7 +733,7 @@ cd /boot
 %dir %{dtbdir}/qcom
 %{dtbdir}/qcom/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-renesas -f dtb-renesas.list
 %else
 %files -n dtb-renesas
@@ -744,7 +744,7 @@ cd /boot
 %dir %{dtbdir}/renesas
 %{dtbdir}/renesas/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-rockchip -f dtb-rockchip.list
 %else
 %files -n dtb-rockchip
@@ -755,7 +755,7 @@ cd /boot
 %dir %{dtbdir}/rockchip
 %{dtbdir}/rockchip/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-socionext -f dtb-socionext.list
 %else
 %files -n dtb-socionext
@@ -766,7 +766,7 @@ cd /boot
 %dir %{dtbdir}/socionext
 %{dtbdir}/socionext/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-sprd -f dtb-sprd.list
 %else
 %files -n dtb-sprd
@@ -777,7 +777,7 @@ cd /boot
 %dir %{dtbdir}/sprd
 %{dtbdir}/sprd/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-xilinx -f dtb-xilinx.list
 %else
 %files -n dtb-xilinx
@@ -788,7 +788,7 @@ cd /boot
 %dir %{dtbdir}/xilinx
 %{dtbdir}/xilinx/*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-zte -f dtb-zte.list
 %else
 %files -n dtb-zte

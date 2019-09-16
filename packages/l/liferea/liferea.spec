@@ -1,7 +1,7 @@
 #
 # spec file for package liferea
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           liferea
-Version:        1.12.1
+Version:        1.12.6
 Release:        0
 Summary:        Linux Feed Reader
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Other
-Url:            http://liferea.sourceforge.net/
-Source0:        https://github.com/lwindolf/liferea/releases/download/v%{version}/%{name}-%{version}.tar.bz2
+Url:            https://lzone.de/liferea/
+Source0:        https://github.com/lwindolf/liferea/releases/download/v%{version}/%{name}-%{version}b.tar.bz2
 # PATCH-FEATURE-OPENSUSE liferea-opensuse-feeds.patch -- Add openSUSE feeds to default feeds
 Patch0:         liferea-opensuse-feeds.patch
 
+BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool >= 0.40.0
@@ -60,13 +61,13 @@ news aggregator for GTK and GNOME.
 %lang_package
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}b
 %patch0
 
 %build
 %configure \
         --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -74,7 +75,10 @@ make %{?_smp_mflags}
 %find_lang %{name} %{?no_lang_C}
 rm doc/Makefile*
 rm doc/html/Makefile*
+
 %fdupes %{buildroot}
+
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/*.xml
 
 %if 0%{?suse_version} < 1500
 %post
@@ -89,7 +93,8 @@ rm doc/html/Makefile*
 %endif
 
 %files
-%doc AUTHORS COPYING ChangeLog
+%license COPYING
+%doc AUTHORS ChangeLog
 %{_bindir}/liferea
 %{_bindir}/liferea-add-feed
 %{_datadir}/applications/net.sourceforge.liferea.desktop

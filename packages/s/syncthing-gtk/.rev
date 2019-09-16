@@ -231,4 +231,12 @@
     <comment>- Add the missing python2-cairo dependency.</comment>
     <requestid>661684</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>578a1b5e4104f3a14b567308b02db5a3</srcmd5>
+    <version>0.9.4.4</version>
+    <time>1568623942</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.9.4.4.</comment>
+    <requestid>730810</requestid>
+  </revision>
 </revisionlist>

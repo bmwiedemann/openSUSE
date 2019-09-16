@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asteval
-Version:        0.9.14
+Version:        0.9.15
 Release:        0
 Summary:        Safe, minimalistic evaluator of python expression using ast module
 License:        MIT

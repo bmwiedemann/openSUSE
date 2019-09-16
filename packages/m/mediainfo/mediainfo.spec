@@ -18,7 +18,7 @@
 
 
 Name:           mediainfo
-Version:        19.07
+Version:        19.09
 Release:        0
 Summary:        Audio/video file technical and tag information utility
 License:        GPL-2.0-or-later
@@ -108,9 +108,9 @@ pushd Project/GNU/GUI
 popd
 
 # icon
-install -dm 755 %{buildroot}%{_datadir}/icons/hicolor/128x128/apps
+install -dm 755 %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 install -m 644 Source/Resource/Image/MediaInfo.png \
-    %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
+    %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 install -dm 755 %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
 install -m 644 Source/Resource/Image/MediaInfo.svg \
    %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg

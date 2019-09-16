@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 13:22:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.1.10:
+  * Print out return code, stdout and stderr output
+
+-------------------------------------------------------------------
 Thu Aug 22 08:31:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use spec-cleaner

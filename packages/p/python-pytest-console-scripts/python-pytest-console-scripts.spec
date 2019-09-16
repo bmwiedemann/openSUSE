@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-console-scripts
-Version:        0.1.9
+Version:        0.1.10
 Release:        0
 Summary:        Pytest plugin for testing console scripts
 License:        MIT

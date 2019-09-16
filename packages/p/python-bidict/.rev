@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>680050</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>936168b7258030d2f2256fa88e886bde</srcmd5>
+    <version>0.18.2</version>
+    <time>1568623820</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.18.2:
+  * Warn that Python 2 support will be dropped in a future release when Python 2 is detected.
+  * Fix a regression introduced by the memory optimizations added in 0.15.0 which caused deepcopied and unpickled bidicts to have their inverses set incorrectly. #94</comment>
+    <requestid>730687</requestid>
+  </revision>
 </revisionlist>

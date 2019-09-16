@@ -7,4 +7,12 @@
     <comment>Fix name space: openSUSE does not have emacs-common but emacs package</comment>
     <requestid>686319</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>01fc8f57014c635d52d78c939b8395ea</srcmd5>
+    <version>1.9.2</version>
+    <time>1568623857</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>730728</requestid>
+  </revision>
 </revisionlist>

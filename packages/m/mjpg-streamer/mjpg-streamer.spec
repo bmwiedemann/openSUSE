@@ -1,7 +1,7 @@
 #
-# spec file for package mjpg-streamer (Version SVN Rev. 160)
+# spec file for package mjpg-streamer
 #
-# Copyright 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,39 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
-Summary: Stream webcam video to HTTP
-Name:    mjpg-streamer
-Version: 1.0~pre.1529836414.f387bb4
-Release: 0
-License: GPL-2.0-only
-Group:   Productivity/Multimedia/Video/Players
-Source0: %{name}-%{version}.tar.xz
-Patch1: fix-build.patch
-Patch2: set_group.patch
-URL:           https://github.com/jacksonliam/mjpg-streamer
-BuildRequires: cmake
-BuildRequires: gcc-c++
-BuildRequires: opencv-devel
-BuildRequires: SDL-devel
-BuildRequires: libgphoto2-devel
-BuildRequires: libjpeg-devel
+
+Name:           mjpg-streamer
+Version:        1.0~pre.1540449284.ddb69b7
+Release:        0
+Summary:        Program for streaming webcam video to HTTP
+License:        GPL-2.0-only
+Group:          Productivity/Multimedia/Video/Players
+Source0:        %{name}-%{version}.tar.xz
+Patch1:         fix-build.patch
+Patch2:         set_group.patch
+URL:            https://github.com/jacksonliam/mjpg-streamer
+BuildRequires:  SDL-devel
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  libgphoto2-devel
+BuildRequires:  libjpeg-devel
+BuildRequires:  pkgconfig(opencv)
+BuildRequires:  protobuf-c
+BuildRequires:  python3-devel
+BuildRequires:  python3-numpy-devel
+BuildRequires:  python3-opencv
+BuildRequires:  zeromq-devel
 
 %description
-MJPG-streamer takes JPGs from Linux-UVC compatible webcams, from local files or other input plugins and streams them as M-JPEG via HTTP to webbrowsers, VLC and other software. It is the successor of uvc-streamer, a Linux-UVC streaming application with Pan/Tilt.
+MJPG-streamer takes JPGs from Linux-UVC compatible webcams, from
+local files or other input plugins and streams them as M-JPEG via
+HTTP to webbrowsers, VLC and other software. It is the successor of
+uvc-streamer, a Linux-UVC streaming application with Pan/Tilt.
 
-This package provides a maintained fork including support for Raspberry Pi Camera.
+This package provides a fork including support for Raspberry Pi Camera.
 
 Enable the service by specifing the video device via
 
@@ -50,6 +61,7 @@ The number reflects /dev/videoX and listening port 808X.
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DINCLUDE_INSTALL_DIR:PATH=/usr/include -DLIB_INSTALL_DIR:PATH=%_libdir -DSYSCONF_INSTALL_DIR:PATH=/etc -DSHARE_INSTALL_PREFIX:PATH=/usr/share -DCMAKE_INSTALL_LIBDIR:PATH=%_libdir -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+make %{?_smp_mflags}
 
 %install
 %cmake_install
@@ -57,7 +69,12 @@ cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DINCLUDE_INSTALL_DIR:PATH=/usr/include -
 install -m 0644 -D mjpg_streamer@.service %{buildroot}%{_unitdir}/mjpg_streamer@.service
 
 %pre
-%{_sbindir}/useradd -r -G video -d / -s /sbin/nologin mjpg_streamer 2> /dev/null || :
+getent passwd mjpg_streamer >/dev/null || %{_sbindir}/useradd -r -G video \
+	-d / -s /sbin/nologin mjpg_streamer
+%service_add_pre mjpg_streamer@.service
+
+%preun
+%service_del_preun mjpg_streamer@.service
 
 %post
 %service_add_post mjpg_streamer@.service
@@ -74,3 +91,4 @@ install -m 0644 -D mjpg_streamer@.service %{buildroot}%{_unitdir}/mjpg_streamer@
 /usr/share/mjpg-streamer
 %{_unitdir}/mjpg_streamer@.service
 
+%changelog

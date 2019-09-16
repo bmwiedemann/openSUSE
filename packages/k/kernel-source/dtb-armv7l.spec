@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.2
-%define patchversion 5.2.13
+%define patchversion 5.2.14
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv7l
-Version:        5.2.13
+Version:        5.2.14
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gacd8e88
+Release:        <RELEASE>.g374b0ae
 %else
 Release:        0
 %endif
@@ -543,7 +543,7 @@ for dts in am335x-*.dts am3517*.dts am57xx-*.dts armada-370-*.dts armada-375-*.d
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
     install -m 644 $target.dtb %{buildroot}%{dtbdir}/$(dirname $target)
-%ifarch aarch64
+%ifarch aarch64 riscv64
     # HACK: work around U-Boot ignoring vendor dir
     baselink=%{dtbdir}/$(basename $target).dtb
     vendordir=$(basename $(dirname $target))
@@ -847,7 +847,7 @@ cd /boot
 # Unless /boot/dtb exists as real directory, create a symlink.
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-am335x -f dtb-am335x.list
 %else
 %files -n dtb-am335x
@@ -857,7 +857,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/am335x-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-am3517 -f dtb-am3517.list
 %else
 %files -n dtb-am3517
@@ -867,7 +867,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/am3517*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-am57xx -f dtb-am57xx.list
 %else
 %files -n dtb-am57xx
@@ -877,7 +877,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/am57xx-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-armada-370 -f dtb-armada-370.list
 %else
 %files -n dtb-armada-370
@@ -887,7 +887,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/armada-370-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-armada-375 -f dtb-armada-375.list
 %else
 %files -n dtb-armada-375
@@ -897,7 +897,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/armada-375-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-armada-385 -f dtb-armada-385.list
 %else
 %files -n dtb-armada-385
@@ -907,7 +907,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/armada-385-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-armada-388 -f dtb-armada-388.list
 %else
 %files -n dtb-armada-388
@@ -917,7 +917,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/armada-388-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-armada-398 -f dtb-armada-398.list
 %else
 %files -n dtb-armada-398
@@ -927,7 +927,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/armada-398-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-armada-xp -f dtb-armada-xp.list
 %else
 %files -n dtb-armada-xp
@@ -937,7 +937,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/armada-xp-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-bcm2836 -f dtb-bcm2836.list
 %else
 %files -n dtb-bcm2836
@@ -947,7 +947,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/bcm2836*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-dove -f dtb-dove.list
 %else
 %files -n dtb-dove
@@ -957,7 +957,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/dove-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-exynos4 -f dtb-exynos4.list
 %else
 %files -n dtb-exynos4
@@ -967,7 +967,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/exynos4*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-exynos5 -f dtb-exynos5.list
 %else
 %files -n dtb-exynos5
@@ -977,7 +977,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/exynos5*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-imx5 -f dtb-imx5.list
 %else
 %files -n dtb-imx5
@@ -987,7 +987,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/imx5*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-imx6 -f dtb-imx6.list
 %else
 %files -n dtb-imx6
@@ -997,7 +997,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/imx6*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-imx7 -f dtb-imx7.list
 %else
 %files -n dtb-imx7
@@ -1007,7 +1007,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/imx7*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-keystone -f dtb-keystone.list
 %else
 %files -n dtb-keystone
@@ -1017,7 +1017,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/keystone-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-meson6 -f dtb-meson6.list
 %else
 %files -n dtb-meson6
@@ -1027,7 +1027,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/meson6-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-meson8 -f dtb-meson8.list
 %else
 %files -n dtb-meson8
@@ -1037,7 +1037,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/meson8-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-meson8b -f dtb-meson8b.list
 %else
 %files -n dtb-meson8b
@@ -1047,7 +1047,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/meson8b-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-omap3 -f dtb-omap3.list
 %else
 %files -n dtb-omap3
@@ -1057,7 +1057,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/omap3*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-omap4 -f dtb-omap4.list
 %else
 %files -n dtb-omap4
@@ -1067,7 +1067,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/omap4*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-omap5 -f dtb-omap5.list
 %else
 %files -n dtb-omap5
@@ -1077,7 +1077,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/omap5*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-qcom -f dtb-qcom.list
 %else
 %files -n dtb-qcom
@@ -1087,7 +1087,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/qcom-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-rk3 -f dtb-rk3.list
 %else
 %files -n dtb-rk3
@@ -1097,7 +1097,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/rk3*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-socfpga -f dtb-socfpga.list
 %else
 %files -n dtb-socfpga
@@ -1107,7 +1107,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/socfpga_*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-ste -f dtb-ste.list
 %else
 %files -n dtb-ste
@@ -1117,7 +1117,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/ste-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-sun4i -f dtb-sun4i.list
 %else
 %files -n dtb-sun4i
@@ -1127,7 +1127,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/sun4i-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-sun5i -f dtb-sun5i.list
 %else
 %files -n dtb-sun5i
@@ -1137,7 +1137,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/sun5i-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-sun6i -f dtb-sun6i.list
 %else
 %files -n dtb-sun6i
@@ -1147,7 +1147,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/sun6i-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-sun7i -f dtb-sun7i.list
 %else
 %files -n dtb-sun7i
@@ -1157,7 +1157,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/sun7i-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-sun8i -f dtb-sun8i.list
 %else
 %files -n dtb-sun8i
@@ -1167,7 +1167,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/sun8i-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-sun9i -f dtb-sun9i.list
 %else
 %files -n dtb-sun9i
@@ -1177,7 +1177,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/sun9i-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-tegra2 -f dtb-tegra2.list
 %else
 %files -n dtb-tegra2
@@ -1187,7 +1187,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/tegra20-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-tegra3 -f dtb-tegra3.list
 %else
 %files -n dtb-tegra3
@@ -1197,7 +1197,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/tegra30-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-tegra114 -f dtb-tegra114.list
 %else
 %files -n dtb-tegra114
@@ -1207,7 +1207,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/tegra114-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-tegra124 -f dtb-tegra124.list
 %else
 %files -n dtb-tegra124
@@ -1217,7 +1217,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/tegra124-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-vexpress -f dtb-vexpress.list
 %else
 %files -n dtb-vexpress
@@ -1227,7 +1227,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/vexpress-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-vf500 -f dtb-vf500.list
 %else
 %files -n dtb-vf500
@@ -1237,7 +1237,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/vf500-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-vf6 -f dtb-vf6.list
 %else
 %files -n dtb-vf6
@@ -1247,7 +1247,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/vf610-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-xenvm -f dtb-xenvm.list
 %else
 %files -n dtb-xenvm
@@ -1257,7 +1257,7 @@ cd /boot
 %dir %{dtbdir}
 %{dtbdir}/xenvm-*.dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-zynq -f dtb-zynq.list
 %else
 %files -n dtb-zynq

@@ -147,6 +147,8 @@ This package contains demos and tutorials.
   -DENABLE_BUILD_DYNAMIC:BOOL=ON \
   -DENABLE_SYSTEM_CONTRIB:BOOL=ON \
   -DENABLE_BUILD_LIB:BOOL=%{?with static_lib:ON}%{!?with static_lib:OFF} \
+  -DPACKAGER=OBS \
+  -DGMSH_HOST=OBS \
 
 # build libs/binaries
 make %{?_smp_mflags} all

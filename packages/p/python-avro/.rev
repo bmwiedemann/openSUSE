@@ -24,4 +24,13 @@
     <comment></comment>
     <requestid>711314</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>45b69e1f14737dc290cb6486ac4fc2d4</srcmd5>
+    <version>1.9.1</version>
+    <time>1568623825</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.9.0:
+  * no upstream changelog</comment>
+    <requestid>730689</requestid>
+  </revision>
 </revisionlist>

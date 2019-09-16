@@ -2,7 +2,7 @@
 # spec file for package wxsvg
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2012-2015 Mariusz Fik <fisiu@opensuse.org>
+# Copyright (c) 2012-2019 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2012 Stefan Seyfried <seife+obs@b1-systems.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 
 %define sover   3
 Name:           wxsvg
-Version:        1.5.16
+Version:        1.5.20
 Release:        0
 Summary:        Library to create, manipulate and render SVG files
 License:        GPL-2.0-or-later

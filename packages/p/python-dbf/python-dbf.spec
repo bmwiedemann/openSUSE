@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dbf
-Version:        0.98.2
+Version:        0.98.3
 Release:        0
 Summary:        Pure python package for reading/writing dBase, FoxPro, and Visual FoxPro .dbf
 License:        BSD-3-Clause

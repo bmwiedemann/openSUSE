@@ -7,4 +7,12 @@
     <comment>Submission as a dependency of apache2-mod_auth_openidc [fate#324447]</comment>
     <requestid>649644</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec6dec0b26e9c1d8a4d83249e99ae694</srcmd5>
+    <version>0.6.1</version>
+    <time>1568623993</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731051</requestid>
+  </revision>
 </revisionlist>

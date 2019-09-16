@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 12 18:38:13 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.9.4.4:
+  * Fix creating ~/.config/autostart with wrong permissions.
+  * Correctly terminating the Syncthing Daemon when terminated by a
+    signal.
+  * Fix a crash when adding a new directory.
+  * Displaying directories multiple times in the device editor.
+  * i3 detection.
+  * Cosmetic receive-only directory fixes.
+  * Fix a broken icon in the About dialogue.
+  * AppData improvements.
+  * Update translations.
+- Add a missing python2-xml dependency.
+
+-------------------------------------------------------------------
 Thu Dec 27 21:51:48 UTC 2018 - sor.alexei@meowr.ru
 
 - Add the missing python2-cairo dependency.

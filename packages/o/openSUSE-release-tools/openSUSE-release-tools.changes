@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Sep 13 16:25:13 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190913.9d119079:
+  * gocd: remove PackageHub15SP1.Manager42 as project is locked.
+
+-------------------------------------------------------------------
+Fri Sep 13 05:13:12 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190913.d83c08a9:
+  * gocd: rabbit-openqa needs a config file installed
+
+-------------------------------------------------------------------
+Thu Sep 12 15:33:23 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190912.9c45fc37:
+  * osclib/origin_listener: start additional listeners for remote origins.
+  * osclib/origin_listener: change skipping log message to mention origin.
+  * osclib/origin_listener: provide origin_updatable_map().
+
+-------------------------------------------------------------------
+Thu Sep 12 12:59:33 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190912.f5a9538d:
+  * check_source: only log as info if we can't get build log. This needs a more general solution but for now we'll reduce the level to not pollute the log
+
+-------------------------------------------------------------------
+Thu Sep 12 11:09:05 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190912.6dd6428d:
+  * Move the monitors to a agent type of their own
+
+-------------------------------------------------------------------
+Thu Sep 12 09:23:42 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190912.49029a0e:
+  * gocd/checkers: reduce Origin.Manager.Update frequency to weekly.
+  * gocd/monitors: provide OriginManagerUpdate pipelines for listener.
+  * osc-origin: update: provide --listen option.
+  * gocd: utilize `origin update` without the need to indicate a project.
+  * osc-origin: support invoking update without a project.
+  * osclib/origin: provide origin_updatable_map().
+  * osclib/origin: provide origin_updatable().
+  * dist/obs: provide OSRT:OriginUpdateSkip attribute definition.
+  * osc-origin: utilize osclib.core.RequestFuture.print_and_create().
+  * osclib/core: provide RequestFuture.print_and_create().
+  * osclib/core: provide RequestFuture.create_tolerant().
+  * osclib/core: provide project_attributes_list().
+  * osclib/core: project_attribute_list(): provide locked parameter.
+  * osclib/core: project_attribute_list(): drop value parameter.
+  * osclib/core: provide devel_projects().
+  * Move PubSubConsumer to osclib.PubSubConsumer to allow for proper import.
+
+-------------------------------------------------------------------
 Wed Sep 11 10:48:09 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20190911.d06fa8af:

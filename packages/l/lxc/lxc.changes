@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 12 14:53:16 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to lxc 3.2.1. The changelog can be found at
+  https://discuss.linuxcontainers.org/t/lxc-3-2-1-has-been-released/5322
+  + seccomp: support syscall forwarding to userspace
+  + add lxc.seccomp.allow_nesting
+  + pidfd: Add initial support for the new pidfd api
+  * Many hardening improvements.
+  * Use /sys/kernel/cgroup/delegate file for cgroup v2.
+  * Fix CVE-2019-5736 equivalent bug.
+
+-------------------------------------------------------------------
 Sat Apr 20 10:35:36 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Rework /var/adm/update-messages handling to be far less complicated, and more

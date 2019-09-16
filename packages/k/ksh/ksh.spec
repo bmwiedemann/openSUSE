@@ -1,7 +1,7 @@
 #
 # spec file for package ksh
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,7 @@ PreReq:         permissions
 Version:        93vu
 Release:        0
 Summary:        Korn Shell
-License:        CPL-1.0 and EPL-1.0
+License:        CPL-1.0 AND EPL-1.0
 Group:          System/Shells
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         INIT.%{date}.tar.bz2
@@ -274,6 +274,8 @@ fi
 %patch63 -p 1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+
   #
   # Check for a clean signal environment for runtime tests
   #
@@ -322,6 +324,8 @@ fi
   RPM_OPT_FLAGS="${RPM_OPT_FLAGS//-as-needed/-no-as-needed/}"
   # Use POSIX as environment
   test -n "${!LC_*}" && unset "${!LC_*}"
+  # ksh currently does not build with -Werror=return-type
+  RPM_OPT_FLAGS="${RPM_OPT_FLAGS//-Werror=return-type/}"
   cflags ()
   {
       set +x

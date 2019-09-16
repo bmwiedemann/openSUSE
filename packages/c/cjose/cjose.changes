@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  9 14:41:41 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Fix a bug in an assert message macro
+  * add cjose-ck_assert_bin_eq.patch
+
+-------------------------------------------------------------------
+Sun Sep  8 19:01:22 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
+
+- Temporarily disable tests on s390 as they are broken there
+  (bsc#1149887)
+
+-------------------------------------------------------------------
 Fri Apr 27 13:54:00 UTC 2018 - vcizek@suse.com
 
 - update to 0.6.1

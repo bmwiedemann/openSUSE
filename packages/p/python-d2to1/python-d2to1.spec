@@ -1,7 +1,7 @@
 #
 # spec file for package python-d2to1
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-d2to1
-Version:        0.2.12
+Version:        0.2.12.post1
 Release:        0
 Summary:        Allows using distutils2-like setup.cfg with a distribute/setuptools
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://pypi.python.org/pypi/d2to1
+URL:            https://pypi.python.org/pypi/d2to1
 Source0:        https://files.pythonhosted.org/packages/source/d/d2to1/d2to1-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,11 +46,11 @@ rm -rf d2to1.egg-info
 
 %install
 %python_install
-%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc CHANGES.rst LICENSE README.rst
+%license LICENSE
+%doc CHANGES.rst README.rst
 %{python_sitelib}/d2to1/
 %{python_sitelib}/d2to1-%{version}-py%{py_ver}.egg-info
 

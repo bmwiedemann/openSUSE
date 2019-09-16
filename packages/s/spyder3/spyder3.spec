@@ -238,7 +238,7 @@ popd
 %find_lang profiler profiler.lang
 %find_lang pylint pylint.lang
 
-%suse_update_desktop_file %{name}
+%suse_update_desktop_file -r %{name} Development Science IDE NumericalAnalysis
 %fdupes %{buildroot}%{python3_sitelib}
 
 # Deduplicating files can generate a RPMLINT warning for pyc mtime

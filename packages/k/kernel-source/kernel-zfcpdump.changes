@@ -1,4 +1,193 @@
 -------------------------------------------------------------------
+Tue Sep 10 12:23:11 CEST 2019 - jslaby@suse.cz
+
+- Linux 5.2.14 (bnc#1012628).
+- Revert "mmc: core: do not retry CMD6 in __mmc_switch()"
+  (bnc#1012628).
+- x86/boot: Preserve boot_params.secure_boot from sanitizing
+  (bnc#1012628).
+- Revert "x86/apic: Include the LDR when clearing out APIC
+  registers" (bnc#1012628).
+- libceph: allow ceph_buffer_put() to receive a NULL ceph_buffer
+  (bnc#1012628).
+- x86/boot/compressed/64: Fix missing initialization in
+  find_trampoline_placement() (bnc#1012628).
+- KVM: arm/arm64: VGIC: Properly initialise private IRQ affinity
+  (bnc#1012628).
+- gpio: Fix irqchip initialization order (bnc#1012628).
+- RDMA/bnxt_re: Fix stack-out-of-bounds in
+  bnxt_qplib_rcfw_send_message (bnc#1012628).
+- afs: use correct afs_call_type in yfs_fs_store_opaque_acl2
+  (bnc#1012628).
+- afs: Fix possible oops in afs_lookup trace event (bnc#1012628).
+- afs: Fix leak in afs_lookup_cell_rcu() (bnc#1012628).
+- KVM: arm/arm64: Only skip MMIO insn once (bnc#1012628).
+- ceph: fix buffer free while holding i_ceph_lock in fill_inode()
+  (bnc#1012628).
+- ceph: fix buffer free while holding i_ceph_lock in
+  __ceph_build_xattrs_blob() (bnc#1012628).
+- ceph: fix buffer free while holding i_ceph_lock in
+  __ceph_setxattr() (bnc#1012628).
+- drm/amdgpu: prevent memory leaks in AMDGPU_CS ioctl
+  (bnc#1012628).
+- selftests/kvm: make platform_info_test pass on AMD
+  (bnc#1012628).
+- selftests: kvm: fix state save/load on processors without XSAVE
+  (bnc#1012628).
+- infiniband: hfi1: fix memory leaks (bnc#1012628).
+- infiniband: hfi1: fix a memory leak bug (bnc#1012628).
+- IB/mlx4: Fix memory leaks (bnc#1012628).
+- RDMA/cma: fix null-ptr-deref Read in cma_cleanup (bnc#1012628).
+- nvme: Fix cntlid validation when not using NVMEoF (bnc#1012628).
+- nvme-multipath: fix possible I/O hang when paths are updated
+  (bnc#1012628).
+- Tools: hv: kvp: eliminate 'may be used uninitialized' warning
+  (bnc#1012628).
+- Input: hyperv-keyboard: Use in-place iterator API in the
+  channel callback (bnc#1012628).
+- scsi: lpfc: Mitigate high memory pre-allocation by SCSI-MQ
+  (bnc#1012628).
+- x86/boot/compressed/64: Fix boot on machines with broken E820
+  table (bnc#1012628).
+- HID: cp2112: prevent sleeping function called from invalid
+  context (bnc#1012628).
+- HID: intel-ish-hid: ipc: add EHL device id (bnc#1012628).
+- kprobes: Fix potential deadlock in kprobe_optimizer()
+  (bnc#1012628).
+- sched/core: Schedule new worker even if PI-blocked
+  (bnc#1012628).
+- ravb: Fix use-after-free ravb_tstamp_skb (bnc#1012628).
+- wimax/i2400m: fix a memory leak bug (bnc#1012628).
+- net: cavium: fix driver name (bnc#1012628).
+- ibmvnic: Unmap DMA address of TX descriptor buffers after use
+  (bnc#1012628).
+- net: kalmia: fix memory leaks (bnc#1012628).
+- cx82310_eth: fix a memory leak bug (bnc#1012628).
+- vfs: fix page locking deadlocks when deduping files
+  (bnc#1012628).
+- lan78xx: Fix memory leaks (bnc#1012628).
+- clk: Fix potential NULL dereference in clk_fetch_parent_index()
+  (bnc#1012628).
+- clk: Fix falling back to legacy parent string matching
+  (bnc#1012628).
+- net: myri10ge: fix memory leaks (bnc#1012628).
+- liquidio: add cleanup in octeon_setup_iq() (bnc#1012628).
+- selftests: kvm: fix vmx_set_nested_state_test (bnc#1012628).
+- selftests: kvm: provide common function to enable eVMCS
+  (bnc#1012628).
+- selftests: kvm: do not try running the VM in
+  vmx_set_nested_state_test (bnc#1012628).
+- cxgb4: fix a memory leak bug (bnc#1012628).
+- scsi: target: tcmu: avoid use-after-free after command timeout
+  (bnc#1012628).
+- scsi: qla2xxx: Fix gnl.l memory leak on adapter init failure
+  (bnc#1012628).
+- drm/mediatek: set DMA max segment size (bnc#1012628).
+- drm/mediatek: use correct device to import PRIME buffers
+  (bnc#1012628).
+- netfilter: nft_flow_offload: skip tcp rst and fin packets
+  (bnc#1012628).
+- gpio: Fix build error of function redefinition (bnc#1012628).
+- ibmveth: Convert multicast list size for little-endian system
+  (bnc#1012628).
+- s390/qeth: serialize cmd reply with concurrent timeout
+  (bnc#1012628).
+- Bluetooth: hci_qca: Send VS pre shutdown command (bnc#1012628).
+- Bluetooth: btqca: Add a short delay before downloading the NVM
+  (bnc#1012628).
+- net: tc35815: Explicitly check NET_IP_ALIGN is not zero in
+  tc35815_rx (bnc#1012628).
+- hv_netvsc: Fix a warning of suspicious RCU usage (bnc#1012628).
+- ixgbe: fix possible deadlock in ixgbe_service_task()
+  (bnc#1012628).
+- tools: bpftool: fix error message (prog -> object)
+  (bnc#1012628).
+- netfilter: nf_flow_table: teardown flow timeout race
+  (bnc#1012628).
+- netfilter: nf_flow_table: conntrack picks up expired flows
+  (bnc#1012628).
+- netfilter: nf_tables: use-after-free in failing rule with
+  bound set (bnc#1012628).
+- net: tundra: tsi108: use spin_lock_irqsave instead of
+  spin_lock_irq in IRQ context (bnc#1012628).
+- clk: samsung: exynos542x: Move MSCL subsystem clocks to its
+  sub-CMU (bnc#1012628).
+- clk: samsung: exynos5800: Move MAU subsystem clocks to MAU
+  sub-CMU (bnc#1012628).
+- clk: samsung: Change signature of exynos5_subcmus_init()
+  function (bnc#1012628).
+- net/mlx5e: Fix error flow of CQE recovery on tx reporter
+  (bnc#1012628).
+- netfilter: nf_flow_table: fix offload for flows that are
+  subject to xfrm (bnc#1012628).
+- libbpf: set BTF FD for prog only when there is supported
+  .BTF.ext data (bnc#1012628).
+- libbpf: fix erroneous multi-closing of BTF FD (bnc#1012628).
+- batman-adv: Fix netlink dumping of all mcast_flags buckets
+  (bnc#1012628).
+- net/rds: Fix info leak in rds6_inc_info_copy() (bnc#1012628).
+- net/sched: pfifo_fast: fix wrong dereference when qdisc is reset
+  (bnc#1012628).
+- net/sched: pfifo_fast: fix wrong dereference in
+  pfifo_fast_enqueue (bnc#1012628).
+- net: dsa: tag_8021q: Future-proof the reserved fields in the
+  custom VID (bnc#1012628).
+- Add genphy_c45_config_aneg() function to phy-c45.c
+  (bnc#1012628).
+- net/sched: cbs: Set default link speed to 10 Mbps in
+  cbs_set_port_rate (bnc#1012628).
+- taprio: Set default link speed to 10 Mbps in
+  taprio_set_picos_per_byte (bnc#1012628).
+- taprio: Fix kernel panic in taprio_destroy (bnc#1012628).
+- r8152: remove calling netif_napi_del (bnc#1012628).
+- Revert "r8152: napi hangup fix after disconnect" (bnc#1012628).
+- nfp: flower: handle neighbour events on internal ports
+  (bnc#1012628).
+- nfp: flower: prevent ingress block binds on internal ports
+  (bnc#1012628).
+- tcp: remove empty skb from write queue in error cases
+  (bnc#1012628).
+- tcp: inherit timestamp on mtu probe (bnc#1012628).
+- net: stmmac: dwmac-rk: Don't fail if phy regulator is absent
+  (bnc#1012628).
+- net_sched: fix a NULL pointer deref in ipt action (bnc#1012628).
+- net: sched: act_sample: fix psample group handling on overwrite
+  (bnc#1012628).
+- net: fix skb use after free in netpoll (bnc#1012628).
+- mld: fix memory leak in mld_del_delrec() (bnc#1012628).
+- commit af75f09
+
+-------------------------------------------------------------------
+Mon Sep  9 11:50:58 CEST 2019 - mgorman@suse.de
+
+- config: enable SLAB_FREELIST_HARDENED (bsc#1127808)
+  Enable SLAB_FREELIST_HARDENED on all architectures. This obscures the
+  free object pointer on a per-cache basis making it more difficult to
+  locate kernel objects via exploits probing the cache metadata.
+  This change was requested by the upstream openSUSE community to make
+  the kernel more resistent to slab freelist attacks. Tests conducted
+  by the kernel performance teams confirmed that the performance impact
+  is detectable but negligible.
+- commit 94938f2
+
+-------------------------------------------------------------------
+Mon Sep  9 09:39:52 CEST 2019 - guillaume.gardet@arm.com
+
+- rpm/constraints.in: lower disk space required for ARM
+  With a requirement of 35GB, only 2 slow workers are usable for ARM.
+  Current aarch64 build requires 27G and armv6/7 requires 14G.
+  Set requirements respectively to 30GB and 20GB.
+- commit f84c163
+
+-------------------------------------------------------------------
+Mon Sep  9 06:49:29 CEST 2019 - mkubecek@suse.cz
+
+- config: enable STACKPROTECTOR_STRONG also on armv6hl
+  Recently reenabled armv6hl architecture has STACKPROTECTOR_STRONG disabled,
+  enable it here as well.
+- commit f434a32
+
+-------------------------------------------------------------------
 Fri Sep  6 12:49:15 CEST 2019 - jslaby@suse.cz
 
 - Linux 5.2.13 (bnc#1012628).
@@ -1952,6 +2141,12 @@ Wed Jul 31 11:06:04 CEST 2019 - jslaby@suse.cz
   (bnc#1012628).
 - regulator: 88pm800: fix warning same module names (bnc#1012628).
 - commit b607c27
+
+-------------------------------------------------------------------
+Tue Jul 30 18:10:55 CEST 2019 - schwab@suse.de
+
+- packaging: add support for riscv64
+- commit c2885ea
 
 -------------------------------------------------------------------
 Sun Jul 28 09:25:17 CEST 2019 - jslaby@suse.cz

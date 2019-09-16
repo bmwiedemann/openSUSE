@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 15 03:07:57 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Override build host name to make package build reproducible (boo#1084909)
+
+-------------------------------------------------------------------
 Fri Aug  2 12:31:48 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Disable LTO for now, linker segfaults

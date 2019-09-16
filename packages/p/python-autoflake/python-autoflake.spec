@@ -17,28 +17,22 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
 Name:           python-autoflake
-Version:        1.3
+Version:        1.3.1
 Release:        0
-# for license file
-%define tag     44b07bb9dab60a74cb5da0b67cc78b734763785c
 Summary:        Program to removes unused Python imports and variables
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/myint/autoflake
+URL:            https://github.com/myint/autoflake
 Source:         https://files.pythonhosted.org/packages/source/a/autoflake/autoflake-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module pyflakes >= 1.1.0}
-%endif
 Requires:       python-pyflakes >= 1.1.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
-
+BuildRequires:  %{python_module pyflakes >= 1.1.0}
 %python_subpackages
 
 %description
@@ -67,11 +61,9 @@ autoflake also removes useless pass statements.
 
 %python_clone -a %{buildroot}%{_bindir}/autoflake
 
-%if %{with test}
 %check
 export $LANG=en_US.UTF-8
 %python_exec setup.py test
-%endif
 
 %post
 %python_install_alternative autoflake
@@ -80,7 +72,6 @@ export $LANG=en_US.UTF-8
 %python_uninstall_alternative autoflake
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc AUTHORS.rst README.rst
 %license LICENSE
 %python_alternative %{_bindir}/autoflake

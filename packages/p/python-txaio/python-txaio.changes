@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 11:40:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to build with newer pytest releases:
+  * pytest4.patch
+
+-------------------------------------------------------------------
 Thu Sep  5 13:40:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Set pytest maximum version.

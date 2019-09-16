@@ -139,4 +139,19 @@
     <comment></comment>
     <requestid>721357</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c244b16d77babe2d91f9a17e46356566</srcmd5>
+    <version>4.17.1</version>
+    <time>1568623947</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 4.17.1:
+  * Bugfixes
+    + unset _I3_RESTART_FD after restart (fixes crashes on restart)
+    + default config: immediately refresh i3status after volume changes
+    + default config: add XF86AudioMicMute
+    + default config: mention loginctl lock-session alongside xss-lock
+    + default config: use workspace number, not just workspace
+</comment>
+    <requestid>730826</requestid>
+  </revision>
 </revisionlist>

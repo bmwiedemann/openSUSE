@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Wed Aug 28 11:58:06 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Rebase vagrant patches:
+
+  drop:
+  - 0002-bin-vagrant-silence-warning-about-installer.patch
+  - 0003-Use-a-private-temporary-dir.patch
+  - 0004-linux-cap-halt-don-t-wait-for-shutdown-h-now-to-fini.patch
+  - 0009-plugins-don-t-abuse-require_relative.patch
+  - 0023-vbox-fix-package.patch
+  - 0024-do-not-depend-on-wdm.patch
+  - 0025-do-not-abuse-relative-paths-in-docker-plugin.patch
+  - 0026-do-not-abuse-relative-paths-in-plugins.patch
+  - 0027-Fix-unit-tests-for-GuestLinux-Cap-Halt.patch
+  - 0028-Skip-failing-tests.patch
+  - 0029-Skip-docker-networking-test.patch
+
+  add:
+  - 0001-bin-vagrant-silence-warning-about-installer.patch
+  - 0002-Use-a-private-temporary-dir.patch
+  - 0003-linux-cap-halt-don-t-wait-for-shutdown-h-now-to-fini.patch
+  - 0004-plugins-don-t-abuse-require_relative.patch.patch
+  - 0005-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  - 0006-do-not-depend-on-wdm.patch
+  - 0007-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  - 0008-Don-t-abuse-relative-paths-in-plugins.patch
+  - 0009-Fix-unit-tests-for-GuestLinux-Cap-Halt.patch
+  - 0010-Skip-failing-tests.patch
+  - 0011-Bump-rspec-its-dependency.patch
+  - 0012-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
+  - 0013-Only-return-interfaces-where-addr-is-not-nil.patch
+  - 0014-Skip-docker-networking-test.patch
+  - 0015-ARM-only-Disable-Subprocess-unit-test.patch
+
+-------------------------------------------------------------------
+Mon Jul  1 09:06:56 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add 0029-Skip-docker-networking-test.patch:
+    skips a unit-test that fails on OBS
+
+  update to 2.2.5
+  FEATURES:
+
+      providers/docker: Private and Public networking support [GH-10702]
+
+  IMPROVEMENTS:
+
+      command/global-status: Provide machine-readable information [GH-10506]
+      command/snapshot: Separate snapshot names for guests when listing snapshots [GH-10828]
+      command/box/update: Ignore missing metadata files when updating all boxes [GH-10829]
+      core: Use consistent settings when unpacking boxes as root [GH-10707]
+      core: Write metadata.json file when packaging box [GH-10706]
+      core: Remove whitespace from id file on load [GH-10727]
+      core/bundler: Support resolution when installed within system [GH-10894]
+      guest/coreos: Update network configuration and hostname setting [GH-10752]
+      guest/freebsd: Add proper VirtualBox share folders support for FreeBSD guests [GH-10717]
+      guest/freebsd: Add unmount share folder for VirtualBox guests [GH-10761]
+      guest/freebsd: Simplify network interface listing when configuring networks [GH-10763]
+      providers/docker: Add usable? check to docker provider [GH-10890]
+      synced_folder/smb: Remove configuration information from synced folder data [GH-10811]
+
+  BUG FIXES:
+
+      command/box/update: Ensure the right version is picked when updating specific boxes [GH-10810]
+      command/cloud: Properly set variable from CLI argument parsing for username field [GH-10726]
+      command/rsync_auto: Use relative paths to machines folder path for file path Listener [GH-10902]
+      communicator/ssh: Remove net/sftp loading to prevent loading errors [GH-10745]
+      contrib/bash: Search for running_vm_list only in machines folder [GH-10841]
+      core/bundler: Properly parse multiple constants when installing plugins [GH-10896]
+      core/environment: Support plugin configuration within box Vagrantfiles [GH-10889]
+      core/triggers: Fix typo in UI output [GH-10748]
+      core/triggers: Properly exit with abort option [GH-10824]
+      core/triggers: Ensure guest names are string when filtering trigger configs [GH-10854]
+      core/triggers: Abort after all running processes have completed when parallel is enabled [GH-10891]
+      guest/void: Fix NFS capability detection [GH-10713]
+      guest/bsd: Properly set BSD options order for /etc/exports [GH-10909]
+      host/windows: Fix rubygems error when host has directory named c [GH-10803]
+      provider/virtualbox: Ensure non-existent machines do not attempt to list snapshots [GH-10784]
+      provider/docker: Properly set docker-compose config file with volume names [GH-10820]
+      provisioner/ansible: Fix pip installer hardcoded curl get_pip.py piped to python [GH-10625]
+      provisioner/chef: Update chef install check for guests [GH-10917]
+      synced_folders/rsync: Remove rsync__excludes from command if array is empty [GH-10901]
+
+
+-------------------------------------------------------------------
 Tue Apr  2 20:35:42 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Restructure vagrant package to support system-wide plugin installation

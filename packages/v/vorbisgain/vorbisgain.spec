@@ -1,7 +1,7 @@
 #
 # spec file for package vorbisgain
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,10 +21,11 @@ Name:           vorbisgain
 Version:        0.37
 Release:        0
 Summary:        Calculate the Replay Gain for Ogg Vorbis files
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Productivity/Multimedia/Sound/Utilities
 Url:            https://sjeng.org/vorbisgain.html
 Source0:        https://www.sjeng.org/ftp/vorbis/%{name}-%{version}.tar.gz
+Patch0:         vorbisgain-c99.patch
 BuildRequires:  dos2unix
 BuildRequires:  libogg-devel
 BuildRequires:  libvorbis-devel
@@ -52,6 +53,7 @@ quality compared to a non-VorbisGain'ed file.
 
 %prep
 %setup -q
+%patch -P0 -p1
 # workaround wrong end-of-line encoding
 dos2unix -f COPYING NEWS
 

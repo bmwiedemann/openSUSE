@@ -18,19 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-avro
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        A serialization and RPC framework for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            http://avro.apache.org/
+URL:            https://avro.apache.org/
 Source:         https://files.pythonhosted.org/packages/source/a/avro/avro-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-python-snappy
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -47,7 +47,9 @@ Avro is a serialization and RPC framework.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# Dies on which is nowhere even in their VCS
+#  E   ImportError: No module named set_avro_test_path
+#%%pytest
 
 %files %{python_files}
 %python3_only %{_bindir}/avro

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  6 17:25:26 CEST 2019 - mls@suse.de
+
+- fix build by removing -Werror=return-type and using
+  -ffat-lto-objects
+
+-------------------------------------------------------------------
 Wed Dec 20 13:18:32 CET 2017 - mls@suse.de
 
 - fix build with new glibc versions

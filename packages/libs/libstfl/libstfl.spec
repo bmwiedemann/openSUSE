@@ -1,7 +1,7 @@
 #
 # spec file for package libstfl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           libstfl
 Version:        0.24
 Release:        0
 Summary:        Structured Terminal Forms Library
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.clifford.at/stfl/
+URL:            http://www.clifford.at/stfl/
 Source:         http://www.clifford.at/stfl/stfl-%{version}.tar.gz
 Source99:       libstfl-rpmlintrc
 Patch1:         stfl-optflags.patch
@@ -67,6 +67,7 @@ describe STFL GUIs.
 %patch2
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 make %{?_smp_mflags} \
 	CC="gcc" \
 	OPTFLAGS="%{optflags}"\
@@ -91,7 +92,8 @@ make %{?_smp_mflags} \
 %postun -n libstfl%{sover} -p /sbin/ldconfig
 
 %files -n libstfl%{sover}
-%doc COPYING README
+%license COPYING
+%doc README
 %{_libdir}/libstfl.so.%{sover}
 %{_libdir}/libstfl.so.%{sover}.*
 

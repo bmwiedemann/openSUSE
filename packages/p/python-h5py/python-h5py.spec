@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-h5py
-Version:        2.9.0
+Version:        2.10.0
 Release:        0
 Summary:        Python interface to the Hierarchical Data Format library
 License:        BSD-3-Clause
@@ -29,12 +29,11 @@ Source:         https://files.pythonhosted.org/packages/source/h/h5py/h5py-%{ver
 Patch0:         no_include_opt.patch
 #PATCH-FIX-OPENSUSE remove_unittest2.patch mcepl@suse.cz -- remove dependency unittest2
 Patch1:         remove_unittest2.patch
-#PATCH-FIX-UPSTREAM fix_failing_x86_test.patch --gh#h5py/h5py#1235 gh#h5py/h5py#1163
-Patch2:         fix_failing_x86_test.patch
 BuildRequires:  %{python_module Cython >= 0.23}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  %{python_module pkgconfig}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -65,12 +64,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-export CFLAGS="%{optflags} -fno-strict-aliasing"
-mkdir check
-pushd check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -B -c "from sys import exit; import h5py; exit(0) if h5py.run_tests().wasSuccessful() else exit(1)"
-}
+export PYTHONDONTWRITEBYTECODE=1
+# test_float_round_tripping -- overflows on 32bit
+# py3 only code must be skipped
+%pytest_arch %{buildroot}%{$python_sitearch}/h5py/tests/ -k 'not (test_highlevel_access or test_deprecation_available_ftypes or test_read_uncompressed_offsets or test_read_write_chunk or test_float_round_tripping)'
 
 %files %{python_files}
 %license lzf/LICENSE.txt

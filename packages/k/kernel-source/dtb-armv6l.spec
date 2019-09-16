@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.2
-%define patchversion 5.2.13
+%define patchversion 5.2.14
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv6l
-Version:        5.2.13
+Version:        5.2.14
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gacd8e88
+Release:        <RELEASE>.g374b0ae
 %else
 Release:        0
 %endif
@@ -172,7 +172,7 @@ for dts in bcm2835*.dts ; do
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
     install -m 644 $target.dtb %{buildroot}%{dtbdir}/$(dirname $target)
-%ifarch aarch64
+%ifarch aarch64 riscv64
     # HACK: work around U-Boot ignoring vendor dir
     baselink=%{dtbdir}/$(basename $target).dtb
     vendordir=$(basename $(dirname $target))
@@ -189,7 +189,7 @@ cd /boot
 # Unless /boot/dtb exists as real directory, create a symlink.
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 %files -n dtb-bcm2835 -f dtb-bcm2835.list
 %else
 %files -n dtb-bcm2835

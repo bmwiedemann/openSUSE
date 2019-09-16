@@ -12,17 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyreadstat
-Version:        0.2.8
+Version:        0.2.9
 Release:        0
-License:        Apache-2.0
 Summary:        Package to read and write statistical data files into pandas
-Url:            https://github.com/Roche/pyreadstat
+License:        Apache-2.0
 Group:          Development/Languages/Python
+URL:            https://github.com/Roche/pyreadstat
 Source:         https://codeload.github.com/Roche/pyreadstat/tar.gz/v%{version}#/pyreadstat-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
@@ -31,12 +32,11 @@ BuildRequires:  fdupes
 BuildRequires:  glibc-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
+Requires:       python-numpy
+Requires:       python-pandas
 # SECTION test requirements
 BuildRequires:  %{python_module pandas}
 # /SECTION
-Requires:       python-numpy
-Requires:       python-pandas
-
 %python_subpackages
 
 %description
