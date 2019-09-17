@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-filter
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Reusable Django app to allow users to filter queryset dynamically
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/carltongibson/django-filter
 Source:         https://files.pythonhosted.org/packages/source/d/django-filter/django-filter-%{version}.tar.gz
-Patch0:         fix_tests.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module django-crispy-forms}
 BuildRequires:  %{python_module djangorestframework}
@@ -45,7 +44,6 @@ requires Python 2.7 or higher. For usage and installation instructions, consult 
 
 %prep
 %setup -q -n django-filter-%{version}
-%patch0 -p1
 
 %build
 %python_build
