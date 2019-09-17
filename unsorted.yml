@@ -2280,6 +2280,7 @@ unsorted:
   - docky-devel 
   - docky-lang 
   - dogtail 
+  - doh 
   - dolphin-devel 
   - dolphin-plugins 
   - dolphin-plugins-lang 
@@ -4593,14 +4594,9 @@ unsorted:
   - grsync 
   - grsync-lang 
   - grub 
-  - grub2: [i586] 
-  - grub2-branding-openSUSE: [i586] 
   - grub2-branding-upstream 
   - grub2-i386-efi: [i586] 
-  - grub2-i386-pc: [i586] 
   - grub2-i386-xen: [i586] 
-  - grub2-snapper-plugin: [i586] 
-  - grub2-systemd-sleep-plugin: [i586] 
   - grub2-theme-breeze 
   - grubby 
   - gsequencer 
@@ -14826,7 +14822,6 @@ unsorted:
   - os-autoinst 
   - os-autoinst-distri-opensuse-deps 
   - os-autoinst-openvswitch 
-  - os-prober: [i586] 
   - os-service-types-doc 
   - osc-plugin-collab 
   - osc-plugin-cycle: [x86_64] 
@@ -17143,7 +17138,6 @@ unsorted:
   - python-pyinsane 
   - python-pylibacl 
   - python-pylibacl-doc 
-  - python-pymetar 
   - python-pymisp-doc 
   - python-pymod2pkg-doc 
   - python-pynag 
@@ -17898,22 +17892,18 @@ unsorted:
   - python2-django-allauth 
   - python2-django-allauth-lang 
   - python2-django-appconf 
-  - python2-django-auth-ldap 
   - python2-django-avatar 
   - python2-django-babel 
   - python2-django-braces 
   - python2-django-ckeditor 
   - python2-django-classy-tags 
   - python2-django-contrib-comments 
-  - python2-django-cors-headers 
   - python2-django-crispy-forms 
   - python2-django-debreach 
-  - python2-django-debug-toolbar 
   - python2-django-environ 
   - python2-django-extensions 
   - python2-django-formtools 
   - python2-django-grappelli 
-  - python2-django-guardian 
   - python2-django-invitations 
   - python2-django-jinja 
   - python2-django-js-asset 
@@ -17923,7 +17913,6 @@ unsorted:
   - python2-django-model-utils 
   - python2-django-nine 
   - python2-django-nose 
-  - python2-django-oauth-toolkit 
   - python2-django-oidc-provider 
   - python2-django-picklefield 
   - python2-django-pipeline 
@@ -19183,7 +19172,6 @@ unsorted:
   - python2-sphinxcontrib-plantuml 
   - python2-sphinxcontrib-programoutput 
   - python2-sphinxcontrib-seqdiag 
-  - python2-sphinxcontrib-svg2pdfconverter 
   - python2-sphinxcontrib-websupport 
   - python2-spotipy 
   - python2-sqlalchemy-migrate 
@@ -19297,7 +19285,6 @@ unsorted:
   - python2-twython 
   - python2-txWS 
   - python2-txZMQ 
-  - python2-txacme 
   - python2-txaio 
   - python2-txtorcon 
   - python2-typing 
@@ -20763,7 +20750,6 @@ unsorted:
   - python3-matplotlib-tk 
   - python3-matplotlib-web 
   - python3-matplotlib-wx 
-  - python3-matrix-synapse 
   - python3-matrix-synapse-ldap3 
   - python3-maxminddb 
   - python3-mbstrdecoder 
@@ -21174,6 +21160,7 @@ unsorted:
   - python3-pymarc 
   - python3-pymediainfo 
   - python3-pymemcache 
+  - python3-pymetar 
   - python3-pymilter 
   - python3-pymisp 
   - python3-pymod2pkg 
@@ -21736,7 +21723,6 @@ unsorted:
   - python3-twython 
   - python3-txWS 
   - python3-txZMQ 
-  - python3-txacme 
   - python3-txaio 
   - python3-txtorcon 
   - python3-tzlocal 

@@ -428,7 +428,7 @@
     <package name="dleyna-connector-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dleyna-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dmidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="dmraid" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="dmraid" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="dmz-icon-theme-cursors" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dnsmasq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="docbook-dsssl-stylesheets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
@@ -658,7 +658,7 @@
     <package name="geoclue2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="geocode-glib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="geronimo-jms-1_1-api" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
-    <package name="gettext-runtime" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="gettext-runtime" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="gettext-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="ghex" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ghex-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -702,8 +702,8 @@
     <package name="glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="glibc-extra" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="glibc-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
-    <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
-    <package name="glibc-locale-base" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="glibc-locale-base" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="gmenudbusmenuproxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gmp-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="gnome-backgrounds" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -855,6 +855,11 @@
     <package name="groff" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="groff-full" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gromit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="grub2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="grub2-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="grub2-i386-pc" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="grub2-snapper-plugin" supportstatus="unsupported"/> <!-- reason: dvd:grub2-snapper-plugin -->
+    <package name="grub2-systemd-sleep-plugin" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="gsettings-backend-dconf" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gsettings-desktop-schemas" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gsettings-desktop-schemas-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3018,7 +3023,7 @@
     <package name="libxklavier16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxml2-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxml2-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libxml2-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libxml2-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2-snapper-plugin -->
     <package name="libxmlb1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxmlsec1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxmlsec1-nss1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3239,7 +3244,7 @@
     <package name="mpt-status" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mtd-utils" supportstatus="unsupported"/> <!-- reason: dvd:mtd-utils -->
     <package name="mtdev-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="mtools" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="mtools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="mtpaint" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="mtpaint-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-lxde-lxde -->
     <package name="mtr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
@@ -3392,6 +3397,7 @@
     <package name="oprofile" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="orca" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="orca-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="os-prober" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="osc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="osinfo-db" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
@@ -5618,11 +5624,6 @@
     <package name="gnome-keyring-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gnome-keyring-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gnutls" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="grub2" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
-    <package name="grub2-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
-    <package name="grub2-i386-pc" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
-    <package name="grub2-snapper-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="grub2-systemd-sleep-plugin" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="grub2-x86_64-efi" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="grub2-x86_64-xen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="gtk2-engine-cleanice-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5799,7 +5800,6 @@
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="os-prober" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_apparmor-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pam_mount-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5835,7 +5835,7 @@
     <package name="samba-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-winbind-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="selinux-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="shim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="shim" supportstatus="unsupported"/> <!-- reason: dvd:shim -->
     <package name="skopeo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="sssd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="supermin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
