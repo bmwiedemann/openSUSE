@@ -623,4 +623,11 @@ remove obsolete _opt patterns</comment>
     <user>maxlin_factory</user>
     <comment>more explicity for shim</comment>
   </revision>
+  <revision rev="88" vrev="86">
+    <srcmd5>abea63db244e29e8147298abd96c0f36</srcmd5>
+    <version>unknown</version>
+    <time>1568723633</time>
+    <user>maxlin_factory</user>
+    <comment>more explicity for grub2 branding</comment>
+  </revision>
 </revisionlist>
