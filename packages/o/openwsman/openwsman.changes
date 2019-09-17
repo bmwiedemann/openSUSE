@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 17 09:42:38 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 2.6.11
+  * Bugfix release
+    - prevent double free in events error processing
+
+-------------------------------------------------------------------
 Wed Aug  7 11:44:15 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 2.6.10
@@ -6,6 +13,7 @@ Wed Aug  7 11:44:15 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
   * Fix possible denial of service (bsc#1122623, CVE-2019-3816, CVE-2019-3833)
   * Pthread usage fixes (Alexander Usyskin)
   * Convert sprintf to snprintf and strcpy to strncpy (Tomas Winkler)
+  * Many potential NULL dereferences fixed (Alexander Usyskin)
 
 - drop bsc1122623.patch and debug_fix.patch, upstreamed
 

@@ -23,7 +23,7 @@ Url:            http://github.com/openSUSE/product-builder
 Name:           product-builder
 Conflicts:      kiwi
 Conflicts:      kiwi-instsource
-Version:        1.2.2
+Version:        1.2.4
 Release:        0
 Provides:       kiwi-schema = 6.2
 Source:         product-builder-%version.tar.xz
@@ -62,7 +62,7 @@ To be used only for product medias for Leap 15 and SLE 15.
 
 %build
 test -e /.buildenv && . /.buildenv
-make buildroot="%{buildroot}" CFLAGS="%{optflags}"
+make CFLAGS="%{optflags}"
 
 %install
 make buildroot="%{buildroot}" \
@@ -71,6 +71,14 @@ make buildroot="%{buildroot}" \
     install
 ./.version >"%{buildroot}/%{_datadir}/kiwi/.revision"
 
+%if 0%{?is_opensuse}
+mv %{buildroot}%{_bindir}/product-builder{.pl,}
+%else
+# install SLE wrapper as entry point. It doesn't really harm as the
+# build flavor detected is very specific, but to avoid waste...
+ln -s product-builder-sle.sh %{buildroot}%{_bindir}/product-builder
+%endif
+
 %files
 %dir %{_datadir}/kiwi
 %license LICENSE
@@ -78,6 +86,6 @@ make buildroot="%{buildroot}" \
 %{_datadir}/kiwi/metadata
 %{_datadir}/kiwi/modules
 %{_datadir}/kiwi/xsl
-%{_bindir}/product-builder
+%{_bindir}/product-builder*
 
 %changelog

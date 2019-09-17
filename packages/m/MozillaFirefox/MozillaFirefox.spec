@@ -18,13 +18,13 @@
 
 
 # changed with every update
-%define major          68
-%define mainver        %major.1.0
-%define orig_version   68.1.0
-%define orig_suffix    esr
-%define update_channel esr68
+%define major          69
+%define mainver        %major.0
+%define orig_version   69.0
+%define orig_suffix    %{nil}
+%define update_channel release
 %define branding       1
-%define releasedate    20190826132627
+%define releasedate    20190827005903
 %define source_prefix  firefox-%{orig_version}
 
 # always build with GCC as SUSE Security Team requires that
@@ -32,6 +32,8 @@
 
 # PIE, full relro
 %define build_hardened 1
+
+%bcond_with only_print_mozconfig
 
 # Firefox only supports i686
 %ifarch %ix86
@@ -70,7 +72,7 @@ BuildRequires:  gcc7-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo >= 1.34
+BuildRequires:  cargo >= 1.35
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libidl-devel
@@ -79,14 +81,14 @@ BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.21
-BuildRequires:  mozilla-nss-devel >= 3.44.1
+BuildRequires:  mozilla-nss-devel >= 3.45
 BuildRequires:  nasm >= 2.13
-BuildRequires:  nodejs >= 8.11
+BuildRequires:  nodejs8 >= 8.11
 BuildRequires:  python-devel
 BuildRequires:  python2-xml
 BuildRequires:  python3 >= 3.5
-BuildRequires:  rust >= 1.34
-BuildRequires:  rust-cbindgen >= 0.8.7
+BuildRequires:  rust >= 1.35
+BuildRequires:  rust-cbindgen >= 0.9.0
 BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -134,7 +136,8 @@ Summary:        Mozilla %{appname} Web Browser
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
 Url:            http://www.mozilla.org/
-Source:         http://ftp.mozilla.org/pub/firefox/releases/%{version}%{orig_suffix}/source/firefox-%{orig_version}%{orig_suffix}.source.tar.xz
+%if !%{with only_print_mozconfig}
+Source:         http://ftp.mozilla.org/pub/%{progname}/releases/%{version}%{orig_suffix}/source/firefox-%{orig_version}%{orig_suffix}.source.tar.xz
 Source1:        MozillaFirefox.desktop
 Source2:        MozillaFirefox-rpmlintrc
 Source3:        mozilla.sh.in
@@ -157,7 +160,7 @@ Source16:       MozillaFirefox.changes
 Source18:       mozilla-api-key
 Source19:       google-api-key
 Source20:       https://ftp.mozilla.org/pub/%{progname}/releases/%{version}%{orig_suffix}/source/%{progname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
-Source21:       mozilla.keyring
+Source21:       https://ftp.mozilla.org/pub/%{progname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
 # Gecko/Toolkit
 Patch1:         mozilla-nongnome-proxies.patch
 Patch2:         mozilla-kde.patch
@@ -174,10 +177,19 @@ Patch12:        mozilla-reduce-rust-debuginfo.patch
 Patch13:        mozilla-ppc-altivec_static_inline.patch
 Patch14:        mozilla-bmo1005535.patch
 Patch15:        mozilla-bmo1568145.patch
+Patch16:        mozilla-bmo1573381.patch
+Patch17:        mozilla-bmo1504834-part1.patch
+Patch18:        mozilla-bmo1504834-part2.patch
+Patch19:        mozilla-bmo1504834-part3.patch
+Patch20:        mozilla-bmo1511604.patch
+Patch21:        mozilla-bmo1554971.patch
+Patch22:        mozilla-nestegg-big-endian.patch
+Patch23:        mozilla-bmo1512162.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
 Patch103:       firefox-add-kde.js-in-order-to-survive-PGO-build.patch
+%endif # only_print_mozconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post):   coreutils shared-mime-info desktop-file-utils
 Requires(postun): shared-mime-info desktop-file-utils
@@ -267,13 +279,14 @@ This subpackage contains the Breakpad created and compatible debugging
 symbols meant for upload to Mozilla's crash collector database.
 %endif
 
+%if !%{with only_print_mozconfig}
 %prep
 %if %localize
 
 # If generated incorrectly, the tarball will be ~270B in
 # size, so 1MB seems like good enough limit to check.
 MINSIZE=1048576
-if (( $(stat -c%s "%{SOURCE7}") < MINSIZE)); then
+if (( $(stat -Lc%s "%{SOURCE7}") < MINSIZE)); then
     echo "Translations tarball %{SOURCE7} not generated properly."
     exit 1
 fi
@@ -293,19 +306,29 @@ cd $RPM_BUILD_DIR/%{source_prefix}
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%ifarch s390x
+%ifarch s390x ppc64
 %patch11 -p1
 %endif
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1
 %patch103 -p1
+%endif # only_print_mozconfig
 
 %build
+%if !%{with only_print_mozconfig}
 # no need to add build time to binaries
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
@@ -318,6 +341,8 @@ if test "$kdehelperversion" != %{kde_helper_version}; then
   exit 1
 fi
 source %{SOURCE5}
+%endif # only_print_mozconfig
+
 export MOZ_SOURCE_CHANGESET=$REV
 export SOURCE_REPO=$REPO
 export source_repo=$REPO
@@ -348,8 +373,18 @@ export CFLAGS="$CFLAGS -mminimal-toc"
 %endif
 export CXXFLAGS="$CFLAGS"
 export MOZCONFIG=$RPM_BUILD_DIR/mozconfig
+%if %{with only_print_mozconfig}
+echo "export CC=$CC"
+echo "export CXX=$CXX"
+echo "export CFLAGS=\"$CFLAGS\""
+echo "export LDFLAGS=\"$LDFLAGS\""
+echo "export RUSTFLAGS=\"$RUSTFLAGS\""
+echo ""
+cat << EOF
+%else
 %limit_build -m 2000
 cat << EOF > $MOZCONFIG
+%endif
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
 mk_add_options MOZ_MAKE_FLAGS=%{?jobs:-j%jobs}
@@ -413,7 +448,7 @@ ac_add_options --with-arch=armv7-a
 ac_add_options --disable-webrtc
 %endif
 # mitigation/workaround for bmo#1512162
-%ifarch ppc64le
+%ifarch ppc64le s390x
 ac_add_options --enable-optimize="-O1"
 %endif
 %ifarch x86_64
@@ -424,7 +459,19 @@ ac_add_options MOZ_PGO=1
 %endif
 %endif
 EOF
+%if !%{with only_print_mozconfig}
+%ifarch ppc64 s390x s390
+# NOTE: Currently, system-icu is too old, so we can't build with that,
+#       but have to generate the .dat-file freshly. This seems to be a
+#       less fragile approach anyways.
+# ac_add_options --with-system-icu
+echo "Generate big endian version of config/external/icu/data/icud58l.dat"
+./mach python intl/icu_sources_data.py .
+ls -l config/external/icu/data
+rm -f config/external/icu/data/icudt*l.dat
+%endif
 xvfb-run --server-args="-screen 0 1920x1080x24" ./mach build
+%endif # only_print_mozconfig
 
 %install
 cd $RPM_BUILD_DIR/obj
@@ -440,7 +487,7 @@ make -C browser/installer STRIP=/bin/true MOZ_PKG_FATAL_WARNINGS=0
 grep amazondotcom dist/firefox/browser/omni.ja
 # copy tree into RPM_BUILD_ROOT
 mkdir -p %{buildroot}%{progdir}
-cp -rf $RPM_BUILD_DIR/obj/dist/firefox/* %{buildroot}%{progdir}
+cp -rf $RPM_BUILD_DIR/obj/dist/%{progname}/* %{buildroot}%{progdir}
 mkdir -p %{buildroot}%{progdir}/distribution/extensions
 mkdir -p %{buildroot}%{progdir}/browser/defaults/preferences/
 # install gre prefs
@@ -448,7 +495,7 @@ install -m 644 %{SOURCE13} %{buildroot}%{progdir}/defaults/pref/
 # install browser prefs
 install -m 644 %{SOURCE6} %{buildroot}%{progdir}/browser/defaults/preferences/kde.js
 install -m 644 %{SOURCE9} %{buildroot}%{progdir}/browser/defaults/preferences/firefox.js
-# install additional locales
+# build additional locales
 %if %localize
 mkdir -p %{buildroot}%{progdir}/browser/extensions
 truncate -s 0 %{_tmppath}/translations.{common,other}

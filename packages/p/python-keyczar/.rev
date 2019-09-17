@@ -53,4 +53,13 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659464</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>6940865ca2f6fd5671767bed4c67f6fc</srcmd5>
+    <version>0.716</version>
+    <time>1568720266</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch to fix the pyasn version conflict:
+  * 0001-Fixes-output-value-changes-between-older-and-newer-p.patch</comment>
+    <requestid>731222</requestid>
+  </revision>
 </revisionlist>

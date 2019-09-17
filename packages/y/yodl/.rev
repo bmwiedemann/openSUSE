@@ -320,4 +320,12 @@ Fixes build failure seen in openSUSE:Factory:Staging</comment>
   parsing.</comment>
     <requestid>687138</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>1ae5e7169a14fb8a88fc4722c57ffc8f</srcmd5>
+    <version>4.02.01</version>
+    <time>1568720144</time>
+    <user>maxlin_factory</user>
+    <comment>Remove Mesa, Java, ... from indirect build dependencies (forwarded request 730485 from StefanBruens)</comment>
+    <requestid>730495</requestid>
+  </revision>
 </revisionlist>

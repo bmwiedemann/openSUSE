@@ -19,14 +19,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-vcrpy
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Python module to mock and replay HTTP interactions
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kevin1024/vcrpy
 Source:         https://files.pythonhosted.org/packages/source/v/vcrpy/vcrpy-%{version}.tar.gz
-Patch0:         python-vcrpy-fix-tunnel-uri-generation.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest}
@@ -59,7 +58,8 @@ This is a Python version of Ruby's VCR library.
 
 %prep
 %setup -q -n vcrpy-%{version}
-%patch0 -p1
+# online integration tests
+rm -r tests/integration
 
 %build
 %python_build
@@ -71,8 +71,7 @@ This is a Python version of Ruby's VCR library.
 %check
 # Skip TestVCRConnection.testing_connect. Attempts
 # a real connection.
-# This just doesn't work gh#kevin1024/vcrpy#427
-# %%python_exec -m pytest -k "not testing_connect" tests
+%pytest -k "not testing_connect"
 
 %files %{python_files}
 %license LICENSE.txt

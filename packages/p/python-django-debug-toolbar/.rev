@@ -103,4 +103,25 @@
     <comment>- add t_integrations.patch to fix tests with django-2.2</comment>
     <requestid>703432</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>178911ea3c938892e52da4cd9d7adbd6</srcmd5>
+    <version>2.0</version>
+    <time>1568720267</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.0:
+  * Updated StaticFilesPanel to be compatible with Django 3.0.
+  * The ProfilingPanel is now enabled but inactive by default.
+  * Fixed toggling of table rows in the profiling panel UI.
+  * The ProfilingPanel no longer skips remaining panels or middlewares.
+  * Improved the installation documentation.
+  * Fixed a possible crash in the template panel.
+  * Added support for psycopg2 Composed objects.
+  * Changed the Jinja2 tests to use Django's own Jinja2 template backend.
+  * Added instrumentation to queries using server side cursors.
+  * Removed support for Python 2.
+  * Removed support for Django's deprecated MIDDLEWARE_CLASSES setting.
+Too many small improvements and cleanups to list them all.
+- Remove merged patch t_integrations.patch</comment>
+    <requestid>731227</requestid>
+  </revision>
 </revisionlist>

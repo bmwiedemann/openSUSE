@@ -17,7 +17,7 @@
 
 
 Name:           telemetrics-client
-Version:        2.1.1+git20190605.781d938
+Version:        2.2.2+git20190903.a4774bd
 Release:        0
 Summary:        Telemetrics solution
 License:        LGPL-2.1-or-later
@@ -26,7 +26,7 @@ URL:            https://github.com/clearlinux/telemetrics-client
 Source:         %{name}-%{version}.tar.xz
 Source1:        telemetrics-users.conf
 Patch:          telemetrics.conf.patch
-Patch1:         telmctl-enable-disable.diff
+Patch1:         telemctl-enable-disable.diff
 Patch2:         install-paths.diff
 BuildRequires:  autoconf
 BuildRequires:  automake

@@ -4014,4 +4014,41 @@
     Content security policy bypass through hash-based sources in directives</comment>
     <requestid>728229</requestid>
   </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>c566c01cbb3cca48d493b19190b8bbbf</srcmd5>
+    <version>69.0</version>
+    <time>1568720083</time>
+    <user>maxlin_factory</user>
+    <comment>- Mozilla Firefox 69.0
+  * Enhanced Tracking Protection (ETP) for stronger privacy protections
+  * Block Autoplay feature is enhanced to give users the option to block
+    any video
+  * Users in the US or using the en-US browser, can get a new “New Tab”
+    page experience connecting to the best of Pocket's content.
+  * Support for the Web Authentication HmacSecret extension via
+    Windows Hello introduced.
+  * Support for receiving multiple video codecs with this release makes
+    it easier for WebRTC conferencing services to mix video from
+    different clients.
+  MFSA 2019-25 (boo#1149324)
+  * CVE-2019-11741 (bmo#1539595)
+    Isolate addons.mozilla.org and accounts.firefox.com
+  * CVE-2019-5849 (bmo#1555838)
+    Out-of-bounds read in Skia
+  * CVE-2019-11737 (bmo#1388015)
+    Content security policy directives ignore port and path if host is a wildcard
+  * CVE-2019-11734 (bmo#1352875,bmo#1536227,bmo#1557208,bmo#1560641)
+    Memory safety bugs fixed in Firefox 69
+  * CVE-2019-11735 (bmo#1561404,bmo#1561484,bmo#1568047,bmo#1561912,
+    bmo#1565744,bmo#1568858,bmo#1570358)
+    Memory safety bugs fixed in Firefox 69 and Firefox ESR 68.1
+  * CVE-2019-11740 (bmo#1563133,bmo#1573160)
+    Memory safety bugs fixed in Firefox 69, Firefox ESR 68.1, and Firefox ESR 60.9
+- requires
+  * rust/cargo &gt;= 1.35
+  * rust-cbindgen &gt;= 0.9.0
+  * mozilla-nss &gt;= 3.45
+- rebased patches</comment>
+    <requestid>730473</requestid>
+  </revision>
 </revisionlist>

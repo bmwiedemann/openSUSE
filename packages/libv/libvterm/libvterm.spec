@@ -1,7 +1,7 @@
 #
 # spec file for package libvterm
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover 0
+%define relno 755
+
 Name:           libvterm
-Version:        0~bzr696
+Version:        0.1+bzr755
 Release:        0
 Summary:        An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://launchpad.net/libvterm
-Source:         %{name}-%{version}.tar.xz
+URL:            https://launchpad.net/libvterm
+# https://bazaar.launchpad.net/~libvterm/libvterm/trunk/tarball/%{relno}
+Source:         %{name}-0~bzr%{relno}.tar.gz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
@@ -58,7 +61,7 @@ Group:          System/Console
 This package contains tools for libvterm.
 
 %prep
-%setup -q
+%setup -q -n \~libvterm/libvterm/trunk
 
 %build
 make PREFIX=%{_prefix} \
@@ -81,18 +84,15 @@ rm -vf %{buildroot}%{_libdir}/%{name}.a
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
-%defattr(-,root,root)
-%doc LICENSE
+%license LICENSE
 %{_libdir}/%{name}.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/vterm*.h
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/vterm.pc
 
 %files tools
-%defattr(-,root,root)
 %{_bindir}/unterm
 %{_bindir}/vterm-ctrl
 %{_bindir}/vterm-dump

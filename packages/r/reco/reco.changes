@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep  9 18:45:10 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.0:
+  * MainWindow: Remove a redundant comment
+  * MainWindow: Prevents position changes from being spammed
+  * Recorder refactoring (#38)
+  * Fix forgetting to remove the unnecessary string for debug
+  * Show successful mark when a recording is saved correctly
+  * Resume the pause icon on canceling recording
+  * MainWindow: Remove the unused 'app' property
+  * RecordView: Remove the unused 'app' property
+  * Omit the instruction that build the app to update .po files
+  * Revert "Add name-domain to .travis.yml"
+  * Add name-domain to .travis.yml
+  * Use more efficient way to get/set window positions
+
+-------------------------------------------------------------------
 Wed Aug  7 20:33:07 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.1.0:

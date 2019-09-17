@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-bugbear
-Version:        19.3.0
+Version:        19.8.0
 Release:        0
 Summary:        A plugin for flake8 finding likely bugs and design problems in your program
 License:        MIT
@@ -27,8 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/PyCQA/flake8-bugbear
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-bugbear/flake8-bugbear-%{version}.tar.gz
 BuildRequires:  %{python_module attrs}
-BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flake8 >= 3.0.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,7 +51,8 @@ pycodestyle.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# https://github.com/PyCQA/flake8-bugbear/issues/89
+%pytest -k 'not test_selfclean_bugbear'
 
 %files %{python_files}
 %license LICENSE

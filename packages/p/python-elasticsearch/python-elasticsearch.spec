@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
 Name:           python-elasticsearch
-Version:        7.0.2
+Version:        7.0.4
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0

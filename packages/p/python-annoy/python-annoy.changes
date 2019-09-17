@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 13 12:57:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.16.0:
+  * Various warning fixes
+  * Cleanups
+- Rebase patch reproducible.patch
+
+-------------------------------------------------------------------
 Tue May 14 17:27:38 UTC 2019 - svasudevan@suse.com
 
 - Update to 1.15.2

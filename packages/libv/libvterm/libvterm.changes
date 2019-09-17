@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Wed Sep 11 23:31:21 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0~bzr755:
+  - 755 t/run-test.pl option to abort on first fail
+  - 754 Accept convenience formatting in ?screen_chars assertions; makes unit
+    tests more readable
+  - 753 Include test script line number in t/run-test.pl output
+  - 752 Add a short unit test that resize on altscreen at least doesn't crash
+  - 751 Only enable altscreen during unit tests that need it
+  - 750 Better handling of resize to try to avoid the final memmove(), and not
+    drag scrollback in unnecessarily
+  - 749 Can't lazy-allocate state->lineinfos[BUFIDX_ALTSCREEN] because that
+    allocs during byte run
+  - 748 Initial hack at tracking 'continuation' marks per line in lineinfo
+  - 747 Allow run-test.pl to cope with empty assertion results
+  - 746 Be sure to clear DWL/DHL status for blank lines caused by scroll
+  - 745 Pass 'state fields' as a struct into resize callback in case of other
+    things it needs to edit
+  - 744 Remember to store a state->lineinfo array for both buffers
+  - 743 Do all the initialising of VTermState in vterm_state_new()
+  - 742 Rename realloc_buffer() to just alloc_buffer() since it doesn't need to
+    realloc now
+  - 741 Rewrite of resize handling logic to hopefully cope much better with
+    reflow
+  - 739 Recognise an __END__ marker in a unit test file
+  - 738 Add a version check macro
+  - 737 Bump version to 0.1
+  - 736 Recognise SGR 4:3 for curly underline
+  - 735 Recognise subparameters in SGR 4:x to set off/single/double
+  - 734 Define some enum{} constants for pen.underline field values
+  - 733 Run unit tests on outfunc instead of buffering logic; truncation test
+    is no longer valid now
+  - 732 Optional vterm_output_set_callback() to set an output func; will
+    eventually replace buffer logic
+  - 731 Implement Query SGR by building a tmpbuffer then making a single
+    vterm_push_output call
+  - 730 More efficient one-line implementation of DCS and ST rendering parts of
+    _output_sprintf_dcs
+  - 729 Rewrite vterm_push_output_* functions to use a new tmpbuffer on main VT
+    object, push all output via _output_bytes()
+  - 728 The F1 to F4 keys should send SS3 rather than CSI when unmodified
+  - 727 Expose cell colour index as API value (LP1805035)
+  - 726 Document REP sequence
+  - 725 Rename/number some more state-related tests
+  - 724 Renumber the 4x test series up to 6x to make plenty more space for
+    state tests
+  - 723 Implement REP CSI (LP1805050)
+  - 722 Add --executable/-e flag to run-test.pl (LP1805034)
+  - 721 Ship src/*.inc files to destdir (thanks jamessan)
+  - 720 Add unit test for fullwidth emoji char
+  - 719 Initial attempt at better handling of double-width unicode characters
+  - 718 Fix implementation of query on bracketed paste mode (thanks jamessan)
+  - 717 Need to use 1U << 31 to keep C++ compilers happy (thanks jamessan)
+  - 716 Make sure to use CSI_* macros rather than hardcoding (1<<31) in
+    unterm.c (thanks jamessan)
+  - 715 Add DECSM 1004 to documentation
+  - 714 Move 'reportfocus' to keep numerical ordering in vterm-ctrl.c
+  - 713 Merge lp:~jamessan/libvterm/focus-events
+  - 712 Move strbuffer into the .parser sub-struct
+  - 711 Internal rearrangement of string state handling in parser, to better
+    fit upcoming new API
+  - 710 Now that parser 'text' callback should always make progress, no need to
+    use the strbuffer for it
+  - 709 Bugfix to account for UTF-8 decoder still consuming initial bytes of
+    a partial sequence
+  - 708 Improved handling of ESC parsing so it doesn't use the temporary
+    strbuffer
+  - 707 Found another document about escape sequences
+  - 706 An improved CSI parser that does not use the temporary strbuffer but
+    instead works entirely incrementally
+  - 705 Move parser-related state into its own sub-structure
+  - 704 Fix -Wpedant warnings from t/harness.c
+  - 703 Compile with -Wpedantic
+  - 702 Minor other syntax pedant fixes to bin/*.c files
+  - 701 Make all bitfields 'unsigned int'
+  - 700 Use an ifdef instead of commented code in parser.c's debugging
+  - 699 Ensure that all enums in header files lack a trailing comma, because
+    some older C++ compilers won't like that
+  - 698 Remeber to 'return 0' at the end of main() in the binaries
+  - 697 Avoid the \e escape in string literals in bin/*.c; replace with \x1b
+- Removed _service file, bzr on Tumbleweed is too broken to be
+  used automatically, rather use upstream tarballs.
+
+-------------------------------------------------------------------
 Sun May 28 23:06:43 UTC 2017 - ronisbr@gmail.com
 
 - Run spec-cleaner.

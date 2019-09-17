@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tinydb
-Version:        3.13.0
+Version:        3.14.1
 Release:        0
 Summary:        A document-oriented database
 License:        MIT
@@ -28,7 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/t/tinydb/tinydb-%
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module ujson}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

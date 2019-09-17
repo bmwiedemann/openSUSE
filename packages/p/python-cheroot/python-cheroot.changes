@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 13 04:50:22 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 6.5.8:
+  - Fix socket.SO_PEERCRED constant fallback value under PowerPC.
+  - Fix race condition when toggling stats counting in the middle
+    of request processing.
+  - Improve post Python 3.9 compatibility checks.
+  - Fix support of abstract namespace sockets
+  - Fix HTTP parser to return 400 on invalid major-only HTTP version
+    in Request-Line.
+- Drop cheroot_fix_so_peercred_ppc.patch . Applied upstream.
+
+-------------------------------------------------------------------
 Thu Sep  5 09:09:44 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add cheroot_fix_so_peercred_ppc.patch

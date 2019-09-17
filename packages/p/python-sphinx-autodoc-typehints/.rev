@@ -33,4 +33,17 @@
 - Remove merged patch sphinx21.patch</comment>
     <requestid>729759</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d439d5d3f01adb2c284720eb87664692</srcmd5>
+    <version>1.8.0</version>
+    <time>1568720352</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.8.0:
+  * Fixed regression which caused TypeError or OSError when trying to set annotations due to PR #87
+  * Fixed unintentional mangling of annotation type names
+  * Added proper :py:data targets for NoReturn, ClassVar and Tuple
+  * Added support for inline type comments (like (int, str) -&gt; None) (PR by Bernát Gábor)
+  * Use the native AST parser for type comment support on Python 3.8+</comment>
+    <requestid>731298</requestid>
+  </revision>
 </revisionlist>

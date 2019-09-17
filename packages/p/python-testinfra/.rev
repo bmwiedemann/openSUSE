@@ -82,4 +82,17 @@
     <comment></comment>
     <requestid>727101</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4f6643a44382243e535a6d086150215c</srcmd5>
+    <version>3.2.0</version>
+    <time>1568720348</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 3.2.0:
+  * New module &quot;environment&quot; for getting remote environment variables
+  * New module &quot;block_device&quot; exposing block device informations
+  * Add a global flag --force-ansible to the command line
+  * Raise an error in case of missing ansible inventory file
+  * Fix an escape issue with ansible ssh args set inventory or configuration file</comment>
+    <requestid>731296</requestid>
+  </revision>
 </revisionlist>

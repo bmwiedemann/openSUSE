@@ -18,7 +18,7 @@
 
 
 Name:           innoextract
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        A tool to extract Inno Setup installers under non-windows systems
 License:        Zlib

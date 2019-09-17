@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-ckeditor
-Version:        5.4.0
+Version:        5.7.1
 Release:        0
 Summary:        Django admin CKEditor integration
 License:        BSD-3-Clause
@@ -28,8 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/d/django-ckeditor
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-django-js-asset
 Requires:       python-Pillow
+Requires:       python-django-js-asset
 BuildArch:      noarch
 %python_subpackages
 

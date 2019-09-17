@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            http://github.com/miguelgrinberg/flask-migrate/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Migrate/Flask-Migrate-%{version}.tar.gz
+Patch0:         pr_290.patch
 BuildRequires:  %{python_module Flask >= 0.9}
 BuildRequires:  %{python_module Flask-SQLAlchemy >= 1.0}
 BuildRequires:  %{python_module Flask-Script >= 0.6}
@@ -46,6 +47,7 @@ as command line arguments for Flask-Script.
 
 %prep
 %setup -q -n Flask-Migrate-%{version}
+%patch0 -p1
 
 %build
 %python_build

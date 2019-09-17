@@ -271,4 +271,19 @@
   optional requirements</comment>
     <requestid>698063</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3e4110862f6b6e78b34fd161c34af2ef</srcmd5>
+    <version>0.19.13</version>
+    <time>1568720181</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.19.13:
+  * Don't trust modes if they can't be modified after a file has been created.
+  * Implement ``RefsContainer.__iter__``
+  * Mark ``.git`` directories as hidden on Windows.
+  * Return a 404 not found error when repository is not found.
+  * Add a basic ``porcelain.clean``.
+  * Update directory detection for `get_unstaged_changes` for Python 3.
+  * Avoid ``PermissionError``, since it is Python3-specific.</comment>
+    <requestid>730633</requestid>
+  </revision>
 </revisionlist>

@@ -18,15 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-vim-vint
-Version:        0.3.19
+Version:        0.3.21
 Release:        0
 Summary:        Lint tool for Vim script Language
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/Kuniwak/vint
-Source:         https://github.com/Kuniwak/vint/archive/v0.3.19.tar.gz
+URL:            https://github.com/Kuniwak/vint
+Source:         https://github.com/Kuniwak/vint/archive/v%{version}.tar.gz
 Patch0:         test-sys-executable.patch
-Patch1:         yaml5.patch
 BuildRequires:  %{python_module PyYAML >= 3.11}
 BuildRequires:  %{python_module ansicolor >= 0.2.4}
 BuildRequires:  %{python_module chardet >= 2.3.0}
@@ -43,13 +42,12 @@ BuildRequires:  python2-mock >= 1.0.1
 Requires:       python-PyYAML >= 3.11
 Requires:       python-ansicolor >= 0.2.4
 Requires:       python-chardet >= 2.3.0
+BuildArch:      noarch
 %ifpython2
 Requires:       python-enum34 >= 1.0.4
 Requires:       python-pathlib >= 1.0.1
 Requires:       python-typing >= 3.6.2
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -58,7 +56,6 @@ A lint tool for the Vim script Language.
 %prep
 %setup -q -n vint-%{version}
 %patch0 -p1
-%patch1 -p1
 sed -e 's/==/>=/g' \
     -e 's/\~=/>=/g' \
     -i setup.py \

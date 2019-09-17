@@ -16,15 +16,16 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-debug-toolbar
-Version:        1.11
+Version:        2.0
 Release:        0
 Summary:        A configurable set of panels that display various debug information
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/django-debug-toolbar
 Source:         https://github.com/jazzband/django-debug-toolbar/archive/%{version}.tar.gz
-Patch0:         t_integrations.patch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module django-jinja}
 BuildRequires:  %{python_module html5lib}
@@ -60,7 +61,6 @@ There is also one Django management command currently:
 
 %prep
 %setup -q -n django-debug-toolbar-%{version}
-%patch0 -p1
 
 %build
 %python_build

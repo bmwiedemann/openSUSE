@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 13 09:28:36 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add %dir plugindir/designer for %{python_files devel} in spec
+  to avoid build error for PowerPC.
+
+-------------------------------------------------------------------
+Wed Sep 11 14:51:41 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add patch to support QKeySequenceEdit widgets in pyuic:
+  add-qkeysequenceedit-to-uic.patch
+
+-------------------------------------------------------------------
 Fri Jul 12 09:58:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.13.0

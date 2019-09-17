@@ -71,7 +71,7 @@ to describe APIs and to expose their documentation using Swagger.
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/flask_restplus
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %if %{with test}

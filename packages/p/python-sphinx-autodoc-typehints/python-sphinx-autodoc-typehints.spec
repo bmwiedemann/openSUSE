@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-sphinx-autodoc-typehints
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Type hints (PEP 484) support for the Sphinx autodoc extension
 License:        MIT

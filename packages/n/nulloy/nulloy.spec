@@ -99,8 +99,8 @@ music player with a Waveform Progressbar.
 
 %build
 # This is not an autotools configure
-CFLAGS="%{optflags}" \
-CXXFLAGS="%{optflags}" \
+CFLAGS="%{optflags} -isystem %{_includedir}/phonon4qt5"
+CXXFLAGS="$CFLAGS" \
 QMAKE=qmake-qt5 \
 LRELEASE=lrelease-qt5 \
 ./configure \

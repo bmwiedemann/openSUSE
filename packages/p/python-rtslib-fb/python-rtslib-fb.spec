@@ -12,24 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define dbdir %{_sysconfdir}/target
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rtslib-fb
-Version:        2.1.69
+Version:        2.1.70
 Release:        0%{?dist}
 Summary:        API for Linux kernel SCSI target (aka LIO)
 License:        Apache-2.0
 Group:          Development/Languages/Python
 Url:            https://github.com/open-iscsi/rtslib-fb.git
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-v%{version}.tar.xz
 Patch1:         rbd-support.patch
-Patch2:         0001-Handle-write-only-attributes.patch
-Patch3:         0002-Handle-write-only-parameters-like-attributes.patch
-Patch4:         0003-Add-readable-param-to-Group-list_-methods.patch
 BuildRequires:  %{python_module pyudev}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -39,7 +36,7 @@ Requires:       python-pyudev
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       python-rtslib = %{version}-%{release}
-Obsoletes:      python-rtslib
+Obsoletes:      python-rtslib < %{version}
 %if 0%{?sle_version} >= 150000
 # explicit Provides advertising RBD support
 Provides:       python-rtslib-rbd = %{version}
@@ -54,14 +51,11 @@ SCSI target, present in 3.x Linux kernel versions. rtslib-fb is licensed under
 the Apache 2.0 license. Contributions are welcome
 
 %prep
-%setup -q
+%setup -q -n %{name}-v%{version}
 %if 0%{?sle_version} >= 150000
 # RBD support is dependent on LIO changes present in the SLE/Leap kernel
 %patch1 -p1
 %endif
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 %python_build

@@ -17,7 +17,7 @@
 
 
 Name:           libsoup
-Version:        2.66.2
+Version:        2.66.3
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
@@ -122,7 +122,7 @@ translation-update-upstream po libsoup
 	-Dgssapi=true \
 	-Dkrb5_config='%{_libexecdir}/mit/bin/krb5-config' \
 	-Dvapi=true \
-	-Ddoc=true \
+	-Dgtk_doc=true \
 	%{nil}
 %meson_build
 

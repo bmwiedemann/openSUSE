@@ -38,7 +38,7 @@ Requires(pre):  /usr/sbin/useradd
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           stunnel
-Version:        5.49
+Version:        5.55
 Release:        0
 Summary:        Universal SSL Tunnel
 License:        GPL-2.0-or-later
@@ -52,7 +52,6 @@ Source4:        stunnel.rc
 Source5:        stunnel.service
 Source6:        stunnel.conf
 Source7:        stunnel.README
-Patch0:         stunnel-listenqueue-option.patch
 BuildRequires:  libopenssl-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel
@@ -86,7 +85,6 @@ This package contains additional documentation for the stunnel program.
 
 %prep
 %setup -q -n stunnel-%{version}
-%patch0 -p1
 chmod -x %{_builddir}/stunnel-%{version}/tools/ca.*
 chmod -x %{_builddir}/stunnel-%{version}/tools/importCA.*
 
@@ -112,7 +110,7 @@ make %{?_smp_mflags} LDADD="-pie -Wl,-z,defs,-z,relro"
 %endif
 
 cp -p %{SOURCE1} tools/stunnel.conf-sample.%{VENDORAFFIX}
-cp -p %{SOURCE2} README.%{VENDORAFFIX}
+cp -p %{SOURCE7} README.%{VENDORAFFIX}
 mkdir -p %{buildroot}%{_fillupdir}
 cp -p %{SOURCE3} %{buildroot}%{_fillupdir}/
 %if 0%{?has_systemd}

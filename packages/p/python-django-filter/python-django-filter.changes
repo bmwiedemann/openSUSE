@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 16 09:33:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.0:
+  * Added DjangoFilterBackend.get_schema_operation_parameters() for DRF 3.10+
+  * OpenAPI schema generation. (#1086)
+  * Added lookup_expr to MultipleChoiceFilter (#1054)
+  * Dropped support for EOL Python 3.4
+- Remove merged patch fix_tests.patch
+
+-------------------------------------------------------------------
 Wed Apr 10 12:05:22 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - added fix_tests.patch - better compactibility with django 2.2 

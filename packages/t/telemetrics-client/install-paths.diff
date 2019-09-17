@@ -1,8 +1,8 @@
 diff --git a/configure.ac b/configure.ac
-index 54a8558..0ac76ad 100644
+index d5b9bdf..6fe2dc1 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -152,7 +152,9 @@ telemetrics-client $VERSION
+@@ -157,7 +157,9 @@ telemetrics-client $VERSION
  prefix:                 $prefix
  exec_prefix:            $exec_prefix
  libdir:                 $libdir
@@ -12,15 +12,6 @@ index 54a8558..0ac76ad 100644
  datarootdir:            $datarootdir
  
  compiler:               $CC
-diff --git a/scripts/local.mk b/scripts/local.mk
-index a64bc1e..c12f901 100644
---- a/scripts/local.mk
-+++ b/scripts/local.mk
-@@ -1,3 +1,3 @@
--dist_bin_SCRIPTS = %D%/telemctl
-+dist_sbin_SCRIPTS = %D%/telemctl
- 
- # vim: filetype=automake tabstop=8 shiftwidth=8 noexpandtab
 diff --git a/src/data/40-crash-probe.conf.in b/src/data/40-crash-probe.conf.in
 index 486067e..ea4d156 100644
 --- a/src/data/40-crash-probe.conf.in
@@ -94,7 +85,7 @@ index f722f70..7f7e081 100644
  [Install]
  WantedBy=multi-user.target
 diff --git a/src/data/local.mk b/src/data/local.mk
-index 7beaf7e..e52a0c4 100644
+index a418afb..8bcd203 100644
 --- a/src/data/local.mk
 +++ b/src/data/local.mk
 @@ -2,6 +2,8 @@ pathfix = @sed \
@@ -172,7 +163,7 @@ index 71e5fbd..946645f 100644
  User=telemetry
  
 diff --git a/src/journal/local.mk b/src/journal/local.mk
-index bb6175f..1e6a382 100644
+index b879e90..7bd46fd 100644
 --- a/src/journal/local.mk
 +++ b/src/journal/local.mk
 @@ -1,4 +1,4 @@
@@ -182,16 +173,16 @@ index bb6175f..1e6a382 100644
  
  %C%_telem_journal_SOURCES = %D%/cli.c \
 diff --git a/src/local.mk b/src/local.mk
-index 18a8156..3d2ea60 100644
+index 9b155f2..997480f 100644
 --- a/src/local.mk
 +++ b/src/local.mk
 @@ -1,4 +1,4 @@
 -bin_PROGRAMS = \
 +sbin_PROGRAMS = \
  	%D%/telemprobd \
- 	%D%/telempostd
- 
-@@ -15,7 +15,7 @@ bin_PROGRAMS = \
+ 	%D%/telempostd \
+ 	%D%/telemctl
+@@ -25,7 +25,7 @@ bin_PROGRAMS = \
  	%D%/libtelemetry.la
  
  %C%_telemprobd_CFLAGS = \
@@ -200,7 +191,7 @@ index 18a8156..3d2ea60 100644
  
  %C%_telemprobd_LDFLAGS = \
  	$(AM_LDFLAGS) \
-@@ -56,7 +56,7 @@ endif
+@@ -66,7 +66,7 @@ endif
  	%D%/libtelemetry.la
  
  %C%_telempostd_CFLAGS = \
@@ -210,7 +201,7 @@ index 18a8156..3d2ea60 100644
  %C%_telempostd_LDFLAGS = \
  	$(AM_LDFLAGS) \
 diff --git a/src/probes/local.mk b/src/probes/local.mk
-index 0aeadce..e45cb98 100644
+index 28a0518..880a4c6 100644
 --- a/src/probes/local.mk
 +++ b/src/probes/local.mk
 @@ -1,7 +1,8 @@
@@ -224,7 +215,7 @@ index 0aeadce..e45cb98 100644
  	%D%/klogscanner \
  	%D%/pstoreprobe \
  	%D%/pythonprobe \
-@@ -131,7 +132,7 @@ endif
+@@ -156,7 +157,7 @@ endif
  
  if HAVE_SYSTEMD_JOURNAL
  if HAVE_SYSTEMD_ID128

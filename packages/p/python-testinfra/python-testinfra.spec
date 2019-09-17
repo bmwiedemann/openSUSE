@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-testinfra
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Python module to test infrastructures
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://github.com/philpep/testinfra
+URL:            https://github.com/philpep/testinfra
 Source:         https://files.pythonhosted.org/packages/source/t/testinfra/testinfra-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pywinrm}

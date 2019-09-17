@@ -3,11 +3,11 @@ Date: 2018-07-10
 
 https://bugzilla.opensuse.org/show_bug.cgi?id=1100677
 
-Index: annoy-1.15.2/setup.py
+Index: annoy-1.16.0/setup.py
 ===================================================================
---- annoy-1.15.2.orig/setup.py
-+++ annoy-1.15.2/setup.py
-@@ -36,26 +36,10 @@ with codecs.open('README.rst', encoding=
+--- annoy-1.16.0.orig/setup.py
++++ annoy-1.16.0/setup.py
+@@ -36,29 +36,10 @@ with codecs.open('README.rst', encoding=
      long_description = readme_note + fobj.read()
  
  # Various platform-dependent extras
@@ -24,6 +24,9 @@ Index: annoy-1.15.2/setup.py
 -if platform.machine() == 'ppc64le':
 -    extra_compile_args += ['-mcpu=native',]
 -
+-if platform.machine() == 'x86_64':
+-    extra_compile_args += cputune
+-
 -if os.name != 'nt':
 -    extra_compile_args += ['-O3', '-ffast-math', '-fno-associative-math']
 -
@@ -33,5 +36,5 @@ Index: annoy-1.15.2/setup.py
 -    extra_link_args += ['-stdlib=libc++', '-mmacosx-version-min=10.9']
 -
  setup(name='annoy',
-       version='1.15.2',
+       version='1.16.0',
        description='Approximate Nearest Neighbors in C++/Python optimized for memory usage and loading/saving to disk.',

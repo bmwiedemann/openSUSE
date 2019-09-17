@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 16 10:01:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0.0:
+  - Removed support for Python 2 and 3.4.
+  - Removed support for end of life Django 2.0.
+  - Added support for Django 2.2.
+  - Add testing and support for Python 3.7 with Django 1.11 and 2.1.
+  - When :setting:`AUTH_LDAP_SERVER_URI` is set to a callable, it is now passed a
+    positional ``request`` argument. Support for no arguments will continue for
+    backwards compatibility but will be removed in a future version.
+  - Added new :setting:`AUTH_LDAP_NO_NEW_USERS` to prevent the creation of new
+    users during authentication. Any users not already in the Django user
+    database will not be able to login.
+
+-------------------------------------------------------------------
 Mon Jan 14 08:09:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add few more test dependencies

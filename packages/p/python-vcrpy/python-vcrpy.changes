@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 16 10:48:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.1.0:
+  * Add a rewind method to reset a cassette (thanks @khamidou)
+  * New error message with more details on why the cassette failed to play a request (thanks @arthurHamon2, @neozenith)
+  * Handle connect tunnel URI (thanks @jeking3)
+  * Drop support to python 3.4
+  * Add deprecation warning on python 2.7, next major release will drop python 2.7 support
+- Drop merged patch python-vcrpy-fix-tunnel-uri-generation.patch
+
+-------------------------------------------------------------------
 Wed Apr 17 14:09:32 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Test suite just doesn't work. gh#kevin1024/vcrpy#427

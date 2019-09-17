@@ -29,11 +29,11 @@ BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+BuildRequires:  ghostscript
 BuildRequires:  grep
 BuildRequires:  icmake
 BuildRequires:  sed
-BuildRequires:  texlive-collection-binextra
-BuildRequires:  texlive-collection-latex
+BuildRequires:  texlive-dvips
 BuildRequires:  texlive-latex
 BuildRequires:  tex(a4.sty)
 BuildRequires:  tex(epsf.sty)
@@ -68,9 +68,10 @@ chmod +x %{buildroot}%{_bindir}/yodl2whatever
 (cd %{buildroot}%{_bindir}; for i in html latex man ms sgml txt xml; do ln -s yodl2whatever yodl2$i; done)
 popd
 
-rm -f %{buildroot}%{_docdir}/yodl.dvi
-rm -f %{buildroot}%{_docdir}/yodl.latex
-rm -f %{buildroot}%{_docdir}/yodl.txt
+rm %{buildroot}%{_docdir}/%{name}/yodl.dvi
+rm %{buildroot}%{_docdir}/%{name}/yodl.latex
+rm %{buildroot}%{_docdir}/%{name}/yodl.ps
+rm %{buildroot}%{_docdir}/%{name}/yodl.txt
 
 %fdupes -s %{buildroot}
 

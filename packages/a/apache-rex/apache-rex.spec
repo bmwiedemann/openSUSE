@@ -25,7 +25,7 @@
 %define macros_file           macros.apache-rex
 
 Name:           apache-rex
-Version:        20190628
+Version:        20190906
 Release:        0
 Summary:        Script for Apache HTTPD Runnable Examples
 License:        Apache-2.0

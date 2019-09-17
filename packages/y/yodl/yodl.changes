@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 13 01:50:23 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Replace texlive-collection BuildRequires with actually required
+  dependencies.
+- Fix cleanup of build artifacts, and remove Postscript documentation
+  (PDF and HTML should be enough).
+
+-------------------------------------------------------------------
 Wed Mar 20 13:57:02 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use / as sed command delimiter. Comma can actually show up in

@@ -17,15 +17,16 @@
 
 
 %define pypi_package_name django-guardian
+%define skip_python2 1
 Name:           python-%{pypi_package_name}
-Version:        1.5.1
+Version:        2.1.0
 Release:        0
-Url:            http://github.com/lukaszb/django-guardian
 Summary:        Implementation of per object permissions for Django
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Source:         https://pypi.python.org/packages/source/d/django-guardian/django-guardian-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 1.8}
+URL:            https://github.com/lukaszb/django-guardian
+Source:         https://files.pythonhosted.org/packages/source/d/django-guardian/django-guardian-%{version}.tar.gz
+BuildRequires:  %{python_module Django >= 2.0}
 BuildRequires:  %{python_module django-environ}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-django}
@@ -33,7 +34,7 @@ BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.8
+Requires:       python-Django >= 2.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,9 +54,7 @@ authorization backend.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# mv's avoid pytest's compiled file conflict detection.
-rm -rf build/ _build*/
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python setup.py test
+%pytest
 
 %files %{python_files}
 %doc CHANGES README.rst

@@ -84,8 +84,9 @@ chmod -x LICENSE
 %endif
 
 %check
+# test_pipfile_finder - broken upstrem in tomlkit
 %if %{with test}
-%pytest -k 'not (test_settings_path_skip_issue_909 or test_standard_library_deprecates_user_issue_778 or test_skip_paths_issue_938 or test_requirements_finder)'
+%pytest -k 'not (test_settings_path_skip_issue_909 or test_standard_library_deprecates_user_issue_778 or test_skip_paths_issue_938 or test_requirements_finder or test_pipfile_finder)'
 %endif
 
 %if !%{with test}

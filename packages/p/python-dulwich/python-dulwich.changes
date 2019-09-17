@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 13 08:37:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.19.13:
+  * Don't trust modes if they can't be modified after a file has been created.
+  * Implement ``RefsContainer.__iter__``
+  * Mark ``.git`` directories as hidden on Windows.
+  * Return a 404 not found error when repository is not found.
+  * Add a basic ``porcelain.clean``.
+  * Update directory detection for `get_unstaged_changes` for Python 3.
+  * Avoid ``PermissionError``, since it is Python3-specific.
+
+-------------------------------------------------------------------
 Fri Apr 26 06:06:16 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 - Use Recommends for python-gpg and python-fastimport. Both are

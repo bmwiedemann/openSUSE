@@ -17,7 +17,7 @@
 
 
 Name:           perl-File-Slurp
-Version:        9999.27
+Version:        9999.28
 Release:        0
 %define cpan_name File-Slurp
 Summary:        Perl module for reading/writing/modifying complete files
@@ -40,7 +40,6 @@ a sub to read in all the files in a directory.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

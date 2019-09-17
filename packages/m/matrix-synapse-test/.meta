@@ -2,6 +2,9 @@
   <title></title>
   <description></description>
   <devel project="openSUSE:Factory" package="matrix-synapse"/>
+  <build>
+    <disable/>
+  </build>
   <url>https://github.com/matrix-org/synapse</url>
   <bcntsynctag>matrix-synapse</bcntsynctag>
 </package>

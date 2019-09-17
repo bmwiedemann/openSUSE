@@ -64,4 +64,12 @@ different profiles.</comment>
 - Replace vim with nano</comment>
     <requestid>725534</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>ce874812ae4610a9fc22f9b3731b208c</srcmd5>
+    <version>1.0.0</version>
+    <time>1568720328</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>731236</requestid>
+  </revision>
 </revisionlist>

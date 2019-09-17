@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Sep 16 17:37:43 UTC 2019 - kukuk@suse.de
+
+- Rename telmctl-enable-disable.diff to telemctl-enable-disable.diff
+- Update to version 2.2.2+git20190903.a4774bd:
+  * configure.ac: bump version to 2.2.2
+  * crash_probe.c: improve error handling
+  * telemdaemon.c: sanity check for record size
+  * telemdaemon.c: modify handle_client
+  * telempostdaemon.c: fix unitialized variable
+  * telem_recoder_gen.c: remove redundant if statement
+  * telemctl.c: changed handling of opt_in/opt_out
+  * Fix build warning not used variable
+  * Allow record creation on opt-out
+  * journal.c: fix some resource leaks
+  * journal.c: deserialize_journal_entry fixes
+  * telemctl.c: avoid using fscanf
+  * telem_record_gen.c: fix a potential resource leak
+  * telemctl.c: allow deleting of files not owned by telemetry
+  * inifile.c: Check for NULL pointer
+  * oops_parser.c: remove needless check
+  * oops_parser.c: detect kernel panic
+  * iorecord.c: fix a potential race
+  * telemctl.c: fix resource leak
+  * telemetry.c: remove unneeded test
+  * telempostdaemon.c: avoid freeing of uninitialized variables
+  * telemdaemon.c: fix for a potential string overflow
+  * oops_parser.c: remove unneeded check
+  * telemdaemon.c: properly handle mkstemp error
+  * telem_recorde_gen.c: fix potential memory leaks
+  * telem_record_gen.c: return correct error in instanciate_record
+  * telemdaemon.c: don't assume correct machine_id length
+  * util.c: correct return value from "get_header_value"
+  * iorecord.c: fix memory allocation check
+  * Fix double free in deserialize_journal_entry and print_journal
+  * telemctl: binary version
+  * Add "ACPI Error:" pattern for ACPI issues.
+  * configure.ac: bump version to 2.2.1
+  * man pages: remove references to telemd
+  * Fix build for logtype=systemd
+  * crash_probe: Limit the size of backtrace
+  * configure.ac: bump version to 2.2.0
+  * telem_journal: improve usage message
+  * Updated AUTHORS
+
+-------------------------------------------------------------------
 Tue Jun 11 12:07:03 UTC 2019 - kukuk@suse.de
 
 - Update to version 2.1.1+git20190605.781d938:

@@ -2,5 +2,8 @@
   <title></title>
   <description></description>
   <devel project="network:messaging:matrix" package="matrix-synapse"/>
+  <build>
+    <disable/>
+  </build>
   <url>https://github.com/matrix-org/synapse</url>
 </package>

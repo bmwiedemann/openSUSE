@@ -56,4 +56,12 @@ Fixed plugin directory (problem mentioned in SR 342476).</comment>
     <comment>Removed fix-library-directory.patch and replaced with modified patch from git 0001-configurable-library-directory.patch. Removed unneeded build conditonals for phonon and vlc.</comment>
     <requestid>703938</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>49a6d5c5dedc07042d5c7602095e7244</srcmd5>
+    <version>0.8.2.pre61qt5</version>
+    <time>1568720382</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731385</requestid>
+  </revision>
 </revisionlist>

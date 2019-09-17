@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 16 09:11:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch from Fedora for cert transparency:
+  * chromium-77.0.3865.75-certificate-transparency.patch
+
+-------------------------------------------------------------------
+Mon Sep 16 08:06:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patches from gentoo:
+  * chromium-77-clang.patch
+  * chromium-77-gcc-no-opt-safe-math.patch
+  * chromium-77-no-cups.patch
+  * chromium-77-std-string.patch
+
+-------------------------------------------------------------------
+Thu Sep 12 10:29:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update patch old-libva.patch to build on openSUSE Leap 15.0
+
+-------------------------------------------------------------------
 Thu Sep 12 08:34:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to chromium 77.0.3865.75 bsc#1150425:

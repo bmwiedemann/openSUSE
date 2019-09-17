@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 16 09:55:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 5.7.1:
+  * Documentation improvements
+  * Allow non-string properties of user for CKEDITOR_RESTRICT_BY_USER
+  * Django 2.1 compatibility, minimal supported Django version is 1.11 LTS
+  * Option to set custom django file backend for CKEditor uploader app.
+  * Fix Django 1.8 - 1.10 regression
+  * Drop leftover support for Django older than 1.8
+  * Django 2.2 support
+  * Minor fixes to JS handling
+  * CKEditor 4.11.4
+  * Allow using settings to configure extra_plugins and external_plugin_resources
+
+-------------------------------------------------------------------
 Sat May  4 15:28:54 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Revive package, update to 5.4.0

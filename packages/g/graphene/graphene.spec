@@ -17,13 +17,13 @@
 
 
 Name:           graphene
-Version:        1.8.6
+Version:        1.10.0
 Release:        0
 Summary:        Thin type layer for graphic libraries
 License:        MIT
 Group:          Development/Languages/C and C++
-Url:            http://ebassi.github.io/graphene/
-Source0:        https://github.com/ebassi/graphene/releases/download/%{version}/%{name}-%{version}.tar.xz
+URL:            https://ebassi.github.io/graphene/
+Source:         https://download.gnome.org/sources/graphene/1.10/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  fdupes
@@ -104,7 +104,7 @@ This subpackage contains the development files for the Graphene library.
 %postun -n libgraphene-1_0-0 -p /sbin/ldconfig
 
 %files -n libgraphene-1_0-0
-%license LICENSE
+%license LICENSE.txt
 %{_libdir}/libgraphene-1.0.so.*
 
 %files -n typelib-1_0-Graphene-1_0

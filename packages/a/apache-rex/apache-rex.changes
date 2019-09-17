@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep  6 09:47:56 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 20191006
+  * mod_ssl-basic: show SSL protocol used by default
+
+-------------------------------------------------------------------
+Wed Sep  4 11:22:16 UTC 2019 - pgajdos@suse.com
+
+- version update to 20191005
+  * extended core-ranges-basic
+  * fix openssl_ocsp_responder_stop()
+  * more generic ssl error checking
+  * mysql_install_db --force required by older distros
+
+-------------------------------------------------------------------
 Fri Jun 28 09:00:12 UTC 2019 - pgajdos@suse.com
 
 - version update to 20190628

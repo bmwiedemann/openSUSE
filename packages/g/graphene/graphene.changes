@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Sep  9 08:41:28 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.0:
+  + API additions, mostly driven by Gthree:
+    - Add graphene_matrix_decompose().
+    - Add intersection methods to graphene_ray_t.
+    - graphene_triangle_init_from_float().
+    - graphene_triangle_get_uv().
+  + Fix graphene_ray_transform().
+  + Documentation fixes.
+
+-------------------------------------------------------------------
+Fri Sep  6 15:53:59 NZST 2019 - luke@ljones.dev
+
+- Update to version 1.9.6:
+  + Add radians based initialisers for graphene_euler_t.
+  + Use pragma once for the header inclusion guard.
+  + Remove unused function (#159)
+  + Add multiply(), scale(), and add() operators to
+    graphene_quaternion_t.
+  + Add lerp() operator to all vector types.
+  + Add graphene_plane_transform()
+  + Documentation updates for graphene_ray_t.
+  + Fix graphene_box_get_center() and.
+    graphene_box_get_bounding_sphere() (#165)
+  + Ensure that we detect empty or infinite boxes in the.
+    graphene_box_t API.
+- Changes from version 1.9.4:
+  + Graphene now uses an ancillary library called µTest for its
+    test suite; this means it's possible to build and run the test
+    suite without necessarily depending on GLib.
+  + the conversion of the Euler angles type to and from matrices and.
+    quaternions has been rewritten from scratch, and should not only
+    be finally correct, but it should also cover more use cases—namely
+    the "proper" Euler angles as well as the Tait–Bryan angles.
+  + the ARM NEON implementation of the SIMD types has been improved,
+    fixed, and tested, so it's not marked as experimental any more.
+  + Require Meson ≥ 0.50.1.
+  + Fix graphene_quaternion_equal() to consider the orientation, not
+    just the component equality.
+  + Fix graphene_quaternion_slerp() to always interpolate along the
+    shortest path.
+  + Re-implement the conversion of graphene_euler_t to and from
+    graphene_matrix_t and graphene_quaternion_t.
+  + Add graphene_rectangle_get_area()
+  + Document restrictions of graphene_rect_round(), and deprecate the function.
+  + Add graphene_rect_round_extents()
+  + Port the test suite from GLib's testing utilities to µTest.
+  + Remove internal floating point comparisons.
+  + Improve the NEON extensions detection code.
+  + Fix comparison operators for graphene_simd4f_t on ARM using the
+    NEON extensions.
+  + Remove the "experimental" compiler warning from the ARM NEON
+    implementation of graphene_simd4f_t.
+- Changes from version 1.9.2:
+  + Add graphene_rect_scale() method.
+  + Fix warning from Meson by dropping unnecessary argument to.
+    configure_file()
+  + Clean up arguments of pkgconfig.generate()
+  + Add equality operators to graphene_matrix_t.
+  + Add getters for translation components of a graphene_matrix_t.
+  + Use darwin_versions argument instead of rolling our own.
+  + Add GRAPHENE_RECT_INIT_ZERO
+
+-------------------------------------------------------------------
 Mon Mar 25 23:24:28 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.6:

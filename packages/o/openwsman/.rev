@@ -667,4 +667,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>723295</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>06e57a5ef7f4a766500708196784bc4d</srcmd5>
+    <version>2.6.11</version>
+    <time>1568720399</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.6.11
+  * Bugfix release
+    - prevent double free in events error processing
+
+  * Many potential NULL dereferences fixed (Alexander Usyskin)</comment>
+    <requestid>731472</requestid>
+  </revision>
 </revisionlist>

@@ -23,4 +23,12 @@
     <comment>- Update to version 0.6.8.</comment>
     <requestid>662125</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>25944c96ab58100aeb0b7e345b8ec3f9</srcmd5>
+    <version>0.6.8</version>
+    <time>1568720361</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix compatibility issues with Dino.</comment>
+    <requestid>731340</requestid>
+  </revision>
 </revisionlist>

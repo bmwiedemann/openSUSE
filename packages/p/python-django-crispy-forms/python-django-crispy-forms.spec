@@ -29,8 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/d/%{mod_name}/%{m
 Patch0:         django-20.patch
 Patch1:         django-21.patch
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pytest < 4.0}
 BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

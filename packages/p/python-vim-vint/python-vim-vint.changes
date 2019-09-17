@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 16 10:46:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Updat eto 0.3.21:
+  * various bugfixes only
+- Drop upstream merged patch yaml5.patch
+
+-------------------------------------------------------------------
 Mon Mar 18 10:59:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix hardcoded versions

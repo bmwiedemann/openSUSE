@@ -1,7 +1,7 @@
 #
 # spec file for package icecream
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           icecream
-Version:        1.2
+Version:        1.3
 Release:        0
-Summary:        For Distributed Compile in the Network
+Summary:        Distributed Compilation in the Network
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/icecc/icecream
-Source0:        https://github.com/icecc/icecream/archive/%{version}.tar.gz
+Source0:        https://github.com/icecc/icecream/releases/download/%{version}/icecc-%{version}.tar.xz
 Source1:        iceccd.xml
 Source2:        iceccd.service
 Source3:        iceccd-wrapper
@@ -39,9 +39,11 @@ Source8:        sysconfig.icecream
 BuildRequires:  docbook2x
 BuildRequires:  firewall-macros
 BuildRequires:  gcc-c++
+BuildRequires:  libarchive-devel
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt-tools
+BuildRequires:  libzstd-devel
 BuildRequires:  lzo-devel
 BuildRequires:  systemd-rpm-macros
 Requires:       %{_bindir}/bzip2
@@ -62,8 +64,10 @@ Distributed compiler with a central scheduler to share build load.
 %package -n libicecream-devel
 Summary:        For Distributed Compile in the Network
 Group:          Development/Tools/Building
+Requires:       libarchive-devel
 Requires:       libcap-ng-devel
 Requires:       libstdc++-devel
+Requires:       libzstd-devel
 Requires:       lzo-devel
 
 %description -n libicecream-devel
@@ -80,7 +84,7 @@ Supplements:    packageand(icecream:clang)
 Wrapper symlinks for clang/clang++ for icecream distributed building.
 
 %prep
-%setup -q
+%setup -q -n icecc-%{version}
 cp %{SOURCE8} suse/
 # DO NOT ADD PATCHES without github reference
 

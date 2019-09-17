@@ -17,21 +17,21 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-sphinxcontrib-svg2pdfconverter
-Version:        0.1.0
+Version:        1.0.1
 Release:        0
 Summary:        Sphinx SVG to PDF converter extension
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://github.org/missinglinkelectronics/sphinxcontrib-svg2pdfconverter
+URL:            https://github.com/missinglinkelectronics/sphinxcontrib-svg2pdfconverter
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-svg2pdfconverter/sphinxcontrib-svg2pdfconverter-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module Sphinx >= 1.6.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 0.6
+Requires:       python-Sphinx >= 1.6.3
 BuildArch:      noarch
-
 %python_subpackages
 
 %description

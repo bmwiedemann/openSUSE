@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 16 09:27:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.1.0:
+  * Drop support for Python 2.7 & 3.4 and Django 1.11 & 2.0
+  * Upgrade to use `django.urls.path` in routing
+  * Auto pre-fetching permission via `GUARDIAN_AUTO_PREFETCH`
+  * Add tests for missing migrations
+
+-------------------------------------------------------------------
 Mon May  6 11:36:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.5.1:

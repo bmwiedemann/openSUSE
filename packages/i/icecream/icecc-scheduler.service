@@ -7,7 +7,7 @@ EnvironmentFile=-/etc/sysconfig/icecream
 User=icecream
 Group=icecream
 SyslogIdentifier=icecc-scheduler
-ExecStart=/usr/lib/icecc/icecc-scheduler-wrapper
+ExecStart=/usr/lib/icecc/icecc-scheduler-wrapper -u icecream
 
 [Install]
 WantedBy=multi-user.target

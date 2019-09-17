@@ -129,4 +129,13 @@
   * Fixed: using a div.grp-related-widget to wrap all possible widgets.</comment>
     <requestid>701062</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f70fd52e8029ef9b6ccac79144e15560</srcmd5>
+    <version>2.13.1</version>
+    <time>1568720255</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.13.1:
+  * First release of Grappelli which is compatible with Django 2.2.</comment>
+    <requestid>731219</requestid>
+  </revision>
 </revisionlist>

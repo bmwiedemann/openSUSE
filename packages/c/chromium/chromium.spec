@@ -92,6 +92,11 @@ Patch16:        chromium-77-gcc-include.patch
 Patch17:        chromium-77-gcc-abstract.patch
 Patch18:        chromium-77-system-hb.patch
 Patch19:        chromium-77-blink-include.patch
+Patch20:        chromium-77-clang.patch
+Patch21:        chromium-77-gcc-no-opt-safe-math.patch
+Patch22:        chromium-77-no-cups.patch
+Patch23:        chromium-77-std-string.patch
+Patch24:        chromium-77.0.3865.75-certificate-transparency.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -233,7 +238,7 @@ BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libtcmalloc)
 %endif
 %if %{with system_harfbuzz}
-BuildRequires:  pkgconfig(harfbuzz) > 2.3.0
+BuildRequires:  pkgconfig(harfbuzz) > 2.4.0
 %endif
 %if %{with system_libxml}
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
@@ -594,7 +599,7 @@ build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_librarie
 # Create the configuration for GN
 # Available options: out/Release/gn args --list out/Release/
 myconf_gn=""
-myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""    
+myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" linux_use_bundled_binutils=false"
 myconf_gn+=" use_custom_libcxx=false"

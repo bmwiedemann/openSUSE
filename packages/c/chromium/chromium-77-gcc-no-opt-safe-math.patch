@@ -1,0 +1,15 @@
+diff -up chromium-77.0.3865.75/base/numerics/safe_math_shared_impl.h.nogccoptmath chromium-77.0.3865.75/base/numerics/safe_math_shared_impl.h
+--- chromium-77.0.3865.75/base/numerics/safe_math_shared_impl.h.nogccoptmath	2019-09-13 14:17:22.726738088 +0200
++++ chromium-77.0.3865.75/base/numerics/safe_math_shared_impl.h	2019-09-13 14:31:37.686898493 +0200
+@@ -23,9 +23,8 @@
+ // Where available use builtin math overflow support on Clang and GCC.
+ #elif !defined(__native_client__) &&                         \
+       ((defined(__clang__) &&                                \
+-        ((__clang_major__ > 3) ||                            \
+-         (__clang_major__ == 3 && __clang_minor__ >= 4))) || \
+-       (defined(__GNUC__) && __GNUC__ >= 5))
++        (__clang_major__ > 3) ||                            \
++        (__clang_major__ == 3 && __clang_minor__ >= 4)))
+ #include "base/numerics/safe_math_clang_gcc_impl.h"
+ #define BASE_HAS_OPTIMIZED_SAFE_MATH (1)
+ #else

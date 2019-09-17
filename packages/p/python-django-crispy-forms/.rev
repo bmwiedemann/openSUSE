@@ -27,4 +27,12 @@
     <comment>- Fix old leap build</comment>
     <requestid>707039</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9e81b7dbd3ef9e30e974dc3d7a991943</srcmd5>
+    <version>1.7.2</version>
+    <time>1568720354</time>
+    <user>maxlin_factory</user>
+    <comment>- Test only with pytest 3, newer releases not compatible</comment>
+    <requestid>731305</requestid>
+  </revision>
 </revisionlist>

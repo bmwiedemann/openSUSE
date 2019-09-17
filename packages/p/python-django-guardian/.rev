@@ -119,4 +119,16 @@ SPDX syntax (http://www.spdx.org/licenses) (forwarded request 83930 from babelwo
 - Remove merged patch no-maxsplit.patch</comment>
     <requestid>701065</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aa9da8b8618386216821a79836ca469c</srcmd5>
+    <version>2.1.0</version>
+    <time>1568720253</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.1.0:
+  * Drop support for Python 2.7 &amp; 3.4 and Django 1.11 &amp; 2.0
+  * Upgrade to use `django.urls.path` in routing
+  * Auto pre-fetching permission via `GUARDIAN_AUTO_PREFETCH`
+  * Add tests for missing migrations</comment>
+    <requestid>731218</requestid>
+  </revision>
 </revisionlist>

@@ -175,4 +175,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>713859</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c647a1a14202cee622ac2aa433792cae</srcmd5>
+    <version>4.3.21</version>
+    <time>1568720067</time>
+    <user>maxlin_factory</user>
+    <comment>- Skip test test_pipfile_finder upstream is aware for 6 months
+  and just pinned older version of tomlkit</comment>
+    <requestid>730455</requestid>
+  </revision>
 </revisionlist>

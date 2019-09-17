@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 16 08:32:26 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- 1.2.4
+  * add SLE wrapper to prepare modules for packages dvd (jsc#SLE-8271)
+  * smaller perl fixes
+
+-------------------------------------------------------------------
+Fri Sep 13 06:08:31 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- 1.2.3
+  handle multiple packages with same name but different version/release in one repo.
+  bsc#1150238
+
+-------------------------------------------------------------------
 Tue Jul 16 07:38:10 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - 1.2.2

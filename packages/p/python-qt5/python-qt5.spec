@@ -30,6 +30,8 @@ Source99:       %{name}-rpmlintrc
 Patch1:         disable-rpaths.diff
 # PATCH-FIX-UPSTREAM
 Patch2:         update-timeline.patch
+# PATCH-FIX-UPSTREAM - add-qkeysequenceedit-to-uic.patch
+Patch3:         add-qkeysequenceedit-to-uic.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module sip-devel >= 4.19.14}
 BuildRequires:  dbus-1-devel
@@ -266,6 +268,7 @@ cp -r examples %{buildroot}%{_docdir}/%{name}/
 %python_alternative %{_bindir}/pyuic5
 %python_alternative %{_bindir}/pylupdate5
 %python_alternative %{_bindir}/pyrcc5
+%dir %{_libqt5_plugindir}/designer/
 %{_libqt5_plugindir}/designer/libpy%{python_bin_suffix}qt5.so
 %dir %{_datadir}/qt5/qsci/
 %dir %{_datadir}/qt5/qsci/api/

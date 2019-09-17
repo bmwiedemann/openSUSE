@@ -66,4 +66,15 @@
     <comment></comment>
     <requestid>708268</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4d4b847b244e531e7d10fe993828cfef</srcmd5>
+    <version>7.0.4</version>
+    <time>1568720177</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 7.0.4:
+  * remove sleep in retries
+  * pass scroll_id through body in scroll
+  * add user-agent</comment>
+    <requestid>730628</requestid>
+  </revision>
 </revisionlist>

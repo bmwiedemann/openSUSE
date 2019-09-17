@@ -57,8 +57,9 @@ rm tox.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v tests/basic/tests.py --ds=test_settings
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v tests/allauth/test_allauth.py --ds=test_allauth_settings
+# test_auth https://github.com/pytest-dev/pytest-django/issues/341
+%pytest tests/basic/tests.py --ds=test_settings -k 'not test_auth'
+%pytest tests/allauth/test_allauth.py --ds=test_allauth_settings
 
 %files %{python_files}
 %license LICENSE

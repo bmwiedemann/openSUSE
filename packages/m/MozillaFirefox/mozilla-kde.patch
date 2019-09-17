@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  93495ad6fa0fe292eadcbfef14e0e27273528497
+# Parent  85e4798b74da9c377f84cf8f5dd59a7f952d92eb
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -13,8 +13,7 @@ Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=140751
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
-@@ -81,16 +81,17 @@
- #include "nsXPCOMCID.h"
+@@ -83,16 +83,17 @@
  #include "nsXPCOM.h"
  #include "nsXULAppAPI.h"
  #include "nsZipArchive.h"
@@ -22,16 +21,17 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #include "PLDHashTable.h"
  #include "plstr.h"
  #include "prlink.h"
+ #include "xpcpublic.h"
 +#include "nsKDEUtils.h"
+ 
+ #ifdef DEBUG
+ #  include <map>
+ #endif
  
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
- 
- #ifdef XP_WIN
- #  include "windows.h"
- #endif
-@@ -4507,25 +4508,37 @@ static nsresult pref_ReadDefaultPrefs(co
+@@ -4623,25 +4624,37 @@ Result<Ok, const char*> Preferences::Ini
    // application pref files for backwards compatibility.
    static const char* specialFiles[] = {
  #if defined(XP_MACOSX)
@@ -69,7 +69,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4573,17 +4586,17 @@ static nsresult pref_ReadDefaultPrefs(co
+@@ -4688,17 +4701,17 @@ Result<Ok, const char*> Preferences::Ini
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -115,7 +115,7 @@ diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 diff --git a/python/mozbuild/mozpack/chrome/flags.py b/python/mozbuild/mozpack/chrome/flags.py
 --- a/python/mozbuild/mozpack/chrome/flags.py
 +++ b/python/mozbuild/mozpack/chrome/flags.py
-@@ -223,16 +223,17 @@ class Flags(OrderedDict):
+@@ -227,16 +227,17 @@ class Flags(OrderedDict):
          'contentaccessible': Flag,
          'os': StringFlag,
          'osversion': VersionFlag,
@@ -136,7 +136,7 @@ diff --git a/python/mozbuild/mozpack/chrome/flags.py b/python/mozbuild/mozpack/c
 diff --git a/python/mozbuild/mozpack/chrome/manifest.py b/python/mozbuild/mozpack/chrome/manifest.py
 --- a/python/mozbuild/mozpack/chrome/manifest.py
 +++ b/python/mozbuild/mozpack/chrome/manifest.py
-@@ -39,16 +39,17 @@ class ManifestEntry(object):
+@@ -36,16 +36,17 @@ class ManifestEntry(object):
          'platformversion',
          'os',
          'osversion',
@@ -172,532 +172,6 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 +
  with Files('**'):
      BUG_COMPONENT = ('Toolkit', 'Downloads API')
-diff --git a/toolkit/content/jar.mn b/toolkit/content/jar.mn
---- a/toolkit/content/jar.mn
-+++ b/toolkit/content/jar.mn
-@@ -63,16 +63,18 @@ toolkit.jar:
-    content/global/widgets.css
-    content/global/bindings/autocomplete.xml    (widgets/autocomplete.xml)
-    content/global/bindings/button.xml          (widgets/button.xml)
-    content/global/bindings/calendar.js         (widgets/calendar.js)
-    content/global/bindings/datekeeper.js       (widgets/datekeeper.js)
-    content/global/bindings/datepicker.js       (widgets/datepicker.js)
-    content/global/bindings/datetimebox.css     (widgets/datetimebox.css)
- *  content/global/bindings/dialog.xml          (widgets/dialog.xml)
-+*  content/global/bindings/dialog-kde.xml      (widgets/dialog-kde.xml)
-+% override chrome://global/content/bindings/dialog.xml chrome://global/content/bindings/dialog-kde.xml desktop=kde
-    content/global/bindings/general.xml         (widgets/general.xml)
-    content/global/bindings/popup.xml           (widgets/popup.xml)
-    content/global/bindings/richlistbox.xml     (widgets/richlistbox.xml)
-    content/global/bindings/scrollbox.xml       (widgets/scrollbox.xml)
-    content/global/bindings/spinner.js          (widgets/spinner.js)
-    content/global/bindings/tabbox.xml          (widgets/tabbox.xml)
- *  content/global/bindings/textbox.xml         (widgets/textbox.xml)
-    content/global/bindings/timekeeper.js       (widgets/timekeeper.js)
-diff --git a/toolkit/content/widgets/dialog-kde.xml b/toolkit/content/widgets/dialog-kde.xml
-new file mode 100644
---- /dev/null
-+++ b/toolkit/content/widgets/dialog-kde.xml
-@@ -0,0 +1,499 @@
-+<?xml version="1.0"?>
-+<!-- This Source Code Form is subject to the terms of the Mozilla Public
-+   - License, v. 2.0. If a copy of the MPL was not distributed with this
-+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-+
-+<!DOCTYPE bindings [
-+  <!ENTITY % globalKeysDTD SYSTEM "chrome://global/locale/globalKeys.dtd">
-+  %globalKeysDTD;
-+]>
-+
-+<bindings id="dialogBindings"
-+          xmlns="http://www.mozilla.org/xbl"
-+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-+          xmlns:xbl="http://www.mozilla.org/xbl">
-+
-+  <binding id="dialog">
-+    <content>
-+      <xul:vbox class="box-inherit dialog-content-box" flex="1">
-+        <children/>
-+      </xul:vbox>
-+
-+      <xul:hbox class="dialog-button-box" anonid="buttons"
-+                xbl:inherits="pack=buttonpack,align=buttonalign,dir=buttondir,orient=buttonorient"
-+#ifdef XP_UNIX_GNOME
-+                >
-+        <xul:button dlgtype="disclosure" class="dialog-button" hidden="true"/>
-+        <xul:button dlgtype="help" class="dialog-button" hidden="true"/>
-+        <xul:button dlgtype="extra2" class="dialog-button" hidden="true"/>
-+        <xul:button dlgtype="extra1" class="dialog-button" hidden="true"/>
-+        <xul:spacer anonid="spacer" flex="1"/>
-+        <xul:button dlgtype="cancel" class="dialog-button"/>
-+        <xul:button dlgtype="accept" class="dialog-button" xbl:inherits="disabled=buttondisabledaccept"/>
-+#elif XP_UNIX
-+                >
-+        <xul:button dlgtype="help" class="dialog-button" hidden="true"/>
-+        <xul:button dlgtype="extra2" class="dialog-button" hidden="true"/>
-+        <xul:spacer anonid="spacer" flex="1"/>
-+        <xul:button dlgtype="accept" class="dialog-button" xbl:inherits="disabled=buttondisabledaccept"/>
-+        <xul:button dlgtype="extra1" class="dialog-button" hidden="true"/>
-+        <xul:button dlgtype="cancel" class="dialog-button"/>
-+        <xul:button dlgtype="disclosure" class="dialog-button" hidden="true"/>
-+#else
-+                pack="end">
-+        <xul:button dlgtype="extra2" class="dialog-button" hidden="true"/>
-+        <xul:spacer anonid="spacer" flex="1" hidden="true"/>
-+        <xul:button dlgtype="accept" class="dialog-button" xbl:inherits="disabled=buttondisabledaccept"/>
-+        <xul:button dlgtype="extra1" class="dialog-button" hidden="true"/>
-+        <xul:button dlgtype="cancel" class="dialog-button"/>
-+        <xul:button dlgtype="help" class="dialog-button" hidden="true"/>
-+        <xul:button dlgtype="disclosure" class="dialog-button" hidden="true"/>
-+#endif
-+      </xul:hbox>
-+
-+    <xul:keyset>
-+      <xul:key phase="capturing" oncommand="document.documentElement.openHelp(event)"
-+#ifdef XP_MACOSX
-+           key="&openHelpMac.commandkey;" modifiers="accel"/>
-+#else
-+           keycode="&openHelp.commandkey;"/>
-+#endif
-+    </xul:keyset>
-+
-+    </content>
-+
-+    <implementation>
-+      <field name="_mStrBundle">null</field>
-+      <field name="_closeHandler">(function(event) {
-+        if (!document.documentElement.cancelDialog())
-+          event.preventDefault();
-+      })</field>
-+
-+      <!-- Gets populated by elements that are passed to document.l10n.setAttributes
-+           to localize the dialog buttons. Needed to properly size the dialog after
-+           the asynchronous translation. -->
-+      <field name="_l10nButtons">[]</field>
-+
-+      <property name="buttons"
-+                onget="return this.getAttribute('buttons');"
-+                onset="this._configureButtons(val); return val;"/>
-+
-+      <property name="defaultButton">
-+        <getter>
-+        <![CDATA[
-+          if (this.hasAttribute("defaultButton"))
-+            return this.getAttribute("defaultButton");
-+          return "accept"; // default to the accept button
-+        ]]>
-+        </getter>
-+        <setter>
-+        <![CDATA[
-+          this._setDefaultButton(val);
-+          return val;
-+        ]]>
-+        </setter>
-+      </property>
-+
-+      <method name="acceptDialog">
-+        <body>
-+        <![CDATA[
-+          return this._doButtonCommand("accept");
-+        ]]>
-+        </body>
-+      </method>
-+
-+      <method name="cancelDialog">
-+        <body>
-+        <![CDATA[
-+          return this._doButtonCommand("cancel");
-+        ]]>
-+        </body>
-+      </method>
-+
-+      <method name="getButton">
-+        <parameter name="aDlgType"/>
-+        <body>
-+        <![CDATA[
-+          return this._buttons[aDlgType];
-+        ]]>
-+        </body>
-+      </method>
-+
-+      <method name="moveToAlertPosition">
-+        <body>
-+        <![CDATA[
-+          // hack. we need this so the window has something like its final size
-+          if (window.outerWidth == 1) {
-+            dump("Trying to position a sizeless window; caller should have called sizeToContent() or sizeTo(). See bug 75649.\n");
-+            sizeToContent();
-+          }
-+
-+          if (opener) {
-+            var xOffset = (opener.outerWidth - window.outerWidth) / 2;
-+            var yOffset = opener.outerHeight / 5;
-+
-+            var newX = opener.screenX + xOffset;
-+            var newY = opener.screenY + yOffset;
-+          } else {
-+            newX = (screen.availWidth - window.outerWidth) / 2;
-+            newY = (screen.availHeight - window.outerHeight) / 2;
-+          }
-+
-+          // ensure the window is fully onscreen (if smaller than the screen)
-+          if (newX < screen.availLeft)
-+            newX = screen.availLeft + 20;
-+          if ((newX + window.outerWidth) > (screen.availLeft + screen.availWidth))
-+            newX = (screen.availLeft + screen.availWidth) - window.outerWidth - 20;
-+
-+          if (newY < screen.availTop)
-+            newY = screen.availTop + 20;
-+          if ((newY + window.outerHeight) > (screen.availTop + screen.availHeight))
-+            newY = (screen.availTop + screen.availHeight) - window.outerHeight - 60;
-+
-+          window.moveTo( newX, newY );
-+        ]]>
-+        </body>
-+      </method>
-+
-+      <method name="centerWindowOnScreen">
-+        <body>
-+        <![CDATA[
-+          var xOffset = screen.availWidth / 2 - window.outerWidth / 2;
-+          var yOffset = screen.availHeight / 2 - window.outerHeight / 2;
-+
-+          xOffset = xOffset > 0 ? xOffset : 0;
-+          yOffset = yOffset > 0 ? yOffset : 0;
-+          window.moveTo(xOffset, yOffset);
-+        ]]>
-+        </body>
-+      </method>
-+
-+      <constructor>
-+      <![CDATA[
-+        this._configureButtons(this.buttons);
-+
-+        // listen for when window is closed via native close buttons
-+        window.addEventListener("close", this);
-+
-+        // for things that we need to initialize after onload fires
-+        window.addEventListener("load", this);
-+
-+        window.moveToAlertPosition = this.moveToAlertPosition;
-+        window.centerWindowOnScreen = this.centerWindowOnScreen;
-+      ]]>
-+      </constructor>
-+
-+      <method name="handleEvent">
-+        <parameter name="aEvent"/>
-+        <body><![CDATA[
-+          switch (aEvent.type) {
-+            case "close": {
-+              this._closeHandler(aEvent);
-+              break;
-+            }
-+            case "load": {
-+              this.postLoadInit(aEvent);
-+              break;
-+            }
-+          }
-+        ]]></body>
-+      </method>
-+
-+      <method name="postLoadInit">
-+        <parameter name="aEvent"/>
-+        <body>
-+        <![CDATA[
-+          function focusInit() {
-+            const dialog = document.documentElement;
-+            const defaultButton = dialog.getButton(dialog.defaultButton);
-+            // give focus to the first focusable element in the dialog
-+            if (!document.commandDispatcher.focusedElement) {
-+              document.commandDispatcher.advanceFocusIntoSubtree(dialog);
-+
-+              var focusedElt = document.commandDispatcher.focusedElement;
-+              if (focusedElt) {
-+                var initialFocusedElt = focusedElt;
-+                while (focusedElt.localName == "tab" ||
-+                       focusedElt.getAttribute("noinitialfocus") == "true") {
-+                  document.commandDispatcher.advanceFocusIntoSubtree(focusedElt);
-+                  focusedElt = document.commandDispatcher.focusedElement;
-+                  if (focusedElt == initialFocusedElt) {
-+                    if (focusedElt.getAttribute("noinitialfocus") == "true") {
-+                      focusedElt.blur();
-+                    }
-+                    break;
-+                  }
-+                }
-+
-+                if (initialFocusedElt.localName == "tab") {
-+                  if (focusedElt.hasAttribute("dlgtype")) {
-+                    // We don't want to focus on anonymous OK, Cancel, etc. buttons,
-+                    // so return focus to the tab itself
-+                    initialFocusedElt.focus();
-+                  }
-+                } else if (!/Mac/.test(navigator.platform) &&
-+                           focusedElt.hasAttribute("dlgtype") && focusedElt != defaultButton) {
-+                  defaultButton.focus();
-+                }
-+              }
-+            }
-+
-+            try {
-+              if (defaultButton)
-+                window.notifyDefaultButtonLoaded(defaultButton);
-+            } catch (e) { }
-+          }
-+
-+          // Give focus after onload completes, see bug 103197.
-+          setTimeout(focusInit, 0);
-+
-+          if (this._l10nButtons.length) {
-+            document.l10n.translateElements(this._l10nButtons).then(() => {
-+              window.sizeToContent();
-+            });
-+          }
-+        ]]>
-+        </body>
-+      </method>
-+
-+      <method name="openHelp">
-+        <parameter name="event"/>
-+        <body>
-+        <![CDATA[
-+          var helpButton = document.documentElement.getButton("help");
-+          if (helpButton.disabled || helpButton.hidden)
-+            return;
-+          this._fireButtonEvent("help");
-+          event.stopPropagation();
-+          event.preventDefault();
-+        ]]>
-+        </body>
-+      </method>
-+
-+      <property name="mStrBundle">
-+        <getter>
-+        <![CDATA[
-+          if (!this._mStrBundle) {
-+            // need to create string bundle manually instead of using <xul:stringbundle/>
-+            // see bug 63370 for details
-+            this._mStrBundle = Cc["@mozilla.org/intl/stringbundle;1"]
-+                                 .getService(Ci.nsIStringBundleService)
-+                                 .createBundle("chrome://global/locale/dialog.properties");
-+          }
-+          return this._mStrBundle;
-+        ]]></getter>
-+      </property>
-+
-+      <method name="_configureButtons">
-+        <parameter name="aButtons"/>
-+        <body>
-+        <![CDATA[
-+          // by default, get all the anonymous button elements
-+          var buttons = {};
-+          this._buttons = buttons;
-+          buttons.accept = document.getAnonymousElementByAttribute(this, "dlgtype", "accept");
-+          buttons.cancel = document.getAnonymousElementByAttribute(this, "dlgtype", "cancel");
-+          buttons.extra1 = document.getAnonymousElementByAttribute(this, "dlgtype", "extra1");
-+          buttons.extra2 = document.getAnonymousElementByAttribute(this, "dlgtype", "extra2");
-+          buttons.help = document.getAnonymousElementByAttribute(this, "dlgtype", "help");
-+          buttons.disclosure = document.getAnonymousElementByAttribute(this, "dlgtype", "disclosure");
-+
-+          for (let button in buttons) {
-+            customElements.upgrade(buttons[button]);
-+          }
-+
-+          // look for any overriding explicit button elements
-+          var exBtns = this.getElementsByAttribute("dlgtype", "*");
-+          var dlgtype;
-+          var i;
-+          for (i = 0; i < exBtns.length; ++i) {
-+            dlgtype = exBtns[i].getAttribute("dlgtype");
-+            buttons[dlgtype].hidden = true; // hide the anonymous button
-+            buttons[dlgtype] = exBtns[i];
-+          }
-+
-+          // add the label and oncommand handler to each button
-+          for (dlgtype in buttons) {
-+            var button = buttons[dlgtype];
-+            button.addEventListener("command", this._handleButtonCommand, true);
-+
-+            // don't override custom labels with pre-defined labels on explicit buttons
-+            if (!button.hasAttribute("label")) {
-+              // dialog attributes override the default labels in dialog.properties
-+              if (this.hasAttribute("buttonlabel" + dlgtype)) {
-+                button.setAttribute("label", this.getAttribute("buttonlabel" + dlgtype));
-+                if (this.hasAttribute("buttonaccesskey" + dlgtype))
-+                  button.setAttribute("accesskey", this.getAttribute("buttonaccesskey" + dlgtype));
-+              } else if (this.hasAttribute("buttonid" + dlgtype)) {
-+                document.l10n.setAttributes(button, this.getAttribute("buttonid" + dlgtype));
-+                this._l10nButtons.push(button);
-+              } else if (dlgtype != "extra1" && dlgtype != "extra2") {
-+                button.setAttribute("label", this.mStrBundle.GetStringFromName("button-" + dlgtype));
-+                var accessKey = this.mStrBundle.GetStringFromName("accesskey-" + dlgtype);
-+                if (accessKey)
-+                  button.setAttribute("accesskey", accessKey);
-+              }
-+            }
-+            // allow specifying alternate icons in the dialog header
-+            if (!button.hasAttribute("icon")) {
-+              // if there's an icon specified, use that
-+              if (this.hasAttribute("buttonicon" + dlgtype))
-+                button.setAttribute("icon", this.getAttribute("buttonicon" + dlgtype));
-+              // otherwise set defaults
-+              else
-+                switch (dlgtype) {
-+                  case "accept":
-+                    button.setAttribute("icon", "accept");
-+                    break;
-+                  case "cancel":
-+                    button.setAttribute("icon", "cancel");
-+                    break;
-+                  case "disclosure":
-+                    button.setAttribute("icon", "properties");
-+                    break;
-+                  case "help":
-+                    button.setAttribute("icon", "help");
-+                    break;
-+                  default:
-+                    break;
-+                }
-+            }
-+          }
-+
-+          // ensure that hitting enter triggers the default button command
-+          this.defaultButton = this.defaultButton;
-+
-+          // if there is a special button configuration, use it
-+          if (aButtons) {
-+            // expect a comma delimited list of dlgtype values
-+            var list = aButtons.split(",");
-+
-+            // mark shown dlgtypes as true
-+            var shown = { accept: false, cancel: false, help: false,
-+                          disclosure: false, extra1: false, extra2: false };
-+            for (i = 0; i < list.length; ++i)
-+              shown[list[i].replace(/ /g, "")] = true;
-+
-+            // hide/show the buttons we want
-+            for (dlgtype in buttons)
-+              buttons[dlgtype].hidden = !shown[dlgtype];
-+
-+            // show the spacer on Windows only when the extra2 button is present
-+            if (/Win/.test(navigator.platform)) {
-+              var spacer = document.getAnonymousElementByAttribute(this, "anonid", "spacer");
-+              spacer.removeAttribute("hidden");
-+              spacer.setAttribute("flex", shown.extra2 ? "1" : "0");
-+            }
-+          }
-+        ]]>
-+        </body>
-+      </method>
-+
-+      <method name="_setDefaultButton">
-+        <parameter name="aNewDefault"/>
-+        <body>
-+        <![CDATA[
-+          // remove the default attribute from the previous default button, if any
-+          var oldDefaultButton = this.getButton(this.defaultButton);
-+          if (oldDefaultButton)
-+            oldDefaultButton.removeAttribute("default");
-+
-+          var newDefaultButton = this.getButton(aNewDefault);
-+          if (newDefaultButton) {
-+            this.setAttribute("defaultButton", aNewDefault);
-+            newDefaultButton.setAttribute("default", "true");
-+          } else {
-+            this.setAttribute("defaultButton", "none");
-+            if (aNewDefault != "none")
-+              dump("invalid new default button: " + aNewDefault + ", assuming: none\n");
-+          }
-+        ]]>
-+        </body>
-+      </method>
-+
-+      <method name="_handleButtonCommand">
-+        <parameter name="aEvent"/>
-+        <body>
-+        <![CDATA[
-+          return document.documentElement._doButtonCommand(
-+                                        aEvent.target.getAttribute("dlgtype"));
-+        ]]>
-+        </body>
-+      </method>
-+
-+      <method name="_doButtonCommand">
-+        <parameter name="aDlgType"/>
-+        <body>
-+        <![CDATA[
-+          var button = this.getButton(aDlgType);
-+          if (!button.disabled) {
-+            var noCancel = this._fireButtonEvent(aDlgType);
-+            if (noCancel) {
-+              if (aDlgType == "accept" || aDlgType == "cancel") {
-+                var closingEvent = new CustomEvent("dialogclosing", {
-+                  bubbles: true,
-+                  detail: { button: aDlgType },
-+                });
-+                this.dispatchEvent(closingEvent);
-+                window.close();
-+              }
-+            }
-+            return noCancel;
-+          }
-+          return true;
-+        ]]>
-+        </body>
-+      </method>
-+
-+      <method name="_fireButtonEvent">
-+        <parameter name="aDlgType"/>
-+        <body>
-+        <![CDATA[
-+          var event = document.createEvent("Events");
-+          event.initEvent("dialog" + aDlgType, true, true);
-+
-+          // handle dom event handlers
-+          return this.dispatchEvent(event);
-+        ]]>
-+        </body>
-+      </method>
-+
-+      <method name="_hitEnter">
-+        <parameter name="evt"/>
-+        <body>
-+        <![CDATA[
-+          if (evt.defaultPrevented)
-+            return;
-+
-+          var btn = this.getButton(this.defaultButton);
-+          if (btn)
-+            this._doButtonCommand(this.defaultButton);
-+        ]]>
-+        </body>
-+      </method>
-+
-+    </implementation>
-+
-+    <handlers>
-+      <handler event="keypress" keycode="VK_RETURN"
-+               group="system" action="this._hitEnter(event);"/>
-+      <handler event="keypress" keycode="VK_ESCAPE" group="system">
-+        if (!event.defaultPrevented)
-+          this.cancelDialog();
-+      </handler>
-+#ifdef XP_MACOSX
-+      <handler event="keypress" key="." modifiers="meta" phase="capturing" action="this.cancelDialog();"/>
-+#else
-+      <handler event="focus" phase="capturing">
-+        var btn = this.getButton(this.defaultButton);
-+        if (btn)
-+          btn.setAttribute("default", event.originalTarget == btn ||
-+                           !(event.originalTarget.localName == "button" ||
-+                             event.originalTarget.localName == "toolbarbutton"));
-+      </handler>
-+#endif
-+    </handlers>
-+
-+  </binding>
-+
-+</bindings>
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
 --- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
@@ -1821,7 +1295,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -124,16 +124,17 @@ include('/ipc/chromium/chromium-config.m
+@@ -126,16 +126,17 @@ include('/ipc/chromium/chromium-config.m
  
  FINAL_LIBRARY = 'xul'
  
@@ -1842,7 +1316,7 @@ diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
 --- a/widget/gtk/nsFilePicker.cpp
 +++ b/widget/gtk/nsFilePicker.cpp
-@@ -4,32 +4,34 @@
+@@ -4,16 +4,17 @@
   * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
  
  #include "mozilla/Types.h"
@@ -1855,11 +1329,12 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  
  #include "nsGtkUtils.h"
  #include "nsIFileURL.h"
+ #include "nsIGIOService.h"
  #include "nsIURI.h"
  #include "nsIWidget.h"
  #include "nsIFile.h"
  #include "nsIStringBundle.h"
- 
+@@ -21,16 +22,17 @@
  #include "nsArrayEnumerator.h"
  #include "nsMemory.h"
  #include "nsEnumeratorUtils.h"
@@ -1877,7 +1352,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  #define MAX_PREVIEW_SOURCE_SIZE 4096
  
  nsIFile* nsFilePicker::mPrevDisplayDirectory = nullptr;
-@@ -227,17 +229,19 @@ nsFilePicker::AppendFilters(int32_t aFil
+@@ -228,17 +230,19 @@ nsFilePicker::AppendFilters(int32_t aFil
    mAllowURLs = !!(aFilterMask & filterAllowURLs);
    return nsBaseFilePicker::AppendFilters(aFilterMask);
  }
@@ -1898,7 +1373,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  
    mFilters.AppendElement(filter);
    mFilterNames.AppendElement(name);
-@@ -337,16 +341,39 @@ nsresult nsFilePicker::Show(int16_t* aRe
+@@ -338,16 +342,39 @@ nsresult nsFilePicker::Show(int16_t* aRe
    return NS_OK;
  }
  
@@ -1938,7 +1413,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  
    GtkFileChooserAction action = GetGtkFileChooserAction(mMode);
  
-@@ -572,16 +599,240 @@ void nsFilePicker::Done(void* file_choos
+@@ -573,16 +600,240 @@ void nsFilePicker::Done(void* file_choos
      mCallback->Done(result);
      mCallback = nullptr;
    } else {

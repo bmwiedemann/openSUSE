@@ -146,4 +146,12 @@
   * new rpm macro %apache_rex_deps</comment>
     <requestid>712394</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>975dc1b85bca92bb027dba09635fce82</srcmd5>
+    <version>20190906</version>
+    <time>1568720196</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>730662</requestid>
+  </revision>
 </revisionlist>

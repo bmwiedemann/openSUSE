@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 16 11:34:48 UTC 2019 - ecsos@opensuse.org
+
+- Fix build error for Leap.
+
+-------------------------------------------------------------------
+Mon Sep 16 09:52:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.1.0:
+  * Drop Python 2 support, only Python 3.5-3.7 is supported now.
+  * Fix all links for move from github.com/ottoyiu/django-cors-headers to
+    github.com/adamchainz/django-cors-headers.
+  * Add a hint to the corsheaders.E013 check to make it more obvious how to resolve it.
+  * Allow 'null' in CORS_ORIGIN_WHITELIST check.
+  * CORS_ORIGIN_WHITELIST now requires URI schemes, and optionally ports
+  * Removed the CORS_MODEL setting, and associated class
+
+-------------------------------------------------------------------
 Mon May  6 11:33:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.5.3:

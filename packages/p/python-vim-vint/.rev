@@ -39,4 +39,14 @@
   * yaml5.patch</comment>
     <requestid>686039</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1e9374948491cc91b5f001b1879b3a4a</srcmd5>
+    <version>0.3.21</version>
+    <time>1568720335</time>
+    <user>maxlin_factory</user>
+    <comment>- Updat eto 0.3.21:
+  * various bugfixes only
+- Drop upstream merged patch yaml5.patch</comment>
+    <requestid>731250</requestid>
+  </revision>
 </revisionlist>

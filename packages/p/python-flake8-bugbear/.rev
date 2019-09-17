@@ -36,4 +36,15 @@
   * For B902, the first argument for metaclass class methods can be &quot;mcs&quot;, matching the name preferred by PyCharm.</comment>
     <requestid>690380</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>566760430e69d3e8274168eef24a93fc</srcmd5>
+    <version>19.8.0</version>
+    <time>1568720162</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 19.8.0:
+  * Fix .travis.yml syntax + add Python 3.8 + nightly tests
+  * Fix black formatting + enforce via CI
+  * Make B901 not apply to __await__ methods</comment>
+    <requestid>730552</requestid>
+  </revision>
 </revisionlist>

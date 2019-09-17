@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/curl/doh.git</param>
+              <param name="changesrevision">9c4a78588ac66c091ddc34816547c346cab10930</param></service></servicedata>

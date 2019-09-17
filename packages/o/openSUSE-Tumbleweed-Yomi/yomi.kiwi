@@ -9,8 +9,8 @@
     <specification>openSUSE Tumbleweed Yomi</specification>
   </description>
   <profiles>
-    <profile name="livecd" description="Yomi image live CD" arch="x86_64"/>
-    <profile name="pxeboot" description="Yomi image for PXE-Boot" arch="x86_64"/>
+    <profile name="livecd" description="Yomi image live CD" arch="x86_64,aarch64"/>
+    <profile name="pxeboot" description="Yomi image for PXE-Boot" arch="x86_64,aarch64"/>
   </profiles>
   <preferences profiles="livecd">
     <version>1.0.0</version>
@@ -55,7 +55,7 @@
 	  installpxe="true"
 	  kernelcmdline="rd.kiwi.ramdisk ramdisk_size=524288"
 	  >
-      <!-- <size unit="G">4</size> -->
+      <size unit="G">1</size>
       <oemconfig>
         <oem-skip-verify>true</oem-skip-verify>
         <oem-unattended>true</oem-unattended>
@@ -73,7 +73,7 @@
     <package name="aaa_base-extras"/> <!-- wouldn't be SUSE without that ;-) -->
     <package name="acl"/>
     <package name="chrony"/>
-    <package name="curl"/> <!-- needed for openQA, maybe delete -->
+    <package name="curl"/>
     <package name="dracut"/>
     <package name="group(mail)"/> <!-- needed by useradd bsc#1061838-->
     <package name="group(wheel)"/>
@@ -104,12 +104,13 @@
     <package name="fbiterm"/> <!-- Optionally used by jeos-firstboot for non-latin fonts -->
 
     <!-- Not useful with OpenStack -->
-    <package name="firewalld"/>
+    <!-- <package name="firewalld"/> -->
 
     <package name="kernel-default"/>
 
     <!-- Yomi requirements -->
     <package name="btrfsprogs"/>
+    <package name="bzip2"/>
     <package name="dosfstools"/>
     <package name="e2fsprogs"/>
     <package name="hwinfo"/>
@@ -117,7 +118,7 @@
     <package name="lsof"/>
     <package name="mdadm"/>
     <package name="snapper"/>
-    <package name="syslinux"/>
+    <package name="syslinux" arch="x86_64"/>
     <package name="usbutils"/>
     <package name="xfsprogs"/>
   </packages>

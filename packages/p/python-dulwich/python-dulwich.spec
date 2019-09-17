@@ -19,7 +19,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dulwich
-Version:        0.19.11
+Version:        0.19.13
 Release:        0
 Summary:        Pure-Python Git Library
 License:        GPL-2.0-or-later OR Apache-2.0

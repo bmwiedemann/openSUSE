@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Sep  9 18:32:02 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.5.0:
+  * Merge branch 'devel'
+  * Fixing issues with appdata file for some parsers.
+  * Merge branch 'master'
+  * Increasing asking price from $5 to $10.
+  * Updated screenshots. Updating files for new release.
+  * Merge branch 'shortcuts'
+  * More updates to shortcuts UI file.
+  * Adding and reorganizing keyboard shortcuts to .ui file.
+    Making the shortcuts window display be sensitive to the current
+    state. Adding F1 as keyboard shortcut to display shortcuts
+    window. Adding support for copy, cut and pasting connection title
+    text. Fixing keyboard shortcut to toggle focus mode.
+  * Changing shortcuts accelerator to F1.
+  * Adding menu to miscellaneous header button.
+  * Checkpointing work on shortcuts.ui file (now displaying
+    correctly).
+  * Merge branch 'node_fill'
+  * Improving style handling when creating nodes.
+  * Fixing issue with setting fill with link color in style
+    inspector.
+  * Checkpointing.
+  * Adding missing file from previous commit.
+  * Checkpointing initial files for creating a shortcuts window
+    (not working yet).
+  * Merge branch 'text_input'
+  * Fixing issues with integrating GLib settings for quick entry
+    spaces per tab value.
+  * Checkpoint tabs per space from gsettings
+  * Adding quick entry help information.
+  * Fixing tab behavior in quick entry UI.
+  * Adding support for Control-W shortcut to close current tab.
+    Adding support for Control-E shortcut to open quick entry UI.
+    Removing ability to enter space characters in leading whitespace
+    within quick entry.
+  * Checkpointing work on quick entry UI.
+  * Fixing issues with quick entry functionality.
+  * Checkpointing work on integrating new QuickEntry UI.
+  * Completing work on adding PlainText import support.
+  * Adding ability to read in the contents of a text file for
+    importing purposes.
+  * Adding undo/redo support for inserting nodes from text.
+  * Finishing code that draws the text input to the canvas
+    properly.
+  * Starting work on text import parser.
+  * Merge branch 'custom_theme'
+  * Fixing issue where saved temporary theme was not marked as
+    permanent.
+  * More improvements to custom themes.
+  * ...
+
+-------------------------------------------------------------------
 Mon Jul 15 10:09:59 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.4.1:

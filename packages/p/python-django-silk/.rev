@@ -32,4 +32,17 @@
   * test-urls-auth-login-view.patch</comment>
     <requestid>699368</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6972bb64f104acfa93a76e790314f3de</srcmd5>
+    <version>3.0.4</version>
+    <time>1568720249</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 3.0.4:
+  * templates: limit select width to its container one #351 (xrmx)
+  * Clean up RemovedInDjango30Warning with {% load staticfiles %} #353 (devmonkey22)
+  * Simplify pattern masking and handle dicts #355 (Chris7)
+  * Fix masking sensitive data in batch JSON request #342 (nikolaik)
+  * Fix project url on PyPi #343 (luzfcb)</comment>
+    <requestid>731213</requestid>
+  </revision>
 </revisionlist>

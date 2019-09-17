@@ -18,22 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-distlib
-Version:        0.2.8
+Version:        0.2.9.post0
 Release:        0
 Summary:        Distribution utilities
 License:        Python-2.0
 Group:          Development/Languages/Python
-Url:            https://bitbucket.org/pypa/distlib
+URL:            https://bitbucket.org/pypa/distlib
 Source:         https://files.pythonhosted.org/packages/source/d/distlib/distlib-%{version}.zip
 Patch0:         remove-backports.patch
-Patch1:         pypi-url-update.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -42,7 +40,6 @@ Python distribution utilities.
 %prep
 %setup -q -n distlib-%{version}
 %patch0 -p1
-%patch1 -p1
 
 rm -r tests/unittest2
 
@@ -73,7 +70,7 @@ rm distlib/*.exe
 %check
 export LANG=en_US.UTF-8
 # These two tests need internet access
-%python_exec -m pytest -k 'not (test_search or test_package_data)'
+%pytest -k 'not (test_search or test_package_data)'
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

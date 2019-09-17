@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>707055</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3b7f9e5d196f8e9399ebda2a74b9b79a</srcmd5>
+    <version>3.14.1</version>
+    <time>1568720347</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 3.14.1:
+  * More tes fixes
+  * Deprecate ujson support
+  * Fixed various deprecation warnings</comment>
+    <requestid>731291</requestid>
+  </revision>
 </revisionlist>

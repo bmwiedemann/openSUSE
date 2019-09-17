@@ -1,7 +1,7 @@
 #
 # spec file for package python-keyczar
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,28 +19,26 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{!?license: %global license %doc}
 %define pkgname keyczar
-%bcond_without test
 Name:           python-keyczar
 Version:        0.716
 Release:        0
 Summary:        Python toolkit for cryptography
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            http://www.keyczar.org
-Source0:        https://github.com/google/%pkgname/archive/Python_release_%{version}.tar.gz
+URL:            http://www.keyczar.org
+Source0:        https://github.com/google/%{pkgname}/archive/Python_release_%{version}.tar.gz
 Source1:        keyczart.1
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
-%if %{with test}
+Patch0:         0001-Fixes-output-value-changes-between-older-and-newer-p.patch
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pycrypto >= 2.0}
-%endif
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-pyasn1
 Requires:       python-pycrypto >= 2.0
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -54,12 +52,14 @@ asymmetric keys. Some features of Keyczar include:
 
 %prep
 %setup -q -n %{pkgname}-Python_release_%{version}/python
+%patch0 -p1
 
 %build
-%{python_build}
+%python_build
 
 %install
-%{python_install}
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 install -Dm644 %{SOURCE1} %{buildroot}%{_mandir}/man1/keyczart.1
 %python_clone -a %{buildroot}%{_bindir}/keyczart
 %python_clone -a %{buildroot}%{_mandir}/man1/keyczart.1
@@ -74,13 +74,11 @@ install -Dm644 %{SOURCE1} %{buildroot}%{_mandir}/man1/keyczart.1
 %check
 export PYTHONPATH=$(pwd)/build/lib
 pushd tests/keyczar_tests
-# Upstream bugreport on the failing test case: https://github.com/google/keyczar/issues/209
-%{python_exec alltests.py || :}
+%python_exec alltests.py
 popd
 %endif
 
 %files %{python_files}
-%defattr(-,root,root)
 %doc README PKG-INFO doc/
 %license LICENSE
 %python_alternative %{_mandir}/man1/keyczart.1%{ext_man}

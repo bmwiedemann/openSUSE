@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>725232</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>124c6a2b804b4764cadfbe60c4a1b0ab</srcmd5>
+    <version>1.0.1</version>
+    <time>1568720351</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.0.1:
+  * drop python2 support
+  * various metadata updates</comment>
+    <requestid>731297</requestid>
+  </revision>
 </revisionlist>

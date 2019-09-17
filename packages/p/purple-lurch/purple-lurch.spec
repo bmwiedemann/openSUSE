@@ -1,7 +1,7 @@
 #
 # spec file for package purple-lurch
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/gkdr/lurch
 Source:         https://github.com/gkdr/lurch/releases/download/v%{version}/%{_name}-%{version}-src.tar.gz
+# PATCH-FIX-UPSTREAM purple-lurch-libomemo-fix-dino-compat.patch -- Fix compatibility issues with Dino (commit e3b2125e).
+Patch0:         purple-lurch-libomemo-fix-dino-compat.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libgcrypt-devel
@@ -51,7 +53,7 @@ This plugin brings Double Ratchet to libpurple applications such as
 Pidgin by implementing OMEMO.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 export CFLAGS='%{optflags}'

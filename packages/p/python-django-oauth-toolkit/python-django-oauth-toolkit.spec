@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-oauth-toolkit
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-oauth-toolkit
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 Summary:        OAuth2 Provider for Django
 License:        BSD-2-Clause
@@ -26,16 +27,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/django-oauth-toolkit
 Source:         https://github.com/jazzband/django-oauth-toolkit/archive/%{version}.tar.gz#/django-oauth-toolkit-%{version}.tar.gz
 Patch0:         test-response-401.patch
-BuildRequires:  %{python_module Django >= 1.11}	
+BuildRequires:  %{python_module Django >= 2.0}
+BuildRequires:  %{python_module djangorestframework}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module oauthlib >= 2.0.3}
+BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module requests >= 2.13.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module djangorestframework}
-BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
-Requires:       python-Django >= 1.11
+BuildRequires:  python-rpm-macros
+Requires:       python-Django >= 2.0
 Requires:       python-oauthlib >= 2.0.3
 Requires:       python-requests >= 2.13.0
 Conflicts:      python-django-oauth
@@ -63,7 +64,7 @@ Django OAuth Toolkit can help you providing out of the box all the endpoints, da
 %check
 export DJANGO_SETTINGS_MODULE=tests.settings
 export PYTHONPATH=$(pwd)
-%python_exec -m pytest
+%pytest
 
 %files %{python_files}
 %license LICENSE

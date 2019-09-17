@@ -54,4 +54,20 @@
     <comment></comment>
     <requestid>728681</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c78c1940129c04544767f6efc2f88b4a</srcmd5>
+    <version>6.5.8</version>
+    <time>1568720141</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 6.5.8:
+  - Fix socket.SO_PEERCRED constant fallback value under PowerPC.
+  - Fix race condition when toggling stats counting in the middle
+    of request processing.
+  - Improve post Python 3.9 compatibility checks.
+  - Fix support of abstract namespace sockets
+  - Fix HTTP parser to return 400 on invalid major-only HTTP version
+    in Request-Line.
+- Drop cheroot_fix_so_peercred_ppc.patch . Applied upstream.</comment>
+    <requestid>730490</requestid>
+  </revision>
 </revisionlist>

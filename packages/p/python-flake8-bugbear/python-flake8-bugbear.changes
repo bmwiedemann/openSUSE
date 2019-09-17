@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 13 07:31:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.8.0:
+  * Fix .travis.yml syntax + add Python 3.8 + nightly tests
+  * Fix black formatting + enforce via CI
+  * Make B901 not apply to __await__ methods
+
+-------------------------------------------------------------------
 Mon Apr  1 13:29:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 19.3.0:

@@ -26,4 +26,17 @@
     <comment>- added fix_tests.patch - better compactibility with django 2.2</comment>
     <requestid>692938</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4a4378ce47e0558068f63c55a5262540</srcmd5>
+    <version>2.2.0</version>
+    <time>1568720264</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.2.0:
+  * Added DjangoFilterBackend.get_schema_operation_parameters() for DRF 3.10+
+  * OpenAPI schema generation. (#1086)
+  * Added lookup_expr to MultipleChoiceFilter (#1054)
+  * Dropped support for EOL Python 3.4
+- Remove merged patch fix_tests.patch</comment>
+    <requestid>731220</requestid>
+  </revision>
 </revisionlist>

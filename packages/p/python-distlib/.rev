@@ -177,4 +177,16 @@
     <comment></comment>
     <requestid>691517</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>611a042dcecc8594b60115e4ad6dd0f3</srcmd5>
+    <version>0.2.9.post0</version>
+    <time>1568720192</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.2.9.post0:
+  * updated pypi urls
+  * various small bugfixes
+- Remove merged patches:
+  * pypi-url-update.patch</comment>
+    <requestid>730637</requestid>
+  </revision>
 </revisionlist>

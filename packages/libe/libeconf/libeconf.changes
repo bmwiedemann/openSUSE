@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 06 10:53:32 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.3.0+git20190906.0e60a88:
+  * Ensure LICENSE, README, and TODO are included in the release tarball
+  * Rewrite set*ValueNum functions to avoid libm usage and add error checking
+  * Move src/*.c to lib and release version 0.3.0
+
+-------------------------------------------------------------------
 Thu Sep 05 08:54:20 UTC 2019 - kukuk@suse.de
 
 - Update to version 0.3.0+git20190905.0ca8fe2:

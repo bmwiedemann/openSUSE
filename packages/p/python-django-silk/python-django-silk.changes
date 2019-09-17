@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 16 09:19:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.4:
+  * templates: limit select width to its container one #351 (xrmx)
+  * Clean up RemovedInDjango30Warning with {% load staticfiles %} #353 (devmonkey22)
+  * Simplify pattern masking and handle dicts #355 (Chris7)
+  * Fix masking sensitive data in batch JSON request #342 (nikolaik)
+  * Fix project url on PyPi #343 (luzfcb)
+
+-------------------------------------------------------------------
 Mon Apr 29 07:50:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.0.2:

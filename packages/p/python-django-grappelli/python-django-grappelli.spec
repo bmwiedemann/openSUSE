@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-grappelli
-Version:        2.12.3
+Version:        2.13.1
 Release:        0
 Summary:        A skin for the Django Admin-Interface
 License:        BSD-2-Clause AND LGPL-2.1-or-later
@@ -53,7 +53,7 @@ A jazzy skin for the Django Admin-Interface.
 export PYTHONDONTWRITEBYTECODE=1
 export DJANGO_SETTINGS_MODULE=test_project.settings
 # test_related_lookup - uses unicode literals that break on py2
-%python_expand PYTHONPATH=`pwd` py.test-%{$python_version} grappelli/tests -k 'not test_related_lookup'
+%pytest -k 'not test_related_lookup'
 
 %files %{python_files}
 %license LICENSE

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 16 13:38:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.8.0:
+  * Fixed regression which caused TypeError or OSError when trying to set annotations due to PR #87
+  * Fixed unintentional mangling of annotation type names
+  * Added proper :py:data targets for NoReturn, ClassVar and Tuple
+  * Added support for inline type comments (like (int, str) -> None) (PR by Bernát Gábor)
+  * Use the native AST parser for type comment support on Python 3.8+
+
+-------------------------------------------------------------------
 Tue Sep 10 10:03:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.7.0:

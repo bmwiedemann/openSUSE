@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-silk
-Version:        3.0.2
+Version:        3.0.4
 Release:        0
 Summary:        Profiling for the Django Framework
 License:        MIT

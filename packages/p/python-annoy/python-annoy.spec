@@ -12,23 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-annoy
-Version:        1.15.2
+Version:        1.16.0
 Release:        0
 Summary:        Approximation of Nearest Neighbors
 License:        Apache-2.0
 Group:          Development/Languages/Python
 Url:            https://github.com/spotify/annoy
-Source:         https://files.pythonhosted.org/packages/source/a/annoy/annoy-%{version}.tar.gz
+Source:         https://github.com/spotify/annoy/archive/v%{version}.tar.gz
 # PATCH-FIX-OPENSUSE boo#1100677
 Patch0:         reproducible.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module nose >= 1.0}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -45,6 +48,8 @@ share the same data.
 %prep
 %setup -q -n annoy-%{version}
 %patch0 -p1
+# fix testdata location
+sed -i -e "s:'test/test:'test:g" test/index_test.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -53,6 +58,11 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%check
+# online tests: test_fashion_mnist, test_glove_25, test_nytimes_16
+cd test
+%pytest_arch -k 'not (test_fashion_mnist or test_glove_25 or test_nytimes_16)'
 
 %files %{python_files}
 %doc README.rst
