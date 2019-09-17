@@ -253,4 +253,18 @@ as requested by Michel</comment>
   * track provided cpeid of products</comment>
     <requestid>715659</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5a036ed49fbb0d6f1ac34037af7f19e6</srcmd5>
+    <version>1.2.4</version>
+    <time>1568720213</time>
+    <user>maxlin_factory</user>
+    <comment>- 1.2.4
+  * add SLE wrapper to prepare modules for packages dvd (jsc#SLE-8271)
+  * smaller perl fixes
+
+- 1.2.3
+  handle multiple packages with same name but different version/release in one repo.
+  bsc#1150238</comment>
+    <requestid>731197</requestid>
+  </revision>
 </revisionlist>
