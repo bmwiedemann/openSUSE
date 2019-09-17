@@ -28,9 +28,14 @@ dvd:
   - openSUSE-release-appliance: [locked]
   - openSUSE-release
   - openSUSE-release-dvd
+  # make sure bootloader exist due to patterns change
+  - grub2
+  - grub2-systemd-sleep-plugin
+  - grub2-snapper-plugin
   - grub2-x86_64-efi: [x86_64]
-  - grub2-i386-pc: [x86_64]
+  - grub2-i386-pc: [x86_64,i586]
   - grub2-arm64-efi: [aarch64]
+  - shim: [x86_64,aarch64]
   - patterns-gnome-gnome: [suggested]
   - patterns-gnome-gnome_basis: [suggested]
   - patterns-gnome-gnome_basis_opt: [suggested]

@@ -609,4 +609,18 @@ fix typo in quota-nfs
 remove obsolete _opt patterns</comment>
     <requestid>730711</requestid>
   </revision>
+  <revision rev="86" vrev="84">
+    <srcmd5>ae41cd257ba747cff449b28544e61315</srcmd5>
+    <version>unknown</version>
+    <time>1568721226</time>
+    <user>maxlin_factory</user>
+    <comment>make sure bootloader exist</comment>
+  </revision>
+  <revision rev="87" vrev="85">
+    <srcmd5>7959de3c419b3a72a51b3bb1f9d074d8</srcmd5>
+    <version>unknown</version>
+    <time>1568721487</time>
+    <user>maxlin_factory</user>
+    <comment>more explicity for shim</comment>
+  </revision>
 </revisionlist>
