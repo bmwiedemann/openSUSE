@@ -256,8 +256,8 @@
     <package name="bolt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="boost-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="boost-jam" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
-    <package name="boost-license1_69_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="boost1_69_0-jam" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
+    <package name="boost-license1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="boost1_71_0-jam" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="bovo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bovo-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -935,8 +935,8 @@
     <package name="gtk3-metatheme-adwaita" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtk3-metatheme-breeze" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gtk3-metatheme-greybird-geeko" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="gtk3-schema" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtk3-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="gtk4-schema" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtkiterm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtksourceview-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gtksourceview4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1247,8 +1247,6 @@
     <package name="khotkeys5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="khotkeys5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kidentitymanagement-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="kig-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kimageformats" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kimageformats-eps" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kimagemapeditor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1802,15 +1800,14 @@
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbluray2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_date_time1_69_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_filesystem1_69_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_headers1_69_0-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
-    <package name="libboost_iostreams1_69_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_locale1_69_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_program_options1_69_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libboost_python-py2_7-1_69_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="libboost_regex1_69_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libboost_thread1_69_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_date_time1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_filesystem1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_headers1_71_0-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
+    <package name="libboost_iostreams1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_locale1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_program_options1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libboost_regex1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libboost_thread1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbrasero-burn3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbrasero-media3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbrasero-utils3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2424,7 +2421,7 @@
     <package name="libmwaw-0_3-3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmxml1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
     <package name="libmygpo-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libmypaint-1_3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libmypaint-1_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmypaint-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmysofa0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmythes-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -5303,8 +5300,6 @@
     <package name="xfce4-panel-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-panel-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-panel-plugin-dict" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-panel-plugin-netload" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xfce4-panel-plugin-netload-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xfce4-panel-profiles" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-panel-restore-defaults" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfce4-places-plugin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

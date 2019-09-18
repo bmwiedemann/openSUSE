@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20190917" schemaversion="4.1">
+<image name="OBS__openSUSE___20190918" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20190917</productvar>
+      <productvar name="VERSION">20190918</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20190917,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20190918,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20190917/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20190918/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
@@ -263,8 +263,8 @@
       <repopackage name="bolt"/>
       <repopackage name="boost-devel"/>
       <repopackage name="boost-jam"/>
-      <repopackage name="boost-license1_69_0"/>
-      <repopackage name="boost1_69_0-jam"/>
+      <repopackage name="boost-license1_71_0"/>
+      <repopackage name="boost1_71_0-jam"/>
       <repopackage name="bovo"/>
       <repopackage name="bovo-lang"/>
       <repopackage name="branding-openSUSE"/>
@@ -968,8 +968,8 @@
       <repopackage name="gtk3-metatheme-adwaita"/>
       <repopackage name="gtk3-metatheme-breeze"/>
       <repopackage name="gtk3-metatheme-greybird-geeko"/>
+      <repopackage name="gtk3-schema"/>
       <repopackage name="gtk3-tools"/>
-      <repopackage name="gtk4-schema"/>
       <repopackage name="gtkiterm"/>
       <repopackage name="gtksourceview-lang"/>
       <repopackage name="gtksourceview4-lang"/>
@@ -1287,8 +1287,6 @@
       <repopackage name="khotkeys5"/>
       <repopackage name="khotkeys5-lang"/>
       <repopackage name="kidentitymanagement-lang"/>
-      <repopackage name="kig"/>
-      <repopackage name="kig-lang"/>
       <repopackage name="kimageformats"/>
       <repopackage name="kimageformats-eps"/>
       <repopackage name="kimagemapeditor"/>
@@ -1561,15 +1559,14 @@
       <repopackage name="libblogger2"/>
       <repopackage name="libbluetooth3"/>
       <repopackage name="libbluray2"/>
-      <repopackage name="libboost_date_time1_69_0"/>
-      <repopackage name="libboost_filesystem1_69_0"/>
-      <repopackage name="libboost_headers1_69_0-devel"/>
-      <repopackage name="libboost_iostreams1_69_0"/>
-      <repopackage name="libboost_locale1_69_0"/>
-      <repopackage name="libboost_program_options1_69_0"/>
-      <repopackage name="libboost_python-py2_7-1_69_0"/>
-      <repopackage name="libboost_regex1_69_0"/>
-      <repopackage name="libboost_thread1_69_0"/>
+      <repopackage name="libboost_date_time1_71_0"/>
+      <repopackage name="libboost_filesystem1_71_0"/>
+      <repopackage name="libboost_headers1_71_0-devel"/>
+      <repopackage name="libboost_iostreams1_71_0"/>
+      <repopackage name="libboost_locale1_71_0"/>
+      <repopackage name="libboost_program_options1_71_0"/>
+      <repopackage name="libboost_regex1_71_0"/>
+      <repopackage name="libboost_thread1_71_0"/>
       <repopackage name="libbrasero-burn3-1"/>
       <repopackage name="libbrasero-media3-1"/>
       <repopackage name="libbrasero-utils3-1"/>
@@ -2437,7 +2434,7 @@
       <repopackage name="libmwaw-0_3-3"/>
       <repopackage name="libmxml1"/>
       <repopackage name="libmygpo-qt5-1"/>
-      <repopackage name="libmypaint-1_3-0"/>
+      <repopackage name="libmypaint-1_4-0"/>
       <repopackage name="libmypaint-lang"/>
       <repopackage name="libmysofa0"/>
       <repopackage name="libmythes-1_2-0"/>
@@ -5600,8 +5597,6 @@
       <repopackage name="xfce4-panel-branding-openSUSE"/>
       <repopackage name="xfce4-panel-lang"/>
       <repopackage name="xfce4-panel-plugin-dict"/>
-      <repopackage name="xfce4-panel-plugin-netload"/>
-      <repopackage name="xfce4-panel-plugin-netload-lang"/>
       <repopackage name="xfce4-panel-profiles"/>
       <repopackage name="xfce4-panel-restore-defaults"/>
       <repopackage name="xfce4-places-plugin"/>
