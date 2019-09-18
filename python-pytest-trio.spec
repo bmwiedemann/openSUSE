@@ -26,7 +26,6 @@ License:        MIT OR Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/python-trio/pytest-trio
 Source:         file:///home/herman/OBS/home:Simmphonie:python/python-pytest-trio/pytest-trio-%{version}.tar.gz#/pytest-trio-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,6 +47,10 @@ This is a pytest plugin to help you test projects that use Trio, a friendly libr
 
 %prep
 %setup -q -n pytest-trio-%{version}
+
+# Temporary hack on a temporary hack
+# https://github.com/pytest-dev/pytest/issues/4039
+sed -i /RemovedInPytest4Warning/d pytest_trio/_tests/conftest.py
 
 %build
 %python_build
