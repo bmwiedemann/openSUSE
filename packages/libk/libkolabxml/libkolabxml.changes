@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 17 16:29:03 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- add 0001-Make-sure-boost-is-found-when-using-libkolabxml.patch.
+  boost is a public dependency and must be searched before using libkolabxml.
+
+-------------------------------------------------------------------
 Thu Apr 11 07:37:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Make sure libxerces-c-devel is installed before using

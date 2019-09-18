@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Sep 13 09:48:48 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.4.10
+  * New Features:
+    - Preferences Dialog:
+      * Window layout (titlebar vs. headerbar)
+      * Display options (hidden files and sidebar)
+      * Custom exclude directories
+    - Option to close Catfish after opening a file (bxo#14888)
+  * fix path exclusions (deb#926850)
+  * Improved Application Menu:
+    - Better use of space, padding, and margins
+    - Clearer purpose labels
+    - Keyboard accelerator for the sidebar (F9) is now displayed
+  * General:
+    - Better use of alt-accelerators
+    - Improved installation instructions (bxo#15105)
+    - Reduced warnings displayed in the terminal
+    - Simplified Python 2/3 compatibility code
+    - Standardized icon sizes, no more wrongly-sized icons in the results
+    - Various code quality fixes (pylint, flake)
+  * Search (Walk Method):
+    - Enable traversing symbolic links, processing real paths only once
+    - Add search priority, with each level processed alphabetically:
+      1. XDG paths (Desktop, Documents, etc)
+      2. Visible paths
+      3. Hidden paths
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Sep  7 10:46:21 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Install appdata to metainfo (bxo#15752)

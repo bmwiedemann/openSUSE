@@ -32,4 +32,14 @@
     <comment></comment>
     <requestid>703522</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bcfa3db0720ef60ade846842c565aeed</srcmd5>
+    <version>1.0.3</version>
+    <time>1568804968</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.0.3:
+  * Make Client.build_api_url an instance method.
+  * Prevent requests from hanging on SSL handshake</comment>
+    <requestid>730363</requestid>
+  </revision>
 </revisionlist>

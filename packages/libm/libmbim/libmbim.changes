@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep 14 13:31:28 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.0:
+  + Build updated with several fixes:
+    - Explicitly define max allowed GLib version.
+    - Fix issues with -Werror=type-limits.
+    - Made compiler warning options compatible with clang.
+  + mbim-proxy:
+    - Fixed client subscription to service indications using
+      wildcard.
+    - Fixed client subscription update logic when services/cids are
+      being removed.
+    - New '--empty-timeout=[SECS}' option to specify the empty
+      lifetime duration.
+    - New '--no-exit' option to avoid the proxy from exiting.
+  + Several other minor improvements and fixes.
+- Drop libmbim-fix-build-commits.patch: Fixed upstream. Follwing
+  this, drop libtool BuildRequires and autoreconf call.
+
+-------------------------------------------------------------------
 Mon Sep  2 22:48:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add libmbim-fix-build-commits.patch: Fix build with new glib2.

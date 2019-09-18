@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-emoji
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause

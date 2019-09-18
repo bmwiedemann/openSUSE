@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 15 13:13:16 UTC 2019 - wbauer@tmo.at
+
+- Update to 6.3.0
+  * https://www.digikam.org/news/2019-09-08-6.3.0_release_announcement/
+- New features (from NEWS):
+General    : Internal Libraw updated to last stable 0.19.5.
+General    : First version of exported DPlugin API for future
+             external contributions.
+ImageEditor: new external plugin based on GMicQt included in all
+             bundles (https://github.com/c-koi/gmic-qt)
+- 193 bugs fixed
+
+-------------------------------------------------------------------
 Wed Aug 21 08:14:53 UTC 2019 - mvetter@suse.com
 
 - bsc#1144232 - Drop jasper dependency from Digikam:

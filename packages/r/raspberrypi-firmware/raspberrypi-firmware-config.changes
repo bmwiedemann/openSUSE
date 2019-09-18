@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 16 06:36:37 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not run %preun scripts on upgrade (boo#1150408)
+
+-------------------------------------------------------------------
 Thu Sep  5 15:24:04 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to e2e17cd03 (2019-09-04)

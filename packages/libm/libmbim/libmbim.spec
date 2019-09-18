@@ -18,17 +18,14 @@
 
 
 Name:           libmbim
-Version:        1.18.2
+Version:        1.20.0
 Release:        0
 Summary:        Mobile Broadband Interface Model (MBIM) protocol
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.freedesktop.org/wiki/Software/libmbim/
 Source:         https://www.freedesktop.org/software/libmbim/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM libmbim-fix-build-commits.patch -- Fix build with new glib2
-Patch0:         libmbim-fix-build-commits.patch
 
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(gio-2.0)
@@ -77,7 +74,6 @@ This package contain de bash completion command for mbimcli tools.
 %build
 # Do not rely on env for choosing python
 sed -i "s|env python|python3|g" build-aux/mbim-codegen/*
-autoreconf -fiv
 %configure \
 	--with-udev \
 	--disable-static \

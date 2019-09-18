@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 15 13:47:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add runtime recommends for pyOpenSSL and lxml, needed for SSO support
+- Update to v6.7.3
+  * Publish new bindings to support vSphere 6.7 Update 3 Release
+  * Add sso.py to support get bearer/hok token from sso server
+  * pydoc support Fix
+  * httpProxy Support Fix
+  * Changes to VmomiSupport to handle API versions
+- Convert line endings on README.rst
+- Drop python-pyvmomi-fix-incompatibility-with-vcrpy2.patch as the
+  vcrpy fix has been released
+
+-------------------------------------------------------------------
 Sat Dec 29 16:24:24 UTC 2018 - mardnh@gmx.de
 
 - Update to version 6.7.1.2018.12

@@ -17,7 +17,7 @@
 
 
 Name:           SUSEConnect
-Version:        0.3.19
+Version:        0.3.20
 Release:        0
 %define mod_name suse-connect
 %define mod_full_name %{mod_name}-%{version}
@@ -25,13 +25,12 @@ Release:        0
 # Does not build for i586 and s390 and is not supported on those architectures
 ExcludeArch:    %ix86 s390
 
-%if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
+%if 0%{?fedora} || 0%{?rhel} || 0%{?centos_version}
 Requires:       ca-certificates
 %else
 Requires:       ca-certificates-mozilla
 %endif
 Requires:       coreutils
-Requires:       hwinfo
 Requires:       net-tools
 Requires:       util-linux
 Requires:       zypper
@@ -60,7 +59,7 @@ Provides:       ruby2.1-rubygem-suse-connect = %{version}
 %endif
 
 # cross-distribution howto: https://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
-%if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
+%if 0%{?fedora} || 0%{?rhel} || 0%{?centos_version}
 %define ruby_version ruby2.5
 %global gem_base /usr/share/gems
 %global debug_package %{nil}

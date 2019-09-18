@@ -51,6 +51,7 @@ A hack to explicitly set up and tear down fixtures.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}

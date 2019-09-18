@@ -1,0 +1,10 @@
+PRODUCT="thunderbird"
+CHANNEL="esr68"
+VERSION="68.1.0"
+VERSION_SUFFIX=""
+FF_RELEASE_TAG="0efe7ab505b59f1986ebedc0c114a7d24fd93168"
+TB_RELEASE_TAG="9317dad8cb7fd80a47cb3b40253c73127f776535"
+PREV_VERSION=""
+PREV_VERSION_SUFFIX=""
+#SKIP_LOCALES="" # Uncomment to skip l10n and compare-locales-generation
+

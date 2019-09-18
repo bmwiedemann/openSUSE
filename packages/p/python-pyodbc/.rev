@@ -51,4 +51,12 @@
   * Fix MySQL unit tests.</comment>
     <requestid>722652</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>512db4e15484dd1f62330d122b581b80</srcmd5>
+    <version>4.0.27</version>
+    <time>1568805036</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731160</requestid>
+  </revision>
 </revisionlist>

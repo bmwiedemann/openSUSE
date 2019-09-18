@@ -1,8 +1,8 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionformat">3.2.0</param>
+    <param name="versionformat">3.3</param>
     <param name="url">http://github.com/icecc/icemon.git</param>
-    <param name="revision">refs/tags/v3.2.0</param>
+    <param name="revision">refs/tags/v3.3</param>
     <param name="scm">git</param>
   </service>
   <service name="recompress" mode="disabled">

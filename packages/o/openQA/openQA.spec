@@ -17,7 +17,7 @@
 
 
 # can't use linebreaks here!
-%define openqa_services openqa-webui.service openqa-gru.service openqa-websockets.service openqa-scheduler.service
+%define openqa_services openqa-webui.service openqa-gru.service openqa-websockets.service openqa-scheduler.service openqa-enqueue-audit-event-cleanup.service openqa-enqueue-audit-event-cleanup.timer
 %define openqa_worker_services openqa-worker.target openqa-slirpvde.service openqa-vde_switch.service openqa-worker-cacheservice.service openqa-worker-cacheservice-minion.service
 %if %{undefined tmpfiles_create}
 %define tmpfiles_create() \
@@ -33,10 +33,34 @@
 %else
 %bcond_with tests
 %endif
+# SLE < 15 does not provide many of the dependencies for the python sub-package
+%if 0%{?sle_version} < 150000 && !0%{?is_opensuse}
+%bcond_with python_scripts
+%else
+%bcond_without python_scripts
+%endif
 # runtime requirements that also the testsuite needs
-%define t_requires perl(DBD::Pg) perl(DBIx::Class) perl(Config::IniFiles) perl(SQL::Translator) perl(Date::Format) perl(File::Copy::Recursive) perl(DateTime::Format::Pg) perl(Net::OpenID::Consumer) perl(Mojolicious::Plugin::RenderFile) perl(Mojolicious::Plugin::AssetPack) perl(aliased) perl(Config::Tiny) perl(DBIx::Class::DeploymentHandler) perl(DBIx::Class::DynamicDefault) perl(DBIx::Class::Schema::Config) perl(DBIx::Class::Storage::Statistics) perl(IO::Socket::SSL) perl(Data::Dump) perl(DBIx::Class::OptimisticLocking) perl(Module::Pluggable) perl(Text::Diff) perl(Text::Markdown) perl(JSON::Validator) perl(YAML::XS) perl(IPC::Run) perl(Archive::Extract) perl(CSS::Minifier::XS) perl(JavaScript::Minifier::XS) perl(Time::ParseDate) perl(Sort::Versions) perl(Mojo::RabbitMQ::Client) perl(BSD::Resource) perl(Cpanel::JSON::XS) perl(Pod::POM) perl(Mojo::IOLoop::ReadWriteProcess) perl(Minion) perl(Mojo::Pg) perl(Mojo::SQLite) perl(Minion::Backend::SQLite)
+%if %{with python_scripts}
+%define python_scripts_requires python3-base python3-requests python3-future
+%else
+%define python_scripts_requires %{nil}
+%endif
+%define assetpack_requires perl(Mojolicious::Plugin::AssetPack) => 1.36, perl(CSS::Minifier::XS) perl(JavaScript::Minifier::XS)
+%define common_requires perl(Config::IniFiles) perl(Cpanel::JSON::XS) perl(Cwd) perl(Data::Dump) perl(Data::Dumper) perl(Digest::MD5) perl(Getopt::Long) perl(Minion) => 9.09, perl(Mojolicious) >= 7.92, perl(Try::Tiny) perl(Regexp::Common), perl(Storable)
+# runtime requirements for the main package that are not required by other sub-packages
+%define main_requires %assetpack_requires git-core perl(Carp::Always) perl(Date::Format) perl(DateTime::Format::Pg) perl(DBD::Pg) >= 3.7.4, perl(DBI) >= 1.632, perl(DBIx::Class) => 0.082801, perl(DBIx::Class::DeploymentHandler) perl(DBIx::Class::DynamicDefault) perl(DBIx::Class::Schema::Config) perl(DBIx::Class::Storage::Statistics) perl(DBIx::Class::OptimisticLocking) perl(File::Copy::Recursive) perl(Net::OpenID::Consumer) perl(Module::Pluggable) perl(aliased) perl(Config::Tiny) perl(Text::Diff) perl(CommonMark) perl(JSON::Validator) perl(IPC::Run) perl(Archive::Extract) perl(Time::ParseDate) perl(Sort::Versions) perl(BSD::Resource) perl(Pod::POM) perl(Mojo::Pg) perl(Mojo::RabbitMQ::Client) => 0.2, perl(SQL::Translator) perl(YAML::XS) perl(LWP::UserAgent)
+%define client_requires git-core perl(IO::Socket::SSL) >= 2.009, perl(LWP::UserAgent)
+%define worker_requires os-autoinst < 5, perl(Mojo::IOLoop::ReadWriteProcess) > 0.19, perl(Minion::Backend::SQLite) perl(Mojo::SQLite) openQA-client optipng
+%define build_requires rubygem(sass) %assetpack_requires
+
+# All requirements needed by the tests executed during build-time.
+# Do not require on this in individual sub-packages except for the devel
+# package.
+%define test_requires %common_requires %main_requires %python_scripts_requires %worker_requires perl(App::cpanminus) perl(Perl::Critic) perl(Perl::Critic::Freenode) perl(Test::Mojo) perl(Test::More) perl(Test::Strict) perl(Test::Fatal) perl(Test::MockModule) perl(Test::Output) perl(Test::Pod) perl(Test::Warnings) perl(Selenium::Remote::Driver) perl(Selenium::Remote::WDKeys) ShellCheck os-autoinst-devel
+%define devel_requires %build_requires %test_requires rsync curl postgresql-devel qemu qemu-kvm tar postgresql-server xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
+
 Name:           openQA
-Version:        4.6.1563206570.e00d3964
+Version:        4.6.1568387059.db88ff48d
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -48,30 +72,12 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        cache.txz
 Source101:      update-cache.sh
 Source102:      Dockerfile
-BuildRequires:  %{t_requires}
+BuildRequires:  %{build_requires}
 BuildRequires:  fdupes
-BuildRequires:  os-autoinst
-BuildRequires:  systemd
-# critical bug fix
-BuildRequires:  perl(DBIx::Class) >= 0.082801
-BuildRequires:  perl(Minion) >= 9.09
-BuildRequires:  perl(Mojo::RabbitMQ::Client) >= 0.2
-BuildRequires:  perl(Mojolicious) >= 7.92
-BuildRequires:  perl(Mojolicious::Plugin::AssetPack) >= 1.36
-BuildRequires:  rubygem(sass)
-Requires:       perl(Minion) >= 9.09
-Requires:       perl(Mojo::RabbitMQ::Client) >= 0.2
-Requires:       perl(YAML::XS) >= 0.67
-# needed for test suite
-Requires:       git-core
+Requires:       %{main_requires}
 Requires:       openQA-client = %{version}
 Requires:       openQA-common = %{version}
-# needed for saving needles optimized
-Requires:       optipng
-Requires:       perl(DBIx::Class) >= 0.082801
-# needed for openid support
-Requires:       perl(LWP::Protocol::https)
-Requires:       perl(URI)
+Requires:       perl(Minion) >= 9.13
 # we need to have the same sha1 as expected
 %requires_eq    perl-Mojolicious-Plugin-AssetPack
 Recommends:     %{name}-local-db
@@ -83,26 +89,11 @@ Recommends:     apparmor-utils
 Recommends:     logrotate
 # server needs to run an rsync server if worker caching is used
 Recommends:     rsync
-BuildRequires:  postgresql-server
 BuildArch:      noarch
 ExcludeArch:    i586
 %{?systemd_requires}
 %if %{with tests}
-BuildRequires:  chromedriver
-BuildRequires:  chromium
-BuildRequires:  glibc-locale
-# pick a font so chromium has something to render - doesn't matter so much
-BuildRequires:  dejavu-fonts
-BuildRequires:  google-roboto-fonts
-BuildRequires:  perl-App-cpanminus
-BuildRequires:  rsync
-BuildRequires:  perl(DBD::SQLite)
-BuildRequires:  perl(Perl::Critic)
-BuildRequires:  perl(Perl::Critic::Freenode)
-BuildRequires:  perl(Selenium::Remote::Driver) >= 1.20
-BuildRequires:  perl(Test::MockObject)
-BuildRequires:  perl(Test::Strict)
-BuildRequires:  perl(Test::Warnings)
+BuildRequires:  %{test_requires}
 %endif
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(nogroup)
@@ -127,10 +118,18 @@ revision of the operating system, reporting the errors detected for each
 combination of hardware configuration, installation options and variant of the
 operating system.
 
+%package devel
+Summary:        Development package pulling in all build+test dependencies
+Group:          Development/Tools/Other
+Requires:       %{devel_requires}
+
+%description devel
+Development package pulling in all build+test dependencies.
+
 %package common
 Summary:        The openQA common tools for web-frontend and workers
 Group:          Development/Tools/Other
-Requires:       %{t_requires}
+Requires:       %{common_requires}
 Requires:       perl(Mojolicious) >= 7.92
 
 %description common
@@ -140,13 +139,8 @@ openQA workers.
 %package worker
 Summary:        The openQA worker
 Group:          Development/Tools/Other
-Requires:       openQA-client = %{version}
-Requires:       os-autoinst < 5
-Requires:       perl(DBD::SQLite) > 1.51
-Requires:       perl(Minion::Backend::SQLite)
-Requires:       perl(Mojo::IOLoop::ReadWriteProcess) > 0.19
-Requires:       perl(Mojo::SQLite)
-Requires:       perl(SQL::SplitStatement)
+%define worker_requires_including_uncovered_in_tests %worker_requires perl(SQL::SplitStatement)
+Requires:       %{worker_requires_including_uncovered_in_tests}
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         openQA-common = %{version}
 Requires(post): coreutils
@@ -164,21 +158,23 @@ The openQA worker manages test engine (provided by os-autoinst package).
 %package client
 Summary:        Client tools for remote openQA management
 Group:          Development/Tools/Other
+Requires:       %client_requires
 Requires:       openQA-common = %{version}
-Requires:       perl(Config::IniFiles)
-Requires:       perl(Cpanel::JSON::XS)
-Requires:       perl(Data::Dump)
-Requires:       perl(Getopt::Long)
-Requires:       perl(IO::Socket::SSL) >= 2.009
-Requires:       perl(LWP::UserAgent)
-Requires:       perl(Mojolicious)
-Requires:       perl(Regexp::Common)
-Requires:       perl(Try::Tiny)
 Recommends:     jq
 
 %description client
 Tools and support files for openQA client script. Client script is
 a convenient helper for interacting with openQA webui REST API.
+
+%if %{with python_scripts}
+%package python-scripts
+Summary:        Additional scripts in python
+Group:          Development/Tools/Other
+Requires:       %python_scripts_requires
+
+%description python-scripts
+Additional scripts for the use of openQA in the python programming language.
+%endif
 
 %package local-db
 Summary:        Helper package to ease setup of postgresql DB
@@ -209,6 +205,7 @@ Covering both openQA and also os-autoinst test engine.
 
 %prep
 %setup -q -a1
+sed -e 's,/bin/env python,/bin/python,' -i script/openqa-label-all
 
 %build
 make %{?_smp_mflags}
@@ -227,11 +224,14 @@ rm -f t/00-tidy.t
 #make test
 rm -rf %{buildroot}/DB
 export LC_ALL=en_US.UTF-8
-make test-with-database OBS_RUN=1 PROVE_ARGS='-rv' TEST_PG_PATH=%{buildroot}/DB || true
+make test-with-database OBS_RUN=1 PROVE_ARGS='-l -r -v' TEST_PG_PATH=%{buildroot}/DB || true
 rm -rf %{buildroot}/DB
 %endif
 
 %install
+%if !%{with python_scripts}
+rm script/openqa-label-all
+%endif
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 %make_install
@@ -245,6 +245,9 @@ ln -s %{_datadir}/openqa/script/openqa-clone-job %{buildroot}%{_bindir}/openqa-c
 ln -s %{_datadir}/openqa/script/dump_templates %{buildroot}%{_bindir}/openqa-dump-templates
 ln -s %{_datadir}/openqa/script/load_templates %{buildroot}%{_bindir}/openqa-load-templates
 ln -s %{_datadir}/openqa/script/openqa-clone-custom-git-refspec %{buildroot}%{_bindir}/openqa-clone-custom-git-refspec
+%if %{with python_scripts}
+ln -s %{_datadir}/openqa/script/openqa-label-all %{buildroot}%{_bindir}/openqa-label-all
+%endif
 
 cd %{buildroot}
 grep -rl %{_bindir}/env . | while read file; do
@@ -380,6 +383,8 @@ fi
 %{_unitdir}/openqa-gru.service
 %{_unitdir}/openqa-scheduler.service
 %{_unitdir}/openqa-websockets.service
+%{_unitdir}/openqa-enqueue-audit-event-cleanup.service
+%{_unitdir}/openqa-enqueue-audit-event-cleanup.timer
 # web libs
 %dir %{_datadir}/openqa
 %{_datadir}/openqa/templates
@@ -414,6 +419,8 @@ fi
 %dir %{_localstatedir}/lib/openqa/share/factory/other
 %ghost %{_localstatedir}/lib/openqa/db/db.sqlite
 %ghost %{_localstatedir}/log/openqa
+
+%files devel
 
 %files common
 %dir %{_datadir}/openqa
@@ -478,6 +485,12 @@ fi
 %{_bindir}/openqa-dump-templates
 %{_bindir}/openqa-load-templates
 %{_bindir}/openqa-clone-custom-git-refspec
+
+%if %{with python_scripts}
+%files python-scripts
+%{_datadir}/openqa/script/openqa-label-all
+%{_bindir}/openqa-label-all
+%endif
 
 %files doc
 %doc docs/*

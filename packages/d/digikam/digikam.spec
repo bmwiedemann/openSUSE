@@ -19,7 +19,7 @@
 %define soversion 6
 %bcond_without lang
 Name:           digikam
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
@@ -232,7 +232,9 @@ export CXX=g++-7
 
 %files devel
 %{_includedir}/digikam/
-%{_kf5_cmakedir}/digikam/
+%{_kf5_cmakedir}/DigikamCore/
+%{_kf5_cmakedir}/DigikamDatabase/
+%{_kf5_cmakedir}/DigikamGui/
 %{_kf5_libdir}/libdigikamcore.so
 %{_kf5_libdir}/libdigikamdatabase.so
 %{_kf5_libdir}/libdigikamgui.so

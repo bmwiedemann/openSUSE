@@ -417,4 +417,14 @@
 - Fix base product service removal during de-registration in public clouds (bsc#1136752)</comment>
     <requestid>722017</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e712f621ea5fcb04c7f8dc48435d6f0f</srcmd5>
+    <version>0.3.20</version>
+    <time>1568804841</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.3.20
+- Fix getting the list of installed products when zypper plugins are
+  present (bsc#1143635)</comment>
+    <requestid>731242</requestid>
+  </revision>
 </revisionlist>

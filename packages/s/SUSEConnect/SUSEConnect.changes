@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 8 16:02:30 UTC 2019 - Ivan Kapelyukhin <ikapelyukhin@suse.com>
+
+- Update to 0.3.20
+- Fix getting the list of installed products when zypper plugins are
+  present (bsc#1143635)
+
+-------------------------------------------------------------------
 Wed Aug  7 10:15:21 UTC 2019 - Giovanni Filippetti <giovanni.filippetti@suse.com>
 
 - Update to 0.3.19

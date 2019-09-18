@@ -61,6 +61,8 @@ This package contains technical documentation.
 %prep
 %setup -q
 chmod -x examples/*
+# https://github.com/jwilk/python-djvulibre/pull/11
+sed -i "s/'python'/sys.executable/" setup.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

@@ -1,7 +1,7 @@
 #
 # spec file for package puddletag
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           puddletag
-Version:        1.2.0
+Version:        1.2.40git.20190609T143128~aab842a
 Release:        0
 Summary:        An audio tag editor
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://docs.puddletag.net
-Source0:        https://github.com/keithgg/puddletag/releases/download/v%{version}/puddletag-%{version}.tar.gz
+URL:            https://docs.puddletag.net
+Source0:        %{name}-%{version}.tar.xz
 Patch0:         fix-puddletag-wrong-shebang.patch
 BuildRequires:  python-setuptools
 BuildRequires:  update-desktop-files
 Requires:       python-configobj
 Requires:       python-mutagen
 Requires:       python-pyparsing
-Requires:       python-qt4
-BuildArch:      noarch
+Requires:       python2-qt5
 Requires(post): update-desktop-files
 Requires(postun): update-desktop-files
+BuildArch:      noarch
 
 %description
 puddletag is an audio tag editor (primarily created) for GNU/Linux similar
@@ -57,7 +57,10 @@ m4a, etc.), VorbisComments (ogg, flac), Musepack (mpc), Monkey’s Audio
 %build
 
 %install
+pushd source
 python setup.py install --root=%{buildroot} --prefix=%{_prefix}
+popd
+
 %suse_update_desktop_file %{name} Mixer
 
 %post
@@ -67,12 +70,11 @@ python setup.py install --root=%{buildroot} --prefix=%{_prefix}
 %desktop_database_postun
 
 %files
-%defattr(-,root,root)
-%doc HACKING README TODO copyright changelog
+%doc source/HACKING source/README source/TODO source/copyright source/changelog
 %{_bindir}/puddletag
 %{python_sitelib}/*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

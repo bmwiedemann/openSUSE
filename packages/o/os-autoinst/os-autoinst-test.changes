@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Sep 11 18:48:59 UTC 2019 - okurz@suse.com
+
+- Update to version 4.5.1568227729.687c4ca8:
+  * Fix PXEBOOT once to actually check for 'once' value
+  * Delete obsolete FIXME comments about sleep resolution
+  * Replace diag "imperative" by "descriptive"
+  * Improve result display of validate_script_output
+  * Factor out click functionality from assert_and_click
+  * Document needle area "click_point" in assert_and_click
+  * docs: Mention devel package instead of hardcoded dependencies
+  * docs: Update openSUSE repos using , priorities, better names
+  * spec: Split build-, runtime and test requirements
+  * Add configuration option for number of NVMe queues
+  * Allow special value 'once' for PXEBOOT, to PXE boot...once
+  * Fix unexpected error on xz in save_memory_dump()
+  * Get rid of distracting "last frame" message from videoencoder
+  * Save virsh output for later handling
+  * Fix left-over qemu processes regression due to f9c71d0e
+  * Fix missing data while reading from virtio_console
+  * spec: Fix tests in OBS by excluding 18-backend-qemu.t
+  * Add tests for backend/qemu.pm
+  * Fix blank line on process output
+  * Fix undefined warnings on undefined 'ARCH'
+  * Fix in-package test failure on git
+  * Revert "backend: DRY on check_socket method"
+  * Fix "undefined"-warning in 08-autotest.t
+  * spec: Add missing dependency to 'Data::Dumper'
+  * Don't hardcode C++ compiler in Makefile.PL
+  * Port away from the deprecated OpenCV 1 C API
+  * Add automatic lookup for UEFI_PFLASH_CODE/VARS to fix UEFI on Tumbleweed machines
+  * backend: DRY on check_socket method
+  * Clarify that force_soft_failure is to be used from post_fail_hook
+  * basetest: Fix typo in comment
+  * Fix the readout of git hash as version when called from other directory
+  * Make hostname in 'autoinst_url' configurable
+  * Add missing 'use' for 'Data::Dumper'
+  * qemu: Fix warning about undefined value in match
+  * Fix unrequested wait on every type_string call (regression in cec2709f)
+  * crop.py: tweak imports to work with Python 3
+  * spec: Force OBS to resolve choices on opencv-devel
+  * spec: Fix build for openSUSE Factory and backports after opencv4 submission
+  * Replace 'serial_screen' for correct 'ssh_screen'
+  * Fix missing 'consoles/serial_screen.pm' in Makefile.am
+  * sshVirtshSUT use ssh aware serial screen
+  * Modify workaround property to support adding reason
+
+-------------------------------------------------------------------
 Mon Jul 15 11:09:23 UTC 2019 - okurz@suse.com
 
 - Update to version 4.5.1563188951.f6f7c6b3:

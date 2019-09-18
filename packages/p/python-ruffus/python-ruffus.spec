@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruffus
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,10 @@ Release:        0
 Summary:        Python computational pipeline management package
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://www.ruffus.org.uk
+URL:            https://github.com/cgat-developers/ruffus
 Source:         https://files.pythonhosted.org/packages/source/r/ruffus/ruffus-%{version}.tar.gz
+# https://github.com/cgat-developers/ruffus/pull/114
+Patch0:         pr_114.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,14 +41,16 @@ The Ruffus module is a way to add support for running computational pipelines.
 
 %prep
 %setup -q -n ruffus-%{version}
+%patch0 -p1
+
+rm ruffus/test/*.cmd
+
 sed -i -e '/^#!\//, 1d' ruffus/*.py
 sed -i -e '/^#! \//, 1d' ruffus/*.py
 sed -i -e '/^#!\//, 1d' ruffus/test/*.py
 sed -i -e '/^#! \//, 1d' ruffus/test/*.py
-sed -i -e '/^#!\//, 1d' ruffus/test/*.cmd
-sed -i -e '/^#! \//, 1d' ruffus/test/*.cmd
+
 chmod a-x ruffus/*.py
-chmod a-x ruffus/test/*.cmd
 chmod a-x ruffus/test/*.py
 
 %build
@@ -57,9 +61,9 @@ chmod a-x ruffus/test/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export PYTHONDONTWRITEBYTECODE=1
 pushd ruffus/test
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-export PYTHONDONTWRITEBYTECODE=1
 for f in test_*.py; do
 pytest-%{$python_bin_suffix} $f
 done

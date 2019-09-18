@@ -1,0 +1,13 @@
+Двоичные файлы a/.git/index и b/.git/index различаются
+diff -rub a/src/gfu-main.c b/src/gfu-main.c
+--- a/src/gfu-main.c	2019-09-16 09:52:15.026603000 +0600
++++ b/src/gfu-main.c	2019-09-16 09:58:57.466136077 +0600
+@@ -1577,8 +1577,6 @@
+ 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+ 	textdomain (GETTEXT_PACKAGE);
+ 
+-	gtk_init (&argc, &argv);
+-
+ 	/* TRANSLATORS: command description */
+ 	context = g_option_context_new (_("GNOME Firmware"));
+ 	g_option_context_add_group (context, gtk_get_option_group (TRUE));

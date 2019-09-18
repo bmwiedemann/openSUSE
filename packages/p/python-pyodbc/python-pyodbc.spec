@@ -43,6 +43,8 @@ even more.
 
 %prep
 %setup -q -n pyodbc-%{version}
+mv tests2 tests-%{python2_bin_suffix}
+mv tests3 tests-%{python3_bin_suffix}
 
 %build
 %python_build
@@ -52,8 +54,9 @@ even more.
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-PYTHONPATH=%{buildroot}%{python3_sitearch} python3 tests3/sqlitetests.py -v "Driver=SQLITE3;Database=sqlite.db"
-PYTHONPATH=%{buildroot}%{python2_sitearch} python2 tests2/sqlitetests.py -v "Driver=SQLITE3;Database=sqlite.db"
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+$python tests-%{$python_bin_suffix}/sqlitetests.py -v "Driver=SQLITE3;Database=sqlite.db"
+}
 
 %files %{python_files}
 %{python_sitearch}/*

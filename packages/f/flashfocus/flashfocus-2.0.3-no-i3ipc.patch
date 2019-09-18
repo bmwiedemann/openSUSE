@@ -1,0 +1,22 @@
+diff -urEbw flashfocus-2.0.5/requirements.txt flashfocus-2.0.5.new/requirements.txt
+--- flashfocus-2.0.5/requirements.txt	2019-09-14 17:46:20.000000000 +0200
++++ flashfocus-2.0.5.new/requirements.txt	2019-09-15 08:47:25.251533570 +0200
+@@ -4,7 +4,6 @@
+ xpybutil>=0.0.6,<1.0.0
+ pyyaml>=5.1,<6.0.0
+ marshmallow >=2.15.0,<4.0.0
+-i3ipc>=2.1.1,<3.0.0
+ pdbpp
+ pytest
+ pytest-cov
+diff -urEbw flashfocus-2.0.5/setup.py flashfocus-2.0.5.new/setup.py
+--- flashfocus-2.0.5/setup.py	2019-09-14 17:46:20.000000000 +0200
++++ flashfocus-2.0.5.new/setup.py	2019-09-15 08:47:43.663631961 +0200
+@@ -25,7 +25,6 @@
+         "xpybutil>=0.0.6,<1.0",
+         "marshmallow>=2.15,<4.0",
+         "pyyaml>=5.1,<6.0",
+-        "i3ipc>=2.1.1,<3.0",
+     ],
+     packages=find_packages(exclude=["*test*"]),
+     keywords="xorg flash focus i3 bspwm awesomewm herbsluftwm",

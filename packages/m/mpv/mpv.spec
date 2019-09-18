@@ -21,7 +21,7 @@
 
 %define _waf_ver 2.0.9
 %define _mbc_ver 3.3.17
-%define _mpv_ver 0.30.0+git.1567376743.6d90517275
+%define _mpv_ver 0.30.0+git.1568566852.0abe34ed21
 %define lname   libmpv1
 Name:           mpv
 Version:        %{_mpv_ver}
@@ -51,7 +51,6 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(caca) >= 0.99.beta18
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(dvdnav) >= 4.2.0
-BuildRequires:  pkgconfig(dvdread) >= 4.1.0
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
@@ -225,7 +224,6 @@ python3 ./waf configure \
   --docdir="%{_docdir}/%{name}"      \
   --confdir="%{_sysconfdir}/%{name}" \
   --enable-cdda                      \
-  --enable-dvdread                   \
   --enable-dvdnav                    \
   --enable-libsmbclient              \
   --enable-libmpv-shared             \
@@ -234,7 +232,6 @@ python3 ./waf configure \
   --enable-libarchive                \
   --enable-dvbin                     \
   --enable-drm                       \
-  --enable-tv                        \
   --enable-x11                       \
 %if 0%{?suse_version} > 1500
   --enable-wayland                   \

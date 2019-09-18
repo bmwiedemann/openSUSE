@@ -17,8 +17,9 @@
 
 
 %define __builder ninja
+
 Name:           gnucash
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
@@ -29,8 +30,7 @@ Source1:        %{name}-rpmlintrc
 ## Cpan-warning patch must always be applied.
 # PATCH-FIX-UPSTREAM gnucash-cpan-warning.patch -- Add a warning about the danger of using gnc-fq-update to update the perl modules used by GnuCash.
 Patch0:         gnucash-cpan-warning.patch
-# PATCH-FIX-UPSTREAM Fix-CMakeLists-error.patch
-Patch1:         Fix-CMakeLists-error.patch
+
 BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes

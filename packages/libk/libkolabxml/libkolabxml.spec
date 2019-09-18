@@ -35,7 +35,9 @@ License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://kolab.org/about/libkolabxml
 Source:         http://mirror.kolabsys.com/pub/releases/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 2.6
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Make-sure-boost-is-found-when-using-libkolabxml.patch
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libxerces-c-devel >= 3.0
@@ -201,6 +203,7 @@ This package provides the python bindings for Libkolabxml
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # Tests require X server and net

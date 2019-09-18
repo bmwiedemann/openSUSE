@@ -17,7 +17,7 @@
 
 
 Name:           icecream-monitor
-Version:        3.2.0
+Version:        3.3
 Release:        0
 Summary:        Monitor Program for the icecream Compile Farm
 License:        GPL-2.0-or-later
@@ -26,6 +26,7 @@ URL:            https://github.com/icecc/icemon
 Source0:        icemon-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  docbook2x
+BuildRequires:  extra-cmake-modules
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig

@@ -9,5 +9,8 @@ encryption algorithms currently known (AES and Twofish).
 
 </description>
   <devel project="security" package="keepassx"/>
+  <build>
+    <disable/>
+  </build>
   <url>http://www.keepassx.org/</url>
 </package>

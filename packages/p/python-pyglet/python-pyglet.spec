@@ -271,15 +271,19 @@ pytest_addopts="--instafail --error-for-skips --timeout=30 "
 
 pytest_addopts="$pytest_addopts tests/unit tests/integration"
 
+%{python_expand  #
 # These are only problematic on Python 2, and are restored after Python 2 tests
 # https://bitbucket.org/pyglet/pyglet/issues/223/clock-test-failures
-mv tests/unit/test_clock.py tests/unit/.test_clock.py
+if [ $python = python2 ]; then
+  mv tests/unit/test_clock.py tests/unit/.test_clock.py
+fi
 
-python2 -m pytest $pytest_addopts -k "not ($pytest_k_list)"
+$python -m pytest $pytest_addopts -k "not ($pytest_k_list)"
 
-mv tests/unit/.test_clock.py tests/unit/test_clock.py
-
-python3 -m pytest $pytest_addopts -k "not ($pytest_k_list)"
+if [ -x tests/unit/.test_clock.py ]; then
+  mv tests/unit/.test_clock.py tests/unit/test_clock.py
+fi
+}
 
 # endif test
 %endif

@@ -172,4 +172,12 @@
     <comment></comment>
     <requestid>721014</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>920a19f426fb0421db57915e6c167178</srcmd5>
+    <version>2007f_suse</version>
+    <time>1568804999</time>
+    <user>maxlin_factory</user>
+    <comment>Use FAT LTO objects in order to fix build on FACTORY (forwarded request 731097 from seife)</comment>
+    <requestid>731141</requestid>
+  </revision>
 </revisionlist>

@@ -46,4 +46,12 @@
     <comment>Fix build with java 9</comment>
     <requestid>526029</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d49a234f685f1ed92271d6c85fbfb998</srcmd5>
+    <version>3.2.1</version>
+    <time>1568805183</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731532</requestid>
+  </revision>
 </revisionlist>

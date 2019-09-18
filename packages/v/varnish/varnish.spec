@@ -26,7 +26,7 @@
 %define pkg_logdir   %_localstatedir/log/%name
 %define pkg_cachedir %_localstatedir/cache/%name
 Name:           varnish
-Version:        6.2.1
+Version:        6.3.0
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause
@@ -51,7 +51,6 @@ BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 Requires:       c_compiler
-BuildRoot:      %_tmppath/%name-%version-build
 Requires(pre):	%_sbindir/useradd %_sbindir/groupadd
 %if 0%{?suse_version} >= 1010
 Recommends:     logrotate
@@ -134,7 +133,7 @@ cp "$b/%_docdir/%name/example.vcl" "$b/%_sysconfdir/%name/vcl.conf"
 find "$b" -type f -name "*.la" -delete -print
 mkdir -p "$b/%pkg_logdir"
 mkdir -p "$b/%_docdir/%name"
-cp -a ChangeLog LICENSE README.rst "$b/%_docdir/%name/"
+cp -a doc/changes.rst LICENSE README.rst "$b/%_docdir/%name/"
 
 perl -i -pe 's{^#!/usr/bin/env python}{#!/usr/bin/python}g' \
 	"$b/usr/share/varnish/vmodtool.py" "$b/usr/share/varnish/vsctool.py"
@@ -168,7 +167,6 @@ fi
 %postun -n %library_name -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %_unitdir/*.service
 %config(noreplace) %_sysconfdir/logrotate.d/varnish
 %dir %attr(0750,root,varnish) %_sysconfdir/%name/
@@ -185,11 +183,9 @@ fi
 %_fillupdir/sysconfig.%name
 
 %files -n %library_name
-%defattr(-,root,root,-)
 %_libdir/libvarnishapi.so.2*
 
 %files devel
-%defattr(-,root,root,-)
 %_includedir/varnish/
 %_datadir/aclocal/
 %_libdir/pkgconfig/*

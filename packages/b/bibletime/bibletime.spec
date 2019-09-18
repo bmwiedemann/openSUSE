@@ -1,7 +1,7 @@
 #
 # spec file for package bibletime
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012-2014 Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -79,7 +79,7 @@ mv %{buildroot}%{_datadir}/%{name}/icons/%{name}.svg %{buildroot}%{_datadir}/ico
 ln -sf %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg %{buildroot}%{_datadir}/%{name}/icons/%{name}.svg
 %fdupes -s %{buildroot}
 sed -i "s|bibletime/handbook/index.html|bibletime/handbook/en/index.html|" %{buildroot}%{_datadir}/applications/%{name}.desktop
-%suse_update_desktop_file -r %{name} Education Teaching
+%suse_update_desktop_file -r %{name} Education Humanities
 
 %files
 %{_bindir}/bibletime

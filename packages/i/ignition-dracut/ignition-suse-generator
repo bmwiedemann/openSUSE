@@ -14,4 +14,3 @@ add_requires() {
 }
 
 add_requires ignition-mount-initrd-fstab.service
-add_requires ignition-umount-initrd-fstab.service

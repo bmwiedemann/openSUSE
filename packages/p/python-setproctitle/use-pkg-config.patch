@@ -1,0 +1,21 @@
+--- a/Makefile.orig	2019-09-15 17:13:27.656631109 +0700
++++ b/Makefile	2019-09-15 17:16:00.458264928 +0700
+@@ -7,15 +7,15 @@
+ 
+ # Customize these to select the Python to build/test
+ PYTHON ?= python
+-PYCONFIG ?= python-config
++PYCONFIG ?= pkg-config
+ PY2TO3 ?= 2to3
+ 
+ # PYVER value is 2 or 3
+ PYVER := $(shell $(PYTHON) -c "import sys; print(sys.version_info[0])")
+ ROOT_PATH := $(shell pwd)
+ 
+-PYINC := $(shell $(PYCONFIG) --includes)
+-PYLIB := $(shell $(PYCONFIG) --ldflags) -L$(shell $(PYCONFIG) --prefix)/lib
++PYINC := $(shell $(PYCONFIG) python$(PYVER) --cflags)
++PYLIB := $(shell $(PYCONFIG) python$(PYVER) --libs) -L$(shell $(PYCONFIG) python$(PYVER) --prefix)/lib
+ 
+ BUILD_DIR = build/lib.$(PYVER)
+ 

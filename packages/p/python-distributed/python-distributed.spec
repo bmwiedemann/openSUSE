@@ -21,7 +21,7 @@
 # Test requires network connection
 %bcond_with     test
 Name:           python-distributed
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -44,7 +44,6 @@ Requires:       python-joblib >= 0.10.2
 Requires:       python-msgpack
 Requires:       python-psutil
 Requires:       python-scikit-learn >= 0.17.1
-Requires:       python-six
 Requires:       python-sortedcontainers
 Requires:       python-tblib
 Requires:       python-toolz >= 0.7.4
@@ -60,7 +59,6 @@ BuildRequires:  %{python_module dask >= 0.18.0}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  %{python_module tblib}
 BuildRequires:  %{python_module toolz >= 0.7.4}

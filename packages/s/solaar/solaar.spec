@@ -28,6 +28,10 @@ Source0:        https://github.com/pwr/Solaar/archive/%{version}/%{name}-%{versi
 Patch0:         solaar-fix-desktop-categories.patch
 # https://github.com/pwr-Solaar/Solaar/pull/546
 Patch1:         0001-Fix-reading-and-storing-DPI-in-config-settings.patch
+# https://github.com/pwr-Solaar/Solaar/commit/a06ea6de11259ca1511e7fe759306e7db47fb1da
+Patch2:         0001-data-fix-icon-theme-for-battery-level.patch
+# https://github.com/pwr-Solaar/Solaar/commit/69815558041b84da9add36d4bd1503415a3ac0c0
+Patch3:         0005-notifications-fix-battery-status-notification-parsin.patch
 #
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

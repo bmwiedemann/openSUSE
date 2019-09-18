@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 10 22:18:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix build with current SDL2 versions.
+- Run spec-cleaner, remove obsolete checks.
+- Fix the license. trigger-rally is GPL-2.0-or-later
+
+-------------------------------------------------------------------
 Sat Mar 16 18:42:00 UTC 2019 - fschaefer.oss@googlemail.com
 
 - Update to v0.6.6.1:

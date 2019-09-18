@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 17 16:06:44 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0+git20190916.cbac371:
+  * systemd: don't try to mark live boots complete
+  * 30ignition: conditionally enable units requiring a boot disk
+  * README.md: fix download link
+  * update-bootengine: drop file
+  * dracut/30ignition: localize some variables
+  * ignition: fix correct device path when randomizing UUID
+- Fix path to rm binary in firstboot flag cleanup
+- Reorder $ignition_firstboot and ignition.platform.id in GRUB's
+  kernel parameter line to be able to overwrite the later with
+  values read from the flag file
+- Significantly decrease timeout for waiting for a device with
+  the 'ignition' UUID (storing an eventual user config)
+  [boo#1151083]
+- Merge ignition-umount-initrd-fstab.service with
+  ignition-mount-initrd-fstab.service, using the same stop
+  mechanism as ignition-mount.service
+
+-------------------------------------------------------------------
 Wed Aug 14 09:30:48 UTC 2019 - kukuk@suse.de
 
 - Update to version 0.0+git20190806.343b886:

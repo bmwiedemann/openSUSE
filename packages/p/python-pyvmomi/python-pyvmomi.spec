@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyvmomi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2014 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,29 +13,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-pyvmomi
-Version:        6.7.1.2018.12
+Version:        6.7.3
 Release:        0
 Summary:        VMware vSphere Python SDK
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/vmware/pyvmomi
-Source:         https://github.com/vmware/pyvmomi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         python-pyvmomi-fix-incompatibility-with-vcrpy2.patch
+Source:         https://files.pythonhosted.org/packages/source/p/pyvmomi/pyvmomi-%{version}.tar.gz
 BuildRequires:  %{python_module fixtures >= 1.3.0}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module requests >= 2.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.7.3}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.3.0
 Requires:       python-six >= 1.7.3
+Recommends:     python-pyOpenSSL
+Recommends:     python-lxml
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module testtools >= 0.9.34}
@@ -50,13 +53,11 @@ ESX, ESXi, and vCenter.
 
 %prep
 %setup -q -n pyvmomi-%{version}%{?version_suffix}
-%patch0 -p1
-# we don't want to install any of these
-sed -i '/   data_files/,+1d' setup.py
-# fix line breaks in text files
-sed -i 's/\r//' *.txt
-# do not hardcode vrcpy version
-#sed -i -e 's:==:>=:g' test-requirements.txt
+dos2unix README.rst LICENSE.txt NOTICE.txt
+
+# https://github.com/vmware/pyvmomi/pull/750
+# Unpin vcrpy; the fix was released
+sed -i 's/vcrpy<2/vcrpy/' test-requirements.txt
 
 %build
 %python_build
@@ -75,6 +76,6 @@ sed -i 's/\r//' *.txt
 %doc NOTICE.txt README.rst
 %{python_sitelib}/pyVim
 %{python_sitelib}/pyVmomi
-%{python_sitelib}/pyvmomi-%{version}*-py%{py_ver}.egg-info
+%{python_sitelib}/pyvmomi-%{version}*-py*.egg-info
 
 %changelog

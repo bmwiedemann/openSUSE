@@ -1,7 +1,7 @@
 #
 # spec file for package gradle
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,9 @@ Release:        0
 Summary:        Groovy-based build system
 License:        Apache-2.0
 Group:          Development/Tools
-Url:            http://www.gradle.org/
+Url:            https://www.gradle.org/
 Source0:        https://github.com/gradle/gradle/archive/v%{version}.zip
+Patch0:         gradle-CVE-2019-16370.patch
 BuildRequires:  java-devel
 BuildRequires:  javapackages-tools
 BuildRequires:  unzip
@@ -49,6 +50,7 @@ gradle home directory and the open API jar.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # Build Open API subpackage
@@ -71,7 +73,7 @@ popd
 %defattr(-,root,root,-)
 %{_javadir}/gradle-open-api-%{version}.jar
 %{_javadir}/gradle-open-api.jar
-%doc LICENSE
+%license LICENSE
 %doc subprojects/distributions/src/toplevel/NOTICE
 
 %changelog

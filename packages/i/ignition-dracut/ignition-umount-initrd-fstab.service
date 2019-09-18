@@ -1,9 +1,0 @@
-[Unit]
-Description=Umount initrd fstab entries after Ignition run
-DefaultDependencies=false
-After=ignition-files.service
-Before=initrd-parse-etc.service
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/umount -a -O "x-initrd.mount"

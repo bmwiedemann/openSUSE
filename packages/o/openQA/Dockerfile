@@ -84,7 +84,7 @@ RUN zypper in -y -C \
        'perl(JSON::XS)' \
        'perl(JavaScript::Minifier::XS)' \
        'perl(LWP::Protocol::https)' \
-       'perl(Minion)' \
+       'perl(Minion) >= 9.13' \
        'perl(Module::CPANfile)' \
        'perl(Module::Pluggable)' \
        'perl(Mojo::IOLoop::ReadWriteProcess)' \
@@ -121,7 +121,7 @@ RUN zypper in -y -C \
        'perl(Socket::MsgHdr)' \
        'perl(Test::Warnings)' \
        'perl(Text::Diff)' \
-       'perl(Text::Markdown)' \
+       'perl(CommonMark)' \
        'perl(Time::ParseDate)' \
        'perl(XSLoader) >= 0.24' \
        'perl(XML::SemanticDiff)' \

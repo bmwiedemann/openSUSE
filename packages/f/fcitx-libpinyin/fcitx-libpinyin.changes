@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 10 21:41:07 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add a missing build requirement.
+
+-------------------------------------------------------------------
 Wed Dec 13 04:57:58 UTC 2017 - i@marguerite.su
 
 - own %{_libdir}/fcitx/qt

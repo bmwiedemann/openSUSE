@@ -18,17 +18,17 @@ post_prep: |-
 # sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
 #post_build: |-
 # rm unused.files
-post_install: |-
-  %ifarch %ix86
-    rm %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/x86/libibushandler.so
-  %else
-    rm -r %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/x86
-  %endif
-  %ifarch x86_64
-    rm %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/amd64/libibushandler.so
-  %else
-    rm -r %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/amd64
-  %endif
+#post_install: |-
+#  %ifarch %ix86
+#    rm %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/x86/libibushandler.so
+#  %else
+#    rm -r %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/x86
+#  %endif
+#  %ifarch x86_64
+#    rm %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/amd64/libibushandler.so
+#  %else
+#    rm -r %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/amd64
+#  %endif
 #license: SUSE-NonFree
 skip_noarch: 1
 #custom_build: |-

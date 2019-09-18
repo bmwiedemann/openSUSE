@@ -108,4 +108,12 @@
     <comment></comment>
     <requestid>637188</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b02308a3bf69d472891165cc3c49b6c9</srcmd5>
+    <version>2.11.2</version>
+    <time>1568804976</time>
+    <user>maxlin_factory</user>
+    <comment>updated desktop categories to fix build</comment>
+    <requestid>731084</requestid>
+  </revision>
 </revisionlist>

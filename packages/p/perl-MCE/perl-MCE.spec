@@ -17,7 +17,7 @@
 
 
 Name:           perl-MCE
-Version:        1.850
+Version:        1.860
 Release:        0
 %define cpan_name MCE
 Summary:        Many-Core Engine for Perl providing parallel processing capabilities

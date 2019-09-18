@@ -22,4 +22,19 @@
   * linkedin_oauth2: As the LinkedIn V1 API is deprecated, the user info endpoint has been moved over to use the API V2. The format of the user extra_data is different and the profile picture is absent by default.</comment>
     <requestid>683727</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6f38516b253c1317d796d9e0246e9c38</srcmd5>
+    <version>0.40.0</version>
+    <time>1568805087</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.40.0:
+  * The instagram provider now extracts the user's full name.
+  * New provider: NextCloud (OAuth2)
+  * Added an SDK_URL setting for customizing the loading of the Facebook JavaScript SDK.
+  * Updated Twitch provider to use new authentication endpoints (https://id.twitch.tv) over deprecated v5 endpoints (https://api.twitch.tv/kraken)
+  * Added support for Patreon API v2, with API v1 set as default for backwards compatibility.
+
+- Use %ifpython2/3 to allow building only one flavour</comment>
+    <requestid>731237</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 17 12:53:48 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Fix error when packaging: no translations found for cozy
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Sep 12 16:15:14 UTC 2019 - Julian Geywitz <suse@geigi.de>
+
+- Update to 0.6.8:
+  * Cozy features a new icon! Cheers to Fatih20
+  * App information is now translated! Cheers to NathanBnm
+  * Updated translations
+  * Fix: Sometimes the app name was not correctly displayed
+
+-------------------------------------------------------------------
 Sat Jan 12 23:06:42 UTC 2019 - suse@geigi.de
 
 - Update to 0.6.7:
@@ -22,7 +37,7 @@ Sat Sep  8 17:52:42 UTC 2018 - suse@geigi.de
 - Update to 0.6.1:
   * Improved artwork image quality
   * The book overview now supports multiple disks in audiobooks
-  * The file not found window will only open when the file is on 
+  * The file not found window will only open when the file is on
     the internal drive
   * Fixed a typo
   * Support for elementaryOS 5.0

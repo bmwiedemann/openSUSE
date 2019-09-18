@@ -1,7 +1,7 @@
 #
 # spec file for package gtk4
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2010 Dominique Leuenebrger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,21 +19,19 @@
 
 # When updating the binary version, do not forget to also update baselibs.conf
 %define gtk_binary_version 4.0.0
-%define _name gtk+
+%define _name gtk
 Name:           gtk4
-Version:        3.94.0
+Version:        3.96.0
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            http://www.gtk.org/
-Source:         http://download.gnome.org/sources/gtk+/3.94/%{_name}-%{version}.tar.xz
+Source:         http://download.gnome.org/sources/gtk/3.96/%{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source98:       gtk4-rpmlintrc
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM gtk4-fix-dependency-error.patch luc14n0@linuxmail.org glgo#GNOME/gtk#1218 fix build failure when using few threads.
-Patch0:         gtk4-fix-dependency-error.patch
 
 BuildRequires:  cups-devel >= 1.2
 BuildRequires:  docbook-xsl-stylesheets
@@ -42,7 +40,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools >= 0.19.7
 BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson >= 0.42.1
+BuildRequires:  meson >= 0.50.1
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  vulkan-devel
@@ -60,8 +58,8 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.53.7
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.53.7
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.39.0
-BuildRequires:  pkgconfig(graphene-1.0) >= 1.5.1
-BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.5.1
+BuildRequires:  pkgconfig(graphene-1.0) >= 1.9.1
+BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.9.1
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(pango) >= 1.37.3
@@ -145,8 +143,6 @@ ranging from small one-off projects to complete application suites.
 Summary:        Config schema for the GTK+ toolkit library v4
 # The schema is shared between gtk3 and gtk4 - gtk4 wins
 Group:          System/Libraries
-Provides:       gtk3-schema = %{version}
-Obsoletes:      gtk3-schema < %{version}
 BuildArch:      noarch
 
 %description schema
@@ -204,7 +200,6 @@ This package enhances gettext with an International Tag Set for GTK+ 4
 
 %prep
 %setup -q -n %{_name}-%{version}
-%patch0 -p1
 translation-update-upstream
 
 %build
@@ -279,7 +274,7 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 %{_bindir}/gtk4-launch
 %{_bindir}/gtk4-query-settings
 %{_bindir}/gtk4-update-icon-cache
-%{_datadir}/applications/gtk4-icon-browser.desktop
+%{_datadir}/applications/org.gtk.IconBrowser4.desktop
 %{_mandir}/man1/gtk4-broadwayd.1%{?ext_man}
 %{_mandir}/man1/gtk4-icon-browser.1%{ext_man}
 %{_mandir}/man1/gtk4-builder-tool.1%{?ext_man}
@@ -289,17 +284,17 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 %{_mandir}/man1/gtk4-update-icon-cache.1%{?ext_man}
 
 %files schema
-%{_datadir}/glib-2.0/schemas/org.gtk.Demo.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gtk.Settings.ColorChooser.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gtk.Settings.Debug.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gtk.Settings.EmojiChooser.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gtk.Settings.FileChooser.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gtk.Demo4.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.ColorChooser.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.Debug.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.EmojiChooser.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.FileChooser.gschema.xml
 
 %files branding-upstream
 %{_datadir}/gtk-4.0/settings.ini
 
 %files devel
-%doc CONTRIBUTING.md README.commits
+%doc CONTRIBUTING.md
 %doc %{_datadir}/gtk-doc/html/gdk4/
 %doc %{_datadir}/gtk-doc/html/gsk4/
 %doc %{_datadir}/gtk-doc/html/gtk4/
@@ -309,31 +304,33 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 %{_mandir}/man1/gtk4-demo.1%{?ext_man}
 %{_mandir}/man1/gtk4-demo-application.1%{?ext_man}
 %{_mandir}/man1/gtk4-widget-factory.1%{?ext_man}
-%{_datadir}/applications/gtk4-demo.desktop
-%{_datadir}/metainfo/org.gtk.Demo.appdata.xml
-%{_datadir}/applications/gtk4-widget-factory.desktop
-%{_datadir}/metainfo/org.gtk.WidgetFactory.appdata.xml
+%{_datadir}/applications/org.gtk.Demo4.desktop
+%{_datadir}/metainfo/org.gtk.Demo4.appdata.xml
+%{_datadir}/applications/org.gtk.WidgetFactory4.desktop
+%{_datadir}/metainfo/org.gtk.WidgetFactory4.appdata.xml
 %{_datadir}/gir-1.0/*.gir
 %dir %{_datadir}/gtk-4.0
-%{_datadir}/gtk-4.0/gtkbuilder.rng
-%{_datadir}/icons/hicolor/*/apps/gtk4-demo.png
-%{_datadir}/icons/hicolor/*/apps/gtk4-widget-factory.png
-%{_datadir}/icons/hicolor/*/apps/gtk4-demo-symbolic.symbolic.png
-%{_datadir}/icons/hicolor/*/apps/gtk4-widget-factory-symbolic.symbolic.png
+%{_datadir}/gtk-4.0/gtk4builder.rng
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.Demo4.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.IconBrowser4.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.WidgetFactory4.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.Demo4-symbolic.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.IconBrowser4-symbolic.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.WidgetFactory4-symbolic.svg
 %{_includedir}/gtk-4.0/
-%{_libdir}/pkgconfig/gtk+-4.0.pc
-%{_libdir}/pkgconfig/gtk+-broadway-4.0.pc
-%{_libdir}/pkgconfig/gtk+-wayland-4.0.pc
-%{_libdir}/pkgconfig/gtk+-unix-print-4.0.pc
-%{_libdir}/pkgconfig/gtk+-x11-4.0.pc
+%{_libdir}/pkgconfig/gtk4.pc
+%{_libdir}/pkgconfig/gtk4-broadway.pc
+%{_libdir}/pkgconfig/gtk4-wayland.pc
+%{_libdir}/pkgconfig/gtk4-unix-print.pc
+%{_libdir}/pkgconfig/gtk4-x11.pc
 %{_libdir}/libgtk-4.so
 %{_sysconfdir}/rpm/macros.gtk4
 
 %files -n gettext-its-%{name}
 %dir %{_datadir}/gettext/
 %dir %{_datadir}/gettext/its/
-%{_datadir}/gettext/its/gtkbuilder.its
-%{_datadir}/gettext/its/gtkbuilder.loc
+%{_datadir}/gettext/its/gtk4builder.its
+%{_datadir}/gettext/its/gtk4builder.loc
 
 %files lang -f gtk40.lang -f gtk40-properties.lang
 

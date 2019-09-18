@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 13 16:00:11 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add -ffat-lto-objects to avoid build failure
+
+-------------------------------------------------------------------
 Mon Mar 18 17:36:14 UTC 2019 - Rodrigo Lourenço <guigo.lourenco@gmail.com>
 
 - Update to 3.3.8:

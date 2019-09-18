@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-nose-progressive
 Version:        1.5.2
 Release:        0
@@ -54,9 +55,11 @@ human-centric features to speed the debugging process.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%if %{with python2}
 # The test files use 'import __builtin__', which is python2 only syntax. But nose does not mind and
 # therefore runs into some other differences between pythons... Surprisingly, most of python3 tests pass.
 python setup.py test
+%endif
 
 %files %{python_files}
 %license LICENSE

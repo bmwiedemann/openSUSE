@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 17 11:23:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.3.0
+  * The Host: header is folded to lower-case in the builtin_vcl.
+  * Improved performance of shared memory statistics counters.
+  * Synthetic objects created from vcl_backend_error {} now
+    replace existing stale objects as ordinary backend fetches
+    would (for details see changes.rst)
+
+-------------------------------------------------------------------
 Wed Sep  4 10:27:37 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.2.1

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Sep 15 13:25:34 UTC 2019 - Sebastian Schubert <schubert.seb@gmail.com>
+
+- Update to version 5.1.1:
+  + Disable development warning message
+  + Add options to sandclock in tree document generator
+  + Using regex in the sidebar gives different result from previous
+    gramps release
+  + Fix odt output when db owner has XML unfriendly chars
+  + Update README
+  + Bump required Python version to 3.3
+  + Add optional fontconfig package
+  + Fix CLI crash when generating reports
+  + Fix Statusbar HandleError on merge families
+  + Fix missing tooltip translations in the Note editor toolbar
+  + Fix bugs in withinarea filter rule
+  + Avoid bad coordinates in the ref place
+  + Avoid alphabetic characters in filter rules
+  + Could not convert string to float by using withinarea filter
+    rule
+  + Difference between sidebar filter and filter rule
+  + Fix Graph outputs for multiple page PDF Postscript
+  + Fix to make Gtk 'action names' always valid
+  + Fix missing menus/buttons when operating in non-English
+    languages
+  + Fix cursor position error in lat and long fields
+  + Avoid all characters looking like a dash in 'Clean input data'
+    tool
+  + Mainz Style sheet weird looking
+  + Fix bugs in relationship view
+  + Set symbols for the active person
+  + Set good symbols for marriage, baptism, cremation and burial
+  + Reduce the size of the sexuality symbol
+  + Fix exception when editing Note with italics/bold etc. in non
+    English
+  + Restore keybindings for gramplet bars
+  + Fix bug in web connection menu launching incorrect web site
+  + Fix translation problem when creating event filter
+  + Error when checking option to add Quit to Taskbar
+  + Make the narratives notes placement an optional
+  + Updated translations.
+- Drop gramps-5.1.0-remove_false_nonrelease_warning.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Sun Aug 25 06:19:50 UTC 2019 - Sebastian Schubert <schubert.seb@gmail.com>
 
 - Add gramps-5.1.0-remove_false_nonrelease_warning.patch: Remove

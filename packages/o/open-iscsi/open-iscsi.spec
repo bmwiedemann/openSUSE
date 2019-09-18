@@ -16,9 +16,9 @@
 #
 
 
-%define iscsi_release 877-suse
+%define iscsi_release 878-suse
 Name:           open-iscsi
-Version:        2.0.877
+Version:        2.0.878
 Release:        0
 Summary:        Linux iSCSI Software Initiator
 License:        GPL-2.0-or-later
@@ -62,7 +62,7 @@ comes with a daemon process called iscsid, and a management utility,
 iscsiadm.
 
 %package -n libopeniscsiusr0_2_0
-Version:        2.0.877
+Version:        2.0.878
 Release:        0
 Summary:        iSCSI User-level Library
 Group:          System/Libraries
@@ -94,7 +94,7 @@ The communication to the driver is done via user-space I/O (Kernel module name
 "uio").
 
 %package devel
-Version:        2.0.877
+Version:        2.0.878
 Release:        0
 Summary:        iSCSI User-level Library Development Library and Include files
 Group:          Development/Libraries/C and C++
@@ -121,7 +121,7 @@ make %{?_smp_mflags} CFLAGS="%{optflags}" LIB_DIR=%{_libdir}
 %install
 make DESTDIR=%{buildroot} LIB_DIR=%{_libdir} install_user
 # install service files
-make DESTDIR=%{buildroot} LIB_DIR=%{_libdir} install_service_suse
+make DESTDIR=%{buildroot} LIB_DIR=%{_libdir} install_systemd
 # create rc symlinks
 [ -d %{buildroot}%{_sbindir} ] || mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciscsi

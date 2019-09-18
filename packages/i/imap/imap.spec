@@ -97,6 +97,7 @@ programs.
 find -type f -name "*.[h,c]" -exec sed -i -e '/extern int errno;/d' {} +
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 test -f %{_sysconfdir}/profile.d/krb5.sh && . %{_sysconfdir}/profile.d/krb5.sh
 GSSDIR="$(krb5-config --prefix 2>/dev/null)"
 EXTRACFLAGS="$(pkg-config --cflags openssl 2>/dev/null) -DOPENSSL_NO_DEPRECATED -DOPENSSL_NO_SSL_INTERN"

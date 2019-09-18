@@ -26,6 +26,7 @@ License:        MIT AND BSD-3-Clause AND Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/django-compressor/django-compressor
 Source:         https://files.pythonhosted.org/packages/source/d/%{mod_name}/%{mod_name}-%{version}.tar.gz
+Patch0:         pr_956.patch
 BuildRequires:  %{python_module Brotli >= 1.0.6}
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module Jinja2}
@@ -58,6 +59,7 @@ template tag.
 
 %prep
 %setup -q -n %{mod_name}-%{version}
+%patch0 -p1
 
 %build
 %python_build

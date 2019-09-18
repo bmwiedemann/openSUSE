@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Sep 17 13:13:30 UTC 2019 - idonmez@suse.com
+
+- Update to version 0.30.0+git.1568566852.0abe34ed21:
+  * vo_gpu: x11: remove special vdpau probing, use EGL by default
+  * vf_vavpp: disable this filter
+  * vo_gpu: correctly normalize src.sig_peak
+  * image_writer: add webp-compression option
+  * image_writer: add WebP support (lossy or lossless)
+  * image_writer: move convert_image() to player/screenshot.c
+  * DOCS: remove references to --video-stereo-mode
+  * README: remove old googlegroups mailing list address
+  * manpage: minor fixes to VO manpage
+  * vo: add warning message to vo_vaapi and vo_vdpau
+  * vo_d3d11/context: fix crash due to ctx->ra is null pointer access 'ctx->ra' is null pointer when d3d11 init failed before call 'ra_d3d11_create' in 'd3d11_init'.
+  * vo_d3d11/hwdec_dxva2dxgi: fix memory leak that 'ctx11' be not release 'ctx11' be not release when d3d11 hwdec be uninit with 'mapper_uninit' method.
+  * stream_smb: remove unnecessary short write logic
+  * stream_file: remove unnecessary short write logic
+  * stream: handle short writes
+  * ci: remove now unuspported libdvdread
+  * demux, stream: remove old rar support in favor of libarchive
+  * command, demux: remove program property
+  * stream: remove some more optical disc leftovers
+  * Remove classic Linux analog TV support, and DVB runtime controls
+  * stream: remove BD/DVD/CDDA sector size alignment
+  * Remove optical disc fancification layers
+  * stream_dvdnav: merge stream_dvd_common
+  * Remove libdvdread support in favor of libdvdnav
+  * stream_file: avoid redundant free
+  * js: expose mpv_abort_async_command() (match dbe831bd)
+  * js: reimplement subprocess_detached using the run command (match 7f91e268)
+  * js: reimplement subprocess using the subprocess command (match 548ef078)
+  * js: expose async commands (match 159379980e)
+  * js: correctness: use integer range checks
+  * audio: block ao buffer for keep-open
+  * vo_gpu: x11egl: support Mesa OML sync extension
+  * vo_gpu: glx: move OML sync code to an independent file
+  * vo/gpu: fix check on src/dst peak mismatch
+
+-------------------------------------------------------------------
 Mon Sep 02 12:10:21 UTC 2019 - idonmez@suse.com
 
 - Update to version 0.30.0+git.1567376743.6d90517275:

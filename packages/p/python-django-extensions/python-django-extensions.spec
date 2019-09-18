@@ -17,7 +17,7 @@
 
 
 Name:           python-django-extensions
-Version:        2.1.6
+Version:        2.2.1
 Release:        0
 Summary:        Extensions for Django
 License:        BSD-3-Clause
@@ -30,7 +30,6 @@ BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module django-json-widget}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module factory_boy}
-BuildRequires:  %{python_module keyczar}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
@@ -68,6 +67,9 @@ rm tests/test_encrypted_fields.py
 # and also not particularly useful when packaged.
 rm tests/management/commands/test_pipchecker.py
 
+# tests are completely borked and the keyczar module is deprecated
+#rm tests/db/fields/test_encrypted.py
+
 %build
 %python_build
 
@@ -78,6 +80,7 @@ rm tests/management/commands/test_pipchecker.py
 %check
 export DJANGO_SETTINGS_MODULE=tests.testapp.settings
 
+%if 0%{?have_python2} && ! 0%{?skip_python2}
 # It is not possible to use %%pytest here, as it expands to py.test-3.7
 # which causes /usr/bin to be in the PYTHONPATH.
 # django_extensions/management/commands/mail_debug.py imports smtpd,
@@ -85,11 +88,14 @@ export DJANGO_SETTINGS_MODULE=tests.testapp.settings
 # Python 3.
 
 python2 -m pytest
+%endif
+%if 0%{?have_python3} && ! 0%{?skip_python3}
 # Test collection exception ValueError: wrapper loop when unwrapping call
 python3 -m pytest \
     --ignore tests/test_logging_filters.py \
     --ignore tests/management/commands/test_reset_db.py \
     --ignore tests/management/commands/test_reset_schema.py
+%endif
 
 %files %{python_files}
 %license LICENSE

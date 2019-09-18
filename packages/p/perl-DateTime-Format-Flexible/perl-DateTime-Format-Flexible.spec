@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-Flexible
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-DateTime-Format-Flexible
-Version:        0.31
+Version:        0.32
 Release:        0
 %define cpan_name DateTime-Format-Flexible
 Summary:        DateTime::Format::Flexible - Flexibly parse strings and turn them into D[cut]
@@ -57,11 +57,11 @@ parse it into a DateTime object.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

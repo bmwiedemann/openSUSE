@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 16 12:12:53 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.32
+   see /usr/share/doc/packages/perl-DateTime-Format-Flexible/Changes
+
+  0.32 Sat Sep 14 2019
+    - add support for offset timezones without a space separator and formatted HH:MM '2019-09-03T10:42:00.000-04:00'
+      - thanks Stijn Heymans
+    - allow negative timezone offsets in 2 and 4 digit lengths with and without spaces
+      - now works: 2007-05-06T04:44:44-0800
+      - now works: 2007-05-06T04:44:44-08
+      - now works: 2007-05-06T04:44:44 -08
+    - validate all timezone offsets
+
+-------------------------------------------------------------------
 Wed Sep 19 05:16:16 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.31

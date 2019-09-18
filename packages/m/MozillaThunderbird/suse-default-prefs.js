@@ -10,6 +10,7 @@ pref("print.print_edge_left", 16); // 1/100 of an inch
 pref("print.print_edge_right", 16); // 1/100 of an inch
 pref("print.print_edge_bottom", 14); // 1/100 of an inch
 pref("intl.locale.requested", "");
+pref("intl.multilingual.enabled", true);
 
 // do not disable system-global or app-global extensions
 pref("extensions.autoDisableScopes", 3);

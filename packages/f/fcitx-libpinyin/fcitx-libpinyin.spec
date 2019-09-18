@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-libpinyin
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Name:           fcitx-libpinyin
 Version:        0.5.3
 Release:        0
 Summary:        Libpinyin Wrapper for Fcitx
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
 Url:            https://github.com/fcitx/fcitx-libpinyin
 Source:         http://download.fcitx-im.org/fcitx-libpinyin/%{name}-%{version}_dict.tar.xz
@@ -42,6 +42,7 @@ BuildRequires:  intltool
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qtwebengine-devel
 BuildRequires:  xz
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libpinyin)
 Provides:       locale(fcitx:zh_CN;zh_SG)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

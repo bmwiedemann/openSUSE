@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>707612</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>475d84995400c7a34ee437e6a11946ce</srcmd5>
+    <version>1.5.2</version>
+    <time>1568805099</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix %check to use code is rewritten using 2to3,
+  and note one failure on Python 3</comment>
+    <requestid>731456</requestid>
+  </revision>
 </revisionlist>

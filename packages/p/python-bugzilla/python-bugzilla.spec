@@ -1,7 +1,7 @@
 #
 # spec file for package python-bugzilla
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-bugzilla
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Python library for Bugzilla
 License:        GPL-2.0-or-later
@@ -75,6 +75,6 @@ export CFLAGS="%{optflags}"
 %python_alternative %{_bindir}/bugzilla
 %python_alternative %{_mandir}/man1/bugzilla.1%{ext_man}
 %{python_sitelib}/bugzilla
-%{python_sitelib}/python_bugzilla-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/python_bugzilla-%{version}-py*.egg-info
 
 %changelog

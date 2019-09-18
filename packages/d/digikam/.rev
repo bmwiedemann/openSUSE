@@ -1541,4 +1541,12 @@ ImageEditor : Add HTMLGallery, Calendar, ExpoBlending, VideSlideshow,</comment>
 - Add BuildRequires libjpeg8 for regular JPEG support (forwarded request 724959 from jubalh)</comment>
     <requestid>724968</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>12563ad690b10bda089803c4a5b2ceb9</srcmd5>
+    <version>6.3.0</version>
+    <time>1568804991</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731091</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Sep 15 06:56:47 UTC 2019 - mvetter@suse.com
+
+- Update to 2.0.5:
+  * Add support for marshmallow v3
+- Does not work with i3/sway yet because we don't have i3ipc
+  packaged
+
+-------------------------------------------------------------------
+Tue Sep 10 09:05:42 UTC 2019 - mvetter@suse.com
+
+- Update to 2.0.3:
+  * Fix typo in marshmallow pin
+  * Add init.py to display_protocols submodule
+- Add flashfocus-2.0.3-no-i3ipc.patch
+
+-------------------------------------------------------------------
+Mon Sep  9 08:05:38 UTC 2019 - mvetter@suse.com
+
+- Update to 2.0.1:
+  * Temporarily pin marshmallow to v2
+  * Added sway support
+  * Dropped python2 support
+  * Increased minimum pyyaml version to 5.1
+  * Added i3ipc requirement
+
+-------------------------------------------------------------------
 Tue May 28 06:33:34 UTC 2019 - mvetter@suse.com
 
 - Update to 1.2.7:

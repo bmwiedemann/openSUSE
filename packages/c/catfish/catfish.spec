@@ -19,13 +19,13 @@
 %bcond_with git
 %define series 1.4
 Name:           catfish
-Version:        1.4.9
+Version:        1.4.10
 Release:        0
 Summary:        Versatile File Searching Tool
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://docs.xfce.org/apps/catfish/start
-Source:         https://archive.xfce.org/src/apps/catfish/1.4/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/%{name}/%{series}/%{name}-%{version}.tar.bz2
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

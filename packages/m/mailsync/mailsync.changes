@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 15 21:50:15 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- fix mailsync-gcc9.diff with remaining cases (fixes md5 support)
+
+-------------------------------------------------------------------
 Thu Sep  5 12:34:00 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - add mailsync-gcc9.diff to fix build in Factory

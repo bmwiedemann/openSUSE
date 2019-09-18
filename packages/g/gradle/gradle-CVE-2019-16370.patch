@@ -1,0 +1,29 @@
+From f50bb2513f8880f75db2c2b3f1badbae856f6f85 Mon Sep 17 00:00:00 2001
+From: Vladimir Sitnikov <sitnikov.vladimir@gmail.com>
+Date: Tue, 10 Sep 2019 14:37:35 +0300
+Subject: [PATCH] signing plugin: use SHA512 instead of SHA1 when signing
+ artifacts
+
+PGP signs a digest, so MITM is still possible provided an attacker can update
+the artifact in such a way that its SHA1 is intact.
+
+Relevant article is https://medium.com/@jonathan.leitschuh/many-of-these-gpg-signatures-are-signed-with-sha-1-which-is-vulnerable-to-a-second-preimage-attack-67104d827930
+
+Signed-off-by: Vladimir Sitnikov <sitnikov.vladimir@gmail.com>
+---
+ .../org/gradle/plugins/signing/signatory/pgp/PgpSignatory.java  | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/subprojects/signing/src/main/java/org/gradle/plugins/signing/signatory/pgp/PgpSignatory.java b/subprojects/signing/src/main/java/org/gradle/plugins/signing/signatory/pgp/PgpSignatory.java
+index 5e022b5b5d07..3e212fe4a93d 100644
+--- a/subprojects/signing/src/main/java/org/gradle/plugins/signing/signatory/pgp/PgpSignatory.java
++++ b/subprojects/signing/src/main/java/org/gradle/plugins/signing/signatory/pgp/PgpSignatory.java
+@@ -104,7 +104,7 @@ private void writeSignatureTo(OutputStream signatureDestination, PGPSignature pg
+ 
+     public PGPSignatureGenerator createSignatureGenerator() {
+         try {
+-            PGPSignatureGenerator generator = new PGPSignatureGenerator(new BcPGPContentSignerBuilder(secretKey.getPublicKey().getAlgorithm(), PGPUtil.SHA1));
++            PGPSignatureGenerator generator = new PGPSignatureGenerator(new BcPGPContentSignerBuilder(secretKey.getPublicKey().getAlgorithm(), PGPUtil.SHA512));
+             generator.init(PGPSignature.BINARY_DOCUMENT, privateKey);
+             return generator;
+         } catch (PGPException e) {

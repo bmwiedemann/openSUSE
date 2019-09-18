@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 13 16:20:52 UTC 2019 - Lee Duncan <lduncan@suse.com>
+
+- Upgraded to upstream version 2.0.878, which becomes 2.0.878-suse
+  with our (few) SUSE-specific changes needed for our build system.
+  Changes include:
+  * general bug fixes in iscsid, iscsiadm, and libopeniscsiusr,
+    including better lock handling for multiple instances of iscsiadm
+  * iscsiuio/qedi updates
+  * systemd service-file updates/cleanups
+  This replaces open-iscsi-2.0.877-suse.tar.bz2 with
+  open-iscsi-2.0.878-suse.tar.bz2, and it resets
+  open-iscsi-SUSE-latest.diff.bz2 with fixes after 2.0.878.
+
+-------------------------------------------------------------------
 Mon Aug 12 12:08:11 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO on aarch64 as the gcc9 package issue is fixed:

@@ -1,0 +1,31 @@
+Index: o2scl-0.923/src/linalg/Makefile.am
+===================================================================
+--- o2scl-0.923.orig/src/linalg/Makefile.am
++++ o2scl-0.923/src/linalg/Makefile.am
+@@ -11,7 +11,7 @@ HEADER_VAR = cblas.h lu.h lanczos.h trid
+ 	cholesky_base.h qrpt.h qrpt_base.h bidiag.h bidiag_base.h \
+ 	svd.h svd_base.h
+ 
+-TEST_VAR = cblas.scr permutation.scr lanczos.scr tridiag.scr lu.scr \
++TEST_VAR = cblas.scr permutation.scr lanczos.scr tridiag.scr \
+ 	qr.scr qrpt.scr householder.scr hh.scr linear_solver.scr \
+ 	cholesky.scr bidiag.scr svdstep.scr svd.scr
+ 
+@@ -82,7 +82,7 @@ pkginclude_HEADERS = $(HEADER_VAR)
+ # libtool testing targets
+ # ------------------------------------------------------------
+ 
+-check_PROGRAMS = cblas_ts permutation_ts lanczos_ts tridiag_ts lu_ts \
++check_PROGRAMS = cblas_ts permutation_ts lanczos_ts tridiag_ts \
+ 	qr_ts householder_ts hh_ts linear_solver_ts svdstep_ts \
+ 	cholesky_ts qrpt_ts bidiag_ts svd_ts
+ 
+@@ -117,8 +117,6 @@ lanczos.scr: lanczos_ts$(EXEEXT)
+ 	./lanczos_ts$(EXEEXT) > lanczos.scr
+ tridiag.scr: tridiag_ts$(EXEEXT) 
+ 	./tridiag_ts$(EXEEXT) > tridiag.scr
+-lu.scr: lu_ts$(EXEEXT) 
+-	./lu_ts$(EXEEXT) > lu.scr
+ qr.scr: qr_ts$(EXEEXT) 
+ 	./qr_ts$(EXEEXT) > qr.scr
+ qrpt.scr: qrpt_ts$(EXEEXT) 

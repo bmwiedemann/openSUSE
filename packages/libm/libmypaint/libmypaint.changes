@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  4 12:55:21 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.0:
+  * Back-port a few new features and bug fixes from the 2.0
+    alpha branch.
+- Add libmypaint-gegl-shlib-version.patch: Fixes building with
+  GEGL Support by removing versioning from the gegl lib
+  (gh#mypaint/libmypaint#144).
+- Minor refresh of patches to apply cleanly.
+- Version Obsoletes for mypaint-devel appropirately to avoid
+  self-obsoleting.
+- Fix spurious exec perm for README.md file.
+
+-------------------------------------------------------------------
 Tue Apr  9 17:07:39 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add libmypaint-gegl-0.4.14.patch: Fix compilation against gegl

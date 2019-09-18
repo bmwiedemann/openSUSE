@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(GtkosxApplication\\)|typelib\\(Gtkspell\\)|typelib\\(GConf\\)
 Name:           gramps
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Genealogical Research Software
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ Url:            http://www.gramps-project.org/
 Source:         https://github.com/gramps-project/gramps/archive/v%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE gramps-no-translations-check.patch boo#941490 dimstar@opensuse.org -- Do not warn on missing translations
 Patch0:         gramps-no-translations-check.patch
-# PATCH-FIX-UPSTREAM gramps-5.1.0-remove_false_nonrelease_warning.patch gramps-bug#11274 schubert.seb@gmail.com -- Remove false non-release warning
-Patch1:         gramps-5.1.0-remove_false_nonrelease_warning.patch
 BuildRequires:  fdupes
 # Needed for typelib() - Requires.
 BuildRequires:  gobject-introspection
@@ -68,7 +66,6 @@ organized, searchable and as precise as you need it to be.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 python3 setup.py build

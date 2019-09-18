@@ -18,15 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-atlassian-python-api
-Version:        1.13.27
+Version:        1.13.29
 Release:        0
 Summary:        Python Atlassian REST API Wrapper
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/atlassian-api/atlassian-python-api
+URL:            https://github.com/atlassian-api/atlassian-python-api
 Source:         https://files.pythonhosted.org/packages/source/a/atlassian-python-api/atlassian-python-api-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module oauthlib}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests-oauthlib}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-oauthlib
@@ -34,7 +38,6 @@ Requires:       python-requests
 Requires:       python-requests-oauthlib
 Requires:       python-six
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -48,7 +51,11 @@ Python Atlassian REST API Wrapper
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst

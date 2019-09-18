@@ -2879,4 +2879,41 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
     <comment></comment>
     <requestid>720733</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>1482643e205dfea07bb2ad5475052d13</srcmd5>
+    <version>68.1.0</version>
+    <time>1568804773</time>
+    <user>maxlin_factory</user>
+    <comment>- Mozilla Thunderbird 68.1.0
+  * Offer to configure Exchange accounts for Office365. A third-party
+    add-on is required for this account type. IMAP still exists as
+    alternative.
+  * several bugfixes
+  MFSA 2019-30
+  * CVE-2019-11739 (bmo#1571481)
+    Covert Content Attack on S/MIME encryption using a crafted
+    multipart/alternative message
+  * CVE-2019-11746 (bmo#1564449)
+    Use-after-free while manipulating video
+  * CVE-2019-11744 (bmo#1562033)
+    XSS by breaking out of title and textarea elements using innerHTML
+  * CVE-2019-11742 (bmo#1559715)
+    Same-origin policy violation with SVG filters and canvas to steal
+    cross-origin images
+  * CVE-2019-11752 (bmo#1501152)
+    Use-after-free while extracting a key value in IndexedDB
+  * CVE-2019-11743 (bmo#1560495)
+    Cross-origin access to unload event attributes
+  * CVE-2019-11740 (bmo#1563133,bmo#1573160)
+    Memory safety bugs fixed in Firefox 69, Firefox ESR 68.1, and Firefox
+    ESR 60.9, Thunderbird 68.1, and Thunderbird 60.9
+- removed upstreamed fix-build-after-y2038-changes-in-glibc.patch
+- added thunderbird-locale-build.patch to fix locale build
+
+- Add -L flag to the stat call for checking file size of %{SOURCE4}.
+- Add fix-missing-return-warning.patch to silence a compiler warning.
+
+- Mozilla Thunderbird 68.0</comment>
+    <requestid>730872</requestid>
+  </revision>
 </revisionlist>

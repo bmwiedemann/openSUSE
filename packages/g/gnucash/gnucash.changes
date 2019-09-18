@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 12 20:37:31 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.7:
+  + New features and bug fixes.
+  + Updated translations.
+- Drop Fix-CMakeLists-error.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Tue Sep 10 09:01:55 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add Fix-CMakeLists-error.patch to fix a build error.

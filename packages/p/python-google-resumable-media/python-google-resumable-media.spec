@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-resumable-media
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        Utilities for Google Media Downloads and Resumable Uploads
 License:        Apache-2.0
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
-Suggests:       python-requests >= 2.18.0
+Recommends:     python-requests >= 2.18.0
 BuildArch:      noarch
 %python_subpackages
 

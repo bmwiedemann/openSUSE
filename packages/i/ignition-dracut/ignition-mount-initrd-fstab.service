@@ -1,10 +1,20 @@
 [Unit]
 Description=Mount initrd fstab entries for Ignition
 DefaultDependencies=false
+Before=ignition-complete.target
+
+# Make sure ExecStop= runs before we switch root
+Before=initrd-switch-root.target
+
 After=initrd-root-fs.target
 After=ignition-remount-sysroot.service
-Before=ignition-files.service
+
+# Allow Ignition to overwrite automatic mounts
+Requires=ignition-mount.service
+Before=ignition-mount.service
 
 [Service]
 Type=oneshot
+RemainAfterExit=yes
 ExecStart=/bin/sh -c 'eval $(awk '"'"'$4 ~ /x-initrd.mount/ {print "mount -t " $3 " -o " $4 " " $1 " /sysroot" $2 "; sleep 5; " }'"'"' /sysroot/etc/fstab)'
+ExecStop=/usr/bin/umount -a -O "x-initrd.mount"

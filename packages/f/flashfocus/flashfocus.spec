@@ -17,20 +17,21 @@
 
 
 Name:           flashfocus
-Version:        1.2.7
+Version:        2.0.5
 Release:        0
 Summary:        Focus animations for tiling window managers
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://github.com/fennerm/flashfocus
 Source:         https://github.com/fennerm/flashfocus/archive/v%{version}.tar.gz
+Patch0:         flashfocus-2.0.3-no-i3ipc.patch
 BuildRequires:  fdupes
 BuildRequires:  libffi-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  python3
 BuildRequires:  python3-pytest-runner
 BuildRequires:  python3-setuptools
-Requires:       python3-PyYAML >= 3.0
+Requires:       python3-PyYAML >= 5.1
 Requires:       python3-cffi
 Requires:       python3-click
 Requires:       python3-marshmallow
@@ -44,6 +45,7 @@ Focus animations for tiling window managers. Compatible with all X based window 
 
 %prep
 %setup -q
+%patch0 -p1
 sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" bin/nc_flash_window
 
 %build

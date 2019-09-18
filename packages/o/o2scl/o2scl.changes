@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 12:20:49 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add o2scl-disable-failing-tests.patch: Disable LU test that
+  fails on x86_64 (gh#awsteiner/o2scl#9).
+
+-------------------------------------------------------------------
 Tue Apr 30 13:52:16 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.923:

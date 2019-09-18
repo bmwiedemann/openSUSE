@@ -58,6 +58,7 @@ pytest plugin for generating HTML reports
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
+export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}

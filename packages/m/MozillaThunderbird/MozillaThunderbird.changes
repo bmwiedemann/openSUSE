@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Sep 10 07:33:52 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 68.1.0
+  * Offer to configure Exchange accounts for Office365. A third-party
+    add-on is required for this account type. IMAP still exists as
+    alternative.
+  * several bugfixes
+  MFSA 2019-30
+  * CVE-2019-11739 (bmo#1571481)
+    Covert Content Attack on S/MIME encryption using a crafted
+    multipart/alternative message
+  * CVE-2019-11746 (bmo#1564449)
+    Use-after-free while manipulating video
+  * CVE-2019-11744 (bmo#1562033)
+    XSS by breaking out of title and textarea elements using innerHTML
+  * CVE-2019-11742 (bmo#1559715)
+    Same-origin policy violation with SVG filters and canvas to steal
+    cross-origin images
+  * CVE-2019-11752 (bmo#1501152)
+    Use-after-free while extracting a key value in IndexedDB
+  * CVE-2019-11743 (bmo#1560495)
+    Cross-origin access to unload event attributes
+  * CVE-2019-11740 (bmo#1563133,bmo#1573160)
+    Memory safety bugs fixed in Firefox 69, Firefox ESR 68.1, and Firefox
+    ESR 60.9, Thunderbird 68.1, and Thunderbird 60.9
+- removed upstreamed fix-build-after-y2038-changes-in-glibc.patch
+- added thunderbird-locale-build.patch to fix locale build
+
+-------------------------------------------------------------------
+Fri Aug 30 07:25:15 UTC 2019 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add -L flag to the stat call for checking file size of %{SOURCE4}.
+- Add fix-missing-return-warning.patch to silence a compiler warning.
+
+-------------------------------------------------------------------
+Wed Aug 28 12:27:34 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 68.0
+  * based on Firefox ESR 68
+  * File link attachments can now be linked to again instead of
+    uploading them again
+  * Mark all folders of an account as read
+  * Run filters periodically. Improved filter logging
+  * OAuth2 authentication for Yandex
+  * Language packs can now be selected in the Advanced Options.
+    Preference intl.multilingual.enabled needs to be set (and possily
+    also extensions.langpacks.signatures.required needs to be set to false)
+  * Added a policy engine that allows customized Thunderbird deployments
+    in enterprise environments, using Windows Group Policy or a
+    cross-platform JSON file
+  * TCP keepalive for IMAP protocol
+  * Full Unicode support for MAPI interfaces: New support for MAPISendMailW
+  * Calendar: Time zone data can now include past and future changes.
+    All known time zone changes from 2018 to 2022 are included.
+  * Chat: In each conversation an individual spellcheck language can
+    be selected now
+- removed obsolete patches
+  * mozilla-bmo1463035.patch
+  * mozilla-i586-domPrefs.patch
+  * mozilla-bmo1464766.patch
+  * mozilla-bmo1519629.patch
+  * mozilla-i586-DecoderDoctorLogger.patch
+  * mozilla-bmo1375074.patch
+- added fix-build-after-y2038-changes-in-glibc.patch to fix build
+  in Tumbleweed (patch already upstream for next release)
+
+-------------------------------------------------------------------
 Thu Aug  1 11:12:05 UTC 2019 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - Update package summary, description, and AppData using more informative

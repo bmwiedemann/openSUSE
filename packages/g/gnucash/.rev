@@ -717,4 +717,12 @@
     <comment>- Add Fix-CMakeLists-error.patch to fix a build error. (forwarded request 729722 from cgiboudeaux)</comment>
     <requestid>729730</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>6096d55779eb1385633a6487b925b8e5</srcmd5>
+    <version>3.7</version>
+    <time>1568805148</time>
+    <user>maxlin_factory</user>
+    <comment>New upstream release</comment>
+    <requestid>731499</requestid>
+  </revision>
 </revisionlist>

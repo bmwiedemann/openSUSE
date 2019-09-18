@@ -223,4 +223,12 @@
   * Bugfix for CVE-2019-15892 [boo#1149382]</comment>
     <requestid>728299</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>52c0b89a06961dd084874316b94ed462</srcmd5>
+    <version>6.3.0</version>
+    <time>1568805170</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to release 6.3.0</comment>
+    <requestid>731529</requestid>
+  </revision>
 </revisionlist>

@@ -40,4 +40,17 @@
 </comment>
     <requestid>692767</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>37548c9e36ce8095bb2c06619b460860</srcmd5>
+    <version>2.2.1</version>
+    <time>1568805085</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.2.1:
+  * More tests
+  * Many bugfixes
+  * Fixes for newest pytest/django
+
+- Use have/skip_python2/3 macros to allow building only one package</comment>
+    <requestid>731226</requestid>
+  </revision>
 </revisionlist>

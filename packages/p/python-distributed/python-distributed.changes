@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Sep 14 16:19:32 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * removed six
+
+- update to version 2.4.0:
+  * Remove six (GH#3045) Matthew Rocklin
+  * Add missing test data to sdist tarball (GH#3050) Elliott Sales de
+    Andrade
+  * Use mock from unittest standard library (GH#3049) Elliott Sales de
+    Andrade
+  * Use cgroups resource limits to determine default threads and
+    memory (GH#3039) Jim Crist
+  * Move task deserialization to immediately before task execution
+    (GH#3015) James Bourbeau
+  * Drop joblib shim module in distributed (GH#3040) John Kirkham
+  * Redirect configuration doc page (GH#3038) Matthew Rocklin
+  * Support --name 0 and --nprocs keywords in dask-worker cli
+    (GH#3037) Matthew Rocklin
+  * Remove lost workers from SpecCluster.workers (GH#2990) Guillaume
+    Eynard-Bontemps
+  * Clean up test_local.py::test_defaults (GH#3017) Matthew Rocklin
+  * Replace print statement in Queue.__init__ with debug message
+    (GH#3035) Mikhail Akimov
+  * Set the x_range limit of the Meory utilization plot to
+    memory-limit (GH#3034) Matthew Rocklin
+  * Rely on cudf codebase for cudf serialization (GH#2998) Benjamin
+    Zaitlen
+  * Add fallback html repr for Cluster (GH#3023) Jim Crist
+  * Add support for zstandard compression to comms (GH#2970) Abael He
+  * Avoid collision when using os.environ in dashboard_link (GH#3021)
+    Matthew Rocklin
+  * Fix ConnectionPool limit handling (GH#3005) byjott
+  * Support Spec jobs that generate multiple workers (GH#3013) Matthew
+    Rocklin
+  * Tweak Logs styling (GH#3012) Jim Crist
+  * Better name for cudf deserialization function name (GH#3008)
+    Benjamin Zaitlen
+  * Make spec.ProcessInterface a valid no-op worker (GH#3004) Matthew
+    Rocklin
+  * Return dictionaries from new_worker_spec rather than name/worker
+    pairs (GH#3000) Matthew Rocklin
+  * Fix minor typo in documentation (GH#3002) Mohammad Noor
+  * Permit more keyword options when scaling with cores and memory
+    (GH#2997) Matthew Rocklin
+  * Add cuda_ipc to UCX environment for NVLink (GH#2996) Benjamin
+    Zaitlen
+  * Add threads= and memory= to Cluster and Client reprs (GH#2995)
+    Matthew Rocklin
+  * Fix PyNVML initialization (GH#2993) Richard J Zamora
+
+-------------------------------------------------------------------
 Sat Aug 31 04:50:18 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.3.2:

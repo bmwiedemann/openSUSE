@@ -1,7 +1,7 @@
 #
 # spec file for package cozy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cozy
-Version:        0.6.7
+Version:        0.6.8
 Release:        0
 Summary:        Audio Book Player
 License:        GPL-3.0-only
@@ -71,7 +71,7 @@ Play and organize your audio book collection.
 %install
 %meson_install
 %suse_update_desktop_file com.github.geigi.cozy
-%find_lang %{name}
+%find_lang com.github.geigi.cozy %{name}.lang
 %fdupes %{buildroot}%{_datadir}
 %fdupes %{buildroot}%{python3_sitelib}
 
@@ -84,7 +84,7 @@ Play and organize your audio book collection.
 %{_datadir}/glib-2.0/schemas/com.github.geigi.cozy.gschema.xml
 %{_datadir}/metainfo/com.github.geigi.cozy.appdata.xml
 %{_datadir}/icons/hicolor/*/*/*.??g
-%{_datadir}/cozy/
+%{_datadir}/com.github.geigi.cozy/
 %{python3_sitelib}/cozy/
 
 %files lang -f %{name}.lang

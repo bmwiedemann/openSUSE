@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 12 10:14:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.0:
+  * Require 200 response for initial resumable upload request. (#95)
+  * Use response as variable for object returned from http_request. (#98)
+  * Further DRY request dependency pins. (#96)
+  * Finish download on seeing 416 response with zero byte range. (#86)
+  * Always use raw response data. (#87)
+
+-------------------------------------------------------------------
 Fri Mar 15 12:10:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.2:

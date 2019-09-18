@@ -1,7 +1,6 @@
 Changes for openSUSE / SLE:
 
-* ignition-mount-initrd-fstab.service / ignition-umount-initrd-fstab.service /
-  ignition-suse-generator:
+* ignition-mount-initrd-fstab.service / ignition-suse-generator:
   Ignition has very limited file system support, e.g. it doesn't support
   btrfs subvolumes (used in any default installation) or overlayfs mounts
   (Used by MicroOS for mounting /etc). For this reason Ignition's "mount"

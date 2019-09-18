@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 15 13:41:23 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.3.0
+  * restrict-login support
+  * cli: Add support for private attachments
+  * Fix python3 deprecation warnings
+  * Drop python 3.3 support, minimum python3 is python 3.4 now
+
+-------------------------------------------------------------------
 Thu Aug 16 09:32:14 UTC 2018 - mcepl@suse.com
 
 - Update to 2.2.0:

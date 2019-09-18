@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 12 14:49:53 UTC 2019 - Lubos Lunak <l.lunak@centrum.cz>
+
+- Update to version 3.3:
+ - Display node protocol version and features in detailed host view
+ - Several more icecream flavors added
+ - Add --port option to specify the scheduler port
+ - Remote hardcoded background color (#39)
+ - Fix data loss when switching views
+ - Avoid a possible QSocketNotifier crash (#47)
+ - Improve column widths in views
+ - Require extra-cmake-modules for building
+ - Fix finding icecc pkgconfig file
+
+-------------------------------------------------------------------
 Tue Apr 16 11:21:54 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file

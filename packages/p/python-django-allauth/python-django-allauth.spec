@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-allauth
-Version:        0.39.1
+Version:        0.40.0
 Release:        0
 Summary:        Django authentication, registration, account management
 License:        MIT
@@ -93,13 +93,13 @@ export PYTHONPATH=.
 %exclude %{python_sitelib}/allauth/locale
 %{python_sitelib}/*
 
-%if %have_python2 && ! 0%{?skip_python2}
+%ifpython2
 %files -n %{python2_prefix}-django-allauth-lang -f django_%{python2_bin_suffix}.lang
 %license LICENSE
 %{python2_sitelib}/allauth/locale
 %endif
 
-%if %have_python2 && ! 0%{?skip_python3}
+%ifpython3
 %files -n %{python3_prefix}-django-allauth-lang -f django_%{python3_bin_suffix}.lang
 %license LICENSE
 %{python3_sitelib}/allauth/locale

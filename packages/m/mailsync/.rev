@@ -115,4 +115,12 @@
     <comment>add mailsync-gcc9.diff to fix build in Factory (forwarded request 728499 from seife)</comment>
     <requestid>728500</requestid>
   </revision>
+  <revision rev="18" vrev="187">
+    <srcmd5>c106864fa87aec883cd31a79ba23cc1d</srcmd5>
+    <version>5.2.1</version>
+    <time>1568804994</time>
+    <user>maxlin_factory</user>
+    <comment>fix mailsync-gcc9.diff with remaining cases (fixes md5 support) (forwarded request 731099 from seife)</comment>
+    <requestid>731100</requestid>
+  </revision>
 </revisionlist>

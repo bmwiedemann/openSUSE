@@ -56,4 +56,12 @@
   * new django 1.11 and 2.0 support</comment>
     <requestid>662607</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0d2d1b0c618c0e0cb53c3433b864eb37</srcmd5>
+    <version>4.1.0</version>
+    <time>1568805093</time>
+    <user>maxlin_factory</user>
+    <comment>- Skip the check if flavor python2 is not being built</comment>
+    <requestid>731304</requestid>
+  </revision>
 </revisionlist>

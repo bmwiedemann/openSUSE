@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 14 09:39:45 UTC 2019 - Matthias Bach <marix@marix.org>
+
+- Update to 0.5.4:
+  * :robot: has been added as an alias for :robot_face:
+  * Package now officially supports Python 3.7
+
+-------------------------------------------------------------------
 Fri Sep 13 07:59:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.5.3:

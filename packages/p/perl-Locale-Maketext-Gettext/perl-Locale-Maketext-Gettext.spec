@@ -17,7 +17,7 @@
 
 
 Name:           perl-Locale-Maketext-Gettext
-Version:        1.29
+Version:        1.30
 Release:        0
 %define cpan_name Locale-Maketext-Gettext
 Summary:        Joins the gettext and Maketext frameworks
@@ -25,6 +25,7 @@ License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/I/IM/IMACAT/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl

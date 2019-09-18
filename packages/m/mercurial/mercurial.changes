@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 15 16:49:18 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 5.1.1 
+  Regularly scheduled bug fix release.
+  * commands
+    + bookmarks: actual fix for race condition deleting bookmark
+  * core
+    + exchange: abort on pushing bookmarks pointing to secret changesets (issue6159)
+    + python-zstandard: apply big-endian fix (issue6188)
+    + fncache: make debugrebuildfncache not fail on broken fncache
+  * tests
+    + various test runner fixes
+    + fixed use of `tr --delete` for tr(1) portability
+
+-------------------------------------------------------------------
 Fri Aug  2 10:30:23 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 5.1

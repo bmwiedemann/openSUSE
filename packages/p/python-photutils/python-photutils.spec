@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-photutils
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
@@ -27,22 +27,24 @@ Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/photutils
 Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy >= 1.11}
-BuildRequires:  %{python_module numpy-devel >= 1.11}
+BuildRequires:  %{python_module numpy-devel >= 1.13}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-astropy >= 2.0
-Recommends:     python-matplotlib >= 1.3
-Recommends:     python-scikit-image >= 0.11
-Recommends:     python-scikit-learn >= 0.18
-Recommends:     python-scipy >= 0.16
+Requires:       python-numpy >= 1.13
+Requires:       python-scipy >= 0.19
+Recommends:     python-matplotlib >= 2.2
+Recommends:     python-scikit-image >= 0.14.2
+Recommends:     python-scikit-learn >= 0.19
+Recommends:     python-gwcs >= 0.11
 # SECTION test requirements
 BuildRequires:  %{python_module astropy >= 2.0}
 BuildRequires:  %{python_module astropy-helpers >= 2.0}
+BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pytest-astropy >= 0.4}
-BuildRequires:  %{python_module scikit-image >= 0.11}
-BuildRequires:  %{python_module scikit-learn >= 0.18}
+BuildRequires:  %{python_module scikit-image >= 0.14.2}
+BuildRequires:  %{python_module scikit-learn >= 0.19}
 BuildRequires:  python3-dbm
 # /SECTION
 %python_subpackages
@@ -60,14 +62,16 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+rm -rf  %{buildroot}%{$python_sitearch}/photutils/*.c
+rm -rf  %{buildroot}%{$python_sitearch}/photutils/geometry/*.c
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-
 %check
 %python_exec setup.py test --skip-docs
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
-%license LICENSE.rst licenses licenses/README.rst
-%{python_sitearch}/*
+%license LICENSE.rst licenses
+%{python_sitearch}/photutils
+%{python_sitearch}/photutils-%{version}-py*.egg-info
 
 %changelog

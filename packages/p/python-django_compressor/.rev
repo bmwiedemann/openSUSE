@@ -164,4 +164,12 @@
 - Drop merged patch compressor-django2.patch</comment>
     <requestid>707111</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a712f4c0739796425d50992a087e614c</srcmd5>
+    <version>2.3</version>
+    <time>1568805068</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731171</requestid>
+  </revision>
 </revisionlist>

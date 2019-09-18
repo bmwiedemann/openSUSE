@@ -1,7 +1,7 @@
 #
 # spec file for package ignition-dracut
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ignition-dracut
-Version:        0.0+git20190806.343b886
+Version:        0.0+git20190916.cbac371
 Release:        0
 Summary:        Dracut scripts for ignition
 License:        BSD-2-Clause
@@ -26,7 +26,7 @@ BuildArch:      noarch
 URL:            https://github.com/dustymabe/ignition-dracut
 Source:         %{name}-%{version}.tar.xz
 Source1:        ignition-mount-initrd-fstab.service
-Source2:        ignition-umount-initrd-fstab.service
+Source2:        ignition-userconfig-timeout.conf
 Source3:        ignition-suse-generator
 Source4:        module-setup.sh
 Source5:        01_suse_set_ignition
@@ -40,10 +40,9 @@ BuildRequires:  update-bootloader-rpm-macros
 PreReq:         sed
 PreReq:         grub2
 PreReq:         virt-what
-Requires:       ignition
 Requires:       gptfdisk
+Requires:       ignition
 %{update_bootloader_requires}
-
 
 %description
 Ignition is an utility to manipulate disks and configuration files during
@@ -99,7 +98,7 @@ if [ "$1" = 1 ] ; then
         *kvm*|*qemu*) platform="qemu" ;;
         *)            platform="metal" ;;
     esac
-    sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT="\)\(.*\)/\1\\$ignition_firstboot ignition.platform.id='${platform}' \2/' %{_sysconfdir}/default/grub
+    sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT="\)\(.*\)/\1ignition.platform.id='${platform}' \\$ignition_firstboot \2/' %{_sysconfdir}/default/grub
     %{?update_bootloader_refresh_post}
     # Trigger setting firstboot flag (in posttrans) only on new installations
     mkdir -p %{_rundir}/ignition-dracut/

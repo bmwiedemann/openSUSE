@@ -17,7 +17,7 @@
 
 
 Name:           perl-Selenium-Remote-Driver
-Version:        1.33
+Version:        1.34
 Release:        0
 %define cpan_name Selenium-Remote-Driver
 Summary:        Perl Client for Selenium Remote Driver
@@ -106,18 +106,6 @@ make test
 %install
 %perl_make_install
 %perl_process_packlist
-# MANUAL BEGIN
-%ifarch %ix86
-  rm %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/x86/libibushandler.so
-%else
-  rm -r %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/x86
-%endif
-%ifarch x86_64
-  rm %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/amd64/libibushandler.so
-%else
-  rm -r %{buildroot}/usr/lib/perl5/vendor_perl/*/Selenium/Firefox/amd64
-%endif
-# MANUAL END
 %perl_gen_filelist
 
 %files -f %{name}.files

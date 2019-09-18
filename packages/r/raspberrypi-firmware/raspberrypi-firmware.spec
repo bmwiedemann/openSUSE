@@ -75,7 +75,7 @@ if mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
 fi
 
 %preun
-if mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
+if [ $1 -eq 0 ] && mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
   for f in start.elf start4.elf fixup.dat fixup4.dat bootcode.bin; do
     rm -f /boot/efi/$f
   done
@@ -90,7 +90,7 @@ if mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
 fi
 
 %preun extra
-if mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
+if [ $1 -eq 0 ] && mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
   for suffix in _cd _db _x; do
     rm -f /boot/efi/start${suffix}.elf
     rm -f /boot/efi/fixup${suffix}.dat
@@ -106,7 +106,7 @@ if mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
 fi
 
 %preun extra-pi4
-if mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
+if [ $1 -eq 0 ] && mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
   for suffix in 4cd 4db 4x; do
     rm -f /boot/efi/start${suffix}.elf
     rm -f /boot/efi/fixup${suffix}.dat

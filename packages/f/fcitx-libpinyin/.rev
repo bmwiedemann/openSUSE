@@ -171,4 +171,12 @@ Brick Show diff</comment>
     <comment></comment>
     <requestid>556584</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>cdd70d1e5c535812389ab24a1051ed51</srcmd5>
+    <version>0.5.3</version>
+    <time>1568804987</time>
+    <user>maxlin_factory</user>
+    <comment>- Add a missing build requirement. (forwarded request 729972 from cgiboudeaux)</comment>
+    <requestid>731085</requestid>
+  </revision>
 </revisionlist>

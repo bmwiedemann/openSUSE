@@ -186,18 +186,22 @@ sed -i -e '1d;2i#!%__$python' %{buildroot}%{_bindir}/psychopy-%{$python_bin_suff
 %{python_sitelib}/PsychoPy-%{version}-py*.egg-info
 %exclude %{python_sitelib}/psychopy/app/locale/*
 
+%ifpython2
 %files -n %{python2_prefix}-PsychoPy-lang -f %{name}_%{python2_bin_suffix}.lang
 %license LICENSE
 %license psychopy/LICENSE.txt
 %license psychopy/LICENSES.txt
 %dir %{python2_sitelib}/psychopy/app/locale/*/
 %dir %{python2_sitelib}/psychopy/app/locale/*/LC_MESSAGE/
+%endif
 
+%ifpython3
 %files -n %{python3_prefix}-PsychoPy-lang -f %{name}_%{python3_bin_suffix}.lang
 %license LICENSE
 %license psychopy/LICENSE.txt
 %license psychopy/LICENSES.txt
 %dir %{python3_sitelib}/psychopy/app/locale/*/
 %dir %{python3_sitelib}/psychopy/app/locale/*/LC_MESSAGE/
+%endif
 
 %changelog

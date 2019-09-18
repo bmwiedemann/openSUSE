@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 17 11:37:40 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Add LICENSE file to the correct tag
+
+-------------------------------------------------------------------
+Tue Sep 17 11:31:39 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix: [bsc#1150998, CVE-2019-16370]
+  * The PGP signing plugin in Gradle before 6.0 relies on the SHA-1
+    algorithm. PGP signing plugin might allow an attacker to replace
+    an artifact with a different one.
+- Add gradle-CVE-2019-16370.patch
+
+-------------------------------------------------------------------
 Thu Sep 14 05:34:54 UTC 2017 - fstrba@suse.com
 
 - Specify java source and target level 1.6 in order to allow

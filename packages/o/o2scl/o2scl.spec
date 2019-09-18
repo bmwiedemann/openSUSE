@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,6 +25,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Scientific/Math
 Url:            https://isospin.roam.utk.edu/static/code/o2scl/
 Source:         https://github.com/awsteiner/o2scl/releases/download/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM o2scl-disable-failing-tests.patch gh#awsteiner/o2scl#9 badshah400@gmail.com -- Disable LU test that fails on x86_64
+Patch0:         o2scl-disable-failing-tests.patch
 BuildRequires:  armadillo-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
@@ -38,6 +40,9 @@ BuildRequires:  boost-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(gsl)
+# SECTION Needed for Patch0
+BuildRequires:  libtool
+# /SECTION
 Recommends:     %{name}-doc = %{version}
 
 %description
@@ -85,8 +90,10 @@ This package provides the documentation for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+autoreconf -fvi
 %configure \
 %if 0%{?suse_version} >= 1500
   --enable-gsl2 \

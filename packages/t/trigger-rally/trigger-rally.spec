@@ -20,9 +20,9 @@ Name:           trigger-rally
 Version:        0.6.6.1
 Release:        0
 Summary:        Fast-paced single-player rally racing game
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Race
-Url:            http://trigger-rally.sourceforge.net/
+URL:            http://trigger-rally.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/trigger-rally/trigger-%{version}/trigger-rally-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM https://sourceforge.net/p/trigger-rally/patches/14/
 Source1:        %{name}.desktop
@@ -31,12 +31,9 @@ Source2:        %{name}.appdata.xml
 Source99:       %{name}.changes
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-%if %{?suse_version} > 1320
-BuildRequires:  gcc-c++ >= 5.0
-%else
-BuildRequires:  gcc5-c++
-%endif
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(freealut)
@@ -47,8 +44,7 @@ BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(physfs) >= 2.1
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(tinyxml2) >= 6
-Requires:       %{name}-data == %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       %{name}-data = %{version}
 
 %description
 A 3D rally simulation with a physics engine for drifting, over 100 maps,
@@ -59,17 +55,19 @@ notes and co-driver icons.
 %package data
 Summary:        Data files for trigger-rally
 Group:          Amusements/Games/Action/Race
-Requires:       trigger-rally == %{version}
+Requires:       trigger-rally = %{version}
 BuildArch:      noarch
 
 %description data
-This package provides the data files for trigger-rally, a 3D rally simulation 
-with a physics engine for drifting, over 100 maps, different terrain materials 
+This package provides the data files for trigger-rally, a 3D rally simulation
+with a physics engine for drifting, over 100 maps, different terrain materials
 like dirt, asphalt, sand, ice etc. and various weather, light and fog conditions.
 Most maps are equipped with spoken co-driver notes and co-driver icons.
 
 %prep
 %setup -q
+sed -i 's#-lSDL2main##' src/GNUmakefile*
+
 dos2unix doc/*.txt bin/*.defs
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
@@ -78,9 +76,6 @@ sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" src/PEngine/app.cpp src/Trigg
 sed -i "s|-march=native||; s|-mtune=native||" src/GNUmakefile*
 
 %build
-%if %{?suse_version} <= 1320
-export CXX=g++-5 CC=gcc-5
-%endif
 make --directory=src prefix=%{_prefix} exec_prefix=%{_prefix} bindir=%{_bindir}
 # NOTE: don't use datadir=...: program currently (v0.6.6.1) uses hardcoded search paths
 
@@ -88,26 +83,20 @@ make --directory=src prefix=%{_prefix} exec_prefix=%{_prefix} bindir=%{_bindir}
 %make_install --directory=src prefix=%{_prefix} exec_prefix=%{_prefix} bindir=%{_bindir}
 # NOTE: don't use datadir=...: program currently (v0.6.6.1) uses hardcoded search paths
 
+rm -f %{buildroot}%{_datadir}/doc/trigger-rally/COPYING.txt
+
 %suse_update_desktop_file -i %{name}
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 ln -sf %{_datadir}/games/trigger-rally/icon/trigger-rally-icons.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/trigger-rally.svg
 
 mkdir -p %{buildroot}%{_datadir}/appdata
-install -Dm0644 %{S:2} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+install -Dm0644 %{SOURCE2} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 %fdupes %{buildroot}%{_datadir}
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-
 %files
-%defattr(-,root,root)
+%license doc/COPYING.txt
 %{_bindir}/*
 %{_datadir}/games/trigger-rally/icon
 %{_datadir}/applications/trigger-rally.desktop
@@ -117,7 +106,7 @@ install -Dm0644 %{S:2} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %files data
-%defattr(-,root,root)
+%license doc/COPYING.txt
 %dir %{_datadir}/games/trigger-rally/
 %{_datadir}/games/trigger-rally/data.*
 

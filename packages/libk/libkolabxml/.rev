@@ -262,4 +262,12 @@ Wed Nov 13 12:31:03 UTC 2013 - aj@ajaissle.de
   libkolabxml-devel.</comment>
     <requestid>693120</requestid>
   </revision>
+  <revision rev="30" vrev="9">
+    <srcmd5>0be8d034ab3f7c43654e7d60a8ce816b</srcmd5>
+    <version>1.1.6</version>
+    <time>1568804872</time>
+    <user>maxlin_factory</user>
+    <comment>add 0001-Make-sure-boost-is-found-when-using-libkolabxml.patch.</comment>
+    <requestid>731590</requestid>
+  </revision>
 </revisionlist>

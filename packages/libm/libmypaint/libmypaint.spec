@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define shlib %{name}-1_3-0
+%define shlib %{name}-1_4-0
 %define geglshlib %{name}-gegl0
 Name:           libmypaint
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        A brushstroke creation library
 License:        ISC
@@ -31,6 +31,8 @@ Patch0:         libmypaint-bump-gegl-version.patch
 # PATCH-FIX-UPSTREAM libmypaint-gegl-0.4.14.patch badshah400@gmail.com -- Fix compilation against gegl=0.4.14
 # See https://www.gimpusers.com/forums/gimp-developer/21248-libmypaint-needs-patching-for-recent-gegl
 Patch1:         libmypaint-gegl-0.4.14.patch
+# PATCH-FIX-UPSTREAM libmypaint-gegl-shlib-version.patch gh#mypaint/libmypaint#97 badshah400@gmail.com -- Fixes building with GEGL Support
+Patch2:         libmypaint-gegl-shlib-version.patch
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -57,7 +59,7 @@ Summary:        Header files for %{name}, a brushstroke creation library
 Group:          Development/Libraries/C and C++
 Requires:       %{shlib} = %{version}
 Provides:       mypaint-devel = %{version}
-Obsoletes:      mypaint-devel
+Obsoletes:      mypaint-devel < %{version}
 
 %description devel
 libmypaint, a.k.a. "brushlib", is a library for making brushstrokes
@@ -93,6 +95,10 @@ for %{name}'s GEGL bindings.
 %if 0%{?suse_version} >= 1500
 %patch1 -p1
 %endif
+%patch2 -p1
+
+# FIX A SPURIOUS PERM
+chmod -x README.md
 
 %build
 autoreconf -fiv
@@ -112,7 +118,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{geglshlib} -p /sbin/ldconfig
 
 %files -n %{shlib}
-%{_libdir}/%{name}-1.3.so.*
+%{_libdir}/%{name}-1.4.so.*
 
 %files lang -f %{name}.lang
 

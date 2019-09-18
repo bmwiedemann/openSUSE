@@ -81,4 +81,27 @@
   * Bug fix (issue #25)</comment>
     <requestid>705778</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1531a62ec866661308a7d3aec71798ed</srcmd5>
+    <version>2.0.5</version>
+    <time>1568805001</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.0.5:
+  * Add support for marshmallow v3
+- Does not work with i3/sway yet because we don't have i3ipc
+  packaged
+
+- Update to 2.0.3:
+  * Fix typo in marshmallow pin
+  * Add init.py to display_protocols submodule
+- Add flashfocus-2.0.3-no-i3ipc.patch
+
+- Update to 2.0.1:
+  * Temporarily pin marshmallow to v2
+  * Added sway support
+  * Dropped python2 support
+  * Increased minimum pyyaml version to 5.1
+  * Added i3ipc requirement</comment>
+    <requestid>731146</requestid>
+  </revision>
 </revisionlist>

@@ -23,12 +23,13 @@ Release:        0
 Summary:        Python module to allow customization of the process title
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
-URL:            http://pypi.python.org/pypi/setproctitle/
+URL:            https://github.com/dvarrazzo/py-setproctitle/
 Source:         https://files.pythonhosted.org/packages/source/s/setproctitle/setproctitle-%{version}.tar.gz
-Patch:          skip-failing-tests.patch
+Patch0:         use-pkg-config.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  procps
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-tools
 %python_subpackages
@@ -51,12 +52,14 @@ export CFLAGS="%{optflags}"
 %python_install
 
 %check
+export LANG=en_US.UTF-8
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 make PYTHON=$python check
 }
 
 %files %{python_files}
-%doc COPYRIGHT HISTORY.rst README.rst
+%doc HISTORY.rst README.rst
+%license COPYRIGHT
 %{python_sitearch}/*
 
 %changelog

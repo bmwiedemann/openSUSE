@@ -426,4 +426,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>728262</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ae94b722764761845868aebbf748d5e3</srcmd5>
+    <version>2.4.2</version>
+    <time>1568805187</time>
+    <user>maxlin_factory</user>
+    <comment>- Version 2.4.2
+- Fixed system listing when architecture is not well referenced
+  (bsc#1141122)
+- Added rmt-client-setup-res for RES8 systems</comment>
+    <requestid>731538</requestid>
+  </revision>
 </revisionlist>
