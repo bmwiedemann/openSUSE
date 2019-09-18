@@ -1,0 +1,35 @@
+commit 3ecbf83ff33750ceffda199de97283d200357633
+Author: Andrey Semashev <andrey.semashev@gmail.com>
+Date:   Sat Apr 13 21:54:45 2019 +0300
+
+    Added MPI Python libs to install target.
+    
+    This fixes mpi plugins for Python not being built and installed.
+
+Index: boost_1_71_0/libs/mpi/build/Jamfile.v2
+===================================================================
+--- boost_1_71_0.orig/libs/mpi/build/Jamfile.v2
++++ boost_1_71_0/libs/mpi/build/Jamfile.v2
+@@ -74,6 +74,7 @@ rule python-tag ( name : type ? : proper
+     return  [ tag $(result) : $(type) : $(property-set) ] ;
+ }
+ 
++mpi_python_libs = ;
+ 
+ if [ mpi.configured ]
+ {
+@@ -169,6 +170,8 @@ lib boost_mpi
+                 <link>shared <runtime-link>shared
+                 <python-debugging>on:<define>BOOST_DEBUG_PYTHON
+               ;
++
++            mpi_python_libs = boost_mpi_python mpi ;
+   }
+ }
+ else if ! ( --without-mpi in  [ modules.peek : ARGV ] )
+@@ -185,4 +188,4 @@ else
+   alias boost_mpi ;
+ }
+ 
+-boost-install boost_mpi ;
++boost-install boost_mpi $(mpi_python_libs) ;

@@ -1,7 +1,7 @@
-Index: boost_1_65_0/tools/build/src/tools/python.jam
+Index: boost_1_71_0/tools/build/src/tools/python.jam
 ===================================================================
---- boost_1_65_0.orig/tools/build/src/tools/python.jam
-+++ boost_1_65_0/tools/build/src/tools/python.jam
+--- boost_1_71_0.orig/tools/build/src/tools/python.jam
++++ boost_1_71_0/tools/build/src/tools/python.jam
 @@ -99,7 +99,7 @@ py3-version = ;
  #   using python : 2.3 : /usr/local/bin/python ;
  #
@@ -20,7 +20,16 @@ Index: boost_1_65_0/tools/build/src/tools/python.jam
  
      project.pop-current ;
  }
-@@ -659,7 +659,7 @@ local rule system-library-dependencies (
+@@ -507,7 +507,7 @@ local rule probe ( python-cmd )
+ # have a value based on the information given.
+ #
+ local rule compute-default-paths ( target-os : version ? : prefix ? :
+-    exec-prefix ? )
++    exec-prefix ? : abi-letters ? )
+ {
+     exec-prefix ?= $(prefix) ;
+ 
+@@ -668,7 +668,7 @@ rule version-suffix ( version )
  
  # Declare a target to represent Python's library.
  #
@@ -29,7 +38,7 @@ Index: boost_1_65_0/tools/build/src/tools/python.jam
  {
      # Compute the representation of Python version in the name of Python's
      # library file.
-@@ -683,13 +683,13 @@ local rule declare-libpython-target ( ve
+@@ -692,13 +692,13 @@ local rule declare-libpython-target ( ve
      }
  
      # Declare it.
@@ -45,7 +54,7 @@ Index: boost_1_65_0/tools/build/src/tools/python.jam
  {
      local prefix ;
      local exec-prefix ;
-@@ -705,6 +705,7 @@ local rule configure ( version ? : cmd-o
+@@ -714,6 +714,7 @@ local rule configure ( version ? : cmd-o
          extension-suffix ?= _d ;
      }
      extension-suffix ?= "" ;
@@ -53,7 +62,16 @@ Index: boost_1_65_0/tools/build/src/tools/python.jam
  
      local cmds-to-try ;
  
-@@ -968,7 +969,7 @@ local rule configure ( version ? : cmd-o
+@@ -789,7 +790,7 @@ local rule configure ( version ? : cmd-o
+                     exec-prefix = $(sys.exec_prefix) ;
+ 
+                     compute-default-paths $(target-os) : $(sys.version) :
+-                        $(sys.prefix) : $(sys.exec_prefix) ;
++                        $(sys.prefix) : $(sys.exec_prefix) : $(sys.abi_letters) ;
+ 
+                     version = $(sys.version) ;
+                     interpreter-cmd ?= $(cmd) ;
+@@ -970,7 +971,7 @@ local rule configure ( version ? : cmd-o
      }
      else
      {

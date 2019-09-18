@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Sep 11 11:47:40 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update URL to reflect new location of Boost sources
+
+-------------------------------------------------------------------
+Tue Sep 10 16:01:35 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 1.71.0
+  Breaking changes:
+  * Uuid: MD5 name-based uuid generation was corrected to be identical
+    on all endian systems. Define BOOST_UUID_COMPAT_PRE_1_71_MD5 to
+    keep the result in a format compatible with 1.66 through 1.70.
+    This does not affect the default name-based uuid generation
+    which is based on SHA1
+
+  * Test: Boost.Test shows deprecation warnings if some very old
+    headers as deprecated. If you encounter such warnings, please
+    follow the indications: those headers will be removed in a future
+    release.
+
+  New libraries:
+  * Variant2: A never-valueless, strong guarantee implementation
+    of std::variant
+
+  Updated libraries:
+  * align, asio, any, beast, circular buffer, container, context,
+    conversion, core, dynamic bitset, endian, fiber, filesystem,
+    flyweight, histogram, iostreams, interprocess, intrusive,
+    legical cast, log, math, metaparse, move, multi array,
+    multi-index containers, outcome, parameter, ptrcontainer,
+    polycollection, smartptr, stacktrace, test, utility, uuid,
+    variant, yap
+
+  For detailed changes see
+  https://www.boost.org/users/history/version_1_71_0.html
+
+- drop upstream patches no longer needed:
+  boost-1.57.0-python-libpython_dep.patch,
+  0001-beast-fix-moved-from-executor.patch,
+  remove_boost_serialization_depends, cmake.patch
+
+- updated patches: boost-1.57.0-python-abi_letters.patch,
+  3ecbf83f.patch
+
+-------------------------------------------------------------------
+Tue May 28 13:22:30 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- 3ecbf83f.patch: add upstream patch to build and install python-mpi
+  extention.
+- remove_boost_serialization_depends.patch: workaround to build
+  python mpi extention
+
+-------------------------------------------------------------------
+Mon May 13 13:25:24 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- cmake.patch: add upstream patches making it more compatible with
+  cmake's FindBoost
+
+-------------------------------------------------------------------
+Fri Apr 12 11:48:21 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 1.70.0
+
+  Breaking changes:
+  * beast - there were many API changes. For details, see upstream
+    release notes
+
+  New libraries:
+  * outcome: A set of tools for reporting and handling function
+    failures in contexts where directly using exception handling
+    is unsuitable
+  * histogram: Fast and extensible multi-dimensional histograms
+
+  Updated libraries:
+  * asio, beast, context, coroutine2, dynamic bitset, fiber,
+    filesystem, integer, log, math, mp11, multi-index containers,
+    multiprecision, polycollection, spirit, stacktrace, test,
+    typeindex, typetraits, variant and ublas.
+
+  For detailed changes see
+  https://www.boost.org/users/history/version_1_70_0.html
+
+- 0001-beast-fix-moved-from-executor.patch: upstream patch to fix regresion
+- boost-rpmoptflags-only.patch: refresh but don't disable all extra
+  warnings
+- dynamic_linking.patch: refreshed
+- baselibs.conf - updated to 1.70.0
+
+-------------------------------------------------------------------
 Fri Mar  8 14:57:09 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not build gnu-mvapich2-hpc and gnu-openmpi2-hpc flavors in

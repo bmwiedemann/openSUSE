@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 13 11:02:21 UTC 2018 - enzokiel@kabelmail.de
+
+- Update to version 1.3.3:
+  + Fix regression in dvbpsi_decoder_psi_section_add()
+    set i_last_section_number
+
+-------------------------------------------------------------------
 Mon Feb 19 18:39:47 UTC 2018 - enzokiel@kabelmail.de
 
 - Update to version 1.3.2:

@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define ver 1.69.0
-%define _ver 1_69_0
-%define package_version 1_69
+%define ver 1.71.0
+%define _ver 1_71_0
+%define package_version 1_71_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -37,9 +37,12 @@
   %define python2_sitearch %{python_sitearch}
 %endif
 
-%if "@BUILD_FLAVOR@" == "%nil"
-%define build_base 0
+# We can't have these inside the "@BUILD_FLAVOR@" because then quilt
+# can't understand the spec file. If only @BUILD_FLAVOR@ was a normal macro....
+%define build_base 1
 %define name_suffix %{nil}
+
+%if "@BUILD_FLAVOR@" == "%nil"
 ExclusiveArch:  do_not_build
 %endif
 
@@ -79,7 +82,7 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %bcond_without python2
 %bcond_without python3
 %if %{with ringdisabled}
-ExclusiveArch: do-not-build
+ExclusiveArch:  do-not-build
 %else
 ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
@@ -96,7 +99,7 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %bcond_without python2
 %bcond_without python3
 %if %{with ringdisabled}
-ExclusiveArch: do-not-build
+ExclusiveArch:  do-not-build
 %else
 ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
@@ -161,15 +164,15 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.69.0
+Version:        1.71.0
 Release:        0
-%define library_version 1_69_0
+%define library_version 1_71_0
 
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
 URL:            http://www.boost.org
-Source0:        http://downloads.sourceforge.net/project/boost/boost/%{version}/boost_%{library_version}.tar.bz2
+Source0:        https://dl.bintray.com/boostorg/release/%{version}/source/boost_%{library_version}.tar.bz2
 Source1:        boost-rpmlintrc
 Source3:        http://downloads.sourceforge.net/project/boost/boost-docs/1.56.0/boost_1_56_pdf.tar.bz2
 Source4:        existing_extra_docs
@@ -188,12 +191,12 @@ Patch7:         boost-rpmoptflags-only.patch
 Patch9:         boost-aarch64-flags.patch
 Patch10:        boost-disable-pch-on-aarch64.patch
 Patch13:        boost-visibility.patch
-Patch14:        boost-1.57.0-python-libpython_dep.patch
 Patch15:        boost-1.57.0-python-abi_letters.patch
 Patch16:        boost-1.55.0-python-test-PyImport_AppendInittab.patch
 Patch17:        python_mpi.patch
 Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
+Patch23:        3ecbf83f.patch
 BuildRequires:  fdupes
 BuildRequires:  libbz2-devel
 BuildRequires:  libexpat-devel
@@ -264,7 +267,7 @@ Group:          Development/Libraries/C and C++
 Requires:       boost-license%{library_version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
-Conflicts:      libboost_headers-devel < 1.69
+Conflicts:      libboost_headers-devel < %{version}
 Conflicts:      libboost_headers-devel-impl
 Provides:       libboost_headers-devel-impl = %{version}
 
@@ -501,6 +504,7 @@ Summary:        Development headers for Boost.Contract
 Group:          Development/Libraries/C and C++
 Requires:       libboost_contract%{library_version} = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
+Requires:       libboost_system%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      libboost_contract-devel-impl
 Provides:       libboost_contract-devel-impl = %{version}
@@ -520,9 +524,11 @@ This package contains the Boost Coroutine runtime library.
 %package     -n libboost_coroutine%{library_version}-devel
 Summary:        Development headers for Boost.Coroutine
 Group:          Development/Libraries/C and C++
+Requires:       libboost_chrono%{library_version}-devel = %{version}
 Requires:       libboost_context%{library_version}-devel = %{version}
 Requires:       libboost_coroutine%{library_version} = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
+Requires:       libboost_thread%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_coroutine-devel-impl
@@ -547,7 +553,6 @@ Group:          Development/Libraries/C and C++
 Requires:       libboost_date_time%{library_version} = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
-Recommends:     libboost_serialization%{library_version}-devel = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_date_time-devel-impl
 Provides:       libboost_date_time-devel-impl = %{version}
@@ -569,6 +574,7 @@ Summary:        Development headers for Boost.Fiber library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_context%{library_version}-devel = %{version}
 Requires:       libboost_fiber%{library_version} = %{version}
+Requires:       libboost_filesystem%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
@@ -616,7 +622,7 @@ Summary:        Development headers for Boost.Graph library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_graph%{library_version} = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
-## FIXME:!!!! need better list of requirements here
+Requires:       libboost_regex%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_graph-devel-impl
@@ -660,9 +666,13 @@ This package contains runtime library for Boost.Log.
 %package     -n libboost_log%{library_version}-devel
 Summary:        Development headers for Boost.Log library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_atomic%{library_version}-devel = %{version}
+Requires:       libboost_chrono%{library_version}-devel = %{version}
 Requires:       libboost_date_time%{library_version}-devel = %{version}
+Requires:       libboost_filesystem%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_log%{library_version} = %{version}
+Requires:       libboost_regex%{library_version}-devel = %{version}
 Requires:       libboost_thread%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_log-devel-impl
@@ -1035,9 +1045,12 @@ This package contains the Boost::Wave runtime library.
 %package     -n libboost_wave%{library_version}-devel
 Summary:        Development headers for Boost.Wave library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_chrono%{library_version}-devel = %{version}
+Requires:       libboost_date_time%{library_version}-devel = %{version}
 Requires:       libboost_filesystem%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_serialization%{library_version}-devel = %{version}
+Requires:       libboost_thread%{library_version}-devel = %{version}
 Requires:       libboost_wave%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_wave-devel-impl
@@ -1079,6 +1092,7 @@ Summary:        Development headers for Boost.Random library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_random%{library_version} = %{version}
+Requires:       libboost_system%{library_version}-devel = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_random-devel-impl
 Provides:       libboost_random-devel-impl = %{version}
@@ -1117,8 +1131,11 @@ This package contains Boost::Locale runtime library.
 %package     -n libboost_locale%{library_version}-devel
 Summary:        Development headers for Boost.Locale library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_chrono%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_locale%{library_version} = %{version}
+Requires:       libboost_system%{library_version}-devel = %{version}
+Requires:       libboost_thread%{library_version}-devel = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_locale-devel-impl
 Provides:       libboost_locale-devel-impl = %{version}
@@ -1137,6 +1154,7 @@ This package contains Boost.Timer runtime library.
 %package     -n libboost_timer%{library_version}-devel
 Summary:        Development headers for Boost.Timer library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_chrono%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_timer%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
@@ -1157,7 +1175,10 @@ This package contains Boost::TypeErasure runtime library.
 %package     -n libboost_type_erasure%{library_version}-devel
 Summary:        Development headers for Boost.TypeErasure library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_chrono%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
+Requires:       libboost_system%{library_version}-devel = %{version}
+Requires:       libboost_thread%{library_version}-devel = %{version}
 Requires:       libboost_type_erasure%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_type_erasure-devel-impl
@@ -1203,12 +1224,12 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch9 -p1
 %patch10 -p1
 %patch13
-%patch14 -p1
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
 %patch18 -p1
 %patch20 -p1
+%patch23 -p1
 
 %build
 find . -type f -exec chmod u+w {} +
@@ -1271,8 +1292,8 @@ module load gnu %mpi_flavor
 #      use staging directories for MPI/PYTHON combinations.
 
 # General case
+# alias boost_python_alias : : <library>/boost/python//boost_python ;
 cat << EOF >user-config.jam
-alias boost_python_alias : : <library>/boost/python//boost_python ;
 EOF
 %endif # ! build_base
 
@@ -1376,12 +1397,12 @@ echo 'using mpi ;' >> ./user-config.jam
 cp %{SOURCE101} .
 chmod +x symbol_diff.sh
 %if %{with python3}
-./symbol_diff.sh python3-stage/lib/libboost_mpi.so           stage/lib/libboost_mpi.so
-./symbol_diff.sh python3-stage/lib/libboost_serialization.so stage/lib/libboost_serialization.so
+#./symbol_diff.sh python3-stage/lib/libboost_mpi.so           stage/lib/libboost_mpi.so
+#./symbol_diff.sh python3-stage/lib/libboost_serialization.so stage/lib/libboost_serialization.so
 %endif
 %if %{with python2}
-./symbol_diff.sh python-stage/lib/libboost_serialization.so  stage/lib/libboost_serialization.so
-./symbol_diff.sh python-stage/lib/libboost_mpi.so            stage/lib/libboost_mpi.so
+#./symbol_diff.sh python-stage/lib/libboost_serialization.so  stage/lib/libboost_serialization.so
+#./symbol_diff.sh python-stage/lib/libboost_mpi.so            stage/lib/libboost_mpi.so
 %endif
 #./symbol_diff.sh python-stage/lib/libboost_serialization.so  stage/lib/libboost_serialization.so
 #./symbol_diff.sh python-stage/lib/libboost_mpi.so            stage/lib/libboost_mpi.so
@@ -1457,6 +1478,8 @@ module load gnu %mpi_flavor
 
 %if ! %{build_base}
 %if %{with python2}
+rm -r %{buildroot}%{package_libdir}/libboost_python.so
+rm -r %{buildroot}%{package_libdir}/libboost_mpi_python.so
 ln -s libboost_mpi_python-py2_7.so %{buildroot}%{package_libdir}/libboost_mpi_python.so
 ln -s libboost_python-py2_7.so     %{buildroot}%{package_libdir}/libboost_python.so
 %endif
@@ -1507,7 +1530,7 @@ install -m 0755 dist/bin/quickbook %{buildroot}%{package_bindir}/quickbook
 
 %if %{build_base}
 mkdir -p %{buildroot}%{package_bindir}
-install -m 755 bjam %{buildroot}%{package_bindir}
+install -m 755 b2 %{buildroot}%{package_bindir}/bjam
 ln -s bjam %{buildroot}%{package_bindir}/jam
 
 # Remove exception library, but only if the symbols are not
@@ -1526,12 +1549,32 @@ mkdir -p %{buildroot}%{my_docdir}
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 mkdir -p %{buildroot}%{_defaultlicensedir}
 %endif
+
+# not used or duplicated in boost-extra flavour
+rm -r %{buildroot}%{package_libdir}/cmake/boost_stacktrace_{backtrace,windbg}*
+rm -r %{buildroot}%{package_libdir}/cmake/boost_exception-*
+rm -r %{buildroot}%{package_libdir}/cmake/boost_graph_parallel-%{version}
 %else  # ! build_base
+# duplicate from boost-base flavour
+rm %{buildroot}%{package_libdir}/cmake/BoostDetectToolset-%{version}.cmake
+rm -r %{buildroot}%{package_libdir}/cmake/Boost-%{version}
+rm -r %{buildroot}%{package_libdir}/cmake/boost_headers-%{version}
+rm -r %{buildroot}%{package_libdir}/cmake/boost_{w,}serialization-%{version}
+rm -r %{buildroot}%{package_libdir}/cmake/mpi-%{version}
+
+rm -r %{buildroot}%{package_libdir}/libboost_numpy.so{,.%{version}}
+rm -r %{buildroot}%{package_libdir}/libboost_mpi_python.so.%{version}
+rm -r %{buildroot}%{package_libdir}/libboost_python.so.%{version}
+
 rm -r %{buildroot}%{package_includedir}/boost
-rm %{buildroot}%{package_libdir}/libboost_serialization*
+rm %{buildroot}%{package_libdir}/libboost_{w,}serialization*
 rmdir --ignore-fail-on-non-empty %{buildroot}%{package_libdir}
 %fdupes %{buildroot}%{my_docdir}
 %endif
+
+# Remove bad files - no -f on purpose, so we see when we they fix it.
+rm %{buildroot}%{package_libdir}/*.so.1
+rm %{buildroot}%{package_libdir}/*.so.1.71
 
 %if %{with hpc}
 %hpc_write_modules_files
@@ -1715,7 +1758,7 @@ EOF
 %if ! %{with mpi}
 %files -n %{package_name}-jam
 %package_bindir
-%endif # !
+%endif # ! with mpi
 %if %{with python2}
 %files -n %{package_name}-python2 
 %package_python2_sitearch
@@ -1735,12 +1778,16 @@ EOF
 %{package_libdir}/libboost_atomic.so.%{version}
 
 %files -n libboost_atomic%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_atomic-%{version}
+%{package_libdir}/cmake/boost_atomic-%{version}/*
 %{package_libdir}/libboost_atomic.so
 
 %files -n libboost_container%{library_version}
 %{package_libdir}/libboost_container.so.%{version}
 
 %files -n libboost_container%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_container-%{version}
+%{package_libdir}/cmake/boost_container-%{version}/*
 %{package_libdir}/libboost_container.so
 
 %if %{with build_context}
@@ -1748,12 +1795,16 @@ EOF
 %{package_libdir}/libboost_context.so.%{version}
 
 %files -n libboost_context%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_context-%{version}
+%{package_libdir}/cmake/boost_context-%{version}/*
 %{package_libdir}/libboost_context.so
 
 %files -n libboost_coroutine%{library_version}
 %{package_libdir}/libboost_coroutine.so.%{version}
 
 %files -n libboost_coroutine%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_coroutine-%{version}
+%{package_libdir}/cmake/boost_coroutine-%{version}/*
 %{package_libdir}/libboost_coroutine.so
 
 %endif # if with build_context
@@ -1762,12 +1813,16 @@ EOF
 %{package_libdir}/libboost_contract.so.%{version}
 
 %files -n libboost_contract%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_contract-%{version}
+%{package_libdir}/cmake/boost_contract-%{version}/*
 %{package_libdir}/libboost_contract.so
 
 %files -n libboost_date_time%{library_version}
 %{package_libdir}/libboost_date_time.so.%{version}
 
 %files -n libboost_date_time%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_date_time-%{version}
+%{package_libdir}/cmake/boost_date_time-%{version}/*
 %{package_libdir}/libboost_date_time.so
 
 %if %{with boost_fiber}
@@ -1775,6 +1830,10 @@ EOF
 %{package_libdir}/libboost_fiber.so.%{version}
 
 %files -n libboost_fiber%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_fiber-%{version}
+%dir %{package_libdir}/cmake/boost_fiber_numa-%{version}
+%{package_libdir}/cmake/boost_fiber-%{version}/*
+%{package_libdir}/cmake/boost_fiber_numa-%{version}/*
 %{package_libdir}/libboost_fiber.so
 
 %endif # with boost_fiber
@@ -1783,18 +1842,24 @@ EOF
 %{package_libdir}/libboost_filesystem.so.%{version}
 
 %files -n libboost_filesystem%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_filesystem-%{version}
+%{package_libdir}/cmake/boost_filesystem-%{version}/*
 %{package_libdir}/libboost_filesystem.so
 
 %files -n libboost_graph%{library_version}
 %{package_libdir}/libboost_graph.so.%{version}
 
 %files -n libboost_graph%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_graph-%{version}
+%{package_libdir}/cmake/boost_graph-%{version}/*
 %{package_libdir}/libboost_graph.so
 
 %files -n libboost_iostreams%{library_version}
 %{package_libdir}/libboost_iostreams.so.%{version}
 
 %files -n libboost_iostreams%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_iostreams-%{version}
+%{package_libdir}/cmake/boost_iostreams-%{version}/*
 %{package_libdir}/libboost_iostreams.so
 
 %files -n libboost_log%{library_version}
@@ -1802,6 +1867,10 @@ EOF
 %{package_libdir}/libboost_log_setup.so.%{version}
 
 %files -n libboost_log%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_log-%{version}
+%dir %{package_libdir}/cmake/boost_log_setup-%{version}
+%{package_libdir}/cmake/boost_log-%{version}/*
+%{package_libdir}/cmake/boost_log_setup-%{version}/*
 %{package_libdir}/libboost_log.so
 %{package_libdir}/libboost_log_setup.so
 
@@ -1814,6 +1883,12 @@ EOF
 %{package_libdir}/libboost_math_tr1.so.%{version}
 
 %files -n libboost_math%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_math-%{version}
+%dir %{package_libdir}/cmake/boost_math_c99*-%{version}
+%dir %{package_libdir}/cmake/boost_math_tr1*-%{version}
+%{package_libdir}/cmake/boost_math-%{version}/*
+%{package_libdir}/cmake/boost_math_c99*-%{version}/*
+%{package_libdir}/cmake/boost_math_tr1*-%{version}/*
 %{package_libdir}/libboost_math_c99f.so
 %{package_libdir}/libboost_math_c99l.so
 %{package_libdir}/libboost_math_c99.so
@@ -1827,6 +1902,12 @@ EOF
 %{package_libdir}/libboost_unit_test_framework.so.%{version}
 
 %files -n libboost_test%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_prg_exec_monitor-%{version}
+%dir %{package_libdir}/cmake/boost_test_exec_monitor-%{version}
+%dir %{package_libdir}/cmake/boost_unit_test_framework-%{version}
+%{package_libdir}/cmake/boost_prg_exec_monitor-%{version}/*
+%{package_libdir}/cmake/boost_test_exec_monitor-%{version}/*
+%{package_libdir}/cmake/boost_unit_test_framework-%{version}/*
 %{package_libdir}/libboost_prg_exec_monitor.so
 %{package_libdir}/libboost_test_exec_monitor.so
 %{package_libdir}/libboost_unit_test_framework.so
@@ -1835,6 +1916,8 @@ EOF
 %{package_libdir}/libboost_program_options.so.%{version}
 
 %files -n libboost_program_options%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_program_options-%{version}
+%{package_libdir}/cmake/boost_program_options-%{version}/*
 %{package_libdir}/libboost_program_options.so
 %endif # build_base
 
@@ -1845,12 +1928,16 @@ EOF
 %{package_libdir}/libboost_mpi.so.%{version}
 
 %files -n libboost_mpi%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_mpi-%{version}
+%{package_libdir}/cmake/boost_mpi-%{version}/*
 %{package_libdir}/libboost_mpi.so
 
 %files -n libboost_graph_parallel%{library_version}
 %{package_libdir}/libboost_graph_parallel.so.%{version}
 
 %files -n libboost_graph_parallel%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_graph_parallel-%{version}
+%{package_libdir}/cmake/boost_graph_parallel-%{version}/*
 %{package_libdir}/libboost_graph_parallel.so
 
 %if %{with python2}
@@ -1858,6 +1945,8 @@ EOF
 %{package_libdir}/libboost_mpi_python-py2_7.so.%{version}
 
 %files -n libboost_mpi_python-py2_7-%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_mpi_python-%{version}
+%{package_libdir}/cmake/boost_mpi_python-%{version}/*
 %{package_libdir}/libboost_mpi_python-py2_7.so
 %{package_libdir}/libboost_mpi_python.so
 
@@ -1876,6 +1965,8 @@ EOF
 %{package_libdir}/libboost_mpi_python-py3.so.%{version}
 
 %files -n libboost_mpi_python-py3-%{library_version}-devel
+##%dir %{package_libdir}/cmake/boost_mpi_python-%{version}
+##%{package_libdir}/cmake/boost_mpi_python-%{version}/*
 %{package_libdir}/libboost_mpi_python-py3.so
 
 %files -n python3-boost_parallel_mpi%{library_version}
@@ -1895,6 +1986,8 @@ EOF
 %{package_libdir}/libboost_python-py2_7.so.%{version}
 
 %files -n libboost_python-py2_7-%{library_version}-devel
+##%dir %{package_libdir}/cmake/boost_python-%{version}
+##%{package_libdir}/cmake/boost_python-%{version}/*
 %{package_libdir}/libboost_python.so
 %{package_libdir}/libboost_python-py2_7.so
 
@@ -1903,6 +1996,8 @@ EOF
 %{package_libdir}/libboost_numpy-py2_7.so.%{version}
 
 %files -n libboost_numpy-py2_7-%{library_version}-devel
+##%dir %{package_libdir}/cmake/boost_numpy-%{version}
+##%{package_libdir}/cmake/boost_numpy-%{version}/*
 %{package_libdir}/libboost_numpy-py2_7.so
 
 %endif # with numpy
@@ -1913,6 +2008,8 @@ EOF
 %{package_libdir}/libboost_python-py3.so.%{version}
 
 %files -n libboost_python-py3-%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_python-%{version}
+%{package_libdir}/cmake/boost_python-%{version}/*
 %{package_libdir}/libboost_python3.so
 %{package_libdir}/libboost_python-py3.so
 
@@ -1921,6 +2018,8 @@ EOF
 %{package_libdir}/libboost_numpy-py3.so.%{version}
 
 %files -n libboost_numpy-py3-%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_numpy-%{version}
+%{package_libdir}/cmake/boost_numpy-%{version}/*
 %{package_libdir}/libboost_numpy-py3.so
 
 %endif  # with numpy
@@ -1933,6 +2032,10 @@ EOF
 %{package_libdir}/libboost_wserialization.so.%{version}
 
 %files -n libboost_serialization%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_serialization-%{version}
+%dir %{package_libdir}/cmake/boost_wserialization-%{version}
+%{package_libdir}/cmake/boost_serialization-%{version}/*
+%{package_libdir}/cmake/boost_wserialization-%{version}/*
 %{package_libdir}/libboost_serialization.so
 %{package_libdir}/libboost_wserialization.so
 
@@ -1942,6 +2045,12 @@ EOF
 %{package_libdir}/libboost_stacktrace_noop.so.%{version}
 
 %files -n libboost_stacktrace%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_stacktrace_addr2line-%{version}
+%dir %{package_libdir}/cmake/boost_stacktrace_basic-%{version}
+%dir %{package_libdir}/cmake/boost_stacktrace_noop-%{version}
+%{package_libdir}/cmake/boost_stacktrace_addr2line-%{version}/*
+%{package_libdir}/cmake/boost_stacktrace_basic-%{version}/*
+%{package_libdir}/cmake/boost_stacktrace_noop-%{version}/*
 %{package_libdir}/libboost_stacktrace_addr2line.so
 %{package_libdir}/libboost_stacktrace_basic.so
 %{package_libdir}/libboost_stacktrace_noop.so
@@ -1950,54 +2059,72 @@ EOF
 %{package_libdir}/libboost_system.so.%{version}
 
 %files -n libboost_system%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_system-%{version}
+%{package_libdir}/cmake/boost_system-%{version}/*
 %{package_libdir}/libboost_system.so
 
 %files -n libboost_thread%{library_version}
 %{package_libdir}/libboost_thread.so.%{version}
 
 %files -n libboost_thread%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_thread-%{version}
+%{package_libdir}/cmake/boost_thread-%{version}/*
 %{package_libdir}/libboost_thread.so
 
 %files -n libboost_wave%{library_version}
 %{package_libdir}/libboost_wave.so.%{version}
 
 %files -n libboost_wave%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_wave-%{version}
+%{package_libdir}/cmake/boost_wave-%{version}/*
 %{package_libdir}/libboost_wave.so
 
 %files -n libboost_regex%{library_version}
 %{package_libdir}/libboost_regex.so.%{version}
 
 %files -n libboost_regex%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_regex-%{version}
+%{package_libdir}/cmake/boost_regex-%{version}/*
 %{package_libdir}/libboost_regex.so
 
 %files -n libboost_random%{library_version}
 %{package_libdir}/libboost_random.so.%{version}
 
 %files -n libboost_random%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_random-%{version}
+%{package_libdir}/cmake/boost_random-%{version}/*
 %{package_libdir}/libboost_random.so
 
 %files -n libboost_chrono%{library_version}
 %{package_libdir}/libboost_chrono.so.%{version}
 
 %files -n libboost_chrono%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_chrono-%{version}
+%{package_libdir}/cmake/boost_chrono-%{version}/*
 %{package_libdir}/libboost_chrono.so
 
 %files -n libboost_locale%{library_version}
 %{package_libdir}/libboost_locale.so.%{version}
 
 %files -n libboost_locale%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_locale-%{version}
+%{package_libdir}/cmake/boost_locale-%{version}/*
 %{package_libdir}/libboost_locale.so
 
 %files -n libboost_timer%{library_version}
 %{package_libdir}/libboost_timer.so.%{version}
 
 %files -n libboost_timer%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_timer-%{version}
+%{package_libdir}/cmake/boost_timer-%{version}/*
 %{package_libdir}/libboost_timer.so
 
 %files -n libboost_type_erasure%{library_version}
 %{package_libdir}/libboost_type_erasure.so.%{version}
 
 %files -n libboost_type_erasure%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_type_erasure-%{version}
+%{package_libdir}/cmake/boost_type_erasure-%{version}/*
 %{package_libdir}/libboost_type_erasure.so
 %endif # if build_base
 
@@ -2035,7 +2162,13 @@ EOF
 
 %if %{build_base}
 %files -n libboost_headers%{library_version}-devel
+%dir %{package_libdir}/cmake
+%dir %{package_libdir}/cmake/Boost-%{version}
+%dir %{package_libdir}/cmake/boost_headers-%{version}
 %dir %{package_includedir}/boost
+%{package_libdir}/cmake/BoostDetectToolset-%{version}.cmake
+%{package_libdir}/cmake/Boost-%{version}/*
+%{package_libdir}/cmake/boost_headers-%{version}/*
 %{package_includedir}/boost/*
 
 %files -n boost-license%{library_version}

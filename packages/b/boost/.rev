@@ -1147,4 +1147,41 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
     <comment></comment>
     <requestid>683004</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>3aa32f6b0b78bbd6898f0333dea3f142</srcmd5>
+    <version>1.71.0</version>
+    <time>1568804719</time>
+    <user>maxlin_factory</user>
+    <comment>- Update URL to reflect new location of Boost sources
+
+- Update to version 1.71.0
+  Breaking changes:
+  * Uuid: MD5 name-based uuid generation was corrected to be identical
+    on all endian systems. Define BOOST_UUID_COMPAT_PRE_1_71_MD5 to
+    keep the result in a format compatible with 1.66 through 1.70.
+    This does not affect the default name-based uuid generation
+    which is based on SHA1
+  * Test: Boost.Test shows deprecation warnings if some very old
+    headers as deprecated. If you encounter such warnings, please
+    follow the indications: those headers will be removed in a future
+    release.
+  New libraries:
+  * Variant2: A never-valueless, strong guarantee implementation
+    of std::variant
+  Updated libraries:
+  * align, asio, any, beast, circular buffer, container, context,
+    conversion, core, dynamic bitset, endian, fiber, filesystem,
+    flyweight, histogram, iostreams, interprocess, intrusive,
+    legical cast, log, math, metaparse, move, multi array,
+    multi-index containers, outcome, parameter, ptrcontainer,
+    polycollection, smartptr, stacktrace, test, utility, uuid,
+    variant, yap
+  For detailed changes see
+  https://www.boost.org/users/history/version_1_71_0.html
+- drop upstream patches no longer needed:
+  boost-1.57.0-python-libpython_dep.patch,
+  0001-beast-fix-moved-from-executor.patch,
+  remove_boost_serialization_depends, cmake.patch</comment>
+    <requestid>730121</requestid>
+  </revision>
 </revisionlist>

@@ -75,7 +75,7 @@ package.
 %setup -q
 
 %build
-export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
+export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden -fsigned-char"
 %configure --disable-static --disable-test-compare-images \
            --docdir='${datarootdir}'/doc/packages/%{name} \
            --enable-show-failed-test-output

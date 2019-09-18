@@ -36,12 +36,12 @@ Patch2:         neon-0.30.2_ssl-fix_timeout_retvals.patch
 Patch3:         neon-0.30.2-nulcert.patch
 BuildRequires:  krb5-devel
 BuildRequires:  libexpat-devel
-BuildRequires:  libopenssl-1_1-devel >= 1.1.1
 BuildRequires:  libproxy-devel
 BuildRequires:  libtool
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(openssl)
 
 %description
 neon is an HTTP and WebDAV client library with a C interface.
@@ -76,7 +76,9 @@ neon is an HTTP and WebDAV client library with a C interface.
 %ifarch ppc64le ppc64
 %patch1
 %endif
+if pkg-config --atleast-version=1.1.1 openssl; then
 %patch2 -p1
+fi
 %patch3 -p1
 
 %build
