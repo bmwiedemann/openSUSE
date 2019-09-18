@@ -1,0 +1,3 @@
+#!/bin/sh
+git blame packages/_/_project/_attribute |
+  perl -ne "if(m/^(\w+) .* publishing: '(\d+)'\$/)"'{system(qw(git tag), $2, $1) || system(qw(git push --tags))}'

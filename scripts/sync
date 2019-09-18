@@ -18,4 +18,5 @@ rm -rf packages
 scripts/mappkgs.pl in packages
 git add -f packages/*
 git commit -a -m "update $(date -u +"%Y-%m-%d %H:%M")"
+scripts/tagrelease
 git push
