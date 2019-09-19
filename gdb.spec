@@ -18,6 +18,7 @@
 
 
 %if 0%{?qemu_user_space_build}
+# In a qemu_user_space_build ptrace is not supported, so we can't test gdb.
 %global _without_testsuite 1
 %endif
 %bcond_without testsuite
@@ -275,6 +276,7 @@ BuildRequires:  makeinfo
 %else
 BuildRequires:  texinfo
 %endif
+BuildRequires:  expect
 BuildRequires:  mpfr-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
@@ -375,7 +377,10 @@ BuildRequires:  fpc
 %endif
 %endif
 %if 0%{?suse_version} >= 1200
+%ifnarch s390
+# s390 (for SLE12) doesn't have valgrind
 BuildRequires:  valgrind
+%endif
 %endif
 
 %endif # %%{with testsuite}
@@ -664,16 +669,17 @@ LDFLAGS="$LDFLAGS -L$PWD/processor-trace-%{libipt_version}-root%{_libdir}"
 
 export CXXFLAGS="$CFLAGS"
 
-export LIBRPM=no
-if test -f /usr/%{_lib}/librpm.so.1; then
-  export LIBRPM=librpm.so.1
+export LIBRPM=$(ls -1 /usr/%{_lib}/ \
+		    | grep '^librpm.so.[0-9][0-9]*$' \
+		    | sort -V -r \
+		    | head -n 1)
+if [ "$LIBRPM" != "" ]; then
+    export LIBRPM="/usr/%{_lib}/$LIBRPM"
+    [ -f "$LIBRPM" ]
+else
+    export LIBRPM=no
 fi
-if test -f /usr/%{_lib}/librpm.so.2; then
-  export LIBRPM=librpm.so.2
-fi
-if test -f /usr/%{_lib}/librpm.so.3; then
-  export LIBRPM=librpm.so.3
-fi
+
 %ifarch %ix86 ia64 ppc ppc64 ppc64le s390 s390x x86_64 aarch64 riscv64
 %define build_multitarget 1
 %else
@@ -813,6 +819,74 @@ then
   ./gdb -nx -readnow -ex q ./gdb-withindex
   cd ..
 fi
+
+# This is a build-time test, but still a test.  So, skip if we don't do tests.
+# This is relevant for %qemu_user_space_build == 1 builds, which atm is
+# the case for riscv64.
+%if %{with testsuite}
+if [ "$LIBRPM" != "no" ]; then
+    cd gdb
+    cat \
+	> hello.c \
+	<<EOF
+#include <stdio.h>
+int
+main (void)
+{
+  printf ("hello\n");
+  return 0;
+}
+EOF
+    $CC hello.c
+    libc=$(ldd a.out \
+	       | grep libc.so \
+	       | awk '{print $3}')
+    if readelf -SW $libc \
+	    | grep -q "\.gnu_debuglink"; then
+	cat \
+	    > test.exp \
+	    <<EOF
+expect {
+  "(gdb) " {
+    puts "\nPASS: first prompt"
+    send "start\n"
+  }
+  default {
+    puts "\nFAIL: first prompt (eof or timeout)"
+    exit 1
+  }
+}
+expect {
+  -re {Missing separate debuginfos, use: zypper install glibc-debuginfo-.*\(gdb\) } {
+    puts "\nPASS: zypper install message"
+    send "quit\n"
+    exit 0
+  }
+  "(gdb) " {
+    puts "\nFAIL: zypper install message"
+    send "quit\n"
+    exit 1
+  }
+  default {
+    puts "\nFAIL: zypper install message (eof or timeout)"
+    exit 1
+  }
+}
+EOF
+	gdb="./gdb -q -nw -nx -data-directory $(pwd -P)/data-directory"
+        # Due to bsc#1146899 "gdb's zypper install message disappears with
+	# -batch", we need to use an expect test.
+	expect -c "spawn $gdb ./a.out" -f test.exp
+	rm ./test.exp
+    else
+	# If packages are not build with debuginfo, we cannot expect a zypper
+	# install message.
+	echo "UNSUPPORTED: zypper install message"
+    fi
+    rm ./hello.c ./a.out
+    cd ..
+fi
+%endif
 
 cd ..
 

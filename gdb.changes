@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Sep 14 05:45:30 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for PowerPC need more than 3.5GB disk space
+  to avoid build failure
+
+-------------------------------------------------------------------
+Tue Sep 10 15:45:17 UTC 2019 - matz@suse.com
+
+- Disable use of valgrind on old s390 (31bit) distros.
+
+-------------------------------------------------------------------
+Fri Aug 23 16:00:18 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Enable librpm for version > librpm.so.3 [bsc#1145692]:
+  * Allow any librpm.so.x
+  * Fix unused variables in HAVE_LIBRPM code in
+    gdb-6.6-buildid-locate-rpm-suse.patch
+  * Add %build test to check for "zypper install <rpm-packagename>"
+    message
+- Implements jsc#ECO-368, the 2019 toolchain module update
+
+-------------------------------------------------------------------
 Tue Aug  6 21:36:49 UTC 2019 - Tom de Vries <tdevries@suse.de>
 
 - Master backport:  
