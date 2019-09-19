@@ -27,6 +27,9 @@ License:        LGPL-2.1-or-later
 Group:          Amusements/Games/Other
 URL:            http://www.fifengine.de
 Source:         https://github.com/fifengine/fifengine/archive/%{version}/%{oname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM swig4.patch -- removed flags that are not supported with swig 4.0
+# See https://github.com/fifengine/fifengine/commit/d14f232f4cd9a00b05d6872957070e8c020f515d
+Patch0:         swig4.patch
 BuildRequires:  cmake
 BuildRequires:  fifechan-devel
 BuildRequires:  gcc-c++
@@ -90,6 +93,10 @@ game using Python interfaces.
 
 %prep
 %setup -q -n %{oname}-%{version}
+# only apply the patch if swig 4 is used (currently: Tumbleweed)
+%if 0%{?suse_version} > 1500
+%patch0 -p1
+%endif
 
 %build
 %define __builddir py3

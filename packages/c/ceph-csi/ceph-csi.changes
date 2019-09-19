@@ -1,7 +1,38 @@
+--------------------------------------------------------------------------------
+Mon Sep  9 19:05:00 UTC 2019 - Blaine Gardner <blaine.gardner@suse.com>
+
+- Update to release v1.2.0
+  + Cephfs: Use ceph kernel client if kernel version >= 4.17
+  + implement grpc metrics for ceph-csi
+  + Add xfs fstype as default type in storageclass
+  + Add support to use ceph manager rbd command to delete an image
+  + e2e: correct log format in execCommandInPod()
+  + Add 'gosec' to the static-checks
+  + switch to cephfs, utils, and csicommon to new loging system
+  + utility to trace backend volume from RBD pvc
+  + Implement context-based logging
+  + implement klog wrapper
+  + unmap rbd image if connection timeout.
+  + start controller or node server based on config
+  + fix: Adds liveness sidecar to v1.14+ helm charts
+  + Prometheus liveness probe sidecar
+  + Wrap error if failed to fetch mon
+  + provisioners: add reconfiguring of PID limit
+  + Use "rbd device list" to list and find rbd images and their device paths
+  + Update Unstage transaction to undo steps done in Stage
+  + Move mounting staging instance to a sub-path within staging path
+  + e2e: do not fail to delete resources when "resource not found"
+  + remove post validation of rbd device
+
+-------------------------------------------------------------------
+Mon Aug 13 11:00:17 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Tech preview release for containers (bsc#1145433)
+
 -------------------------------------------------------------------
 Wed Jul 17 13:32:39 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
 
-- Use ceph-base pattern instead of individual packages 
+- Use ceph-base pattern instead of individual packages
 
 -------------------------------------------------------------------
 Fri Jul 12 10:58:40 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
@@ -21,12 +52,12 @@ Fri Jul 12 10:58:40 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
   + sidecar updates to latest available.
   + RBAC corrections and updates for containers.
   + Lock protection for create,delete volume ..etc operations
-  + Added CSIDriver CRD. 
+  + Added CSIDriver CRD.
 
 -------------------------------------------------------------------
 Fri Jul 12 07:31:20 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>
 
-- Update version to be parsed by OBS service 
+- Update version to be parsed by OBS service
 
 -------------------------------------------------------------------
 Thu Jul 11 15:53:58 UTC 2019 - Denis Kondratenko <denis.kondratenko@suse.com>

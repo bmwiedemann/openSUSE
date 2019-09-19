@@ -17,7 +17,7 @@
 
 
 Name:           rook
-Version:        1.0.0+git1899.g69255322
+Version:        1.1.0+git0.g2f9db0e1
 Release:        0
 Summary:        Orchestrator for distributed storage systems in cloud-native environments
 License:        Apache-2.0
@@ -78,7 +78,7 @@ operations.
 Summary:        Kubernetes YAML file manifests for deploying a Ceph cluster
 Group:          System/Management
 BuildArch:      noarch
-%requires_eq    ceph
+BuildRequires:  ceph
 
 %description k8s-yaml
 This package contains the yaml files required to deploy and run the
@@ -87,14 +87,13 @@ Rook-Ceph operator and Ceph clusters in a Kubernetes cluster.
 ################################################################################
 # Rook integration test binary metadata
 ################################################################################
-
 %package integration
 Summary:        Application which runs Rook integration tests
 Group:          System/Benchmark
 
 %description integration
 This package is intended to be used only for testing. Please don't install it
-in production clusters.
+in production environments.
 
 Rook's integration tests conveniently get built into a standalone binary. The
 tests require a running Kubernetes cluster, and the image being tested must be
@@ -174,7 +173,7 @@ cp -pr cluster/examples/kubernetes/ceph/* %{buildroot}%{_datadir}/k8s-yaml/rook/
 ################################################################################
 # Update manifests with images coming from Build Service
 ################################################################################
-rook_container_version='1.0.0.1899'  # this is udpated by update-tarball.sh
+rook_container_version='1.1.0.0'  # this is udpated by update-tarball.sh
 
 # determine image names to use in manifests depending on the base os type
 # %CEPH_VERSION% is replaced at build time by the _service

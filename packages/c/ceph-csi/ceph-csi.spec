@@ -1,7 +1,7 @@
 #
-# spec file for rook binaries
+# spec file for package ceph-csi
 #
-# Copyright (c) 2018 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-################################################################################
-# Rook metadata
-################################################################################
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
-Name:          ceph-csi
-Version:       1.1.0+git0.gc7ba26d2
-Release:       0
-Summary:       Container Storage Interface driver for Ceph block and file
-License:       Apache-2.0
-Group:         System/Filesystems
-Url:           https://github.com/ceph/ceph-csi
 
-Source0:       %{name}-%{version}.tar.xz
-Source98:      README
-Source99:      update-tarball.sh
+Name:           ceph-csi
+Version:        1.2.0+git0.gc420ee6d
+Release:        0
+Summary:        Container Storage Interface driver for Ceph block and file
+License:        Apache-2.0
+Group:          System/Filesystems
+Url:            https://github.com/ceph/ceph-csi
+
+Source0:        %{name}-%{version}.tar.xz
+Source98:       README
+Source99:       update-tarball.sh
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
 %endif
 
 # Go and spec requirements
-BuildRequires: golang-packaging
-BuildRequires: go
-BuildRequires: xz
+BuildRequires:  go
+BuildRequires:  golang-packaging
+BuildRequires:  xz
 
 # Rook runtime requirements - referenced from packages installed in Rook images
 # From Ceph base container: github.com/ceph/ceph-container/src/daemon-base/...
-Requires:      pattern() = ceph_base
+Requires:       pattern() = ceph_base
 
 %description
 Ceph CSI plugins implement an interface between CSI enabled Container
@@ -86,3 +86,5 @@ install --preserve-timestamps --mode=755 --target-directory="${install_location}
 
 # ceph-csi RPMs aren't for users to install, just to be put in containers, so
 # don't bother adding docs or changelog or anything
+
+%changelog

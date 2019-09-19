@@ -110,3 +110,19 @@ Index: gdb-7.12.1/gdb/build-id.c
        }
  }
  
+diff --git a/gdb/build-id.c b/gdb/build-id.c
+index b9ff15a..75d501a 100644
+--- a/gdb/build-id.c
++++ b/gdb/build-id.c
+@@ -864,10 +864,8 @@ missing_rpm_enlist_1 (const char *filename, int verify_vendor)
+ #endif
+ 	{
+ 	  Header h;
+-	  char *debuginfo, **slot, *s, *s2;
++	  char *debuginfo, **slot;
+ 	  errmsg_t err;
+-	  size_t srcrpmlen = sizeof (".src.rpm") - 1;
+-	  size_t debuginfolen = sizeof ("-debuginfo") - 1;
+ 	  rpmdbMatchIterator mi_debuginfo;
+ 
+ 	  h = rpmdbNextIterator_p (mi);

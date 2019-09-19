@@ -17,7 +17,7 @@
 
 
 Name:           yank
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Tool for selecting and copying text from stdin without a mouse
 License:        MIT
@@ -44,7 +44,6 @@ make %{?_smp_mflags}
 %make_install PREFIX=/usr
 
 %files
-%defattr(-,root,root)
 %{_bindir}/%{name}
 %{_mandir}/man?/%{name}.?%{ext_man}
 %license LICENSE

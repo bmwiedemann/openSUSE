@@ -1381,4 +1381,12 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
   * gdb-testsuite-avoid-pagination-in-attach-32.exp.patch (forwarded request 721544 from tomdevries)</comment>
     <requestid>721798</requestid>
   </revision>
+  <revision rev="130" vrev="5">
+    <srcmd5>38b5bf6dd0acc65ba2c6abf20c2eaf93</srcmd5>
+    <version>8.3</version>
+    <time>1568901068</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731960</requestid>
+  </revision>
 </revisionlist>

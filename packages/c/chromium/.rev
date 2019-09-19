@@ -2571,4 +2571,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 - Update patch old-libva.patch to build on openSUSE Leap 15.0</comment>
     <requestid>731231</requestid>
   </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>39e2a27e8be53dc2c308b17caf3088ab</srcmd5>
+    <version>77.0.3865.90</version>
+    <time>1568901128</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731870</requestid>
+  </revision>
 </revisionlist>

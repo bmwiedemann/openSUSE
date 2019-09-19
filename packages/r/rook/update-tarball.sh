@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -xEeuo pipefail
 
 if ! command -V go;
 then
@@ -29,15 +29,23 @@ trap clean_up EXIT SIGINT SIGTERM
 
 PKG_DIR=$(pwd)
 function on_err {
+    code="$?"
+    set +Eeuo pipefail
     echo "ERROR: previous command has failed"
-    echo "Removing archive."
+    echo "Removing archives."
     rm -f $PKG_DIR/rook-$VERSION.tar.xz
     rm -f $PKG_DIR/rook-$VERSION-vendor.tar.xz
+    exit $code
 }
 trap on_err ERR
 
 ROOK_REPO="github.com/SUSE/rook"
-REV="suse-master"
+ROOK_REV="v1.1.0"
+cat <<EOF
+
+tar-ing Rook $ROOK_REPO at revision '$ROOK_REV'
+
+EOF
 
 GOPATH=$WORK_DIR
 GOPATH_ROOK="$GOPATH/src/github.com/rook/rook"
@@ -48,14 +56,18 @@ mkdir --parents $GOPATH_ROOK
 git -C $GOPATH_ROOK/.. clone https://$ROOK_REPO.git
 
 cd "$GOPATH_ROOK"
-git checkout $REV
+git fetch && git fetch --tags
+git checkout "$ROOK_REV"
 
-#RELEASE should be from git describe when history would be correct
-RELEASE="$(cut -d '-' -f1 <<< $(git describe --long))"
-RELEASE="v1.0.0"
-GIT_COMMIT_NUM="$(cut -d '-' -f2 <<< $(git describe --long))"
-GIT_COMMIT="$(cut -d '-' -f3 <<< $(git describe --long))"
+# e.g, DESCRIBE=v1.1.0-0-g56789def  OR  DESCRIBE=v1.1.0-beta.1-0-g12345abc
+describe="$(git describe --long)"
+GIT_COMMIT=${describe##*-}       # git commit hash is last hyphen-delimited field
+remainder=${describe%-*}         # strip off the git commit field & continue
+GIT_COMMIT_NUM=${remainder##*-}  # num of commits after tag is second-to-last hyphen-delimited field
+RELEASE=${remainder%-*}          # all content before git commit num is the release version tag
+RELEASE=${RELEASE//-/'~'}        # support upstream beta tags: replace hyphen with tilde
 
+# strip off preceding 'v' from RELEASE
 VERSION="${RELEASE:1}+git$GIT_COMMIT_NUM.$GIT_COMMIT"
 
 # make primary source tarball before changing anything in the repo
@@ -73,5 +85,7 @@ tar -C "$GOPATH_ROOK/.." -cJf rook-$VERSION-vendor.tar.xz rook/vendor
 
 
 # update spec file versions
-sed -i "s/^Version:.*/Version:       $VERSION/" rook.spec
+sed -i "s/^Version:.*/Version:        $VERSION/" rook.spec
 sed -i "s/^rook_container_version=.*/rook_container_version='${RELEASE:1}.$GIT_COMMIT_NUM'  # this is udpated by update-tarball.sh/" rook.spec
+
+echo "Finished successfully!"
