@@ -1408,16 +1408,22 @@ unsorted:
   - celt 
   - celt051 
   - celt051-devel 
+  - ceph: [x86_64] 
+  - ceph-base: [x86_64] 
   - ceph-csi: [x86_64] 
   - ceph-dashboard-e2e: [x86_64] 
   - ceph-fuse: [x86_64] 
   - ceph-grafana-dashboards: [x86_64] 
   - ceph-iscsi: [x86_64] 
-  - ceph-mgr-dashboard: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
-  - ceph-mgr-diskprediction-cloud: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
-  - ceph-mgr-diskprediction-local: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
-  - ceph-mgr-rook: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
+  - ceph-mds: [x86_64] 
+  - ceph-mgr: [x86_64] 
+  - ceph-mgr-dashboard: [x86_64] 
+  - ceph-mgr-diskprediction-cloud: [x86_64] 
+  - ceph-mgr-diskprediction-local: [x86_64] 
+  - ceph-mgr-rook: [x86_64] 
   - ceph-mgr-ssh: [x86_64] 
+  - ceph-mon: [x86_64] 
+  - ceph-osd: [x86_64] 
   - ceph-prometheus-alerts: [x86_64] 
   - ceph-radosgw: [x86_64] 
   - ceph-resource-agents: [x86_64] 
@@ -7457,7 +7463,6 @@ unsorted:
   - libavahi-glib-devel 
   - libavahi-glib1-32bit: [x86_64] 
   - libavahi-gobject-devel 
-  - libavahi-ui0 
   - libavc1394-0-32bit: [x86_64] 
   - libavc1394-devel 
   - libavc1394-devel-32bit: [x86_64] 
@@ -9479,7 +9484,7 @@ unsorted:
   - liblegion1 
   - liblept5 
   - liblept5-32bit: [x86_64] 
-  - libleveldb1: [i586] 
+  - libleveldb1 
   - liblightdm-qt5-3-0 
   - liblightgrep-devel 
   - liblightgrep0 
@@ -9986,7 +9991,6 @@ unsorted:
   - libnova-devel 
   - libnscd-devel 
   - libnsl-devel 
-  - libnss_usrfiles2 
   - libnss_usrfiles2-32bit: [x86_64] 
   - libnsssharedhelper0 
   - libnsssharedhelper0-32bit: [x86_64] 
@@ -11270,7 +11274,7 @@ unsorted:
   - libstorage-ng-integration-tests 
   - libstorage-ng-python3 
   - libstorage-ng-utils 
-  - libstoragemgmt: [i586] 
+  - libstoragemgmt 
   - libstoragemgmt-arcconf-plugin 
   - libstoragemgmt-devel 
   - libstoragemgmt-hpsa-plugin 
@@ -11283,7 +11287,7 @@ unsorted:
   - libstoragemgmt-smis-plugin 
   - libstoragemgmt-targetd-plugin 
   - libstoragemgmt-udev 
-  - libstoragemgmt1: [i586] 
+  - libstoragemgmt1 
   - libstp2_3 
   - libstroke 
   - libstroke-devel 
@@ -11340,7 +11344,7 @@ unsorted:
   - libtasn1-devel 
   - libtasn1-devel-32bit: [x86_64] 
   - libtbbmalloc2 
-  - libtcmalloc4: [i586] 
+  - libtcmalloc4 
   - libtcmu2 
   - libtcnative-1-0 
   - libtcnative-1-0-devel 
@@ -11563,7 +11567,7 @@ unsorted:
   - libusbguard0 
   - libusbgx-devel 
   - libusbgx-tools 
-  - libusbgx1 
+  - libusbgx2 
   - libusbmuxd-devel 
   - libusbmuxd4-32bit: [x86_64] 
   - libusbprog0 
@@ -13106,8 +13110,6 @@ unsorted:
   - mongodb-server: [x86_64] 
   - mongodb-shell: [x86_64] 
   - mongolian-fonts 
-  - monitor 
-  - monitor-lang 
   - monitoring-plugins-all 
   - monitoring-plugins-apcupsd 
   - monitoring-plugins-bind 
@@ -19470,7 +19472,7 @@ unsorted:
   - python3-Cerberus 
   - python3-Chameleon 
   - python3-Cheetah3 
-  - python3-CherryPy: [i586] 
+  - python3-CherryPy 
   - python3-CommonMark 
   - python3-Cython 
   - python3-DataShape 
@@ -19538,7 +19540,7 @@ unsorted:
   - python3-Lektor 
   - python3-Levenshtein 
   - python3-Logbook 
-  - python3-Mako: [i586] 
+  - python3-Mako 
   - python3-MapProxy 
   - python3-Markdown 
   - python3-Markups 
@@ -19637,9 +19639,9 @@ unsorted:
   - python3-WSME 
   - python3-WTForms 
   - python3-WeasyPrint 
-  - python3-WebOb: [i586] 
-  - python3-WebTest: [i586] 
-  - python3-Werkzeug: [i586] 
+  - python3-WebOb 
+  - python3-WebTest 
+  - python3-Werkzeug 
   - python3-Whoosh 
   - python3-XStatic 
   - python3-XStatic-Angular-Schema-Form 
@@ -19911,7 +19913,7 @@ unsorted:
   - python3-bashate 
   - python3-bcc 
   - python3-bcolz 
-  - python3-beautifulsoup4: [i586] 
+  - python3-beautifulsoup4 
   - python3-behave 
   - python3-bencode 
   - python3-beniget 
@@ -20016,7 +20018,7 @@ unsorted:
   - python3-charset-normalizer 
   - python3-chart-studio 
   - python3-check-manifest 
-  - python3-cheroot: [i586] 
+  - python3-cheroot 
   - python3-chest 
   - python3-cinderclient 
   - python3-ciscoconfparse 
@@ -20552,10 +20554,10 @@ unsorted:
   - python3-itsdangerous 
   - python3-itypes 
   - python3-iwlib 
-  - python3-jaraco.base: [i586] 
+  - python3-jaraco.base 
   - python3-jaraco.classes 
   - python3-jaraco.collections 
-  - python3-jaraco.functools: [i586] 
+  - python3-jaraco.functools 
   - python3-jaraco.itertools 
   - python3-jaraco.logging 
   - python3-jaraco.packaging 
@@ -20695,7 +20697,7 @@ unsorted:
   - python3-libsmdev 
   - python3-libsmraw 
   - python3-libsoc 
-  - python3-libstoragemgmt: [i586] 
+  - python3-libstoragemgmt 
   - python3-libstoragemgmt-clibs 
   - python3-libtorrent-rasterbar 
   - python3-libunity 
@@ -20728,7 +20730,7 @@ unsorted:
   - python3-logilab-common 
   - python3-logreduce 
   - python3-loguru 
-  - python3-logutils: [i586] 
+  - python3-logutils 
   - python3-logzero 
   - python3-lttngust 
   - python3-lupa 
@@ -20784,7 +20786,7 @@ unsorted:
   - python3-monascaclient 
   - python3-mongoengine 
   - python3-monotonic 
-  - python3-more-itertools: [i586] 
+  - python3-more-itertools 
   - python3-moretools 
   - python3-moto 
   - python3-moviepy 
@@ -20982,7 +20984,7 @@ unsorted:
   - python3-pdd 
   - python3-pdfkit 
   - python3-pdfrw 
-  - python3-pecan: [i586] 
+  - python3-pecan 
   - python3-peewee 
   - python3-pefile 
   - python3-pelican 
@@ -21035,7 +21037,7 @@ unsorted:
   - python3-poppler-qt5 
   - python3-port-for 
   - python3-portalocker 
-  - python3-portend: [i586] 
+  - python3-portend 
   - python3-portpicker 
   - python3-positional 
   - python3-posix_ipc 
@@ -21561,7 +21563,7 @@ unsorted:
   - python3-sortinghat 
   - python3-soundcloud 
   - python3-sounddevice 
-  - python3-soupsieve: [i586] 
+  - python3-soupsieve 
   - python3-spake2 
   - python3-spark_parser 
   - python3-sparse 
@@ -21653,7 +21655,7 @@ unsorted:
   - python3-technicolor 
   - python3-telepot 
   - python3-template-remover 
-  - python3-tempora: [i586] 
+  - python3-tempora 
   - python3-tenacity 
   - python3-termcolor 
   - python3-terminado 
@@ -21796,7 +21798,7 @@ unsorted:
   - python3-vulture 
   - python3-w3lib 
   - python3-wadllib 
-  - python3-waitress: [i586] 
+  - python3-waitress 
   - python3-waitress-doc 
   - python3-wakeonlan 
   - python3-warlock 
@@ -21875,7 +21877,7 @@ unsorted:
   - python3-zarafa 
   - python3-zc.buildout 
   - python3-zc.customdoctests 
-  - python3-zc.lockfile: [i586] 
+  - python3-zc.lockfile 
   - python3-zdaemon 
   - python3-zeep 
   - python3-zeroconf 
