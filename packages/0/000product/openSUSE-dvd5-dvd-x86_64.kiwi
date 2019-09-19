@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20190918" schemaversion="4.1">
+<image name="OBS__openSUSE___20190919" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20190918</productvar>
+      <productvar name="VERSION">20190919</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20190918,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20190919,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20190918/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20190919/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/suse-tumbleweed</productoption>
@@ -2478,6 +2478,7 @@
       <repopackage name="libnsl2-32bit" arch="x86_64"/>
       <repopackage name="libnss_nis2"/>
       <repopackage name="libnss_nis2-32bit" arch="x86_64"/>
+      <repopackage name="libnss_usrfiles2"/>
       <repopackage name="libntfs-3g88"/>
       <repopackage name="libntlm0"/>
       <repopackage name="libnuma1"/>
@@ -2575,10 +2576,10 @@
       <repopackage name="libpkgconf3"/>
       <repopackage name="libplist3"/>
       <repopackage name="libplotter2"/>
-      <repopackage name="libply-boot-client4"/>
-      <repopackage name="libply-splash-core4"/>
-      <repopackage name="libply-splash-graphics4"/>
-      <repopackage name="libply4"/>
+      <repopackage name="libply-boot-client5"/>
+      <repopackage name="libply-splash-core5"/>
+      <repopackage name="libply-splash-graphics5"/>
+      <repopackage name="libply5"/>
       <repopackage name="libpmem1" arch="x86_64"/>
       <repopackage name="libpng16-16"/>
       <repopackage name="libpng16-16-32bit" arch="x86_64"/>
