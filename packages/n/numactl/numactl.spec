@@ -35,7 +35,6 @@ BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake
 BuildRequires:  libtool
 %endif
-Requires:       perl
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    %arm
 

@@ -18,7 +18,7 @@
 
 Name:           libmfx
 %define lname   libmfx1
-Version:        19.1.0
+Version:        19.2.1
 Release:        0
 Summary:        The Intel Media SDK
 License:        MIT

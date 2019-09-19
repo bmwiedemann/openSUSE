@@ -2,4 +2,7 @@
   <title>Monitor</title>
   <description>A simple task manager</description>
   <devel project="X11:Pantheon:Apps" package="monitor"/>
+  <build>
+    <disable/>
+  </build>
 </package>

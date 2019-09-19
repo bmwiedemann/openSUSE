@@ -409,4 +409,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE Applications 19.08.1 (forwarded request 728705 from luca_b)</comment>
     <requestid>728915</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>cec3a52cae4de24846dc89a3f45080f2</srcmd5>
+    <version>19.08.1</version>
+    <time>1568900846</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729749</requestid>
+  </revision>
 </revisionlist>

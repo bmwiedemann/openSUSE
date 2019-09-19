@@ -181,4 +181,28 @@
     <comment></comment>
     <requestid>648975</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9c1ca29ffd33d77986710a09ed10ad44</srcmd5>
+    <version>1.203</version>
+    <time>1568900782</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.203 matching debian
+- Remove patch verbose-numeric-port.patch
+- Refresh patches:
+  * broadcast-support.patch
+  * build-without-TLS-support.patch
+  * connect-timeout.patch
+  * dccp-support.patch
+  * destination-port-list.patch
+  * get-sev-by-name.patch
+  * misc-failures-and-features.patch
+  * port-to-linux-with-libsd.patch
+  * quit-timer.patch
+  * send-crlf.patch
+  * serialized-handling-multiple-clients.patch
+  * set-TCP-MD5SIG-correctly-for-client-connections.patch
+  * udp-scan-timeout.patch
+  * use-flags-to-specify-listen-address.patch</comment>
+    <requestid>729549</requestid>
+  </revision>
 </revisionlist>

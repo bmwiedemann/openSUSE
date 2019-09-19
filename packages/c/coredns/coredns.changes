@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 10 07:19:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix summary of coredns-extras.
+
+-------------------------------------------------------------------
 Wed Jul 24 13:26:10 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
 
 - Add coredns-extras package to allow use of coredns in a non-containerized

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 10 08:30:36 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-avcodec-h2645_parse-zero-initialize-the-rbsp-buffer.patch
+  [boo#1149839, CVE-2019-15942]
+
+-------------------------------------------------------------------
+Wed Sep  4 12:05:35 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Make ffmpeg-4.2-dlopen-fdk_aac.patch less verbose
+
+-------------------------------------------------------------------
 Thu Aug 22 08:45:17 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Rename ffmpeg-4.2-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
@@ -278,8 +289,8 @@ Tue Nov 06 01:39:11 UTC 2018 - sean@suspend.net
 
 Sat Nov 03 14:48:35 UTC 2018 - sean@suspend.net
 
-- Remove 0001-avformat-fivenc-Check-audio-packet-size.patch (fixed upstream (bsc#8591d16) 
-- Update ffmpeg to 4.0.3 
+- Remove 0001-avformat-fivenc-Check-audio-packet-size.patch (fixed upstream (bsc#8591d16)
+- Update ffmpeg to 4.0.3
   * For complete changelog, see https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n4.0.3
 
 -------------------------------------------------------------------
@@ -1342,7 +1353,7 @@ Mon Dec  7 12:18:36 UTC 2015 - idonmez@suse.com
   * All packman specific changes are protected with BUILD_ORIG
 - Added the following patches
   * ffmpeg-2.4.5-arm6l.patch
-  * ffmpeg-libcdio_cdda-pkgconfig.patch 
+  * ffmpeg-libcdio_cdda-pkgconfig.patch
 
 -------------------------------------------------------------------
 Sun Nov 29 11:24:54 UTC 2015 - jengelh@inai.de

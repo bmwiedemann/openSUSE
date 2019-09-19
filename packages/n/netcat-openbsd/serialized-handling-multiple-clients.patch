@@ -3,36 +3,24 @@ Date: Tue, 14 Feb 2012 23:02:00 +0800
 Subject: serialized handling multiple clients
 
 ---
- netcat.c |   44 +++++++++++++++++++++-----------------------
- 1 file changed, 21 insertions(+), 23 deletions(-)
+ netcat.c |   17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
 
 --- a/netcat.c
 +++ b/netcat.c
-@@ -705,6 +705,23 @@ main(int argc, char *argv[])
+@@ -707,7 +707,10 @@ main(int argc, char *argv[])
  				s = unix_bind(host, 0);
  			else
  				s = unix_listen(host);
+-		}
 +		} else
 +			s = local_listen(host, uport, hints);
 +		if (s < 0)
 +			err(1, NULL);
-+
-+		if (vflag && (family != AF_UNIX)) {
-+			char* local;
-+			if (family == AF_INET)
-+				local = "0.0.0.0";
-+			else if (family == AF_INET6)
-+				local = "::";
-+			else
-+				local = "unknown";
-+			fprintf(stderr, "Listening on [%s] (family %d, port %d)\n",
-+				host ?: local,
-+				family,
-+				*uport);
- 		}
  
  # if defined(TLS)
-@@ -719,28 +736,6 @@ main(int argc, char *argv[])
+ 		if (usetls) {
+@@ -721,13 +724,6 @@ main(int argc, char *argv[])
  # endif
  		/* Allow only one connection at a time, but stay alive. */
  		for (;;) {
@@ -43,25 +31,10 @@ Subject: serialized handling multiple clients
 -			}
 -			if (s < 0)
 -				err(1, NULL);
--
--			if (vflag && (family != AF_UNIX)) {
--				char* local;
--				if (family == AF_INET)
--					local = "0.0.0.0";
--				else if (family == AF_INET6)
--					local = "::";
--				else
--					local = "unknown";
--				fprintf(stderr, "Listening on [%s] (family %d, port %d)\n",
--					host ?: local,
--					family,
--					*uport);
--			}
--
  			if (uflag && kflag) {
  				/*
  				 * For UDP and -k, don't connect the socket,
-@@ -814,8 +809,11 @@ main(int argc, char *argv[])
+@@ -804,8 +800,11 @@ main(int argc, char *argv[])
  					err(1, "connect");
  			}
  

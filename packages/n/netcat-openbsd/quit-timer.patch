@@ -52,7 +52,7 @@ Subject: quit timer
  int
  main(int argc, char *argv[])
  {
-@@ -253,9 +256,9 @@ main(int argc, char *argv[])
+@@ -256,9 +259,9 @@ main(int argc, char *argv[])
  
  	while ((ch = getopt(argc, argv,
  # if defined(TLS)
@@ -64,7 +64,7 @@ Subject: quit timer
  # endif
  	    != -1) {
  		switch (ch) {
-@@ -347,6 +350,13 @@ main(int argc, char *argv[])
+@@ -350,6 +353,13 @@ main(int argc, char *argv[])
  		case 'p':
  			pflag = optarg;
  			break;
@@ -78,7 +78,7 @@ Subject: quit timer
  # if defined(TLS)
  		case 'R':
  			tls_cachanged = 1;
-@@ -1297,15 +1307,27 @@ readwrite(int net_fd)
+@@ -1319,15 +1329,27 @@ readwrite(int net_fd)
  	while (1) {
  		/* both inputs are gone, buffers are empty, we are done */
  		if (pfd[POLL_STDIN].fd == -1 && pfd[POLL_NETIN].fd == -1 &&
@@ -112,7 +112,7 @@ Subject: quit timer
  
  		/* poll */
  		num_fds = poll(pfd, 4, timeout);
-@@ -2032,6 +2054,7 @@ help(void)
+@@ -2052,6 +2074,7 @@ help(void)
  	\t-O length	TCP send buffer length\n\
  	\t-P proxyuser\tUsername for proxy authentication\n\
  	\t-p port\t	Specify local port for remote connects\n\
@@ -120,7 +120,7 @@ Subject: quit timer
  	\t-r		Randomize remote ports\n\
  	\t-S		Enable the TCP MD5 signature option\n\
  	\t-s source	Local source address\n\
-@@ -2056,10 +2079,19 @@ usage(int ret)
+@@ -2076,10 +2099,19 @@ usage(int ret)
  	fprintf(stderr,
  	    "usage: nc [-46CDdFhklNnrStUuvz] [-I length] [-i interval] [-M ttl]\n"
  	    "\t  [-m minttl] [-O length] [-P proxy_username] [-p source_port]\n"

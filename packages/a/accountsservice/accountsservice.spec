@@ -32,6 +32,8 @@ Patch0:         accountsservice-sysconfig.patch
 Patch1:         accountsservice-filter-suse-accounts.patch
 # PATCH-FIX-UPSTREAM accountsservice-read-root-user-cache.patch bsc#1114292 glfo#accountsservice/accountsservice#65 xwang@suse.com-- read root user cache file WAS PATCH-FIX-UPSTREAM
 Patch2:         accountsservice-read-root-user-cache.patch
+# PATCH-FIX-UPSTREAM accountsservice-wtmp-io-improvements.patch boo#1139487 fezhang@suse.com -- Backports that improve wtmp io performance.
+Patch3:         accountsservice-wtmp-io-improvements.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE as-fate318433-prevent-same-account-multi-logins.patch fate#318433 cxiong@suse.com -- prevent multiple simultaneous login.
@@ -98,6 +100,7 @@ querying and manipulating user account information.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # Sle-only patches start at 1000
 %if !0%{?is_opensuse}

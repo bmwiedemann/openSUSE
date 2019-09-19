@@ -33,18 +33,25 @@ Source:         https://download.kde.org/stable/applications/%{version}/src/%{rn
 Source1:        https://download.kde.org/stable/applications/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+BuildRequires:  karchive-devel
 BuildRequires:  kauth-devel
 BuildRequires:  kcmutils-devel
 BuildRequires:  kconfig-devel
 BuildRequires:  kconfigwidgets-devel
 BuildRequires:  kcoreaddons-devel
+BuildRequires:  kcrash-devel
 BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdelibs4support-devel
 BuildRequires:  kdoctools-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  ki18n-devel
+BuildRequires:  kiconthemes-devel
+BuildRequires:  kio-devel
+BuildRequires:  kjobwidgets-devel
+BuildRequires:  knotifications-devel
 BuildRequires:  kservice-devel
+BuildRequires:  ktextwidgets-devel
 BuildRequires:  kwallet-framework-devel
+BuildRequires:  kwindowsystem-devel
 BuildRequires:  kxmlgui-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -53,12 +60,8 @@ BuildRequires:  pkgconfig(Qt5DBus) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
 Recommends:     %{name}-lang
-%if %{?suse_version} <= 1320 && !0%{?is_opensuse}
-Conflicts:      kwalletmanager
-%else
 Provides:       kwalletmanager = %{version}
 Obsoletes:      kwalletmanager < %{version}
-%endif
 
 %description
 This application allows you to manage your KDE password wallet.

@@ -949,4 +949,12 @@
     <comment></comment>
     <requestid>714311</requestid>
   </revision>
+  <revision rev="128" vrev="9">
+    <srcmd5>d3dcc48ead4073be5ad3e2012d9818a6</srcmd5>
+    <version>0.7</version>
+    <time>1568900702</time>
+    <user>maxlin_factory</user>
+    <comment>- Trim descriptions of secondary packages. (forwarded request 725436 from jengelh)</comment>
+    <requestid>725539</requestid>
+  </revision>
 </revisionlist>

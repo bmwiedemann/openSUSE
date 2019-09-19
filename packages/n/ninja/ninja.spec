@@ -22,7 +22,7 @@ Release:        0
 Summary:        A small build system closest in spirit to Make
 License:        Apache-2.0
 Group:          Development/Tools/Building
-Url:            https://ninja-build.org/
+URL:            https://ninja-build.org/
 Source0:        https://github.com/ninja-build/ninja/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        macros.ninja
 Patch1:         ninja-disable-maxprocs-test.patch
@@ -36,8 +36,7 @@ of files (typically source code and output executables) and orchestrates
 building them, quickly.
 
 %prep
-%setup -q
-%patch1
+%autosetup -p0
 
 %build
 export CFLAGS="%{optflags}"
@@ -52,8 +51,10 @@ install -D -p -m 0644 misc/bash-completion %{buildroot}%{_datadir}/bash-completi
 install -D -p -m 0644 %{SOURCE1} %{buildroot}%{_rpmconfigdir}/macros.d/macros.ninja
 
 %check
-./ninja ninja_test
+./ninja all
 ./ninja_test
+python3 ./misc/ninja_syntax_test.py
+python3 ./misc/output_test.py
 
 %files
 %license COPYING

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 18:48:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add missing pkgconfig(avahi-client) and pkgconfig(gtk+-2.0)
+  BuildRequires previously pulled in by avahi.
+
+-------------------------------------------------------------------
 Fri Apr 19 06:48:39 UTC 2019 - Max Lin <mlin@suse.com>
 
 - Fix build with vala >= 0.43

@@ -29,7 +29,7 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl-mini
-Version:        7.65.3
+Version:        7.66.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl

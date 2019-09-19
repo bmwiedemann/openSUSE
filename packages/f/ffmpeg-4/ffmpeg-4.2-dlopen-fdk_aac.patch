@@ -30,7 +30,7 @@ Index: ffmpeg-4.2/libavcodec/dlopen.h
 ===================================================================
 --- /dev/null
 +++ ffmpeg-4.2/libavcodec/dlopen.h
-@@ -0,0 +1,13 @@
+@@ -0,0 +1,12 @@
 +#ifndef LOCALINC_DLOPEN_H
 +#define LOCALINC_DLOPEN_H
 +#include <dlfcn.h>
@@ -38,7 +38,6 @@ Index: ffmpeg-4.2/libavcodec/dlopen.h
 +#define str(x) #x
 +
 +#define dl_sym(func, args, lib) \
-+	fprintf(stderr, "dlsym " #func "\n"); \
 +	dl_##func = args dlsym(lib, #func); \
 +	if ((err = dlerror())) \
 +		goto error;

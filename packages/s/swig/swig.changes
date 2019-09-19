@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  9 08:17:39 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 4.0.1
+  - SWIG now cleans up on error by removing all generated files.
+  - Add Python 3.8 support.
+  - Python Sphinx compatibility added for Doxygen comments.
+  - Some minor regressions introduced in 4.0.0 were fixed.
+  - Fix some C++17 compatibility problems in Python and Ruby generated
+    code.
+  - Minor improvements/fixes for C#, Java, Javascript, Lua, MzScheme,
+    Ocaml, Octave and Python.
+  
+  See https://raw.githubusercontent.com/swig/swig/master/CHANGES
+
+-------------------------------------------------------------------
 Wed May  8 12:57:04 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 4.0.0

@@ -8,7 +8,7 @@ Subject: Set TCP MD5SIG correctly for client connections
 
 --- a/netcat.c
 +++ b/netcat.c
-@@ -47,6 +47,9 @@
+@@ -46,6 +46,9 @@
  #ifdef __linux__
  # include <linux/in6.h>
  #endif
@@ -18,7 +18,7 @@ Subject: Set TCP MD5SIG correctly for client connections
  
  #ifndef IPTOS_LOWDELAY
  # define IPTOS_LOWDELAY 0x10
-@@ -176,6 +179,9 @@ FILE	*Zflag;					/* file to save peer ce
+@@ -175,6 +178,9 @@ FILE	*Zflag;					/* file to save peer ce
  int	Cflag = 0;			/* CRLF line-ending */
  # endif
  
@@ -28,7 +28,7 @@ Subject: Set TCP MD5SIG correctly for client connections
  int recvcount, recvlimit;
  int timeout = -1;
  int family = AF_UNSPEC;
-@@ -206,7 +212,7 @@ int	udptest(int);
+@@ -205,7 +211,7 @@ int	udptest(int);
  int	unix_bind(char *, int);
  int	unix_connect(char *);
  int	unix_listen(char *);
@@ -37,7 +37,7 @@ Subject: Set TCP MD5SIG correctly for client connections
  int	process_tos_opt(char *, int *);
  # if defined(TLS)
  int	process_tls_opt(char *, int *);
-@@ -456,7 +462,10 @@ main(int argc, char *argv[])
+@@ -458,7 +464,10 @@ main(int argc, char *argv[])
  			break;
  # endif
  		case 'S':
@@ -49,7 +49,7 @@ Subject: Set TCP MD5SIG correctly for client connections
  			Sflag = 1;
  # else
  			errx(1, "no TCP MD5 signature support available");
-@@ -1171,7 +1180,7 @@ remote_connect(const char *host, const c
+@@ -1169,7 +1178,7 @@ remote_connect(const char *host, const c
  			freeaddrinfo(ares);
  		}
  
@@ -58,7 +58,7 @@ Subject: Set TCP MD5SIG correctly for client connections
  		char *proto = proto_name(uflag, dccpflag);
  
  		if ((error = connect_with_timeout(s, res->ai_addr, res->ai_addrlen, timeout)) == CONNECTION_SUCCESS)
-@@ -1325,7 +1334,7 @@ local_listen(const char *host, const cha
+@@ -1323,7 +1332,7 @@ local_listen(const char *host, const cha
  			err(1, NULL);
  # endif
  
@@ -67,7 +67,7 @@ Subject: Set TCP MD5SIG correctly for client connections
  
  		if (bind(s, (struct sockaddr *)res->ai_addr,
  		    res->ai_addrlen) == 0)
-@@ -1845,9 +1854,10 @@ udptest(int s)
+@@ -1855,9 +1864,10 @@ udptest(int s)
  }
  
  void
@@ -79,7 +79,7 @@ Subject: Set TCP MD5SIG correctly for client connections
  
  # if defined(SO_BROADCAST)
  	if (bflag) {
-@@ -1858,10 +1868,17 @@ set_common_sockopts(int s, int af)
+@@ -1868,10 +1878,17 @@ set_common_sockopts(int s, int af)
  			err(1, NULL);
  	}
  # endif

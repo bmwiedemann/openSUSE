@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Mon Sep 09 10:49:29 UTC 2019 - mrostecki@opensuse.org
+
+- Add patches which upgrade etcd library to 3.4.0 which has a new
+  client load balancer and solves issues with unavailability of
+  endpoints in etcd cluster. (bsc#1145258)
+  * 0001-etcd-use-ca-file-field-from-etcd-option-if-available.patch
+  * 0002-daemon-separate-kvstore-initialization-into-separate.patch
+  * 0003-deps-update-etcd-to-v3.4.0.patch
+- Update to version 1.5.7:
+  * cilium: update IsEtcdCluster to return true if etcd.operator="true" kv option is set
+  * bpf: try to atomically replace filters when possible
+  * cilium: route mtu not set unless route.Spec set MTU
+  * Revert "[daemon] - Change MTU source for cilium_host (Use the Route one)"
+  * cilium: encryption, fix getting started guides create secrects command
+  * datapath: Limit host->service IP SNAT to local traffic
+  * cilium: fix transient rules to use allocation cidr
+  * Prepare for v1.5.6 release
+  * endpoint: Fix proxy port leak on endpoint delete
+  * update cilium-docker-plugin, cilium-operator to golang 1.12.8
+  * dockerfiles: update golang versions to 1.12.8
+  * cilium: install transient rules during agent restart
+  * Istio: Update to 1.2.4
+  * envoy: Use patched image
+  * bpf: fix verifier error due to repulling of skb->data/end
+  * bpf: Attempt pulling skb->data if it is not pulled
+  * bpf: Introduce revalidate_data_first()
+  * cilium: add skb_pull_data to bpf_network to avoid revalidate error
+  * datapath/iptables: wait until acquisition xtables lock is done
+  * use iptables-manager to manage iptables executions
+  * examples/kubernetes: mount xtables.lock
+  * eventqueue: return error if Enqueue fails
+  * eventqueue: protect against enqueueing same Event twice
+  * eventqueue: use mutex to synchronize access to events channel
+  * daemon: get list of frontends from ServiceCache before acquiring BPFMapMu
+  * cilium: remove old probe content before restoring assets
+  * cilium: encryption, ensure 0x*d00 and 0x*e00 marks dont cause conflicts
+  * Dockerfile: Use proxy with legacy fix
+  * envoy: Add SO_MARK option to listener config
+  * test: provide capability for tests to run in their own namespace
+  * docs: Fix warnings
+  * test: Specify protocol during policy trace
+  * istio: Update to 1.2.2
+  * envoy: Istio 1.2.0 update
+  * istio: Update to 1.1.7
+  * test: be sure to close SSH client after a given Describe completes
+  * Dockerfile: Use cilium-envoy with reduced logging.
+  * Envoy: Update to the latest proxy build, use latest API
+  * Gopkg: update cilium/proxy
+  * envoy: Use LPM ipcache instead of xDS when available.
+  * Envoy: Use an image with proxylib injection fix.
+  * Dockerfile: Update proxy dependency
+  * CI: Change Kafka runtime tests to use local conntrack maps.
+  * [daemon] - Change MTU source for cilium_host (Use the Route one)
+  * endpoint: fix deadlock when endpoint EventQueue is full
+  * daemon: register warning_error metric after parsing CLI options
+  * Fix seds in microk8s docs
+  * daemon: Fix removal of non-existing SVCs in syncLBMapsWithK8s
+  * daemon: Remove svc from cache in syncLBMapsWithK8s
+  * examples/kubernetes: update k8s dev VM to v1.15.1
+  * test: update k8s test version to v1.15.1
+  * Gopkg: update k8s dependencies to v1.15.1
+  * Add timeout to ginkgo calls
+  * proxy: Do not error out if reading of open ports fails.
+  * pkg/kvstore: wait for node delete delay in unit tests
+  * endpoint: Create redirects before bpf map updates.
+  * proxy: Perform dnsproxy Close() in the returned finalizeFunc
+  * endpoint: change transition from restore state
+  * test: misc. runtime policy test fixes
+  * docs: Fix up unparsed SCM_WEB literals
+  * pkg/{kvstore,node}: delay node delete event in kvstore
+  * operator: restart non-managed kube-dns pods before connecting to etcd
+  * test: move creation of Istio resources into `It`
+  * test: add `ExecMiddle` function
+  * datapath: Do not fail if route contains gw equal to dst
+  * update to golang 1.12.7
+  * test: update k8s testing versions to v1.12.10, v1.13.8 and v1.14.4
+  * update golang to 1.12.7 for cilium-{operator,docker-plugin}
+  * endpoint: do not log warning for specific state transition
+
+-------------------------------------------------------------------
 Mon Jul 29 11:38:56 UTC 2019 - mrostecki@opensuse.org
 
 - Update to version 1.5.5:

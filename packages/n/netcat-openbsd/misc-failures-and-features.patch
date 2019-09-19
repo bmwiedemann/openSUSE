@@ -97,7 +97,7 @@ Subject: misc failures and features
  #include <stdarg.h>
  #include <stdio.h>
  #include <stdlib.h>
-@@ -247,7 +248,10 @@ main(int argc, char *argv[])
+@@ -246,7 +247,10 @@ main(int argc, char *argv[])
  	struct addrinfo hints;
  	struct servent *sv;
  	socklen_t len;
@@ -109,7 +109,7 @@ Subject: misc failures and features
  	char *proxy = NULL, *proxyport = NULL;
  	const char *errstr;
  	struct addrinfo proxyhints;
-@@ -952,6 +956,8 @@ unix_bind(char *path, int flags)
+@@ -945,6 +949,8 @@ unix_bind(char *path, int flags)
  	    0)) < 0)
  		return -1;
  
@@ -118,7 +118,7 @@ Subject: misc failures and features
  	memset(&s_un, 0, sizeof(struct sockaddr_un));
  	s_un.sun_family = AF_UNIX;
  
-@@ -1075,8 +1081,10 @@ unix_connect(char *path)
+@@ -1070,8 +1076,10 @@ unix_connect(char *path)
  		if ((s = unix_bind(unix_dg_tmp_socket, SOCK_CLOEXEC)) < 0)
  			return -1;
  	} else {
@@ -130,7 +130,7 @@ Subject: misc failures and features
  	}
  
  	memset(&s_un, 0, sizeof(struct sockaddr_un));
-@@ -1086,10 +1094,12 @@ unix_connect(char *path)
+@@ -1081,10 +1089,12 @@ unix_connect(char *path)
  	    sizeof(s_un.sun_path)) {
  		close(s);
  		errno = ENAMETOOLONG;

@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,6 @@
 # NOTE: build_glib2 also controls build of gobject, gtk2, gtk3 and pygobject code.
 %define         build_glib2 0
 %define         build_mono 1
-%define         build_qt4 0
 %define avahi_client_sover 3
 %define avahi_common_sover 3
 %define avahi_core_sover 7
@@ -33,7 +32,6 @@
 %define avahi_glib_sover 1
 %define avahi_gobject_sover 0
 %define avahi_gtk3_sover 0
-%define avahi_qt4_sover 1
 %if %{build_glib2}
 %define debug_package_requires libavahi-ui%{avahi_ui_sover} = %{version}-%{release}
 %endif
@@ -91,7 +89,7 @@ BuildRequires:  python3-dbus-python
 BuildRequires:  python3-devel
 BuildRequires:  translation-update-upstream
 # FIXME: on upgrade, ensure to verify if -DGTK_DISABLE_DEPRECATED=1 can remain in avahi=ui/Makefile.am (GtkStock deprecated with GTK+ 3.9.10).
-%if !%{build_glib2} && !%{build_mono} && !%{build_qt4}
+%if !%{build_glib2} && !%{build_mono}
 # Create split spec files only when building per partes:
 #%(sh %{_sourcedir}/%{_name}_spec-prepare.sh %{_sourcedir} %{name})
 %endif
@@ -121,16 +119,10 @@ Obsoletes:      mDNSResponder < 107.5
 %endif
 %if %{build_glib2}
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk2-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  libavahi-devel
-BuildRequires:  python-gtk-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(pygobject-3.0)
-%endif
-%if %{build_qt4}
-BuildRequires:  libavahi-devel
-BuildRequires:  libqt4-devel
 %endif
 %if %{build_mono}
 BuildRequires:  gtk-sharp2
@@ -142,7 +134,6 @@ Requires:       gtk-sharp2
 Requires:       libavahi-client3 >= %{version}
 Requires:       libavahi-common3 >= %{version}
 Requires:       libavahi-glib1 >= %{version}
-Requires:       libavahi-ui0 >= %{version}
 %endif
 
 %description
@@ -163,16 +154,7 @@ Group:          System/Libraries
 
 %description -n libavahi-client3
 Avahi is an implementation of the DNS Service Discovery and Multicast
-DNS specifications for Zeroconf Computing. It uses D-Bus for
-communication between user applications and a system daemon. The daemon
-is used to coordinate application efforts in caching replies, necessary
-to minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now complete with features, implementing
-all MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs.
-It passes all tests in the Apple Bonjour conformance test suite. In
-addition, it supports some nifty things, like correct mDNS reflection
-across LAN segments.
+DNS specifications for Zeroconf Computing.
 
 %package -n libavahi-common3
 Summary:        D-Bus Service for Zeroconf and Bonjour
@@ -180,16 +162,7 @@ Group:          System/Libraries
 
 %description -n libavahi-common3
 Avahi is an implementation of the DNS Service Discovery and Multicast
-DNS specifications for Zeroconf Computing. It uses D-Bus for
-communication between user applications and a system daemon. The daemon
-is used to coordinate application efforts in caching replies, necessary
-to minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now complete with features, implementing
-all MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs.
-It passes all tests in the Apple Bonjour conformance test suite. In
-addition, it supports some nifty things, like correct mDNS reflection
-across LAN segments.
+DNS specifications for Zeroconf Computing.
 
 %package -n libavahi-core7
 Summary:        D-Bus Service for Zeroconf and Bonjour
@@ -197,16 +170,7 @@ Group:          System/Libraries
 
 %description -n libavahi-core7
 Avahi is an implementation of the DNS Service Discovery and Multicast
-DNS specifications for Zeroconf Computing. It uses D-Bus for
-communication between user applications and a system daemon. The daemon
-is used to coordinate application efforts in caching replies, necessary
-to minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now complete with features, implementing
-all MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs.
-It passes all tests in the Apple Bonjour conformance test suite. In
-addition, it supports some nifty things, like correct mDNS reflection
-across LAN segments.
+DNS specifications for Zeroconf Computing.
 
 %package -n libdns_sd
 Summary:        mDNSResponder Compatibility Package for the Zeroconf/Bonjour D-Bus service
@@ -227,19 +191,10 @@ Provides:       libdns_sd.so
 %endif
 
 %description -n libdns_sd
-Apple mDNSResponder compatibility layer for avahi.
+Apple mDNSResponder compatibility layer for Avahi.
 
-Avahi is an implementation the DNS Service Discovery and Multicast DNS
-specifications for Zeroconf Computing. It uses D-Bus for communication
-between user applications and a system daemon. The daemon is used to
-coordinate application efforts in caching replies, necessary to
-minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now feature complete implementing all MUSTs
-and the majority of the SHOULDs of the mDNS/DNS-SD RFCs. It passes all
-tests in the Apple Bonjour conformance test suite. In addition it
-supports some nifty things that have never been seen elsewhere like
-correct mDNS reflection across LAN segments.
+Avahi is an implementation of the DNS Service Discovery and Multicast DNS
+specifications for Zeroconf Computing.
 
 %package -n libhowl0
 Summary:        Howl Compatibility Package for the Zeroconf/Bonjour D-Bus service
@@ -249,19 +204,10 @@ Provides:       avahi-compat-howl = %{version}
 Obsoletes:      avahi-compat-howl < %{version}
 
 %description -n libhowl0
-Howl compatibility layer for avahi.
+Howl compatibility layer for Avahi.
 
-Avahi is an implementation the DNS Service Discovery and Multicast DNS
-specifications for Zeroconf Computing. It uses D-Bus for communication
-between user applications and a system daemon. The daemon is used to
-coordinate application efforts in caching replies, necessary to
-minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now feature complete implementing all MUSTs
-and the majority of the SHOULDs of the mDNS/DNS-SD RFCs. It passes all
-tests in the Apple Bonjour conformance test suite. In addition it
-supports some nifty things that have never been seen elsewhere like
-correct mDNS reflection across LAN segments.
+Avahi is an implementation of the DNS Service Discovery and Multicast DNS
+specifications for Zeroconf Computing.
 
 %package -n python3-avahi
 Summary:        A set of Avahi utilities written in Python
@@ -277,16 +223,7 @@ Obsoletes:      python-avahi
 
 %description -n python3-avahi
 Avahi is an implementation of the DNS Service Discovery and Multicast
-DNS specifications for Zeroconf Computing. It uses D-Bus for
-communication between user applications and a system daemon. The daemon
-is used to coordinate application efforts in caching replies, necessary
-to minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now feature complete, implementing all
-MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs. It
-passes all tests in the Apple Bonjour conformance test suite. In
-addition, it supports some nifty things that have never been seen
-elsewhere, like correct mDNS reflection across LAN segments.
+DNS specifications for Zeroconf Computing.
 
 %package autoipd
 Summary:        IPv4LL Service for Zeroconf and Bonjour
@@ -315,16 +252,7 @@ Requires:       %{_name} >= %{version}
 
 %description utils
 Avahi is an implementation of the DNS Service Discovery and Multicast
-DNS specifications for Zeroconf Computing. It uses D-Bus for
-communication between user applications and a system daemon. The daemon
-is used to coordinate application efforts in caching replies, necessary
-to minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now complete with features, implementing
-all MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs.
-It passes all tests in the Apple Bonjour conformance test suite. In
-addition, it supports some nifty things, like correct mDNS reflection
-across LAN segments.
+DNS specifications for Zeroconf Computing.
 
 %package -n libavahi-devel
 Summary:        Header files for the Zeroconf/Bonjour D-Bus service
@@ -340,17 +268,8 @@ Provides:       avahi-devel = %{version}
 Obsoletes:      avahi-devel < %{version}
 
 %description -n libavahi-devel
-Avahi is an implementation the DNS Service Discovery and Multicast DNS
-specifications for Zeroconf Computing. It uses D-Bus for communication
-between user applications and a system daemon. The daemon is used to
-coordinate application efforts in caching replies, necessary to
-minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now feature complete implementing all MUSTs
-and the majority of the SHOULDs of the mDNS/DNS-SD RFCs. It passes all
-tests in the Apple Bonjour conformance test suite. In addition it
-supports some nifty things that have never been seen elsewhere like
-correct mDNS reflection across LAN segments.
+Avahi is an implementation of the DNS Service Discovery and Multicast DNS
+specifications for Zeroconf Computing.
 
 %package compat-mDNSResponder-devel
 Summary:        mDNSResponder Compatibility Package for the Zeroconf/Bonjour D-Bus service
@@ -361,19 +280,10 @@ Provides:       mDNSResponder-devel = 107.5
 Obsoletes:      mDNSResponder-devel < 107.5
 
 %description compat-mDNSResponder-devel
-Apple mDNSResponder compatibility layer for avahi.
+Apple mDNSResponder compatibility layer for Avahi.
 
-Avahi is an implementation the DNS Service Discovery and Multicast DNS
-specifications for Zeroconf Computing. It uses D-Bus for communication
-between user applications and a system daemon. The daemon is used to
-coordinate application efforts in caching replies, necessary to
-minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now feature complete implementing all MUSTs
-and the majority of the SHOULDs of the mDNS/DNS-SD RFCs. It passes all
-tests in the Apple Bonjour conformance test suite. In addition it
-supports some nifty things that have never been seen elsewhere like
-correct mDNS reflection across LAN segments.
+Avahi is an implementation of the DNS Service Discovery and Multicast DNS
+specifications for Zeroconf Computing.
 
 %package compat-howl-devel
 Summary:        Howl Compatibility Package for the Zeroconf/Bonjour D-Bus service
@@ -382,36 +292,10 @@ Requires:       libavahi-devel = %{version}
 Requires:       libhowl0 = %{version}
 
 %description compat-howl-devel
-Howl compatibility layer for avahi.
+Howl compatibility layer for Avahi.
 
-Avahi is an implementation the DNS Service Discovery and Multicast DNS
-specifications for Zeroconf Computing. It uses D-Bus for communication
-between user applications and a system daemon. The daemon is used to
-coordinate application efforts in caching replies, necessary to
-minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now feature complete implementing all MUSTs
-and the majority of the SHOULDs of the mDNS/DNS-SD RFCs. It passes all
-tests in the Apple Bonjour conformance test suite. In addition it
-supports some nifty things that have never been seen elsewhere like
-correct mDNS reflection across LAN segments.
-
-%package -n libavahi-ui0
-Summary:        D-Bus Service for Zeroconf and Bonjour
-Group:          System/Libraries
-
-%description -n libavahi-ui0
-Avahi is an implementation of the DNS Service Discovery and Multicast
-DNS specifications for Zeroconf Computing. It uses D-Bus for
-communication between user applications and a system daemon. The daemon
-is used to coordinate application efforts in caching replies, necessary
-to minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now complete with features, implementing
-all MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs.
-It passes all tests in the Apple Bonjour conformance test suite. In
-addition, it supports some nifty things, like correct mDNS reflection
-across LAN segments.
+Avahi is an implementation of the DNS Service Discovery and Multicast DNS
+specifications for Zeroconf Computing.
 
 %package -n libavahi-ui-gtk3-%{avahi_gtk3_sover}
 Summary:        D-Bus Service for Zeroconf and Bonjour
@@ -419,16 +303,7 @@ Group:          System/Libraries
 
 %description -n libavahi-ui-gtk3-%{avahi_gtk3_sover}
 Avahi is an implementation of the DNS Service Discovery and Multicast
-DNS specifications for Zeroconf Computing. It uses D-Bus for
-communication between user applications and a system daemon. The daemon
-is used to coordinate application efforts in caching replies, necessary
-to minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now complete with features, implementing
-all MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs.
-It passes all tests in the Apple Bonjour conformance test suite. In
-addition, it supports some nifty things, like correct mDNS reflection
-across LAN segments.
+DNS specifications for Zeroconf Computing.
 
 %package -n libavahi-glib1
 Summary:        Glib Bindings for avahi, the D-Bus Service for Zeroconf and Bonjour
@@ -438,19 +313,10 @@ Provides:       avahi-glib = %{version}
 Obsoletes:      avahi-glib < %{version}
 
 %description -n libavahi-glib1
-GLib support for avahi.
+GLib support for Avahi.
 
-Avahi is an implementation the DNS Service Discovery and Multicast DNS
-specifications for Zeroconf Computing. It uses D-Bus for communication
-between user applications and a system daemon. The daemon is used to
-coordinate application efforts in caching replies, necessary to
-minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now feature complete implementing all MUSTs
-and the majority of the SHOULDs of the mDNS/DNS-SD RFCs. It passes all
-tests in the Apple Bonjour conformance test suite. In addition it
-supports some nifty things that have never been seen elsewhere like
-correct mDNS reflection across LAN segments.
+Avahi is an implementation of the DNS Service Discovery and Multicast DNS
+specifications for Zeroconf Computing.
 
 %package -n libavahi-gobject0
 Summary:        D-Bus Service for Zeroconf and Bonjour
@@ -458,16 +324,7 @@ Group:          System/Libraries
 
 %description -n libavahi-gobject0
 Avahi is an implementation of the DNS Service Discovery and Multicast
-DNS specifications for Zeroconf Computing. It uses D-Bus for
-communication between user applications and a system daemon. The daemon
-is used to coordinate application efforts in caching replies, necessary
-to minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now complete with features, implementing
-all MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs.
-It passes all tests in the Apple Bonjour conformance test suite. In
-addition, it supports some nifty things, like correct mDNS reflection
-across LAN segments.
+DNS specifications for Zeroconf Computing.
 
 %package -n typelib-1_0-Avahi-0_6
 Summary:        Introspection bindings for the Zeroconf/Bonjour D-Bus service
@@ -475,16 +332,7 @@ Group:          System/Libraries
 
 %description -n typelib-1_0-Avahi-0_6
 Avahi is an implementation of the DNS Service Discovery and Multicast
-DNS specifications for Zeroconf Computing. It uses D-Bus for
-communication between user applications and a system daemon. The daemon
-is used to coordinate application efforts in caching replies, necessary
-to minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now complete with features, implementing
-all MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs.
-It passes all tests in the Apple Bonjour conformance test suite. In
-addition, it supports some nifty things, like correct mDNS reflection
-across LAN segments.
+DNS specifications for Zeroconf Computing.
 
 This package provides the GObject Introspection bindings for Avahi.
 
@@ -500,16 +348,7 @@ Obsoletes:      avahi-glib2-utils-gtk < %{version}
 
 %description -n avahi-utils-gtk
 Avahi is an implementation of the DNS Service Discovery and Multicast
-DNS specifications for Zeroconf Computing. It uses D-Bus for
-communication between user applications and a system daemon. The daemon
-is used to coordinate application efforts in caching replies, necessary
-to minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now complete with features, implementing
-all MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs.
-It passes all tests in the Apple Bonjour conformance test suite. In
-addition, it supports some nifty things, like correct mDNS reflection
-across LAN segments.
+DNS specifications for Zeroconf Computing.
 
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
@@ -528,16 +367,7 @@ Obsoletes:      python-avahi < %{version}
 
 %description -n python3-avahi-gtk
 Avahi is an implementation of the DNS Service Discovery and Multicast
-DNS specifications for Zeroconf Computing. It uses D-Bus for
-communication between user applications and a system daemon. The daemon
-is used to coordinate application efforts in caching replies, necessary
-to minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now feature complete, implementing all
-MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs. It
-passes all tests in the Apple Bonjour conformance test suite. In
-addition, it supports some nifty things that have never been seen
-elsewhere, like correct mDNS reflection across LAN segments.
+DNS specifications for Zeroconf Computing.
 
 %package -n libavahi-glib-devel
 Summary:        Header files for Avahi's Glib bindings
@@ -545,25 +375,15 @@ Group:          Development/Libraries/C and C++
 Requires:       libavahi-devel = %{version}
 Requires:       libavahi-glib1 = %{version}
 Requires:       libavahi-ui-gtk3-%{avahi_gtk3_sover} = %{version}
-Requires:       libavahi-ui0 = %{version}
 Requires:       typelib-1_0-Avahi-0_6 = %{version}
 # Last appeared in OpenSUSE 10.3:
 Provides:       avahi-devel:%{_libdir}/libavahi-glib.so
 
 %description -n libavahi-glib-devel
-GLib support for avahi.
+GLib support for Avahi.
 
-Avahi is an implementation the DNS Service Discovery and Multicast DNS
-specifications for Zeroconf Computing. It uses D-Bus for communication
-between user applications and a system daemon. The daemon is used to
-coordinate application efforts in caching replies, necessary to
-minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now feature complete implementing all MUSTs
-and the majority of the SHOULDs of the mDNS/DNS-SD RFCs. It passes all
-tests in the Apple Bonjour conformance test suite. In addition it
-supports some nifty things that have never been seen elsewhere like
-correct mDNS reflection across LAN segments.
+Avahi is an implementation of the DNS Service Discovery and Multicast DNS
+specifications for Zeroconf Computing.
 
 %package -n libavahi-gobject-devel
 Summary:        Header files for Avahi's GObject bindings
@@ -575,62 +395,7 @@ Requires:       libavahi-gobject0 = %{version}
 
 %description -n libavahi-gobject-devel
 Avahi is an implementation of the DNS Service Discovery and Multicast
-DNS specifications for Zeroconf Computing. It uses D-Bus for
-communication between user applications and a system daemon. The daemon
-is used to coordinate application efforts in caching replies, necessary
-to minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now complete with features, implementing
-all MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs.
-It passes all tests in the Apple Bonjour conformance test suite. In
-addition, it supports some nifty things, like correct mDNS reflection
-across LAN segments.
-
-%package -n libavahi-qt4-1
-Summary:        Qt4 Bindings for avahi, the D-Bus Service for Zeroconf and Bonjour
-# Old name used for <= 10.3:
-Group:          System/GUI/KDE
-Provides:       avahi-qt4 = %{version}
-Obsoletes:      avahi-qt4 < %{version}
-
-%description -n libavahi-qt4-1
-Qt4 bindings for avahi.
-
-Avahi is an implementation the DNS Service Discovery and Multicast DNS
-specifications for Zeroconf Computing. It uses D-Bus for communication
-between user applications and a system daemon. The daemon is used to
-coordinate application efforts in caching replies, necessary to
-minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now feature complete implementing all MUSTs
-and the majority of the SHOULDs of the mDNS/DNS-SD RFCs. It passes all
-tests in the Apple Bonjour conformance test suite. In addition it
-supports some nifty things that have never been seen elsewhere like
-correct mDNS reflection across LAN segments.
-
-%package -n libavahi-qt4-devel
-Summary:        Header files for Avahi's Qt4 bindings
-Group:          Development/Libraries/C and C++
-Requires:       libavahi-devel = %{version}
-Requires:       libavahi-qt4-1 = %{version}
-Requires:       libqt4-devel
-# Last appeared in OpenSUSE 10.3:
-Provides:       avahi-devel:%{_libdir}/libavahi-qt4.so
-
-%description -n libavahi-qt4-devel
-Qt4 bindings for avahi.
-
-Avahi is an implementation the DNS Service Discovery and Multicast DNS
-specifications for Zeroconf Computing. It uses D-Bus for communication
-between user applications and a system daemon. The daemon is used to
-coordinate application efforts in caching replies, necessary to
-minimize the traffic imposed on networks.
-
-The Avahi mDNS responder is now feature complete implementing all MUSTs
-and the majority of the SHOULDs of the mDNS/DNS-SD RFCs. It passes all
-tests in the Apple Bonjour conformance test suite. In addition it
-supports some nifty things that have never been seen elsewhere like
-correct mDNS reflection across LAN segments.
+DNS specifications for Zeroconf Computing.
 
 %if %{build_core}
 %if %{build_mono}
@@ -642,7 +407,6 @@ Requires:       gtk-sharp2
 Requires:       libavahi-client3 >= %{version}
 Requires:       libavahi-common3 >= %{version}
 Requires:       libavahi-glib1 >= %{version}
-Requires:       libavahi-ui0 >= %{version}
 
 %description -n avahi-mono
 This package provides Mono bindings for avahi. Avahi is an
@@ -716,7 +480,7 @@ export PYTHON=%{_bindir}/python3
 %if %{build_glib2}
 	--enable-glib\
 	--enable-gobject\
-	--enable-gtk\
+	--disable-gtk\
 	--enable-gtk3\
 	--enable-pygobject\
 %else
@@ -729,14 +493,10 @@ export PYTHON=%{_bindir}/python3
 	--disable-gtk3\
 %endif
 	--disable-qt3\
-%if %{build_qt4}
-	--enable-qt4\
-%else
 	--disable-qt4\
-%endif
 %if %{build_mono}
 	--enable-mono\
-	--enable-gtk\
+	--disable-gtk\
 %else
 	--disable-mono\
 %endif
@@ -749,9 +509,6 @@ cd $DIR
 make %{?_smp_mflags}
 cd ..
 done
-%endif
-%if %{build_qt4} && !%{build_core}
-cd avahi-qt
 %endif
 %if %{build_mono} && !%{build_core}
 cd avahi-sharp
@@ -768,9 +525,6 @@ cd $DIR
 cd ..
 done
 cd -
-%endif
-%if %{build_qt4} && !%{build_core}
-cd avahi-qt
 %endif
 %if %{build_mono} && !%{build_core}
 cd avahi-sharp
@@ -847,7 +601,6 @@ rmdir %{buildroot}/%{_datadir}/avahi/interfaces
 rmdir %{buildroot}/%{_datadir}/avahi
 %else
 %if %{build_mono}
-rm %{buildroot}/%{_libdir}/pkgconfig/avahi-ui.pc
 %if 0%{?suse_version} >= 1330
 strip-nondeterminism %{buildroot}/%{_prefix}/lib/monodoc/sources/*.zip
 %endif
@@ -910,8 +663,6 @@ chown -R avahi-autoipd:avahi-autoipd %{_localstatedir}/lib/avahi-autoipd
 %postun -n libdns_sd -p /sbin/ldconfig
 %post -n libhowl0 -p /sbin/ldconfig
 %postun -n libhowl0 -p /sbin/ldconfig
-%post -n libavahi-ui0 -p /sbin/ldconfig
-%postun -n libavahi-ui0 -p /sbin/ldconfig
 %post -n libavahi-ui-gtk3-%{avahi_gtk3_sover} -p /sbin/ldconfig
 %postun -n libavahi-ui-gtk3-%{avahi_gtk3_sover} -p /sbin/ldconfig
 %post -n libavahi-gobject0 -p /sbin/ldconfig
@@ -930,9 +681,6 @@ chown -R avahi-autoipd:avahi-autoipd %{_localstatedir}/lib/avahi-autoipd
 
 %postun -n avahi-utils-gtk
 %desktop_database_post
-
-%post -n libavahi-qt4-1 -p /sbin/ldconfig
-%postun -n libavahi-qt4-1 -p /sbin/ldconfig
 
 %if %{build_core}
 %files
@@ -1054,9 +802,6 @@ chown -R avahi-autoipd:avahi-autoipd %{_localstatedir}/lib/avahi-autoipd
 %endif
 
 %if %{build_glib2}
-%files -n libavahi-ui0
-%{_libdir}/libavahi-ui.so.*
-
 %files -n libavahi-ui-gtk3-%{avahi_gtk3_sover}
 %{_libdir}/libavahi-ui-gtk3.so.%{avahi_gtk3_sover}*
 
@@ -1073,7 +818,6 @@ chown -R avahi-autoipd:avahi-autoipd %{_localstatedir}/lib/avahi-autoipd
 %files -n python3-avahi-gtk
 %{_bindir}/avahi-discover
 %{_datadir}/applications/avahi-discover.desktop
-%{_mandir}/man1/avahi-discover.1*
 %{python3_sitelib}/avahi_discover
 
 %files -n avahi-utils-gtk
@@ -1083,8 +827,6 @@ chown -R avahi-autoipd:avahi-autoipd %{_localstatedir}/lib/avahi-autoipd
 %{_bindir}/avahi-discover-standalone
 %{_datadir}/applications/bssh.desktop
 %{_datadir}/applications/bvnc.desktop
-%{_mandir}/man1/bssh.1%{ext_man}
-%{_mandir}/man1/bvnc.1%{ext_man}
 
 %files -n libavahi-glib-devel
 %{_includedir}/avahi-glib
@@ -1094,7 +836,6 @@ chown -R avahi-autoipd:avahi-autoipd %{_localstatedir}/lib/avahi-autoipd
 %{_libdir}/libavahi-ui*.*a
 %{_libdir}/libavahi-ui*.*so
 %{_libdir}/pkgconfig/avahi-glib.pc
-%{_libdir}/pkgconfig/avahi-ui.pc
 %{_libdir}/pkgconfig/avahi-ui-gtk3.pc
 
 %files -n libavahi-gobject-devel
@@ -1103,17 +844,6 @@ chown -R avahi-autoipd:avahi-autoipd %{_localstatedir}/lib/avahi-autoipd
 %{_libdir}/libavahi-gobject*.so
 %{_libdir}/pkgconfig/avahi-gobject.pc
 %{_datadir}/gir-1.0/*.gir
-%endif
-
-%if %{build_qt4}
-%files -n libavahi-qt4-devel
-%{_includedir}/avahi-qt4
-%{_libdir}/libavahi-qt4*.*a
-%{_libdir}/libavahi-qt4*.so
-%{_libdir}/pkgconfig/avahi-qt4.pc
-
-%files -n libavahi-qt4-1
-%{_libdir}/libavahi-qt4*.so.*
 %endif
 
 %if %{build_mono}
@@ -1128,8 +858,6 @@ chown -R avahi-autoipd:avahi-autoipd %{_localstatedir}/lib/avahi-autoipd
 %{_prefix}/lib/monodoc/sources/*.*
 %{_prefix}/lib/mono/avahi-sharp
 %{_prefix}/lib/mono/gac/avahi-sharp
-%{_prefix}/lib/mono/avahi-ui-sharp
-%{_prefix}/lib/mono/gac/avahi-ui-sharp
 %endif
 
 %changelog

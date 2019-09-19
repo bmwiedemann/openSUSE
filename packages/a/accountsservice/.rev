@@ -1002,4 +1002,12 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
     <comment></comment>
     <requestid>706718</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>67b75d34709eb0237acb918822ab30a2</srcmd5>
+    <version>0.6.55</version>
+    <time>1568900954</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>730089</requestid>
+  </revision>
 </revisionlist>

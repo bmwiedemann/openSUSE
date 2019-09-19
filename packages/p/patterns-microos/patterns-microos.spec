@@ -85,6 +85,7 @@ Requires:       less
 Requires:       login
 Requires:       logrotate
 Requires:       microos-tools
+Requires:       nano
 Requires:       net-tools
 Requires:       open-iscsi
 Requires:       openssh
@@ -109,7 +110,6 @@ Requires:       timezone
 Requires:       transactional-update
 Requires:       transactional-update-zypp-config
 Requires:       udev
-Requires:       vim
 Requires:       vlan
 Requires:       which
 Requires:       wicked
@@ -291,6 +291,7 @@ Requires:       tftpboot-installation-openSUSE-MicroOS-%{_arch}
 %ifarch %ix86 x86_64
 Requires:       ucode-amd
 Requires:       ucode-intel
+Requires:       vim
 %endif
 Requires:       wpa_supplicant
 Provides:       pattern() = microos_onlyDVD

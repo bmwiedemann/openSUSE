@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 16:06:41 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- Add ComputerScience, sort Science and Education alphabetically
+  (boo#1074711)
+
+-------------------------------------------------------------------
 Thu Jun  6 17:53:56 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move rpm macros to %_rpmmacrodir.

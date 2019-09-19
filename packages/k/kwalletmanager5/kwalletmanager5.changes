@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  9 16:44:34 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove no longer required kdelibs4support-devel BuildRequires,
+  explicitly add no longer pulled in dependencies
+- Remove some obsolete parts from the spec file
+
+-------------------------------------------------------------------
 Thu Sep  5 14:01:10 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.08.1

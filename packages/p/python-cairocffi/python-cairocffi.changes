@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  9 07:41:31 UTC 2019 - mvetter@suse.com
+
+- Update to 1.1.0:
+  * #135, #127, #119: Clean the way external libraries are found
+  * #126: Remove const char* elements from cdef
+  * Support Cairo features up to 1.17.2
+  * Fix documentation generation
+
+-------------------------------------------------------------------
 Wed Jul 31 12:12:15 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.0.2

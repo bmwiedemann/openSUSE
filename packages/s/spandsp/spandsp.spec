@@ -23,14 +23,13 @@ License:        LGPL-2.1-only AND GPL-2.0-only
 Group:          Development/Libraries/C and C++
 Version:        0.0.6
 Release:        0
-Url:            http://soft-switch.org/
+URL:            http://soft-switch.org/
 
-Source0:        http://soft-switch.org/downloads/spandsp/%name-%version.tar.gz
-Source1:        baselibs.conf
+Source:         http://soft-switch.org/downloads/spandsp/%name-%version.tar.gz
+Source2:        baselibs.conf
 Patch1:         spandsp-autoconf.diff
 Patch2:         spandsp-raise-traintime-tolerance.diff
 Patch3:         spandsp-handle-international-dialstring-prefix.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
 BuildRequires:  libtiff-devel
@@ -60,7 +59,7 @@ and a complete software FAX machine.
 Summary:        Development files for the SpanDSP library
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %{version}
+Requires:       %lname = %version
 Requires:       glibc-devel
 Requires:       libtiff-devel
 
@@ -92,13 +91,10 @@ BuildArch:      noarch
 This package contains documentation for the libspandsp API.
 
 %prep
-%setup -qn %name-0.0.6
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -n %name-0.0.6 -p1
 
 %build
-%define _lto_cflags %{nil}
+%define _lto_cflags %nil
 autoreconf -fiv
 # Enabling MMX could be safe.. I see cpuid calls in the source
 %configure \
@@ -118,28 +114,25 @@ make check %{?_smp_mflags}
 %endif
 
 %install
-make install DESTDIR="%buildroot";
-mkdir -p "%buildroot%_docdir/%name";
-cp -a COPYING AUTHORS NEWS README DueDiligence \
-        ChangeLog doc/api/html "%buildroot%_docdir/%name";
-find %{buildroot} -name "*.la" -delete
+%make_install
+mkdir -p "%buildroot%_docdir/%name"
+cp -a NEWS README DueDiligence ChangeLog doc/api/html \
+	"%buildroot/%_docdir/%name"
+rm -f "%buildroot/%_libdir"/*.la
 
-%post -n %lname -p /sbin/ldconfig
-
+%post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files devel
-%defattr(-,root,root)
+%license COPYING
 %_includedir/*
 %_libdir/lib%name.so
 %_libdir/pkgconfig/*.pc
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/lib%name.so.2*
 
 %files doc
-%defattr(-,root,root)
-%doc %_docdir/%name
+%_docdir/%name/
 
 %changelog

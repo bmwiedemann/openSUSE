@@ -235,4 +235,13 @@
     <comment></comment>
     <requestid>670358</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>11855069aeb6447e098729482ce00563</srcmd5>
+    <version>1.9.0</version>
+    <time>1568901015</time>
+    <user>maxlin_factory</user>
+    <comment>- Run more tests
+- Small spec file improvements</comment>
+    <requestid>730138</requestid>
+  </revision>
 </revisionlist>

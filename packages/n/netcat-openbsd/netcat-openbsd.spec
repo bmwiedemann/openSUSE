@@ -1,7 +1,7 @@
 #
 # spec file for package netcat-openbsd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           netcat-openbsd
-Version:        1.195
+Version:        1.203
 Release:        0
 Summary:        TCP/IP swiss army knife
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Other
-URL:            http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/nc/
+URL:            https://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/nc/
 Source0:        http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_%{version}.orig.tar.gz
-#Patches from: http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_%{version}-1.debian.tar.xz
+#Patches from: http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_%{version}-2.debian.tar.xz
 Patch0:         port-to-linux-with-libsd.patch
 Patch1:         build-without-TLS-support.patch
 Patch2:         connect-timeout.patch
@@ -32,14 +32,13 @@ Patch3:         get-sev-by-name.patch
 Patch4:         send-crlf.patch
 Patch5:         quit-timer.patch
 Patch6:         udp-scan-timeout.patch
-Patch7:         verbose-numeric-port.patch
-Patch8:         dccp-support.patch
-Patch9:         broadcast-support.patch
-Patch10:        serialized-handling-multiple-clients.patch
-Patch11:        set-TCP-MD5SIG-correctly-for-client-connections.patch
-Patch12:        destination-port-list.patch
-Patch13:        use-flags-to-specify-listen-address.patch
-Patch14:        misc-failures-and-features.patch
+Patch7:         dccp-support.patch
+Patch8:         broadcast-support.patch
+Patch9:         serialized-handling-multiple-clients.patch
+Patch10:        set-TCP-MD5SIG-correctly-for-client-connections.patch
+Patch11:        destination-port-list.patch
+Patch12:        use-flags-to-specify-listen-address.patch
+Patch13:        misc-failures-and-features.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libbsd)
 Provides:       nc6 = %{version}

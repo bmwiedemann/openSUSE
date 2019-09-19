@@ -97,11 +97,11 @@ function mapCategory() {
     3DGraphics|Photography|Scanning|OCR|VectorGraphics|RasterGraphics|2DGraphics|Maps| \
     Publishing|Viewer) ret=$in ;;
 #Education and Science Menu:
-    Teaching|Math|Chemistry|Astronomy|Art|Construction|Languages| \
-    Engineering|Geography|Spirituality|Humanities|ArtificialIntelligence| \
-    DataVisualization|Economy|Electricity|Geology|Geoscience|History|ImageProcessing| \
-    Literature|MedicalSoftware|NumericalAnalysis|ParallelComputing|Physics|Robotics| \
-    Sports|Biology) ret=$in ;;
+    Art|ArtificialIntelligence|Astronomy|Biology|Chemistry|ComputerScience|Construction| \
+    DataVisualization|Economy|Electricity|Engineering|Geography|Geology|Geoscience| \
+    History|Humanities|ImageProcessing|Languages|Literature|Maps|Math|MedicalSoftware| \
+    Music|NumericalAnalysis|ParallelComputing|Physics|Robotics|Spirituality|Sports| \
+    Teaching) ret=$in ;;
 #Multimedia Menu:
     AudioVideoEditing|Music|DiscBurning|Mixer|Player|Midi|Sequencer| \
     TV|Tuner|Recorder|Video) ret=$in ;;

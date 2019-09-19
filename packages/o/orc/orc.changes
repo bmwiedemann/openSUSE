@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Sep  9 10:17:37 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.30:
+  + Don't always generate static library but default to shared-only
+  + Work around false positives in Microsoft UWP certification kit
+  + Add endbr32/endbr64 instructions on x86/x86-64 for indirect
+    branch tracking
+  + Fix gtk-doc build when orc is used as a meson subproject
+  + Switch float comparison in tests to ULP method to fix spurious
+    failures
+  + Fix flushing of ARM icache when using dual map
+  + Use float constants/parameters when testing float opcodes
+  + Add support for Hygon Dhyana processor
+  + Fix PPC/PPC64 CPU family detection
+  + Add little-endian PPC support
+  + Fix compiler warnings with clang
+  + Mark exec mapping writable in debug mode for allowing
+    breakpoints
+  + Various codegen refactorings
+  + autotools support has been dropped in favour of Meson as build
+    system.
+  + Fix PPC CPU feature detection and add support for VSX/v2.07
+  + Add double/int64 support for PPC
+- No longer remove static file in install section, no longer needed
+  as it's not built by default anymore.
+
+-------------------------------------------------------------------
 Sat Apr 20 17:28:10 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.29:

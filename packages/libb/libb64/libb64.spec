@@ -1,7 +1,7 @@
 #
 # spec file for package libb64
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Base64 Encoding/Decoding Routines
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
-Url:            http://libb64.sourceforge.net/
+URL:            http://libb64.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/%{name}/%{name}/%{name}/%{name}-%{version}.zip
 # PATCH-FIX-UPSTREAM do respect cflags and some other bugfixes from debian
 Patch0:         bufsiz-as-buffer-size.diff
@@ -39,7 +39,6 @@ Patch5:         static-chars-per-line.diff
 Patch6:         disable-werror.diff
 BuildRequires:  gcc-c++
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libb64 is a library of ANSI C routines for fast encoding/decoding data into and
@@ -66,14 +65,7 @@ from a base64-encoded format. C++ wrappers are included, as well as the source
 code for standalone encoding and decoding executables.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -87,8 +79,10 @@ make -j1
 
 %install
 # We need to use different name to avoid conflict with coreutils
-install -D -m755 base64/base64 %{buildroot}%{_bindir}/libb64-base64
-install -D -m755 src-shlib/%{soname} %{buildroot}%{_libdir}/%{soname}
+install -Dpm 0755 base64/base64 \
+  %{buildroot}%{_bindir}/libb64-base64
+install -Dpm 0755 src-shlib/%{soname} \
+  %{buildroot}%{_libdir}/%{soname}
 mkdir -p %{buildroot}/%{_includedir}
 cp -r include/b64 %{buildroot}/%{_includedir}
 cd %{buildroot}%{_libdir}
@@ -98,16 +92,14 @@ ln -s %{soname} %{shared_lib}
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc CHANGELOG README LICENSE
+%doc CHANGELOG README
 %{_bindir}/libb64-base64
 
 %files -n %{libname}
-%defattr(-,root,root)
+%license LICENSE
 %{_libdir}/%{soname}
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/%{shared_lib}
 %dir %{_includedir}/b64
 %{_includedir}/b64/cdecode.h

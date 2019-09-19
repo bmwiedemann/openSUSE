@@ -48,7 +48,7 @@ CoreDNS can listen for DNS request coming in over UDP/TCP (RFC 1035),
 TLS (RFC 7858) and gRPC (not a standard).
 
 %package extras
-Summary:        Extra components for %name} package
+Summary:        Extra components for the %{name} package
 Group:          Productivity/Networking/DNS/Servers
 Requires:       %{name} = %{version}
 Supplements:    %{name}

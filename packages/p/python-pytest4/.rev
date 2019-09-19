@@ -129,4 +129,13 @@
   * #5650: Improved output when parsing an ini configuration file fails.</comment>
     <requestid>724497</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>08253083fb3fb830225bba47646450c9</srcmd5>
+    <version>4.6.5</version>
+    <time>1568900984</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch to not pull importlib_metadata on python 3.8:
+  * importlib-py38.patch</comment>
+    <requestid>730109</requestid>
+  </revision>
 </revisionlist>

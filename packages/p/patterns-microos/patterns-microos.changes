@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 11 10:55:01 CEST 2019 - kukuk@suse.de
+
+- Replace vim with nano (less dependency, default what others are
+  using, including in documentation)
+
+-------------------------------------------------------------------
 Mon Aug 12 13:25:41 CEST 2019 - kukuk@suse.de
 
 - MicroOS base: remove update-checker, the only on openSUSE usefull

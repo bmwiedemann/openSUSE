@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 10 13:40:46 CEST 2019 - kukuk@suse.de
+
+- numastat doesn't need perl anymore since 2012
+
+-------------------------------------------------------------------
 Wed May 15 10:30:35 UTC 2019 - trenn@suse.de
 
 - For obs regression checker, this version includes following SLE

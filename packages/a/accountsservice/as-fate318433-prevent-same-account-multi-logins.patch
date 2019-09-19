@@ -1,28 +1,8 @@
-Index: accountsservice-0.6.40/src/libaccountsservice/act-user-manager.c
+Index: b/src/libaccountsservice/act-user-manager.c
 ===================================================================
---- accountsservice-0.6.40.orig/src/libaccountsservice/act-user-manager.c
-+++ accountsservice-0.6.40/src/libaccountsservice/act-user-manager.c
-@@ -751,8 +751,17 @@ _get_systemd_seat_id (ActUserManager *ma
-         char *seat_id;
- 
-         res = sd_session_get_seat (NULL, &seat_id);
--
--        if (res == -ENOENT) {
-+        /**
-+         * NOTE: There is no -ENOENT errnum for `sd_session_get_seat`. This
-+         * possibly an upstream bug. There are also other dubious occurrences of
-+         * -ENOENT within the source.
-+         *
-+         * Change to -ENODATA as this is the normal return for non-seated
-+         * session like VNC ones and should not report errors. O/w no user
-+         * sessions will be analyzed.
-+         */
-+        /* see https://www.freedesktop.org/software/systemd/man/sd_session_is_active.html */
-+        if (res == -ENODATA) {
-                 seat_id = NULL;
-         } else if (res < 0) {
-                 g_warning ("Could not get current seat: %s",
-@@ -1700,12 +1709,22 @@ maybe_add_new_session (ActUserManagerNew
+--- a/src/libaccountsservice/act-user-manager.c	2019-09-11 17:40:53.726949739 +0800
++++ b/src/libaccountsservice/act-user-manager.c	2019-09-11 17:41:00.547007450 +0800
+@@ -1752,12 +1752,22 @@ maybe_add_new_session (ActUserManagerNew
          if (new_session->x11_display == NULL) {
                  g_debug ("AcUserManager: (mostly) ignoring session '%s' since it's not graphical",
                           new_session->id);
@@ -46,11 +26,11 @@ Index: accountsservice-0.6.40/src/libaccountsservice/act-user-manager.c
                  is_ours = FALSE;
          }
  
-Index: accountsservice-0.6.40/src/libaccountsservice/act-user.c
+Index: b/src/libaccountsservice/act-user.c
 ===================================================================
---- accountsservice-0.6.40.orig/src/libaccountsservice/act-user.c
-+++ accountsservice-0.6.40/src/libaccountsservice/act-user.c
-@@ -936,6 +936,8 @@ act_user_is_logged_in (ActUser *user)
+--- a/src/libaccountsservice/act-user.c	2019-09-11 17:40:53.726949739 +0800
++++ b/src/libaccountsservice/act-user.c	2019-09-11 17:41:00.547007450 +0800
+@@ -868,6 +868,8 @@ act_user_is_logged_in (ActUser *user)
   * (Currently, this function is only implemented for systemd-logind.
   * For ConsoleKit, it is equivalent to act_user_is_logged_in.)
   *
@@ -59,7 +39,7 @@ Index: accountsservice-0.6.40/src/libaccountsservice/act-user.c
   * Returns: %TRUE or %FALSE
   */
  gboolean
-@@ -945,6 +947,24 @@ act_user_is_logged_in_anywhere (ActUser
+@@ -896,6 +898,24 @@ act_user_get_saved (ActUser *user)
  }
  
  /**
@@ -84,10 +64,10 @@ Index: accountsservice-0.6.40/src/libaccountsservice/act-user.c
   * act_user_get_locked:
   * @user: a #ActUser
   *
-Index: accountsservice-0.6.40/src/libaccountsservice/act-user.h
+Index: b/src/libaccountsservice/act-user.h
 ===================================================================
---- accountsservice-0.6.40.orig/src/libaccountsservice/act-user.h
-+++ accountsservice-0.6.40/src/libaccountsservice/act-user.h
+--- a/src/libaccountsservice/act-user.h	2019-09-11 17:40:53.726949739 +0800
++++ b/src/libaccountsservice/act-user.h	2019-09-11 17:41:00.547007450 +0800
 @@ -67,6 +67,7 @@ guint          act_user_get_num_sessions
  guint          act_user_get_num_sessions_anywhere (ActUser   *user);
  gboolean       act_user_is_logged_in              (ActUser   *user);

@@ -67,4 +67,12 @@
     <comment></comment>
     <requestid>714182</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>522f888d9b6d3923c1bf5de05c96315c</srcmd5>
+    <version>0.0.6</version>
+    <time>1568900767</time>
+    <user>maxlin_factory</user>
+    <comment>- Modernized the specfile.</comment>
+    <requestid>729537</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@
 %define plymouth_initrd_file /boot/initrd-plymouth.img
 
 Name:           plymouth
-Version:        0.9.4+git20190612+9359382
+Version:        0.9.5+git20190908+3abfab2
 Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later
@@ -45,16 +45,22 @@ Patch2:         plymouth-correct-runtime-dir.patch
 Patch3:         plymouth-manpages.patch
 # PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 fvogt@suse.com -- force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
 Patch4:         plymouth-only_use_fb_for_cirrus_bochs.patch
+# PATCH-FIX-OPENSUSE plymouth-avoid-umount-hanging-shutdown.patch bnc#1105688, bnc#1129386, bnc#1134660 qzhao@opensuse.org -- Drop grantpt() to avoid system failed to unmount /var during shutdown.
+Patch5:         plymouth-avoid-umount-hanging-shutdown.patch
+
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
-Patch5:         0001-Add-label-ft-plugin.patch
+Patch1000:      0001-Add-label-ft-plugin.patch
 # PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
-Patch6:         0002-Install-label-ft-plugin-into-initrd-if-available.patch
+Patch1001:      0002-Install-label-ft-plugin-into-initrd-if-available.patch
 # PATCH-FIX-UPSTREAM 0003-fix_null_deref.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
-Patch7:         0003-fix_null_deref.patch
+Patch1002:      0003-fix_null_deref.patch
 
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  gcc
+BuildRequires:  git
 BuildRequires:  kernel-headers
+BuildRequires:  libtool
 BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  module-init-tools
@@ -71,14 +77,11 @@ BuildRequires:  pkgconfig(libsystemd) >= 186
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(pango) >= 1.21.0
 BuildRequires:  pkgconfig(systemd) >= 186
-
 %if %{with x11_renderer}
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 %endif
 
-#BuildRequires:  translation-update-upstream
 Recommends:     %{name}-lang
-
 Requires:       %{name}-branding
 Requires:       gnu-unifont-bitmap-fonts
 Requires:       systemd >= 186
@@ -98,36 +101,36 @@ place of the text messages that normally get shown.  Text
 messages are instead redirected to a log file for viewing
 after boot.
 
-%package -n libply-boot-client4
+%package -n libply-boot-client5
 Summary:        Plymouth core library
 Group:          Development/Libraries/C and C++
 
-%description -n libply-boot-client4
+%description -n libply-boot-client5
 This package contains the libply-boot-client library used by Plymouth.
 
-%package -n libply-splash-core4
+%package -n libply-splash-core5
 Summary:        Plymouth core library
 Group:          Development/Libraries/C and C++
 
-%description -n libply-splash-core4
+%description -n libply-splash-core5
 This package contains the libply-splash-core library
 used by graphical Plymouth splashes.
 
-%package -n libply-splash-graphics4
+%package -n libply-splash-graphics5
 Summary:        Plymouth graphics libraries
 Group:          Development/Libraries/C and C++
 BuildRequires:  libpng-devel
 
-%description -n libply-splash-graphics4
+%description -n libply-splash-graphics5
 This package contains the libply-splash-graphics library
 used by graphical Plymouth splashes.
 
-%package -n libply4
+%package -n libply5
 Summary:        Plymouth core library
 Group:          Development/Libraries/C and C++
-Requires:       libply-boot-client4 = %{version}
+Requires:       libply-boot-client5 = %{version}
 
-%description -n libply4
+%description -n libply5
 This package contains the libply library used by Plymouth.
 
 %package devel
@@ -137,10 +140,10 @@ Requires:       %{name} = %{version}
 %if %{with x11_renderer}
 Requires:       %{name}-x11-renderer = %{version}
 %endif
-Requires:       libply-boot-client4 = %{version}
-Requires:       libply-splash-core4 = %{version}
-Requires:       libply-splash-graphics4 = %{version}
-Requires:       libply4 = %{version}
+Requires:       libply-boot-client5 = %{version}
+Requires:       libply-splash-core5 = %{version}
+Requires:       libply-splash-graphics5 = %{version}
+Requires:       libply5 = %{version}
 Requires:       pkgconfig
 
 %description devel
@@ -182,7 +185,7 @@ the system.
 %package plugin-label
 Summary:        Plymouth label plugin
 Group:          System/Base
-Requires:       libply-splash-graphics4 = %{version}
+Requires:       libply-splash-graphics5 = %{version}
 
 %description plugin-label
 This package contains the label control plugin for
@@ -193,7 +196,7 @@ graphical boot splashes using pango and cairo.
 Summary:        Plymouth FreeType label plugin
 Group:          System/Base
 Requires:       fontconfig
-Requires:       libply-splash-graphics4 = %{version}
+Requires:       libply-splash-graphics5 = %{version}
 
 %description plugin-label-ft
 This package contains the label control plugin for
@@ -203,9 +206,9 @@ graphical boot splashes using FreeTyoe
 %package plugin-fade-throbber
 Summary:        Plymouth "Fade-Throbber" plugin
 Group:          System/Base
-Requires:       libply-splash-core4 = %{version}
-Requires:       libply-splash-graphics4 = %{version}
-Requires:       libply4 = %{version}
+Requires:       libply-splash-core5 = %{version}
+Requires:       libply-splash-graphics5 = %{version}
+Requires:       libply5 = %{version}
 
 %description plugin-fade-throbber
 This package contains the "Fade-In" boot splash plugin for
@@ -216,9 +219,9 @@ while other images pulsate around during system boot up.
 Summary:        Plymouth "Throbgress" plugin
 Group:          System/Base
 Requires:       %{name}-plugin-label = %{version}
-Requires:       libply-splash-core4 = %{version}
-Requires:       libply-splash-graphics4 = %{version}
-Requires:       libply4 = %{version}
+Requires:       libply-splash-core5 = %{version}
+Requires:       libply-splash-graphics5 = %{version}
+Requires:       libply5 = %{version}
 
 %description plugin-throbgress
 This package contains the "throbgress" boot splash plugin for
@@ -230,9 +233,9 @@ the screen.
 Summary:        Plymouth "space-flares" plugin
 Group:          System/Base
 Requires:       %{name}-plugin-label = %{version}
-Requires:       libply-splash-core4 = %{version}
-Requires:       libply-splash-graphics4 = %{version}
-Requires:       libply4 = %{version}
+Requires:       libply-splash-core5 = %{version}
+Requires:       libply-splash-graphics5 = %{version}
+Requires:       libply5 = %{version}
 
 %description plugin-space-flares
 This package contains the "space-flares" boot splash plugin for
@@ -241,9 +244,9 @@ Plymouth. It features a corner image with animated flares.
 %package plugin-two-step
 Summary:        Plymouth "two-step" plugin
 Group:          System/Base
-Requires:       libply-splash-core4 = %{version}
-Requires:       libply-splash-graphics4 = %{version}
-Requires:       libply4 = %{version}
+Requires:       libply-splash-core5 = %{version}
+Requires:       libply-splash-graphics5 = %{version}
+Requires:       libply5 = %{version}
 Requires:       plymouth-plugin-label = %{version}
 
 %description plugin-two-step
@@ -255,9 +258,9 @@ short, fast one-shot animation.
 %package plugin-script
 Summary:        Plymouth "script" plugin
 Group:          System/Base
-Requires:       libply-splash-core4 = %{version}
-Requires:       libply-splash-graphics4 = %{version}
-Requires:       libply4 = %{version}
+Requires:       libply-splash-core5 = %{version}
+Requires:       libply-splash-graphics5 = %{version}
+Requires:       libply5 = %{version}
 
 %description plugin-script
 This package contains the "script" boot splash plugin for
@@ -268,9 +271,9 @@ boot splash themes.
 %package plugin-tribar
 Summary:        Plymouth "script" plugin
 Group:          System/Base
-Requires:       libply-splash-core4 = %{version}
-Requires:       libply-splash-graphics4 = %{version}
-Requires:       libply4 = %{version}
+Requires:       libply-splash-core5 = %{version}
+Requires:       libply-splash-graphics5 = %{version}
+Requires:       libply5 = %{version}
 
 %description plugin-tribar
 This package contains the "tribar" boot splash plugin for
@@ -363,12 +366,10 @@ This package contains the "bgrt" boot splash theme for
 Plymouth. 
 
 %prep
-%autosetup -p1
-#translation-update-upstream
-
+%autosetup -S git
+autoreconf -ivf -Wno-portabilty
 # replace builddate with patch0date
 sed -i "s/__DATE__/\"$(stat -c %%y %{_sourcedir}/%{name}.changes)\"/" src/main.c
-
 # Change the default theme
 %if 0%{?is_opensuse}
 sed -i -e 's/spinner/bgrt/g' src/plymouthd.defaults
@@ -377,7 +378,6 @@ sed -i -e 's/spinner/SLE/g' src/plymouthd.defaults
 %endif
 
 %build
-autoreconf -fiv
 %configure \
            --enable-systemd-integration                          \
            --enable-tracing                                      \
@@ -385,6 +385,8 @@ autoreconf -fiv
            --disable-static                                      \
            --disable-gdm-transition                              \
            --disable-upstart-monitoring                          \
+           --disable-tests                                       \
+           --disable-libkms                                      \
 %if %{without x11_renderer}
            --disable-gtk                                         \
 %endif
@@ -441,14 +443,14 @@ fi
 %posttrans
 %{?regenerate_initrd_posttrans}
 
-%post -n libply-boot-client4 -p /sbin/ldconfig
-%postun -n libply-boot-client4 -p /sbin/ldconfig
-%post -n libply-splash-core4 -p /sbin/ldconfig
-%postun -n libply-splash-core4 -p /sbin/ldconfig
-%post -n libply-splash-graphics4 -p /sbin/ldconfig
-%postun -n libply-splash-graphics4 -p /sbin/ldconfig
-%post -n libply4 -p /sbin/ldconfig
-%postun -n libply4 -p /sbin/ldconfig
+%post -n libply-boot-client5 -p /sbin/ldconfig
+%postun -n libply-boot-client5 -p /sbin/ldconfig
+%post -n libply-splash-core5 -p /sbin/ldconfig
+%postun -n libply-splash-core5 -p /sbin/ldconfig
+%post -n libply-splash-graphics5 -p /sbin/ldconfig
+%postun -n libply-splash-graphics5 -p /sbin/ldconfig
+%post -n libply5 -p /sbin/ldconfig
+%postun -n libply5 -p /sbin/ldconfig
 %post theme-spinfinity
 if [ $1 -eq 1 ]; then
   set -x
@@ -546,7 +548,6 @@ fi
 %ghost %{_localstatedir}/lib/plymouth/boot-duration
 %{_unitdir}/*
 %ghost %{_localstatedir}/log/boot.log
-%ghost %{_localstatedir}/spool/plymouth/boot.log
 /usr/share/locale/
 
 %files dracut
@@ -565,21 +566,21 @@ fi
 %{_libdir}/pkgconfig/ply-boot-client.pc
 %{_includedir}/plymouth-1
 
-%files -n libply-boot-client4
+%files -n libply-boot-client5
 %defattr(-, root, root)
-%{_libdir}/libply-boot-client.so.4*
+%{_libdir}/libply-boot-client.so.5*
 
-%files -n libply-splash-core4
+%files -n libply-splash-core5
 %defattr(-, root, root)
-%{plymouth_libdir}/libply-splash-core.so.4*
+%{plymouth_libdir}/libply-splash-core.so.5*
 
-%files -n libply-splash-graphics4
+%files -n libply-splash-graphics5
 %defattr(-, root, root)
-%{_libdir}/libply-splash-graphics.so.4*
+%{_libdir}/libply-splash-graphics.so.5*
 
-%files -n libply4
+%files -n libply5
 %defattr(-, root, root)
-%{plymouth_libdir}/libply.so.4*
+%{plymouth_libdir}/libply.so.5*
 
 %files scripts
 %defattr(-, root, root)

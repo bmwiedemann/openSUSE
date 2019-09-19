@@ -122,6 +122,7 @@ Patch6:         ffmpeg-4.2-dlopen-fdk_aac.patch
 # https://trac.ffmpeg.org/ticket/7861
 Patch7:         ffmpeg4_swscale_replace_illegal_vector_keyword.patch
 Patch8:         ffmpeg4_swscale_fix_altivec_vsx_recent_gcc.patch
+Patch9:         0001-avcodec-h2645_parse-zero-initialize-the-rbsp-buffer.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

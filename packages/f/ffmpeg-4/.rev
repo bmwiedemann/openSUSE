@@ -215,4 +215,13 @@
 - Disable LTO for arm, fixes build.</comment>
     <requestid>725249</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>833e0958267e3c7bbed62559cae188d2</srcmd5>
+    <version>4.2</version>
+    <time>1568900828</time>
+    <user>maxlin_factory</user>
+    <comment>- Add 0001-avcodec-h2645_parse-zero-initialize-the-rbsp-buffer.patch
+  [boo#1149839, CVE-2019-15942]</comment>
+    <requestid>729720</requestid>
+  </revision>
 </revisionlist>

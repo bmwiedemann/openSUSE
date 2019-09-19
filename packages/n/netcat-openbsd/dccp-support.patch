@@ -29,7 +29,7 @@ Subject: dccp support
  Cannot be used together with
 --- a/netcat.c
 +++ b/netcat.c
-@@ -147,6 +147,7 @@ int	rflag;					/* Random ports flag */
+@@ -146,6 +146,7 @@ int	rflag;					/* Random ports flag */
  char   *sflag;					/* Source Address */
  int	tflag;					/* Telnet Emulation */
  int	uflag;					/* UDP - Default to TCP */
@@ -37,7 +37,7 @@ Subject: dccp support
  int	vflag;					/* Verbosity */
  int	xflag;					/* Socks proxy */
  int	zflag;					/* Port Scan Flag */
-@@ -225,6 +226,7 @@ ssize_t drainbuf(int, unsigned char *, s
+@@ -224,6 +225,7 @@ ssize_t drainbuf(int, unsigned char *, s
  ssize_t fillbuf(int, unsigned char *, size_t *);
  # endif
  
@@ -45,7 +45,7 @@ Subject: dccp support
  static int connect_with_timeout(int fd, const struct sockaddr *sa,
          socklen_t salen, int ctimeout);
  
-@@ -261,7 +263,7 @@ main(int argc, char *argv[])
+@@ -263,7 +265,7 @@ main(int argc, char *argv[])
  # if defined(TLS)
  	    "46C:cDde:FH:hI:i:K:klM:m:NnO:o:P:p:q:R:rSs:T:tUuV:vW:w:X:x:Z:z"))
  # else
@@ -54,7 +54,7 @@ Subject: dccp support
  # endif
  	    != -1) {
  		switch (ch) {
-@@ -378,6 +380,13 @@ main(int argc, char *argv[])
+@@ -380,6 +382,13 @@ main(int argc, char *argv[])
  		case 'u':
  			uflag = 1;
  			break;
@@ -68,7 +68,7 @@ Subject: dccp support
  		case 'V':
  # if defined(RT_TABLEID_MAX)
  			rtableid = (int)strtonum(optarg, 0,
-@@ -482,6 +491,10 @@ main(int argc, char *argv[])
+@@ -484,6 +493,10 @@ main(int argc, char *argv[])
  
  	/* Cruft to make sure options are clean, and used properly. */
  	if (argv[0] && !argv[1] && family == AF_UNIX) {
@@ -79,7 +79,7 @@ Subject: dccp support
  		host = argv[0];
  		uport = NULL;
  	} else if (!argv[0] && lflag) {
-@@ -575,8 +588,20 @@ main(int argc, char *argv[])
+@@ -577,8 +590,20 @@ main(int argc, char *argv[])
  	if (family != AF_UNIX) {
  		memset(&hints, 0, sizeof(struct addrinfo));
  		hints.ai_family = family;
@@ -102,7 +102,7 @@ Subject: dccp support
  		if (nflag)
  			hints.ai_flags |= AI_NUMERICHOST;
  	}
-@@ -584,7 +609,10 @@ main(int argc, char *argv[])
+@@ -586,7 +611,10 @@ main(int argc, char *argv[])
  	if (xflag) {
  		if (uflag)
  			errx(1, "no proxy support for UDP mode");
@@ -114,7 +114,7 @@ Subject: dccp support
  		if (lflag)
  			errx(1, "no proxy support for listen");
  
-@@ -841,19 +869,20 @@ main(int argc, char *argv[])
+@@ -833,19 +861,20 @@ main(int argc, char *argv[])
  					}
  				}
  
@@ -137,7 +137,7 @@ Subject: dccp support
  				    sv ? sv->s_name : "*");
  			}
  			if (Fflag)
-@@ -1063,6 +1092,24 @@ unix_listen(char *path)
+@@ -1060,6 +1089,24 @@ unix_listen(char *path)
  	return s;
  }
  
@@ -162,7 +162,7 @@ Subject: dccp support
  /*
   * remote_connect()
   * Returns a socket connected to a remote host. Properly binds to a local
-@@ -1093,8 +1140,21 @@ remote_connect(const char *host, const c
+@@ -1090,8 +1137,21 @@ remote_connect(const char *host, const c
  # endif
  			memset(&ahints, 0, sizeof(struct addrinfo));
  			ahints.ai_family = res->ai_family;
@@ -186,7 +186,7 @@ Subject: dccp support
  			ahints.ai_flags = AI_PASSIVE;
  			if ((error = getaddrinfo(sflag, pflag, &ahints, &ares)))
  				errx(1, "getaddrinfo: %s", gai_strerror(error));
-@@ -1106,15 +1166,16 @@ remote_connect(const char *host, const c
+@@ -1103,15 +1163,16 @@ remote_connect(const char *host, const c
  		}
  
  		set_common_sockopts(s, res->ai_family);
@@ -206,7 +206,7 @@ Subject: dccp support
  
  		save_errno = errno;
  		close(s);
-@@ -1706,7 +1767,8 @@ build_ports(char *p)
+@@ -1715,7 +1776,8 @@ build_ports(char *p)
  	int hi, lo, cp;
  	int x = 0;
  
@@ -216,7 +216,7 @@ Subject: dccp support
  	if (sv) {
  		if (asprintf(&portlist[0], "%d", ntohs(sv->s_port)) < 0)
  			err(1, "asprintf");
-@@ -2090,6 +2152,7 @@ help(void)
+@@ -2095,6 +2157,7 @@ help(void)
  	\t-w timeout	Timeout for connects and final net reads\n\
  	\t-X proto	Proxy protocol: \"4\", \"5\" (SOCKS) or \"connect\"\n\
  	\t-x addr[:port]\tSpecify proxy address and port\n\
@@ -224,7 +224,7 @@ Subject: dccp support
  	\t-z		Zero-I/O mode [used for scanning]\n\
  	Port numbers can be individual or ranges: lo-hi [inclusive]\n");
  	exit(0);
-@@ -2099,7 +2162,7 @@ void
+@@ -2104,7 +2167,7 @@ void
  usage(int ret)
  {
  	fprintf(stderr,

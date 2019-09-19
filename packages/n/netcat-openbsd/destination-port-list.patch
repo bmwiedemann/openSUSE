@@ -50,7 +50,7 @@ Subject: destination port list
  is running, and which versions.
 --- a/netcat.c
 +++ b/netcat.c
-@@ -192,7 +192,7 @@ int minttl = -1;
+@@ -191,7 +191,7 @@ int minttl = -1;
  
  void	atelnet(int, unsigned char *, unsigned int);
  int	strtoport(char *portstr, int udp);
@@ -59,7 +59,7 @@ Subject: destination port list
  void	help(void) __attribute__((noreturn));
  int	local_listen(const char *, const char *, struct addrinfo);
  # if defined(TLS)
-@@ -243,7 +243,7 @@ int
+@@ -242,7 +242,7 @@ int
  main(int argc, char *argv[])
  {
  	int ch, s = -1, ret, socksv;
@@ -68,7 +68,7 @@ Subject: destination port list
  	struct addrinfo hints;
  	struct servent *sv;
  	socklen_t len;
-@@ -524,11 +524,11 @@ main(int argc, char *argv[])
+@@ -526,11 +526,11 @@ main(int argc, char *argv[])
  	} else if (argv[0] && !argv[1]) {
  		if (!lflag)
  			usage(1);
@@ -82,7 +82,7 @@ Subject: destination port list
  	} else
  		usage(1);
  
-@@ -715,7 +715,7 @@ main(int argc, char *argv[])
+@@ -717,7 +717,7 @@ main(int argc, char *argv[])
  			else
  				s = unix_listen(host);
  		} else
@@ -91,7 +91,7 @@ Subject: destination port list
  		if (s < 0)
  			err(1, NULL);
  
-@@ -1775,57 +1775,61 @@ strtoport(char *portstr, int udp)
+@@ -1785,57 +1785,61 @@ strtoport(char *portstr, int udp)
   * that we should try to connect to.
   */
  void
@@ -109,7 +109,7 @@ Subject: destination port list
 -	if (sv) {
 -		if (asprintf(&portlist[0], "%d", ntohs(sv->s_port)) < 0)
 -			err(1, "asprintf");
--	} else if ((n = strchr(p, '-')) != NULL) {
+-	} else if (isdigit((unsigned char)*p) && (n = strchr(p, '-')) != NULL) {
 -		*n = '\0';
 -		n++;
 -
@@ -138,7 +138,7 @@ Subject: destination port list
 +			if (asprintf(&portlist[x], "%d", ntohs(sv->s_port)) < 0)
 +				err(1, "asprintf");
 +			x++;
-+		} else if ((n = strchr(p[i], '-')) != NULL) {
++		} else if (isdigit((unsigned char)*p[i]) && (n = strchr(p[i], '-')) != NULL) {
 +			*n = '\0';
 +			n++;
 +

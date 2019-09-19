@@ -18,7 +18,7 @@
 
 
 Name:           orc
-Version:        0.4.29
+Version:        0.4.30
 Release:        0
 Summary:        The Oil Runtime Compiler
 License:        BSD-3-Clause
@@ -76,11 +76,7 @@ arithmetic operations.
 %install
 %meson_install
 
-# Remove static files.
-find %{buildroot} -type f -name "*.a" -delete -print
-
 %post -n liborc-0_4-0 -p /sbin/ldconfig
-
 %postun -n liborc-0_4-0 -p /sbin/ldconfig
 
 %files

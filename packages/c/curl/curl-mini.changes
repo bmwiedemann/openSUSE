@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Wed Sep 11 08:17:06 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 7.66.0 [bsc#1149496, CVE-2019-5482][bsc#1149495, CVE-2019-5481]
+  * Changes:
+    - CURLINFO_RETRY_AFTER: parse the Retry-After header value
+    - HTTP3: initial (experimental still not working) support
+    - curl: --sasl-authzid added to support CURLOPT_SASL_AUTHZID from the tool
+    - curl: support parallel transfers with -Z
+    - curl_multi_poll: a sister to curl_multi_wait() that waits more
+    - sasl: Implement SASL authorisation identity via CURLOPT_SASL_AUTHZID 
+  * Bugfixes:
+    - CVE-2019-5481: FTP-KRB double-free
+    - CVE-2019-5482: TFTP small blocksize heap buffer overflow
+    - CMake: remove needless newlines at end of gss variables
+    - CMake: use platform dependent name for dlopen() library
+    - CURLINFO docs: mention that in redirects times are added
+    - CURLOPT_ALTSVC.3: use a "" file name to not load from a file
+    - CURLOPT_ALTSVC_CTRL.3: remove CURLALTSVC_ALTUSED
+    - CURLOPT_HEADERFUNCTION.3: clarify
+    - CURLOPT_HTTP_VERSION: seting this to 3 forces HTTP/3 use directly
+    - CURLOPT_READFUNCTION.3: provide inline example
+    - CURLOPT_SSL_VERIFYHOST: treat the value 1 as 2
+    - Curl_addr2string: take an addrlen argument too
+    - Curl_fillreadbuffer: avoid double-free trailer buf on error
+    - HTTP: use chunked Transfer-Encoding for HTTP_POST if size unknown
+    - alt-svc: add protocol version selection masking
+    - alt-svc: fix removal of expired cache entry
+    - alt-svc: make it use h3-22 with ngtcp2 as well
+    - alt-svc: more liberal ALPN name parsing
+    - alt-svc: send Alt-Used: in redirected requests
+    - alt-svc: with quiche, use the quiche h3 alpn string
+    - asyn-thread: create a socketpair to wait on
+    - cleanup: move functions out of url.c and make them static
+    - cleanup: remove the 'numsocks' argument used in many places
+    - configure: avoid undefined check_for_ca_bundle
+    - curl.h: add CURL_HTTP_VERSION_3 to the version enum
+    - curl: cap the maximum allowed values for retry time arguments
+    - curl: handle a libcurl build without netrc support
+    - curl: make use of CURLINFO_RETRY_AFTER when retrying
+    - curl: use CURLINFO_PROTOCOL to check for HTTP(s)
+    - curl_global_init_mem.3: mention it was added in 7.12.0
+    - curl_version: bump string buffer size to 250
+    - curl_version_info.3: mentioned ALTSVC and HTTP3
+    - curl_version_info: offer quic (and h3) library info
+    - curl_version_info: provide nghttp2 details
+    - defines: avoid underscore-prefixed defines
+    - docs/ALTSVC: remove what works and the experimental explanation
+    - docs/EXPERIMENTAL: explain what it means and what's experimental now
+    - docs/MANUAL.md: converted to markdown from plain text
+    - docs/examples/curlx: fix errors
+    - docs: s/curl_debug/curl_dbg_debug in comments and docs
+    - easy: resize receive buffer on easy handle reset
+    - examples: Avoid reserved names in hiperfifo examples
+    - examples: add http3.c, altsvc.c and http3-present.c
+    - http09: disable HTTP/0.9 by default in both tool and library
+    - http2: when marked for closure and wanted to close == OK
+    - http2_recv: trigger another read when the last data is returned
+    - http: fix use of credentials from URL when using HTTP proxy
+    - http_negotiate: improve handling of gss_init_sec_context() failures
+    - md4: Use our own MD4 when no crypto libraries are available
+    - multi: call detach_connection before Curl_disconnect
+    - nss: use TLSv1.3 as default if supported
+    - openssl: build warning free with boringssl
+    - openssl: use SSL_CTX_set__proto_version() when available
+    - plan9: add support for running on Plan 9
+    - progress: reset download/uploaded counter between transfers
+    - readwrite_data: repair setting the TIMER_STARTTRANSFER stamp
+    - scp: fix directory name length used in memcpy
+    - smb: init *msg to NULL in smb_send_and_recv()
+    - smtp: check for and bail out on too short EHLO response
+    - source: remove names from source comments
+    - spnego_sspi: add typecast to fix build warning
+    - src/makefile: fix uncompressed hugehelp.c generation
+    - ssh-libssh: do not specify O_APPEND when not in append mode
+    - ssh: move code into vssh for SSH backends
+    - sspi: fix memory leaks
+    - tests: Replace outdated test case numbering documentation
+    - tftp: return error when packet is too small for options
+    - timediff: make it 64 bit (if possible) even with 32 bit time_t
+    - travis: reduce number of torture tests in 'coverage'
+    - url: make use of new HTTP version if alt-svc has one
+    - urlapi: verify the IPv6 numerical address
+    - urldata: avoid 'generic', use dedicated pointers
+    - vauth: Use CURLE_AUTH_ERROR for auth function errors 
+
+-------------------------------------------------------------------
 Fri Jul 19 13:51:15 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 7.65.3

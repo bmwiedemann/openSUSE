@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 11 07:54:48 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Add patch plymouth-avoid-umount-hanging-shutdown.patch:
+  To avoid grantpt() call nsslookup, it will hanging system unmount
+  /var during shutdown period(bsc#1105688, bsc#1129386, 
+  bsc#1134660). 
+
+-------------------------------------------------------------------
+Thu Aug 15 03:56:10 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 0.9.5+git20190908+3abfab2:
+  * two-step: Deal with buggy firmware which does not pre-rotate the bgrt image
+  * configure: bump so name
+  * Internationalization: Add zh_HK and zh_TW translations.
+  * add delay time to 8 seconds to fit AMD graphic card.
+
+-------------------------------------------------------------------
 Mon Aug  5 05:58:21 UTC 2019 - Cliff Zhao <qzhao@suse.com>
 
 - Update plymouth.spec: Disable upstart-monitor compile because it

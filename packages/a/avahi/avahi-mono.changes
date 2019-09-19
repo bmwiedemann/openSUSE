@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 12 17:29:45 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gtk2-devel and python-gtk-devel BuildRequires: No longer
+  build gtk2 support. Following this, pass --disable-gtk to
+  configure. Drop sub-package libavahi-ui0, no longer built.
+- Drop long disabled sub-packages libavahi-qt4-1 and
+  libavahi-qt4-devel.
+
+-------------------------------------------------------------------
 Fri Jul  5 12:22:21 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by

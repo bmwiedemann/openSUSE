@@ -701,4 +701,12 @@ plymouth-branding-openSUSE (forwarded request 114125 from gary_lin)</comment>
     <comment></comment>
     <requestid>720963</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>0cac5e4c90688ac7cba12715eac9b169</srcmd5>
+    <version>0.9.5+git20190908+3abfab2</version>
+    <time>1568900901</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>730064</requestid>
+  </revision>
 </revisionlist>

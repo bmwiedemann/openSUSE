@@ -58,4 +58,13 @@
 - Add zypper-needs-restarting to MicroOS base pattern</comment>
     <requestid>722654</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>84467ae4a910d62c46132fde43505dce</srcmd5>
+    <version>5.0</version>
+    <time>1568900914</time>
+    <user>maxlin_factory</user>
+    <comment>- Replace vim with nano (less dependency, default what others are
+  using, including in documentation)</comment>
+    <requestid>730070</requestid>
+  </revision>
 </revisionlist>

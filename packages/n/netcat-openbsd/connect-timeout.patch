@@ -8,8 +8,8 @@ Subject: connect timeout
 
 --- a/netcat.c
 +++ b/netcat.c
-@@ -89,6 +89,7 @@
- 
+@@ -90,6 +90,7 @@
+ #include <ctype.h>
  #include <err.h>
  #include <errno.h>
 +#include <fcntl.h>
@@ -37,7 +37,7 @@ Subject: connect timeout
  int
  main(int argc, char *argv[])
  {
-@@ -1066,11 +1074,14 @@ remote_connect(const char *host, const c
+@@ -1078,11 +1086,14 @@ remote_connect(const char *host, const c
  
  		set_common_sockopts(s, res->ai_family);
  
@@ -54,7 +54,7 @@ Subject: connect timeout
  
  		save_errno = errno;
  		close(s);
-@@ -1111,6 +1122,69 @@ timeout_connect(int s, const struct sock
+@@ -1123,6 +1134,69 @@ timeout_connect(int s, const struct sock
  	return ret;
  }
  

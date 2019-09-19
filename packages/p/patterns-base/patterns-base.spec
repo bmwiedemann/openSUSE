@@ -563,6 +563,7 @@ Requires:       filesystem
 Requires:       glibc
 Requires:       iproute2
 Requires:       kbd
+Requires:       libnss_usrfiles2
 Requires:       pam
 Requires:       procps
 Requires:       rpm

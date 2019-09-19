@@ -30,12 +30,14 @@ Source1:        baselibs.conf
 Patch0:         new_vala_build.patch
 BuildRequires:  pkg-config
 BuildRequires:  vala
-BuildRequires:  pkgconfig(avahi-glib)
+BuildRequires:  pkgconfig(avahi-client) >= 0.6
+BuildRequires:  pkgconfig(avahi-glib) >= 0.6
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.36
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
 
 %description
