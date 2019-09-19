@@ -21,11 +21,11 @@
 %define skip_python2 1
 %define pypi_name PyMuPDF
 Name:           python-%{pypi_name}
-Version:        1.16.1
+Version:        1.16.2
 Release:        0
 Summary:        Python binding for MuPDF, a PDF and XPS viewer
 License:        GPL-3.0-only AND AGPL-3.0-only
-Group:          Development/Languages/Python
+Group:          Development/Libraries/Python
 URL:            https://github.com/rk700/PyMuPDF
 Source0:        %{url}/archive/%{version}/%{pypi_name}-%{version}.tar.gz
 Patch1:         fix-library-linking.patch
@@ -52,11 +52,12 @@ MuPDF can access files in PDF, XPS, OpenXPS, epub, comic and fiction
 book formats. PyMuPDF can also access files with extensions *.pdf,
 *.xps, *.oxps, *.epub, *.cbz or *.fb2 from Python scripts.
 
-%package -n     python-%{pypi_name}-doc
+%package        doc
 Summary:        Documentation for PyMuPDF
-Group:          Development/Languages/Python
+Group:          Development/Libraries/Python
+BuildArch:      noarch
 
-%description -n python-%{pypi_name}-doc
+%description    doc
 This is the documentation for PyMuPDF.
 
 %prep
@@ -64,7 +65,6 @@ This is the documentation for PyMuPDF.
 %patch1 -p1
 
 %build
-export CFLAGS="%{optflags}"
 %python_build
 
 %install
@@ -72,14 +72,14 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# no upstream tests
+%python_expand PYTHONPATH=%{buildroot}%{python_sitearch} $python -c 'import sys; sys.path.remove(""); import fitz'
 
 %files %{python_files}
 %license COPYING
 %doc README.md
 %{python_sitearch}/*
 
-%files -n python-%{pypi_name}-doc
+%files doc
 %doc doc/PyMuPDF.pdf
 
 %changelog
