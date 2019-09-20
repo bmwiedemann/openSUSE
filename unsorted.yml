@@ -148,6 +148,7 @@ unsorted:
   - OpenShadingLanguage-devel 
   - OpenShadingLanguage-doc 
   - OpenShadingLanguage-example-shaders-source 
+  - OpenSubdiv-devel 
   - PackageKit-Qt-devel 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
@@ -358,6 +359,7 @@ unsorted:
   - albert 
   - aldusleaf-crimson-text-fonts 
   - alee-fonts 
+  - alembic-devel 
   - alevt 
   - alevtd 
   - alex 
@@ -6669,6 +6671,7 @@ unsorted:
   - lib4ti2-0 
   - libADLMIDI1 
   - libAPFEL0 
+  - libAlembic1_7 
   - libAppStreamQt-devel 
   - libArcus-devel 
   - libArcus3 
@@ -7079,8 +7082,6 @@ unsorted:
   - libQtAV1-32bit: [x86_64] 
   - libQtAVWidgets1 
   - libQtAVWidgets1-32bit: [x86_64] 
-  - libQtAssistantClient4 
-  - libQtAssistantClient4-32bit: [x86_64] 
   - libQtQuick5-32bit: [x86_64] 
   - libRaTools0 
   - libRivet-2_7_2 
@@ -10127,6 +10128,7 @@ unsorted:
   - libopensync-devel 
   - libopensync-tools 
   - libopentracing-cpp1 
+  - libopenvdb6_1 
   - libopenvswitch-2_11-0 
   - liboping-devel 
   - liboping-devel-32bit: [x86_64] 
@@ -10146,6 +10148,7 @@ unsorted:
   - liborigin3 
   - libortp13 
   - libortp13-32bit: [x86_64] 
+  - libosdCPU3_4_0 
   - libosinfo-devel 
   - liboslcomp1_9 
   - liboslexec1_9 
@@ -10514,15 +10517,6 @@ unsorted:
   - libqca-qt5-devel 
   - libqca-qt5-devel-32bit: [x86_64] 
   - libqca-qt5-plugins-32bit: [x86_64] 
-  - libqca2 
-  - libqca2-32bit: [x86_64] 
-  - libqca2-devel 
-  - libqca2-plugin-cyrus-sasl 
-  - libqca2-plugin-cyrus-sasl-32bit: [x86_64] 
-  - libqca2-plugin-gcrypt 
-  - libqca2-plugin-nss 
-  - libqca2-plugin-nss-32bit: [x86_64] 
-  - libqca2-plugin-pkcs11 
   - libqcow-devel 
   - libqcow-tools 
   - libqcow1 
@@ -14776,6 +14770,7 @@ unsorted:
   - openttd-opengfx 
   - openttd-openmsx 
   - openucx-tools: [x86_64] 
+  - openvdb-devel 
   - openvpn-auth-pam-plugin 
   - openvpn-devel 
   - openvpn-down-root-plugin 
@@ -17279,6 +17274,7 @@ unsorted:
   - python2-Flask-SQLAlchemy 
   - python2-Flask-Script 
   - python2-Flask-Security 
+  - python2-Flask-Testing 
   - python2-Flask-WTF 
   - python2-Flask-doc 
   - python2-FontTools 
@@ -19512,6 +19508,7 @@ unsorted:
   - python3-Flask-SQLAlchemy 
   - python3-Flask-Script 
   - python3-Flask-Security 
+  - python3-Flask-Testing 
   - python3-Flask-WTF 
   - python3-Flask-doc 
   - python3-FontTools 
@@ -22018,10 +22015,6 @@ unsorted:
   - qsynergy 
   - qsynth 
   - qsynth-lang 
-  - qt4-assistant-adp 
-  - qt4-assistant-adp-devel 
-  - qt4-qtscript 
-  - qt4-qtscript-doc 
   - qt4-style-fusion 
   - qt5ct 
   - qtcurve-gtk2 

@@ -219,7 +219,7 @@
     <package name="baobab-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bash" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="bash-doc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="bash-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bash-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="bbswitch-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -2270,7 +2270,7 @@
     <package name="libixml10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libjack0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libjansson4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libjasper4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libjasper4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libjavascriptcoregtk-4_0-18" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libjbig2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libjemalloc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4251,7 +4251,7 @@
     <package name="read-only-root-fs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="readcd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="readline-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="readline-doc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="readline-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rebootmgr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="reiserfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="relaxngDatatype" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-technical_writing -->
