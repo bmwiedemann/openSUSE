@@ -3781,4 +3781,18 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     - Vulkan transform feedback extension is disabled on Intel</comment>
     <requestid>726100</requestid>
   </revision>
+  <revision rev="356" vrev="228">
+    <srcmd5>c87f1696f9f5818443a4118b1f7a5cf1</srcmd5>
+    <version>unknown</version>
+    <time>1568983739</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 19.1.7
+  * another bugfix release ....
+
+- Add ppc64 for radeonsi to avoid build error
+
+- Update to version 19.1.6
+  * bugfix release</comment>
+    <requestid>731650</requestid>
+  </revision>
 </revisionlist>

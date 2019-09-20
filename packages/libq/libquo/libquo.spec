@@ -1,7 +1,7 @@
 #
 # spec file for package libquo
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2014-2016 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,30 +13,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libquo
 Version:        1.3
 Release:        0
-
-Source:         http://lanl.github.io/libquo/dists/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - 29.patch - comp_dgemv: fix return value
-Patch0:         https://patch-diff.githubusercontent.com/raw/lanl/libquo/pull/29.patch
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Url:            http://lanl.github.io/libquo/
 Summary:        A library for run-time tuning of process binding policies
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
+URL:            https://lanl.github.io/libquo/
+Source:         http://lanl.github.io/libquo/dists/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - 29.patch - comp_dgemv: fix return value
+Patch0:         https://patch-diff.githubusercontent.com/raw/lanl/libquo/pull/29.patch
 BuildRequires:  hwloc
 BuildRequires:  numactl
 BuildRequires:  openmpi-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 QUO is an API tailored for MPI/MPI+X codes that may benefit from
@@ -71,10 +65,11 @@ and exited, respectively.
 This package contains development headers and libraries for libquo.
 
 %prep
-%setup
+%setup -q
 %patch0 -p1
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 source %{_libdir}/mpi/gcc/openmpi/bin/mpivars.sh
 
 DATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S')
@@ -82,8 +77,8 @@ DATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S')
 make %{?_smp_mflags}
 
 %install
-make install DESTDIR=%{buildroot}
-rm %{buildroot}%{_libdir}/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libquo6 -p /sbin/ldconfig
 %postun -n libquo6 -p /sbin/ldconfig
@@ -93,7 +88,6 @@ rm %{buildroot}%{_libdir}/*.la
 %{_libdir}/libquo.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %{_bindir}/quo-info
 %{_includedir}/*.h
 %{_libdir}/libquo.so

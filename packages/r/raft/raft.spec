@@ -18,13 +18,13 @@
 
 %bcond_without libuv
 Name:           raft
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        Fully asynchronous C implementation of the Raft consensus protocol
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/canonical/raft
-Source:         https://github.com/canonical/raft/archive/v0.9.5.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/canonical/raft/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool

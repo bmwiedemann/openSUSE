@@ -22,7 +22,7 @@
 %endif
 
 Name:           datamash
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Statistical, numerical and textual operations in the command line
 License:        GPL-3.0-or-later

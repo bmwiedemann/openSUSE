@@ -64,9 +64,9 @@ This package contains tools for libvterm.
 %setup -q -n \~libvterm/libvterm/trunk
 
 %build
-make PREFIX=%{_prefix} \
+%make_build PREFIX=%{_prefix} \
      LIBDIR=%{_libdir} \
-     %{?_smp_mflags}
+     CFLAGS="%{optflags}"
 
 %install
 make PREFIX=%{_prefix} \

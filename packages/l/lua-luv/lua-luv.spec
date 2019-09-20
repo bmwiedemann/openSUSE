@@ -20,11 +20,17 @@
 %define flavor @BUILD_FLAVOR@
 %define mod_name luv
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-%define upver 1.30.0-0
+%define upver 1.30.1-1
 %define libluv_sover 1
 %bcond_with public_lib
 
-Version:        1.30.0
+%if "%{flavor}" == ""
+Name:           lua-%{mod_name}
+ExclusiveArch:  do_not_build
+%else
+Name:           %{flavor}-%{mod_name}
+%endif
+Version:        1.30.1
 Release:        0
 Summary:        Bare libuv bindings for lua
 License:        Apache-2.0
@@ -44,12 +50,6 @@ BuildRequires:  lua-compat53
 BuildRequires:  lua-devel
 BuildRequires:  lua-filesystem
 %endif # suse_version
-%if "%{flavor}" == ""
-Name:           lua-%{mod_name}
-ExclusiveArch:  do_not_build
-%else
-Name:           %{flavor}-%{mod_name}
-%endif
 
 %description
 This library makes libuv available to lua scripts. It was made

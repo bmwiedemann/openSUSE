@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Sep 19 12:37:55 UTC 2019 - ecsos@opensuse.org
+
+- Update to 2.11.0
+  * Core
+    - Rewrite Network Stack (cluster, REST API) based on Boost Asio, Beast, Coroutines
+      - Technical concept: #7041
+      - Requires package updates: Boost >1.66 (either from packages.icinga.com, EPEL or backports). SLES11 & Ubuntu 14 are EOL.
+      - Require TLS 1.2 and harden default cipher list
+    - Improved Reload Handling (umbrella process, now 3 processes at runtime)
+      - Support running Icinga 2 in (Docker) containers natively in foreground
+    - Quality: Use Modern JSON for C++ library instead of YAJL (dead project)
+    - Quality: Improve handling of invalid UTF8 strings
+  * API
+    - Fix crashes on Linux, Unix and Windows from Nessus scans #7431
+    - Locks and stalled waits are fixed with the core rewrite in #7071
+    - schedule-downtime action supports all_services for host downtimes
+    - Improve storage handling for runtime created objects in the _api package
+  * Cluster
+    - HA aware features & improvements for failover handling #2941 #7062
+    - Improve cluster config sync with staging #6716
+    - Fixed that same downtime/comment objects would be synced again in a cluster loop #7198
+  * Checks & Notifications
+    - Ensure that notifications during a restart are sent
+    - Immediately notify about a problem after leaving a downtime and still NOT-OK
+    - Improve reload handling and wait for features/metrics
+    - Store notification command results and sync them in HA enabled zones #6722
+  * DSL/Configuration
+    - Add getenv() function
+    - Fix TimePeriod range support over midnight
+    - concurrent_checks in the Checker feature has no effect, use the global MaxConcurrentChecks constant instead
+  * CLI
+    - Permissions: node wizard/setup, feature, api setup now run in the Icinga user context, not root
+    - ca list shows pending CSRs by default, ca remove/restore allow to delete signing requests
+  * ITL
+    - Add new commands and missing attributes
+  * Windows
+    - Update bundled NSClient++ to 0.5.2.39
+    - Refine agent setup wizard & update requirements to .NET 4.6
+  * Documentation
+    - Service Monitoring: How to create plugins by example, check commands and a modern version of the supported plugin API with best practices
+    - Features: Better structure on metrics, and supported features
+    - Technical Concepts: TLS Network IO, Cluster Feature HA, Cluster Config Sync
+    - Development: Rewritten for better debugging and development experience for contributors including a style guide. Add nightly build setup instructions.
+    - Packaging: INSTALL.md was integrated into the Development chapter, being available at https://icinga.com/docs too.
+
+-------------------------------------------------------------------
 Tue Jul 30 22:43:16 UTC 2019 - ecsos@opensuse.org
 
 - Update to 2.10.6

@@ -18,7 +18,7 @@
 
 
 Name:           osc-plugin-collab
-Version:        0.101
+Version:        0.102
 Release:        0
 Summary:        Plugin to make collaboration easier with osc
 License:        BSD-3-Clause

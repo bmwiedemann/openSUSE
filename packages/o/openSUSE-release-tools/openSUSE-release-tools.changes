@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 18 22:06:20 UTC 2019 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20190918.1d4c6836:
+  * osclib/origin_listener: indicate when checking for update to package.
+  * osc-origin: osrt_origin_update(): include thread name in logger format.
+  * osc-origin: osrt_origin_update(): remove duplicate logging import.
+  * osclib/origin_listener: utilize apiurl as thread name for remote listener.
+
+-------------------------------------------------------------------
 Fri Sep 13 16:25:13 UTC 2019 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20190913.9d119079:

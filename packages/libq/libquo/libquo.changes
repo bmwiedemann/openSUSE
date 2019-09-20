@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 11:45:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Thu Oct 26 17:28:56 UTC 2017 - junghans@votca.org
 
 - added 29.patch to fix return value for comp_dgemv

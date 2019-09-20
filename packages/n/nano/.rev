@@ -629,4 +629,12 @@
   * M-6 works again also when the cursor is at end of buffer.</comment>
     <requestid>726285</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>965c8ae9be7c0d5551c1d0c3f4de722a</srcmd5>
+    <version>4.4</version>
+    <time>1568984077</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731958</requestid>
+  </revision>
 </revisionlist>

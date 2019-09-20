@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb34b76eb0498d68fd989c0bae03141a</srcmd5>
+    <version>3.4.0</version>
+    <time>1568983847</time>
+    <user>maxlin_factory</user>
+    <comment>Take three of OpenSubdiv, an important library, that the current blender will depend upon. It doesn't make much sense to build blender 2.80 without it.</comment>
+    <requestid>725697</requestid>
+  </revision>
+</revisionlist>

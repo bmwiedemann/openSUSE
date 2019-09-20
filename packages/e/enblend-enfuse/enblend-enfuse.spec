@@ -36,6 +36,10 @@ Source11:       enfuse.pdf
 
 # PATCH-FIX-UPSTREAM enblend-enfuse-4.2-add-missing-cmakelists.patch
 Patch0:         enblend-enfuse-4.2-add-missing-cmakelists.patch
+# PATCH-FIX-UPSTREAM reproducible.patch by bmwiedemann
+Patch1:         reproducibledate.patch
+# PATCH-FIX-OPENSUSE by bmwiedemann
+Patch2:         reproducible.patch
 
 BuildRequires:  OpenEXR-devel
 BuildRequires:  cmake
@@ -101,6 +105,8 @@ PDF usage documentation for the enblend and enfuse command line tools.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %if ! %{_build_doc}
 cp %{SOURCE10} doc/

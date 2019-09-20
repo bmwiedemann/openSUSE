@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 19 17:53:06 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.3
+  New stuff:
+  * triggerScalingFilter action
+  * Support drag'n'dropping out of qimgv
+  Bug Fixes:
+  * Save maximized window state
+  * CMake fixes (VIDEO_SUPPORT option working incorrectly)
+  * Some unicode fixes on windows
+  * Fix lag during sorting mode switch
+  * Fix icon grid behavior when a lot of files are being
+    added/modified from outside
+  * Fix clipboard file copying (via ctrl+c)
+  * Load files with incorrect file extensions (when opened
+    directly)
+
+- Refreshed qimgv-nosharedlib.patch
+
+- Added qimgv-PIE.patch
+
+-------------------------------------------------------------------
 Tue Aug 27 18:01:53 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.8.2

@@ -27,6 +27,8 @@ Source0:        https://github.com/bernds/%{name}/archive/%{name}-%{version}.tar
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+# Required for https://doc.qt.io/qt-5/qmetaobject.html#invokeMethod-4
+BuildRequires:  pkgconfig(Qt5Core) >= 5.10
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)

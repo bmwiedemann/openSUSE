@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 19 01:52:51 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.5:
+  * accept backslash-escaped characters in field names
+  * New operations for handling file names and paths
+  * New getnum operation to extract a number from a string
+  * New operation: cut, similar to cut(1)
+
+-------------------------------------------------------------------
 Wed Sep  4 10:10:24 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - disable LTO for ppc64 ppc64le aarch64 bypass boo#1149348

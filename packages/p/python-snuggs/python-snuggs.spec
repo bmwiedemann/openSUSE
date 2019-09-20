@@ -12,30 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-snuggs
-Version:        1.4.3
+Version:        1.4.7
 Release:        0
-License:        MIT
 Summary:        S-expressions tool for Numpy
-Url:            https://github.com/mapbox/snuggs
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/mapbox/snuggs
 Source:         https://files.pythonhosted.org/packages/source/s/snuggs/snuggs-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-numpy
+Requires:       python-pyparsing
+BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-numpy
-Requires:       python-pyparsing
-BuildArch:      noarch
-
 %python_subpackages
 
 %description

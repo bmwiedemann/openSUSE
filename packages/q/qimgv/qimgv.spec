@@ -17,7 +17,7 @@
 
 
 Name:           qimgv
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Qt5 image viewer
 License:        GPL-3.0-only
@@ -26,6 +26,8 @@ URL:            https://github.com/easymodo/qimgv
 Source0:        https://github.com/easymodo/qimgv/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE qimgv-nosharedlib.patch # aloisio@gmx.com build helper library statically
 Patch0:         qimgv-nosharedlib.patch
+# PATCH-FEATURE-OPENSUSE qimgv-PIE.patch # aloisio@gmx.com add PIE flags
+Patch1:         qimgv-PIE.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++

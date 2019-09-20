@@ -86,7 +86,7 @@ Group:          System/Monitoring
 %else
 %endif # suse
 Name:           icinga2
-Version:        2.10.6
+Version:        2.11.0
 Release:        %{revision}%{?dist}
 Url:            https://www.icinga.com/
 Source:         https://github.com/Icinga/%{name}/archive/v%{version}.tar.gz
@@ -156,10 +156,13 @@ BuildRequires:  boost153-devel
 BuildRequires:  boost153-devel
 %else
 %if "%{_vendor}" == "suse" && 0%{?suse_version} > 1320
-BuildRequires:  libboost_program_options-devel >= 1.48
-BuildRequires:  libboost_regex-devel >= 1.48
-BuildRequires:  libboost_system-devel >= 1.48
-BuildRequires:  libboost_thread-devel >= 1.48
+BuildRequires:  libboost_context-devel >= 1.66
+BuildRequires:  libboost_coroutine-devel >= 1.66
+BuildRequires:  libboost_filesystem-devel >= 1.66
+BuildRequires:  libboost_program_options-devel >= 1.66
+BuildRequires:  libboost_regex-devel >= 1.66
+BuildRequires:  libboost_system-devel >= 1.66
+BuildRequires:  libboost_thread-devel >= 1.66
 %else
 %if (0%{?el5} || 0%{?rhel} == 5 || "%{?dist}" == ".el5" || 0%{?el6} || 0%{?rhel} == 6 || "%{?dist}" == ".el6")
 # Requires EPEL repository

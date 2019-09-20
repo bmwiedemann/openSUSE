@@ -54,6 +54,7 @@ rm -rf click_threading.egg-info
 %python_expand %fdupes -s %{buildroot}%{$python_sitelib}
 
 %check
+export LANG=en_US.UTF-8
 %pytest tests
 
 %files %{python_files}

@@ -1,17 +1,17 @@
-Index: qimgv-0.8.1/qimgv_libs/qimgv_player_mpv/CMakeLists.txt
+Index: qimgv-0.8.3/qimgv_libs/qimgv_player_mpv/CMakeLists.txt
 ===================================================================
---- qimgv-0.8.1.orig/qimgv_libs/qimgv_player_mpv/CMakeLists.txt
-+++ qimgv-0.8.1/qimgv_libs/qimgv_player_mpv/CMakeLists.txt
-@@ -10,7 +10,7 @@ find_package(Qt5Widgets REQUIRED)
- 
- include(GNUInstallDirs)
+--- qimgv-0.8.3.orig/qimgv_libs/qimgv_player_mpv/CMakeLists.txt
++++ qimgv-0.8.3/qimgv_libs/qimgv_player_mpv/CMakeLists.txt
+@@ -19,7 +19,7 @@ if(WIN32)
+     endif()
+ endif()
  
 -add_library(qimgv_player_mpv SHARED
 +add_library(qimgv_player_mpv STATIC
      src/videoplayer.cpp
      src/mpvwidget.cpp
      src/videoplayermpv.cpp)
-@@ -25,4 +25,3 @@ target_include_directories(qimgv_player_
+@@ -34,4 +34,3 @@ target_include_directories(qimgv_player_
  
  add_definitions(-DQIMGV_PLAYER_MPV_LIBRARY)
  

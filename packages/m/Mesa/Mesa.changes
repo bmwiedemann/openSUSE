@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 18 06:59:29 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.1.7
+  * another bugfix release ....
+
+-------------------------------------------------------------------
+Mon Sep  9 10:51:49 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add ppc64 for radeonsi to avoid build error
+
+-------------------------------------------------------------------
+Wed Sep  4 09:08:57 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 19.1.6
+  * bugfix release 
+
+-------------------------------------------------------------------
 Mon Aug 26 08:12:29 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 19.1.5

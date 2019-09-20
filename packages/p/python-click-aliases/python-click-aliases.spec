@@ -52,6 +52,7 @@ Command aliases for Click.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}

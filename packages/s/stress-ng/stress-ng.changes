@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 18 19:47:08 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.05
+  * core-shim: fix typo in shim_move_mount
+  * core-shim: use shim_enosys for more ENOSYS returns
+  * Clean up shims for syslog(2) and syslog(3)
+  * stress-ramfs: remove it from the filesystem test
+  * stress-dirdeep: make inodes info into a debug message
+  * stress-vm: fix verification failure with gray code method
+  * stress-socket: make EPIPE a non-fatal error condition
+  * stress-udp: use correct default UDP port 7000
+  * stress-ng: rescan the exclusion list for --class stressors
+  * core-shim: reset errno before each waitpid call
+  * stress-socket: handle SIGPIPE as non-fatal
+  * stress-physpage: don't abort on zero address physpage
+
+-------------------------------------------------------------------
 Mon Sep  2 19:09:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.10.04

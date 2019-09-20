@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 11 14:17:25 UTC 2019 - vuntz@opensuse.org
+
+- Update to version 0.102:
+  + Fix configuring on python3
+  + Fix another str vs. bytes issue
+
+-------------------------------------------------------------------
 Fri May  3 14:26:17 UTC 2019 - vuntz@opensuse.org
 
 - Update to version 0.101:

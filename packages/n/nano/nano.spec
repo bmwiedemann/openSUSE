@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): info
 Requires(preun): info
-Recommends:     %{name}-lang = %{version}
 
 %description
 GNU nano is a small and friendly text editor. It aims to emulate

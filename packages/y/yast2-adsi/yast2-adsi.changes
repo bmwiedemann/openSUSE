@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 18 15:58:06 UTC 2019 - dmulder@suse.com
+
+- Kerberos authentication always fails, disable for now
+- Unused xset may cause exception in appimage; (bsc#1150612);
+- 1.5
+
+-------------------------------------------------------------------
 Tue Aug 06 14:54:46 UTC 2019 - dmulder@suse.com
 
 - Provide a more descriptive package name; (bsc#1144530);

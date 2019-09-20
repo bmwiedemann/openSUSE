@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 19 15:33:38 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.30.1-1: mostly bugfixes. Full log is only
+  https://github.com/luvit/luv/commits/master
+
+-------------------------------------------------------------------
 Fri Aug  9 18:09:40 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - devel package doesn’t need luv%{sover} package, when public

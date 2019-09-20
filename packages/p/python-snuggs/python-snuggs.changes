@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 19 06:34:56 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 1.4.7
+  The snuggs tests of syntax errors no longer assert a specific pyparsing
+  exception message as the format of these messages is not stable (#15).
+  Previous versions of snuggs had no other issues with pyparsing 2.3 or 2.4. 
+  + 1.4.6 (2019-05-15)
+    * Tests were failing on Python 2.7 (#20, #21) due to loss of precision in
+    str(num). This has been fixed by using repr(num).
+  + 1.4.5 (2019-05-14)
+    + Replace custom integer and real parsers with pyparsing_common's number (#19).
+  + 1.4.4 (2019-05-14)
+    + Fix for a reported bug in parsing negative real numbers (#16) and for an
+    unreported bug in parsing numbers in exponential notation (thank you,
+    hypothesis!).
+    + Add a "test" dependency on hypothesis.
+- Packaging
+  + Add hypothesis buildrequire
+  + spec-cleaner minimal
+  + Fix build errors on TW
+
+-------------------------------------------------------------------
 Wed Mar  6 18:59:11 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 1.4.3
