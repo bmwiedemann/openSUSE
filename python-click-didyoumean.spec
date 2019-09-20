@@ -53,6 +53,7 @@ This package enables a git-like did-you-mean feature in click.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export LANG=en_US.UTF-8
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m pytest
 
 %files %{python_files}
