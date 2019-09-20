@@ -20,6 +20,8 @@
 %define         gs_config        %{_sysconfdir}/GNUstep/GNUstep.conf
 %define         gs_layout        fhs-other
 %define         gs_makefiles     %{_datadir}/GNUstep/Makefiles
+# Disable LTO for all GNUstep packages
+%define         _lto_cflags      %{nil}
 
 Name:           gnustep-make
 Summary:        GNUstep Makefile package

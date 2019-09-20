@@ -51,7 +51,7 @@
  	     "hicolor/scalable/apps/${EMACS_NAME}.svg" \
 --- configure
 +++ configure	2019-04-15 12:04:25.158945850 +0000
-@@ -10460,10 +10460,8 @@ fi
+@@ -10465,10 +10465,8 @@ fi
  LD_SWITCH_X_SITE_RPATH=
  if test "${x_libraries}" != NONE; then
    if test -n "${x_libraries}"; then

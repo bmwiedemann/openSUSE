@@ -388,4 +388,12 @@
     <comment>Various tweaks or package</comment>
     <requestid>723296</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>21402278ac04573027c016bf05338f0d</srcmd5>
+    <version>0.4.16</version>
+    <time>1568983009</time>
+    <user>maxlin_factory</user>
+    <comment>Drop jasper support.</comment>
+    <requestid>729376</requestid>
+  </revision>
 </revisionlist>

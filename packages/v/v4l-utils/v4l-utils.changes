@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep  7 22:37:25 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Split build of qv4l2ctl to an independent package. This allows
+  building libv4l much earlier in the build cycle, as it no
+  longer depends on libQt5.
+  * Add use_system_v4l_for_qv4l.patch
+- Drop glu BuildRequires, only used for unused test binary in
+  contrib.
+
+-------------------------------------------------------------------
 Mon Oct  1 10:35:11 UTC 2018 - schwab@suse.de
 
 - sysmacros.patch: include <sys/sysmacros.h> for minor

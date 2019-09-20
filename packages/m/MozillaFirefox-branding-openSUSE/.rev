@@ -453,4 +453,12 @@
     <comment></comment>
     <requestid>721670</requestid>
   </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>9480262f0339f53992c8a309171d0e32</srcmd5>
+    <version>60</version>
+    <time>1568983029</time>
+    <user>maxlin_factory</user>
+    <comment>- layout.word_select.stop_at_punctuation -&gt; true (boo#1133163)</comment>
+    <requestid>729383</requestid>
+  </revision>
 </revisionlist>

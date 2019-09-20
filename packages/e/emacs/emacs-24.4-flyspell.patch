@@ -17,7 +17,7 @@
  ;;*---------------------------------------------------------------------*/
  ;;*    Mode specific options                                            */
  ;;*    -------------------------------------------------------------    */
-@@ -342,7 +342,6 @@ property of the major mode name.")
+@@ -336,7 +342,6 @@ property of the major mode name.")
  ;;*--- mail mode -------------------------------------------------------*/
  (put 'mail-mode 'flyspell-mode-predicate 'mail-mode-flyspell-verify)
  (put 'message-mode 'flyspell-mode-predicate 'mail-mode-flyspell-verify)
@@ -25,7 +25,7 @@
  (defun mail-mode-flyspell-verify ()
    "Function used for `flyspell-generic-check-word-predicate' in Mail mode."
    (let* ((header-end (save-excursion
-@@ -353,11 +353,11 @@ property of the major mode name.")
+@@ -348,11 +353,11 @@ property of the major mode name.")
                          nil t)
                         (point)))
           (signature-begin

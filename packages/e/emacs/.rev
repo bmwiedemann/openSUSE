@@ -1386,4 +1386,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>706048</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>b61bbb1e2faf7a6d7c4154bb95584846</srcmd5>
+    <version>26.3</version>
+    <time>1568983048</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to emacs version 26.3
+  * New option 'help-enable-completion-auto-load'.
+    This allows disabling the new feature introduced in Emacs 26.1 which
+    loads files during completion of 'C-h f' and 'C-h v' according to
+    'definition-prefixes'.
+  * Emacs now supports the new Japanese Era name.
+    The newly assigned codepoint U+32FF was added to the Unicode Character
+    Database compiled into Emacs.</comment>
+    <requestid>729384</requestid>
+  </revision>
 </revisionlist>

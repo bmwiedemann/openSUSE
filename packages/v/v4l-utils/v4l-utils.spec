@@ -1,7 +1,7 @@
 #
-# spec file for package v4l-utils
+# spec file for package v4l
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,39 +16,49 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "qv4l2"
+%global psuffix -%{flavor}
+%endif
+
 %define _udevdir %(pkg-config --variable udevdir udev)
 %define so_ver 0
-%ifarch aarch64 %{arm}
-# qv4l2 does not support GLES
-%bcond_with qv4l2
-%else
-%bcond_without qv4l2
-%endif
-Name:           v4l-utils
+%define sname v4l-utils
+Name:           v4l-utils%{?psuffix}
 Version:        1.14.2
 Release:        0
 Summary:        Utilities for video4linux
-License:        GPL-2.0-or-later AND GPL-2.0-only
+License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-2.0-only
 Group:          Hardware/TV
 URL:            https://linuxtv.org/downloads/v4l-utils/
-Source0:        https://linuxtv.org/downloads/v4l-utils/%{name}-%{version}.tar.bz2
-Source1:        https://linuxtv.org/downloads/v4l-utils/%{name}-%{version}.tar.bz2.asc
-Source2:        %{name}.keyring
+Source0:        https://linuxtv.org/downloads/v4l-utils/%{sname}-%{version}.tar.bz2
+Source1:        https://linuxtv.org/downloads/v4l-utils/%{sname}-%{version}.tar.bz2.asc
+Source2:        %{sname}.keyring
 Source100:      baselibs.conf
 Patch0:         sysmacros.patch
-BuildRequires:  doxygen
-BuildRequires:  kernel-headers
+Patch1:         use_system_v4l_for_qv4l.patch
+BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(udev)
+%if "%{flavor}" == ""
+BuildRequires:  doxygen
+BuildRequires:  kernel-headers
+%endif
+%if "%{flavor}" == "qv4l2"
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(udev)
+BuildRequires:  pkgconfig(libv4l2)
+BuildRequires:  pkgconfig(libv4lconvert)
+%endif
 Requires:       libv4l = %{version}
 
 %description
@@ -183,34 +193,53 @@ Requires(postun): update-desktop-files
 %description -n qv4l2
 qv4l2 is a test control and streaming test application for video4linux.
 
+
 %prep
-%setup -q
+%setup -q -n %{sname}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
+%if "%{flavor}" == "qv4l2"
+autoreconf -vfi
+%endif
 %configure \
   --disable-static \
   --disable-silent-rules \
-%if %{without qv4l2}
+%if "%{flavor}" == "qv4l2"
+  --disable-libdvb5 \
+  --enable-qv4l2 \
+%else
+  --enable-libdvb5 \
   --disable-qv4l2 \
 %endif
   --with-udevdir=%{_udevdir}
-make %{?_smp_mflags}
+
+%if "%{flavor}" == "qv4l2"
+%make_build -C utils/libmedia_dev
+%make_build -C utils/libv4l2util
+%make_build -C utils/qv4l2
+%else
+%make_build
+%endif
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%if "%{flavor}" == "qv4l2"
+%make_install -C utils/qv4l2
+%suse_update_desktop_file -N "QV4l2" -G "V4L2 Test Utility" -r qv4l2 Qt AudioVideo Video TV
 
+%else
+%make_install
 %find_lang "%{name}"
 %find_lang "libdvbv5" libdvbv5.lang
 
 # Not needed (links to plugins in libv4l subdir)
 rm %{buildroot}%{_libdir}/{v4l1compat.so,v4l2convert.so}
-
-%if %{with qv4l2}
-%suse_update_desktop_file -N "QV4l2" -G "V4L2 Test Utility" -r qv4l2 Qt AudioVideo Video TV
 %endif
 
+find %{buildroot} -type f -name "*.la" -delete -print
+
+%if "%{flavor}" == ""
 %post -n libdvbv5-%{so_ver} -p /sbin/ldconfig
 %postun -n libdvbv5-%{so_ver} -p /sbin/ldconfig
 %post -n libv4l1-%{so_ver} -p /sbin/ldconfig
@@ -221,17 +250,9 @@ rm %{buildroot}%{_libdir}/{v4l1compat.so,v4l2convert.so}
 %postun -n libv4l2rds%{so_ver} -p /sbin/ldconfig
 %post -n libv4lconvert%{so_ver} -p /sbin/ldconfig
 %postun -n libv4lconvert%{so_ver} -p /sbin/ldconfig
-
-%if %{with qv4l2}
-%post -n qv4l2
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun -n qv4l2
-%desktop_database_postun
-%icon_theme_cache_postun
 %endif
 
+%if "%{flavor}" == ""
 %files
 %license COPYING
 %doc ChangeLog README TODO
@@ -310,8 +331,9 @@ rm %{buildroot}%{_libdir}/{v4l1compat.so,v4l2convert.so}
 %{_includedir}/libv4l*.h
 %{_libdir}/libv4l*.so
 %{_libdir}/pkgconfig/libv4l*.pc
+%endif
 
-%if %{with qv4l2}
+%if "%{flavor}" == "qv4l2"
 %files -n qv4l2
 %license COPYING
 %doc ChangeLog README TODO

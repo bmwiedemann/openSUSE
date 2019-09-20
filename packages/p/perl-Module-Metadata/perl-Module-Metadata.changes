@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  8 19:52:14 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.000037
+   see /usr/share/doc/packages/perl-Module-Metadata/Changes
+
+  1.000037  2019-09-07 18:32:44Z
+    - add decode_pod option for automatic =encoding handling
+
+-------------------------------------------------------------------
 Sat Apr 20 05:15:40 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.000036

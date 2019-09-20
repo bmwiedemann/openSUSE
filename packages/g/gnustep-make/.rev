@@ -15,4 +15,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>490046</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>aadb466c190d581dceb30d6794d33be0</srcmd5>
+    <version>2.7.0</version>
+    <time>1568982968</time>
+    <user>maxlin_factory</user>
+    <comment>Another try at submitting the same request over and over again.
+Disable LTO for Objective-C.</comment>
+    <requestid>729323</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  8 20:21:52 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.22.6:
+  + qmicli:
+    - Fix potential dereference of null GArray in LOC service.
+  + libqmi-glib:
+    - Fix definitions for QMI_*_LTE_BAND_*_EUTRAN_32 enum values.
+  + Build updated with several fixes:
+    - Explicitly define max allowed GLib version.
+
+-------------------------------------------------------------------
 Thu Apr 11 18:11:50 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.22.4:

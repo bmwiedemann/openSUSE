@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  9 09:35:46 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- layout.word_select.stop_at_punctuation -> true (boo#1133163)
+
+-------------------------------------------------------------------
 Wed Jul 17 17:46:13 UTC 2019 - Lubos Kocman <Lubos.Kocman+factory@suse.de>
 
 - recognize Leap 15.2 via sle_version

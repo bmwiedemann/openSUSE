@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -103,7 +103,7 @@ BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xxf86vm)
 Url:            http://www.gnu.org/software/emacs/
-Version:        26.2
+Version:        26.3
 Release:        0
 Summary:        GNU Emacs Base Package
 License:        GPL-3.0-or-later

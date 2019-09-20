@@ -17,7 +17,7 @@
 
 
 Name:           perl-Module-Metadata
-Version:        1.000036
+Version:        1.000037
 Release:        0
 %define cpan_name Module-Metadata
 Summary:        Gather package and POD information from perl module files

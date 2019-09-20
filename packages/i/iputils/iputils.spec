@@ -28,6 +28,7 @@ Source1:        rarpd.service
 Patch1:         iputils-sec-ping-unblock.diff
 Patch2:         iputils-ping-interrupt.diff
 Patch3:         arping-revert-partially-fix-sent-vs-received-package.patch
+Patch4:         arping-fix-f-quit-on-first-reply-regression.patch
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  docbook_5
 BuildRequires:  iso_ent
@@ -69,6 +70,7 @@ out their IP addresses.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 # Export CFLAGS so we can also benefit from the ones the Makefile sets for us

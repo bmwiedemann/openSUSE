@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  9 08:35:18 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to emacs version 26.3
+  * New option 'help-enable-completion-auto-load'.
+    This allows disabling the new feature introduced in Emacs 26.1 which
+    loads files during completion of 'C-h f' and 'C-h v' according to
+    'definition-prefixes'.
+  * Emacs now supports the new Japanese Era name.
+    The newly assigned codepoint U+32FF was added to the Unicode Character
+    Database compiled into Emacs.
+
+-------------------------------------------------------------------
 Tue Apr 23 12:28:52 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Use %_userunitdir macro to avoid trouble with %_libdir (boo#1132939)
