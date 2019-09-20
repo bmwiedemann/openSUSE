@@ -214,4 +214,11 @@
     <comment></comment>
     <requestid>729717</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>f0b62d106b3ab77b4996477092b379e2</srcmd5>
+    <version>1.5.5</version>
+    <time>1568984455</time>
+    <user>maxlin_factory</user>
+    <comment>osc copypac from project:openSUSE:Factory package:cilium revision:17</comment>
+  </revision>
 </revisionlist>

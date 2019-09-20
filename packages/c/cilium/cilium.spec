@@ -35,23 +35,16 @@
 %endif
 
 Name:           cilium
-Version:        1.5.7
+Version:        1.5.5
 Release:        0
 Summary:        Linux Native, HTTP Aware Networking and Security for Containers
 License:        Apache-2.0 AND GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/cilium/cilium
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        cilium-cni-install
 Source3:        cilium-cni-uninstall
-# PATCH-FIX-UPSTREAM bsc#1145258 -- Update configmap values for etcd v3.4.0
-Patch0:         0001-etcd-use-ca-file-field-from-etcd-option-if-available.patch
-# PATCH-FIX-UPSTREAM bsc#1145258 -- Separate kvstore initialization in daemon to
-# the separate function - needed for the next patch to apply without conflicts
-Patch1:         0002-daemon-separate-kvstore-initialization-into-separate.patch
-# PATCH-FIX-UPSTREAM bsc#1145258 -- Update etcd library to v3.4.0
-Patch2:         0003-deps-update-etcd-to-v3.4.0.patch
 BuildRequires:  clang
 BuildRequires:  git
 BuildRequires:  glibc-devel
@@ -203,10 +196,6 @@ containers in a Kubernetes cluster.
 
 %prep
 %setup -q
-%patch0
-%patch1
-# patch macro adds the --fuzz=0 option which does not work with the last patch
-patch --no-backup-if-mismatch -p0 %{PATCH2}
 
 %build
 %goprep %{provider_prefix}
