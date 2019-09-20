@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Sep  3 09:53:22 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.5.17
+  * bugfixes
+    fix strncpy call in stats conns to avoid ASAN violation
+    extstore: fix indentation
+    add error handling when calling dup function
+    add unlock when item_cachedump malloc failed
+    extstore: emulate pread(v) for macOS
+    fix off-by-one in logger to allow CAS commands to be logged.
+    use strdup for explicitly configured slab sizes
+    move mem_requested from slabs.c to items.c (internal cleanup)
+  * new features
+    add server address to the "stats conns" output
+    log client connection id with fetchers and mutations
+    Add a handler for seccomp crashes
+- version update to 1.5.16
+  * bugfixes
+    When nsuffix is 0 space for flags hasn't been allocated so don't memcpy them.
+- version update to 1.5.15
+  * bugfixes
+    Speed up incr/decr by replacing snprintf.
+    Use correct buffer size for internal URI encoding.
+    change some links from http to https
+    Fix small memory leak in testapp.c.
+    free window_global in slab_automove_extstore.c
+    remove inline_ascii_response option
+    -Y [filename] for ascii authentication mode
+    fix: idle-timeout wasn't compatible with binprot
+  * features
+    -Y [authfile] enables an authentication mode for ASCII protocol.
+- modified patches
+  % memcached-autofoo.patch (refreshed)
+
+-------------------------------------------------------------------
 Thu May  2 10:05:14 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.5.14

@@ -337,4 +337,12 @@ bsc#1007869) (CVE-2016-8706)</comment>
     <comment></comment>
     <requestid>701122</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>117ec3025b409ec411f17488f795b4fb</srcmd5>
+    <version>1.5.17</version>
+    <time>1568983492</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729451</requestid>
+  </revision>
 </revisionlist>

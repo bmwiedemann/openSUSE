@@ -111,4 +111,13 @@
   * new base64 convenience functions</comment>
     <requestid>698222</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9f48f5a5ca05afdb5630c0b7ae420cf3</srcmd5>
+    <version>2.2.1</version>
+    <time>1568983233</time>
+    <user>maxlin_factory</user>
+    <comment>- Drop the obsolete libqca2 package.
+- Run spec-cleaner</comment>
+    <requestid>729440</requestid>
+  </revision>
 </revisionlist>

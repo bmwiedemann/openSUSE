@@ -78,4 +78,12 @@
 - Use FAT LTO objects in order to provide proper static library.</comment>
     <requestid>723956</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d97307b8c73388dd30c8332fbc6974e3</srcmd5>
+    <version>8.0</version>
+    <time>1568983565</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729453</requestid>
+  </revision>
 </revisionlist>

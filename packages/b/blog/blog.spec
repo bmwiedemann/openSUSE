@@ -25,6 +25,9 @@ Group:          System/Base
 Url:            https://github.com/bitstreamout/showconsole
 Source:         https://github.com/bitstreamout/showconsole/archive/v%{version}.tar.gz#/showconsole-%{version}.tar.gz
 Source1:        blog-rpmlintrc
+# PATCH-FIX-UPSTREAM blog-Remove-unused-header.patch -- Fix build with new glibc
+Patch0:         blog-Remove-unused-header.patch
+
 BuildRequires:  suse-module-tools
 Requires(post): coreutils
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -73,6 +76,7 @@ the LSB startproc command.
 
 %prep
 %setup -q -n showconsole-%version
+%patch0 -p1
 
 %build
 make %{?_smp_mflags} CC="%__cc" \

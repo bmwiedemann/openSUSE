@@ -21,7 +21,9 @@
 
 Name:           bash
 %define         bextend	 %nil
-Version:        5.0
+%define         bversion 5.0
+%define         bpatchlvl 11
+Version:        %{bversion}.%{bpatchlvl}
 Release:        0
 Summary:        The GNU Bourne-Again Shell
 License:        GPL-3.0-or-later
@@ -31,11 +33,11 @@ Recommends:     bash-lang = %version
 # bugs which will hit at most this package
 #Recommends:	bash-completion
 Suggests:       command-not-found
-Recommends:     bash-doc = %version
+Suggests:       bash-doc = %version
 Url:            http://www.gnu.org/software/bash/bash.html
 # Git:          http://git.savannah.gnu.org/cgit/bash.git
-Source0:        ftp://ftp.gnu.org/gnu/bash/bash-%{version}%{bextend}.tar.gz
-Source1:        bash-%{version}-patches.tar.bz2
+Source0:        ftp://ftp.gnu.org/gnu/bash/bash-%{bversion}%{bextend}.tar.gz
+Source1:        bash-%{bversion}-patches.tar.bz2
 Source4:        run-tests
 Source5:        dot.bashrc
 Source6:        dot.profile
@@ -46,7 +48,7 @@ Source8:        baselibs.conf
 # http://lists.gnu.org/archive/html/bug-bash/2011-03/msg00071.html
 # http://lists.gnu.org/archive/html/bug-bash/2011-03/msg00073.html
 Source9:        bash-4.2-history-myown.dif.bz2
-Patch0:         bash-%{version}.dif
+Patch0:         bash-%{bversion}.dif
 Patch1:         bash-2.03-manual.patch
 Patch2:         bash-4.0-security.patch
 Patch3:         bash-4.3-2.4.4.patch
@@ -72,8 +74,6 @@ Patch47:        bash-4.3-perl522.patch
 Patch48:        bash-4.3-extra-import-func.patch
 # PATCH-EXTEND-SUSE Allow root to clean file system if filled up
 Patch49:        bash-4.3-pathtemp.patch
-# PATCH-EXTEND-UPSTREAM bash-5.0: problem with variable scoping in posix-mode
-Patch100:       assignment-preceding-builtin.patch
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  bison
@@ -105,6 +105,7 @@ specification (IEEE Working Group 1003.2).
 Summary:        Documentation how to Use the GNU Bourne-Again Shell
 Group:          Documentation/Man
 Provides:       bash:%{_infodir}/bash.info.gz
+Supplements:    packageand(bash:patterns-base-documentation)
 PreReq:         %install_info_prereq
 BuildArch:      noarch
 
@@ -198,9 +199,9 @@ echo -e '\033[1m\033[31mWarning: Shift JIS support is enabled\033[m'
 %else
 echo -e '\033[1m\032[31mShift JIS support disabled\033[m'
 %endif
-%setup -q -n bash-%{version}%{bextend} -b1
+%setup -q -n bash-%{bversion}%{bextend} -b1
 typeset -i level
-for patch in ../bash-%{version}-patches/*; do
+for patch in ../bash-%{bversion}-patches/*; do
     test -e $patch || break
     let level=0 || true
     file=$(lsdiff --files=1 $patch)
@@ -209,7 +210,7 @@ for patch in ../bash-%{version}-patches/*; do
 	let level++ || true
     fi
     test -e $file || exit 1
-    sed -ri '/^\*\*\* \.\./{ s@\.\./bash-%{version}[^/]*/@@ }' $patch
+    sed -ri '/^\*\*\* \.\./{ s@\.\./bash-%{bversion}[^/]*/@@ }' $patch
     echo Patch $patch
     patch -s -p$level < $patch
 done
@@ -237,7 +238,6 @@ done
 %patch48 -b .eif
 %endif
 %patch49 -p0 -b .pthtmp
-%patch100 -p0 -b .posix
 %patch0  -p0 -b .0
 
 # This has to be always the same version as included in the bash its self
@@ -475,9 +475,9 @@ that is e.g. wide character support for UTF-8.  This causes
 problems in geting the current cursor position within the
 readline runtime library:
 |
-bash-%{version}> LANG=ja_JP
-bash-%{version}> echo -n "Hello"
-bash-%{version}>
+bash-%{bversion}> LANG=ja_JP
+bash-%{bversion}> echo -n "Hello"
+bash-%{bversion}>
 |
 In other words the prompt overwrites the output of the
 echo comand.  The boolean variable byte-oriented

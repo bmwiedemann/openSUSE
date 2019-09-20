@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>725115</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>adcd44b7c96b6fd1df7723f508be0460</srcmd5>
+    <version>1.1</version>
+    <time>1568983133</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.1
+  - print additional architecture information</comment>
+    <requestid>729420</requestid>
+  </revision>
 </revisionlist>

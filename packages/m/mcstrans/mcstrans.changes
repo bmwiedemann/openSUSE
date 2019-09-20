@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 27 10:25:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid use of ®/™ signs in specfiles as per guidelines.
+
+-------------------------------------------------------------------
 Wed Jun 12 15:01:20 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
@@ -37,13 +42,13 @@ Wed May 16 07:21:45 UTC 2018 - mcepl@suse.com
 - Rebase to 2.7
   For changes please see
   https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/RELEASE-20170804.txt
-- Renamed mcstrans-0.3.3-writepid.patch to 
-  mcstrans-2.7-writepid.patch 
+- Renamed mcstrans-0.3.3-writepid.patch to
+  mcstrans-2.7-writepid.patch
 
 -------------------------------------------------------------------
 Tue Sep  5 08:48:52 UTC 2017 - jsegitz@suse.com
 
-- Added add_includes.patch to add additional includes and fix 
+- Added add_includes.patch to add additional includes and fix
   Factory build
 
 -------------------------------------------------------------------
@@ -72,7 +77,7 @@ Tue Aug  7 13:19:20 UTC 2012 - meissner@suse.com
 -------------------------------------------------------------------
 Thu Apr  5 13:50:13 UTC 2012 - dvaleev@suse.com
 
-- add LIBDIR, so ppc and ppc64 can build 
+- add LIBDIR, so ppc and ppc64 can build
 
 -------------------------------------------------------------------
 Mon Mar 26 13:11:29 UTC 2012 - vcizek@suse.com
@@ -105,4 +110,3 @@ Wed May 27 14:19:52 CEST 2009 - prusnak@suse.cz
 Thu Oct 16 16:04:41 CEST 2008 - prusnak@suse.cz
 
 - created package (version 0.2.11)
-

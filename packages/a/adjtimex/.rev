@@ -41,4 +41,12 @@ The request is equal to 235578, but also removes UsrMerge compatibility symlink 
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>a60b0bcf5c8a8d02e16e52608656cf32</srcmd5>
+    <version>1.29</version>
+    <time>1568983422</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729446</requestid>
+  </revision>
 </revisionlist>

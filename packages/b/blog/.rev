@@ -99,4 +99,12 @@ use private glib API but implement a share memory mkstemp</comment>
     <comment>- Implement shared library packaging guideline.</comment>
     <requestid>700250</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>23222a64dac1ba78fe4ace7c13d49c68</srcmd5>
+    <version>2.19</version>
+    <time>1568983471</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729450</requestid>
+  </revision>
 </revisionlist>

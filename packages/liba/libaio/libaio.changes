@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 27 08:41:21 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+-  Add _constraints for PowerPC to avoid OOM at build time
+
+-------------------------------------------------------------------
 Wed Jul 31 12:37:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.112:

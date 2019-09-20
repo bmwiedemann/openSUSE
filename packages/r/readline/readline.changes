@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  4 09:48:58 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- Avoid pulling in readline-doc into every installation. Instead of
+  recommeding it, supplement the documentation pattern.
+
+-------------------------------------------------------------------
 Fri Aug 16 10:05:11 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Rework patch readline-7.0-screen.patch again for bug boo#1143055

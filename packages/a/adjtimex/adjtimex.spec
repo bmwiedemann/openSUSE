@@ -1,7 +1,7 @@
 #
 # spec file for package adjtimex
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,10 @@ Name:           adjtimex
 Version:        1.29
 Release:        0
 Summary:        Kernel time variables configuration utility
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Base
 Source:         http://ftp.debian.org/debian/pool/main/a/adjtimex/%{name}_%{version}.orig.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Provides:       util-linux:/usr/sbin/adjtimex
+Provides:       util-linux:%{_sbindir}/adjtimex
 
 %description
 This program gives you raw access to the kernel time variables. For
@@ -37,21 +36,22 @@ using the CMOS clock as a reference, and can log times for long-term
 estimation of drift rates.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-install -d %{buildroot}%{_sbindir} %{buildroot}%{_mandir}/man8
-install adjtimex %{buildroot}%{_sbindir}/
-install -m0644 adjtimex.8 %{buildroot}%{_mandir}/man8/
+install -Dpm 0755 adjtimex \
+  %{buildroot}%{_sbindir}/adjtimex
+install -Dpm 0644 adjtimex.8 \
+  %{buildroot}%{_mandir}/man8/adjtimex.8
 
 %files
-%defattr(-,root,root)
-%doc COPYING COPYRIGHT
+%license COPYING
+%doc COPYRIGHT
 %{_sbindir}/adjtimex
-%{_mandir}/man8/adjtimex.8*
+%{_mandir}/man8/adjtimex.8%{?ext_man}
 
 %changelog

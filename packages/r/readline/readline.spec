@@ -56,7 +56,7 @@ includes history and search functionality.
 Summary:        The Readline Library
 Group:          System/Libraries
 Provides:       bash:/%{_lib}/libreadline.so.%{rl_major}
-Recommends:     readline-doc = %{version}
+Suggests:       readline-doc = %{version}
 Provides:       readline =  %{version}
 Obsoletes:      readline <= 6.3
 
@@ -89,6 +89,7 @@ This package contains the static library for the readline library.
 Summary:        Documentation how to Use and Program with the Readline Library
 Group:          Documentation/Other
 Provides:       readline:%{_infodir}/readline.info.gz
+Supplements:    packageand(libreadline8:patterns-base-documentation)
 PreReq:         %install_info_prereq
 BuildArch:      noarch
 

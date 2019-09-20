@@ -37,6 +37,6 @@
     <source path="obsrepositories:/"/>
   </repository>
   <packages type="bootstrap">
-    <package name="busybox"/>
+    <package name="busybox-container"/>
   </packages>
 </image>

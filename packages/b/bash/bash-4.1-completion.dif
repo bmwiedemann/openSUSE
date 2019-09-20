@@ -4,7 +4,7 @@
 
 --- bashline.c
 +++ bashline.c	2018-11-29 08:12:25.876588305 +0000
-@@ -2045,6 +2045,13 @@ globword:
+@@ -2046,6 +2046,13 @@ globword:
  	    return ((char *)NULL);
  	}
  

@@ -5,4 +5,7 @@ With the generated bindings you get access to substantial portions of
 the Qt API from within Qt Script.
 </description>
   <devel project="KDE:Qt" package="qt4-qtscript"/>
+  <build>
+    <disable/>
+  </build>
 </package>

@@ -1489,4 +1489,12 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>725335</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>78ebdb1d74b4da9dc82eb6d0016c8246</srcmd5>
+    <version>5.0.11</version>
+    <time>1568983528</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729452</requestid>
+  </revision>
 </revisionlist>

@@ -16,16 +16,15 @@
 #
 
 
-%bcond_without pkcs11
-
 %define _so 2
+%bcond_without pkcs11
 Name:           libqca-qt5
 Version:        2.2.1
 Release:        0
 Summary:        Qt Cryptographic Architecture 2
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://userbase.kde.org/QCA
+URL:            https://userbase.kde.org/QCA
 Source:         https://download.kde.org/stable/qca/%{version}/qca-%{version}.tar.xz
 Source1:        baselibs.conf
 Source99:       libqca-qt5-rpmlintrc
@@ -39,18 +38,18 @@ BuildRequires:  libdrm-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  mozilla-nss-devel
-BuildRequires:  pkgconfig(openssl)
-%if %{with pkcs11}
-BuildRequires:  pkcs11-helper-devel
-%endif
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Network) >= 5.2.0
+BuildRequires:  pkgconfig(openssl)
 Requires:       gpg2 >= 2.0.0
 Recommends:     %{name}-plugins
 Provides:       libqca-qt5-2 = %{version}
 Obsoletes:      libqca-qt5-2 < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if %{with pkcs11}
+BuildRequires:  pkcs11-helper-devel
+%endif
 
 %description
 This package provides a generic Qt cryptographic architecture,
@@ -105,12 +104,11 @@ make %{?_smp_mflags}
 %cmake_install
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc README COPYING TODO
+%license COPYING
+%doc README TODO
 %{_libdir}/libqca-qt5.so.*
 %dir %{_libdir}/qt5/plugins/crypto
 %{_libdir}/qt5/plugins/crypto/libqca-logger.so
@@ -120,18 +118,16 @@ make %{?_smp_mflags}
 %{_libdir}/qt5/plugins/crypto/libqca-gcrypt.so
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/qcatool-qt5
 %{_bindir}/mozcerts-qt5
 %{_includedir}/qt5/Qca-qt5/
 %{_libdir}/qt5/mkspecs/features/crypto.prf
-%{_mandir}/man1/qcatool-qt5*
+%{_mandir}/man1/qcatool-qt5.1%{?ext_man}
 %{_libdir}/libqca-qt5.so
 %{_libdir}/pkgconfig/qca2-qt5.pc
 %{_libdir}/cmake/Qca-qt5/
 
 %files plugins
-%defattr(-,root,root)
 %{_libdir}/qt5/plugins/crypto/libqca-cyrus-sasl.so
 %{_libdir}/qt5/plugins/crypto/libqca-nss.so
 %if %{with pkcs11}

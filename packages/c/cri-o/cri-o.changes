@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 10 06:45:24 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.15.2:
+  * Use HTTP2MatchHeaderFieldSendSettings for incoming gRPC connections
+  * Fix 32 bit builds
+  * crio-wipe: Fix int compare in lib.bash
+
+-------------------------------------------------------------------
 Thu Sep  5 15:01:52 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
 
 - Add katacontainers as a recommended package, and include it as an

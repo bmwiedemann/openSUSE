@@ -1,7 +1,7 @@
-Index: configure.ac
+Index: memcached-1.5.17/configure.ac
 ===================================================================
---- configure.ac.orig	2019-04-27 10:35:59.000000000 +0200
-+++ configure.ac	2019-05-02 11:42:15.498561559 +0200
+--- memcached-1.5.17.orig/configure.ac	2019-07-16 00:34:51.000000000 +0200
++++ memcached-1.5.17/configure.ac	2019-09-03 11:47:53.521535332 +0200
 @@ -4,10 +4,13 @@ m4_include([m4/c99-backport.m4])
  AC_INIT([memcached], [VERSION_NUMBER], [memcached@googlegroups.com])
  AC_CANONICAL_HOST
@@ -76,7 +76,7 @@ Index: configure.ac
 -dnl ------------------------------------------------------
 -dnl libevent detection.  swiped from Tor.  modified a bit.
 -
--LIBEVENT_URL=http://www.monkey.org/~provos/libevent/
+-LIBEVENT_URL=https://www.monkey.org/~provos/libevent/
 -
 -AC_CACHE_CHECK([for libevent directory], ac_cv_libevent_dir, [
 -  saved_LIBS="$LIBS"
@@ -291,10 +291,10 @@ Index: configure.ac
 -
  AC_CONFIG_FILES(Makefile doc/Makefile)
  AC_OUTPUT
-Index: Makefile.am
+Index: memcached-1.5.17/Makefile.am
 ===================================================================
---- Makefile.am.orig	2019-04-27 10:35:59.000000000 +0200
-+++ Makefile.am	2019-05-02 11:42:15.498561559 +0200
+--- memcached-1.5.17.orig/Makefile.am	2019-08-28 00:17:56.000000000 +0200
++++ memcached-1.5.17/Makefile.am	2019-09-03 11:45:07.724581146 +0200
 @@ -1,3 +1,6 @@
 +AM_CFLAGS = -pthread -Wall -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls
 +AM_CPPFLAGS = -include $(top_builddir)/config.h
@@ -302,7 +302,7 @@ Index: Makefile.am
  bin_PROGRAMS = memcached
  pkginclude_HEADERS = protocol_binary.h
  noinst_PROGRAMS = memcached-debug sizes testapp timedrun
-@@ -62,11 +65,12 @@ memcached_SOURCES += tls.c tls.h
+@@ -63,11 +66,12 @@ memcached_SOURCES += tls.c tls.h
  endif
  
  memcached_debug_SOURCES = $(memcached_SOURCES)

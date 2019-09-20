@@ -614,4 +614,12 @@ on CentOS, Fedora, and RHEL systems.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>725640</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>3d5ace621153941897ff9d21d24f83ca</srcmd5>
+    <version>6.9</version>
+    <time>1568983594</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729477</requestid>
+  </revision>
 </revisionlist>

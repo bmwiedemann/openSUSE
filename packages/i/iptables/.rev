@@ -569,4 +569,12 @@ GPL version does not have ^or later^ due to inclusion of numerous GPL 2 ^only^ f
     <comment>- Update to new upstream release 1.8.3</comment>
     <requestid>705874</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>058d93c6fcc578376c1a00ebeb0f9d80</srcmd5>
+    <version>1.8.3</version>
+    <time>1568983629</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729482</requestid>
+  </revision>
 </revisionlist>

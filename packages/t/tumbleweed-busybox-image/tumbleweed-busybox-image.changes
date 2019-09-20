@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 22 14:29:49 CEST 2019 - kukuk@suse.de
+
+- Use busybox-container, much smaller
+
+-------------------------------------------------------------------
 Fri Aug  2 12:54:52 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add subcommand with /bin/sh, as the default /bin/bash does

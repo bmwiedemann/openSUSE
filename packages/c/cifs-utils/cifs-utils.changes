@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  9 12:56:24 UTC 2019 - Aurelien Aptel <aaptel@suse.com>
+
+- Fix double-free in mount.cifs; (bsc#1149164).
+  * add 0011-fix-doublefree.patch
+
+-------------------------------------------------------------------
 Thu Aug 15 16:50:29 UTC 2019 - Aurelien Aptel <aaptel@suse.com>
 
 - Update to cifs-utils 6.9; (bsc#1132087); (bsc#1136031).

@@ -338,4 +338,41 @@
   use this with ist wrapper script (forwarded request 724711 from WernerFink)</comment>
     <requestid>724779</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>2cbb31864c074acfa9b3225cd87aecc4</srcmd5>
+    <version>9.27</version>
+    <time>1568983691</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch gs-CVE-2019-14811-885444fc.patch to fix bsc#1146882
+  for CVE-2019-14811,CVE-2019-14812,CVE-2019-14813
+- Add patch gs-CVE-2019-14817-cd1b1cac.patch to fix bsc#1146884
+  for CVE-2019-14817
+
+- Add patch openjpeg4gs-CVE-2018-6616-8ee33522.patch to fix bsc#1140359
+  for CVE-2019-12973
+
+- Update RPM groups.
+
+  use this with its wrapper script
+
+- CVE-2019-10216.patch fixes CVE-2019-10216
+  forceput/superexec in .buildfont1 is still accessible
+  https://bugzilla.suse.com/show_bug.cgi?id=1144621 bsc#1144621
+  https://bugs.ghostscript.com/show_bug.cgi?id=701394
+- Add patch gs-CVE-2019-14811-885444fc.patch to fix bsc#1146882
+  for CVE-2019-14811,CVE-2019-14812,CVE-2019-14813
+- Add patch gs-CVE-2019-14817-cd1b1cac.patch to fix bsc#1146884
+  for CVE-2019-14817
+
+- Add patch openjpeg4gs-CVE-2018-6616-8ee33522.patch to fix bsc#1140359
+  for CVE-2019-12973
+
+- Update RPM groups.
+
+  use this with its wrapper script 
+
+- CVE-2019-10216.patch fixes CVE-2019-10216
+  forceput/superexec in .buildfont1 is still accessible</comment>
+    <requestid>731293</requestid>
+  </revision>
 </revisionlist>

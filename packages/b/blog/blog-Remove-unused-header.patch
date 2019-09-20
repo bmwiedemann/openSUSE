@@ -1,0 +1,22 @@
+From 9e1deae58be4391d611c41d89733b5f2678d3212 Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Thu, 8 Aug 2019 15:53:04 +0200
+Subject: [PATCH] Remove unused header <stropts.h>
+
+---
+ blogd.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/blogd.c b/blogd.c
+index c1179ec..3635d4f 100644
+--- a/blogd.c
++++ b/blogd.c
+@@ -25,7 +25,6 @@
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <string.h>
+-#include <stropts.h>
+ #include <dirent.h>
+ #include <fcntl.h>
+ #include <termios.h>
+

@@ -59,6 +59,8 @@ Group:          Productivity/Networking/Security
 Requires:       iptables >= 1.8.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Provides:       iptables-nft = %{version}-%{release}
+Obsoletes:      iptables-nft < %{version}-%{release}
 
 %description backend-nft
 Installation of this package adds higher priority alternatives (cf.

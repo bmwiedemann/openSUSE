@@ -22,8 +22,9 @@ Release:        0
 Summary:        Tool to write CD-Rs in Disk-At-Once Mode
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
-Url:            http://cdrdao.sourceforge.net/
+URL:            http://cdrdao.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+
 # PATCH-FIX-OPENSUSE cdrdao-build.patch
 Patch0:         cdrdao-build.patch
 # PATCH-FIX-OPENSUSE cdrdao-1.2.2-scan.patch bnc#144861 nadvornik@suse.cz -- Do not scan old ATAPI interface
@@ -34,18 +35,19 @@ Patch2:         cdrdao-fixes.patch
 Patch3:         cdrdao-1.2.3-stat.patch
 # PATCH-FIX-UPSTREAM cdrdao-gcc6-fixes.patch dimstar@opensuse.org -- Fix errors seen by GCC6.
 Patch4:         cdrdao-gcc6-fixes.patch
+# PATCH-FIX-OPENSUSE cdrdao-drop-gconf-dep.patch -- Drop dependency on gconf2
+Patch5:         cdrdao-drop-gconf-dep.patch
+
+# For autoreconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  lame
 BuildRequires:  libao-devel
 BuildRequires:  libsigc++2-devel
 BuildRequires:  libvorbis-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(mad)
-# For autoreconf
-BuildRequires:  automake
-BuildRequires:  gconf2-devel
 Obsoletes:      gcdmaster <= 1.2.3
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 CDRDAO creates CD-Rs in disk-at-once (DAO) mode driven by a description
@@ -55,34 +57,29 @@ contain nonzero audio data. This is useful for dividing live recordings
 into tracks where 2 second gaps would be irritating.
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi
 %configure \
- --without-scglib
-make %{?_smp_mflags} VERBOSE=1
+	--without-scglib
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING CREDITS ChangeLog README README.PlexDAE cdrdao.lsm
+%license COPYING
+%doc AUTHORS CREDITS ChangeLog README README.PlexDAE cdrdao.lsm
 %doc contrib/wav2dao/wav2dao.pl
 %{_bindir}/cdrdao
 %{_bindir}/cue2toc
 %{_bindir}/toc2cddb
 %{_bindir}/toc2cue
 %{_datadir}/cdrdao/
-%doc %{_mandir}/man1/cue2toc.1%{ext_man}
-%doc %{_mandir}/man1/cdrdao.1%{ext_man}
-%doc %{_mandir}/man1/toc2cddb.1%{ext_man}
-%doc %{_mandir}/man1/toc2cue.1%{ext_man}
+%{_mandir}/man1/cue2toc.1%{?ext_man}
+%{_mandir}/man1/cdrdao.1%{?ext_man}
+%{_mandir}/man1/toc2cddb.1%{?ext_man}
+%{_mandir}/man1/toc2cue.1%{?ext_man}
 
 %changelog

@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           memcached
-Version:        1.5.14
+Version:        1.5.17
 Release:        0
 Summary:        A high-performance, distributed memory object caching system
 License:        BSD-3-Clause
@@ -80,7 +80,7 @@ This package contains development files
 %prep
 %setup -q
 %patch0
-%patch1
+%patch1 -p1
 %patch2
 
 %build

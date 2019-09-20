@@ -35,8 +35,8 @@ Requires(post): update-alternatives
 Requires(preun): update-alternatives
 Summary:        Minimal Ghostscript for minimal build requirements
 License:        AGPL-3.0-only
-Group:          System/Libraries
-Url:            http://www.ghostscript.com/
+Group:          Productivity/Office/Other
+URL:            https://www.ghostscript.com/
 # Special version needed for Ghostscript release candidates (e.g. "Version: 9.14pre15rc1" for 9.15rc1).
 # Version 9.15rc1 would be newer than 9.15 (run "zypper vcmp 9.15rc1 9.15") because the rpmvercmp algorithm
 # would treat 9.15rc1 as 9.15.rc.1 (alphabetic and numeric sections get separated into different elements)
@@ -45,6 +45,7 @@ Url:            http://www.ghostscript.com/
 # But only with the alphabetic prefix "9.pre15rc1" would be older than the previous version number "9.14"
 # because rpmvercmp would treat 9.pre15rc1 as 9.pre.15.rc1 and letters are older than numbers
 # so that we keep additionally the previous version number to upgrade from the previous version:
+# Starting SLE12/rpm-4.10, one can use tildeversions: 9.15~rc1.
 #Version:        9.25pre26rc1
 Version:        9.27
 Release:        0
@@ -77,6 +78,14 @@ Release:        0
 Source0:        ghostscript-%{version}.tar.gz
 Source1:        apparmor_ghostscript
 # Patch0...Patch9 is for patches from upstream:
+# Patch0 Add commit from openjpeg upstream to fix CVE-2018-6616
+Patch0:         openjpeg4gs-CVE-2018-6616-8ee33522.patch
+# Patch1 Add commit from of upstream to fix CVE-2019-10216
+Patch1:         CVE-2019-10216.patch
+# Patch1 Add commit from ghostscript upstream to fix CVE-2019-14811,CVE-2019-14812,CVE-2019-14813
+Patch2:         gs-CVE-2019-14811-885444fc.patch
+# Patch2 Add commit from ghostscript upstream to fix CVE-2019-14817
+Patch3:         gs-CVE-2019-14817-cd1b1cac.patch
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Source100...Source999 is for sources from SUSE which are not intended for upstream:
@@ -143,6 +152,15 @@ This package contains the development files for Minimal Ghostscript.
 # Be quiet when unpacking and
 # use a directory name matching Source0 to make it work also for ghostscript-mini:
 %setup -q -n ghostscript-%{tarball_version}
+# Patch0 Add commit from openjpeg upstream to fix CVE-2018-6616
+# openjpeg4gs-CVE-2018-6616-8ee33522.patch
+%patch0
+# Patch1 Add commit from of upstream to fix CVE-2019-10216
+%patch1 -p0
+# Patch1 Add commit from ghostscript upstream to fix CVE-2019-14811,CVE-2019-14812,CVE-2019-14813
+%patch2 -p1
+# Patch2 Add commit from ghostscript upstream to fix CVE-2019-14817
+%patch3 -p1
 # Patch100 remove-zlib-h-dependency.patch removes dependency on zlib/zlib.h
 # in makefiles as we do not use the zlib sources from the Ghostscript upstream tarball.
 # Again use the zlib sources from Ghostscript upstream
@@ -194,8 +212,8 @@ rm -rf lcms2art
 # Derive build timestamp from latest changelog entry
 export SOURCE_DATE_EPOCH=$(date -d "$(head -n 2 %{_sourcedir}/%{name}.changes | tail -n 1 | cut -d- -f1 )" +%s)
 # Set our preferred architecture-specific flags for the compiler and linker:
-export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
-export CXXFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 autoreconf -fi
 # --docdir=%%{_defaultdocdir}/%%{name} does not work therefore it is not used.
 # --disable-cups and --without-pdftoraster

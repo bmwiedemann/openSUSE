@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -37,14 +37,14 @@ Provides:       setransd
 %{?systemd_requires}
 
 %description
-Security-enhanced Linux is a feature of the Linux® kernel and a number
+Security-enhanced Linux is a feature of the Linux kernel and a number
 of utilities with enhanced security functionality designed to add
 mandatory access controls to Linux.  The Security-enhanced Linux
 kernel contains new architectural components originally developed to
 improve the security of the Flask operating system. These
 architectural components provide general support for the enforcement
 of many kinds of mandatory access control policies, including those
-based on the concepts of Type Enforcement®, Role-based Access
+based on the concepts of Type Enforcement, Role-based Access
 Control, and Multi-level Security.
 
 mcstrans provides a translation daemon to translate SELinux categories

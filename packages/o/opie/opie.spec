@@ -17,14 +17,12 @@
 
 
 Name:           opie
-#!BuildIgnore: opie
-BuildRequires:  automake
-BuildRequires:  bison
-BuildRequires:  pam-devel
-Url:            http://www.inner.net/opie
+Summary:        Support for One-Time Passwords
+License:        SUSE-Innernet-2.0
+Group:          Productivity/Security
 Version:        2.4
 Release:        0
-Provides:       pam_opie
+URL:            http://www.inner.net/opie
 %define name_pam         pam_opie
 %define version_pam	 0.21
 Source0:        %{name}-%{version}.tar.bz2
@@ -52,11 +50,12 @@ Patch18:        opie-fix-autoconf.patch
 Patch19:        opie-2.4-DESTDIR.patch
 Patch20:        opie-2.4-pie.patch
 Patch21:        opie-fix-indendation.patch
-Summary:        Support for One-Time Passwords
-License:        SUSE-Innernet-2.0
-Group:          Productivity/Security
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-PreReq:         permissions
+#!BuildIgnore: opie
+BuildRequires:  automake
+BuildRequires:  bison
+BuildRequires:  pam-devel
+Provides:       pam_opie
+Requires(post): permissions
 
 %description
 OPIE stands for One-time Passwords In Everything. One-time passwords
@@ -96,7 +95,7 @@ popd
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # build opie
-export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing"
 export SUID_CFLAGS="-fPIC" SUID_LDFLAGS="-pie"
 autoreconf -i -f
 %configure --enable-insecure-override
@@ -108,20 +107,17 @@ make %{?_smp_mflags}
 
 %install
 # install opie
-mkdir -p $RPM_BUILD_ROOT/etc
-mkdir -p $RPM_BUILD_ROOT/%{_mandir}/man1/
+mkdir -p %{buildroot}/etc
+mkdir -p %{buildroot}/%{_mandir}/man1/
 #
-make CHOWN=/bin/echo DESTDIR=$RPM_BUILD_ROOT install
-install -m 644 -D opie.h $RPM_BUILD_ROOT%{_includedir}/opie.h
-install -m 644 -D libopie/libopie.a $RPM_BUILD_ROOT%{_libdir}/libopie.a
+%make_install CHOWN=/bin/echo
+install -m 644 -D opie.h %{buildroot}/%{_includedir}/opie.h
+install -m 644 -D libopie/libopie.a %{buildroot}/%{_libdir}/libopie.a
 mv %{name_pam}/README ./README.PAM
 # install pam_opie
 cd %{name_pam}
-make FAKEROOT=$RPM_BUILD_ROOT \
+make FAKEROOT="%{buildroot}" \
      SECUREDIR=/%{_lib}/security install
-
-%clean
-[ "$RPM_BUILD_ROOT" != "/" ] && [ -d $RPM_BUILD_ROOT ] && rm -rf $RPM_BUILD_ROOT
 
 %verifyscript
 %verify_permissions -e /usr/bin/opiepasswd -e /usr/bin/opiesu
@@ -130,7 +126,6 @@ make FAKEROOT=$RPM_BUILD_ROOT \
 %set_permissions /usr/bin/opiepasswd /usr/bin/opiesu
 
 %files
-%defattr(-,root,root)
 %dir /etc/opielocks
 %config(noreplace) /etc/opiekeys
 /usr/bin/opieftpd
