@@ -17,7 +17,7 @@
 
 
 Name:           osinfo-db
-Version:        20190726
+Version:        20190905
 Release:        0
 Summary:        Osinfo database files
 License:        LGPL-2.1+ and GPL-2.0+
@@ -28,6 +28,7 @@ Source:         https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
 Patch21:        add-oes-support.patch
 Patch22:        add-caasp40-support.patch
 Patch23:        add-sle12sp5-support.patch
+Patch24:        add-sle15sp2-support.patch
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
 
@@ -41,6 +42,7 @@ provisioning of new virtual machines
 %patch21 -p1
 %patch22 -p1
 %patch23 -p1
+%patch24 -p1
 
 %build
 cd %{_builddir}

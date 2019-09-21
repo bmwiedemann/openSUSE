@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Sep 19 08:36:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.3.2.2:
+  * Fixes for full 6.3.2 release included
+
+-------------------------------------------------------------------
+Wed Sep 11 08:03:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix building on SLE12:
+  * 0001-Check-for-EMOJI-content-only-on-ICU-57-and-newer.patch
+
+-------------------------------------------------------------------
+Mon Sep  9 08:17:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.3.2.1:
+  * Contain fixes for the bellow CVE issues and also few
+    stability tweaks
+- Drop merged patches:
+  * old-boost.patch
+  * old-boost2.patch
+- Add Silesian language
+
+-------------------------------------------------------------------
+Mon Sep  9 08:14:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.2.7.1:
+  bsc#1149944 VUL-0: CVE-2019-9854 Unsafe URL assembly flaw
+  bsc#1149943 VUL-0: CVE-2019-9855 path equivalence handling flaw
+- Drop merged patch:
+  * 0001-Fix-buidling-with-older-boost.patch
+
+-------------------------------------------------------------------
 Thu Aug 29 01:37:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 6.3.1.1:

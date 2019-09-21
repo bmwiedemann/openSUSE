@@ -953,4 +953,12 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     * Fixed build with cutting-edge toolchain. (forwarded request 714932 from AndreasSchwab)</comment>
     <requestid>714933</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>7a30b7e9866d5d25db05f905b2d73378</srcmd5>
+    <version>5.2</version>
+    <time>1569079808</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>732181</requestid>
+  </revision>
 </revisionlist>

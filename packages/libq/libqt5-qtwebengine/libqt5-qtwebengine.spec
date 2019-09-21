@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtwebengine
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright © 2017 Kevin Kofler <Kevin@tigcc.ticalc.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -276,13 +276,15 @@ RPM_OPT_FLAGS="$RPM_OPT_FLAGS "
 export RPM_OPT_FLAGS=${RPM_OPT_FLAGS/-g / }
 %endif
 # It does not actually include proprietary codecs, it only makes it attempt to use ffmpeg
+# Link pulseaudio to work around QTBUG-77037
 %qmake5 QMAKE_CFLAGS="$RPM_OPT_FLAGS" \
         QMAKE_LFLAGS+="-Wl,--no-keep-memory -Wl,--hash-size=31 -Wl,--reduce-memory-overheads" \
+        gn_args+="link_pulseaudio=true" \
 %if 0%{?suse_version} < 1330
         QMAKE_CC=gcc-7 QMAKE_CXX=g++-7 CONFIG+=c++14 \
 %endif
         qtwebengine.pro -- \
-        -webengine-alsa -no-webengine-embedded-build \
+        -webengine-alsa -webengine-kerberos -no-webengine-embedded-build \
 %if %{with system_icu}
         -system-webengine-icu \
 %endif

@@ -1,8 +1,8 @@
 #
 # spec file for package zim
 #
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012 Matthias Propst.
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,44 +13,41 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define skip_python2 1
+
 Name:           zim
-Version:        0.69
+Version:        0.72.0
 Release:        0
-License:        GPL-2.0+
 Summary:        A Desktop Wiki
-Url:            http://zim-wiki.org
+License:        GPL-2.0-or-later
 Group:          Productivity/Office/Organizers
+Url:            http://zim-wiki.org
 Source:         http://zim-wiki.org/downloads/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 # For directory ownership
+BuildRequires:  %{python_module gobject >= 3.2}
+BuildRequires:  %{pythons}
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python-base >= 2.6
-BuildRequires:  python-gobject2
-BuildRequires:  python-xml
+BuildRequires:  typelib-1_0-Gtk-3_0
 # We need the %%mime_database_*, %%desktop_database_* and %%icon_theme_cache_*
 # macros for old suse versions
 %if 0%{?suse_version} < 1330
 BuildRequires:  shared-mime-info
 %endif
 BuildRequires:  update-desktop-files
-Requires:       python-cairo
-Requires:       python-gobject2
-Requires:       python-gtk
-Requires:       python-simplejson
-Requires:       python-xdg
-Requires:       python-xml
+Requires:       python3-gobject
+Requires:       python3-pyxdg
 Requires:       xdg-utils
-Recommends:     python-gtkspell
 # for the version control plugin
 Suggests:       bzr
 Suggests:       git-core
 Suggests:       mercurial
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-%py_requires
 
 %description
 Zim is a graphical text editor used to maintain a collection of wiki
@@ -67,15 +64,10 @@ version control.
 %setup -q
 
 %build
-python setup.py build
+python3 setup.py build
 
 %install
-python setup.py install --prefix=%{_prefix} --root=%{buildroot} --skip-xdg-cmd
-
-# Desktop apps should have .appdata.xml file extension instead of .metainfo.xml:
-# https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#sect-Metadata-GenericComponent
-mv %{buildroot}%{_datadir}/metainfo/org.zim_wiki.Zim.metainfo.xml \
-   %{buildroot}%{_datadir}/metainfo/org.zim_wiki.Zim.appdata.xml
+python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 %suse_update_desktop_file %{name}
 # remove ubuntu-specific icons
@@ -84,23 +76,16 @@ rm -r %{buildroot}%{_datadir}/icons/{ubuntu-mono-dark,ubuntu-mono-light}
 
 %fdupes -s %{buildroot}
 
-%if 0%{?suse_version} < 1330
-%post
 %desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
 
-%postun
 %desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
-%endif
 
 %files
 %defattr(-,root,root)
-%doc CHANGELOG.txt LICENSE.txt README.txt
+%license LICENSE
+%doc CHANGELOG.md PLUGIN_WRITING.md CONTRIBUTING.md
 %{python_sitelib}/%{name}/
-%{python_sitelib}/%{name}-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/%{name}-%{version}-py*.egg-info
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %dir %{_datadir}/metainfo

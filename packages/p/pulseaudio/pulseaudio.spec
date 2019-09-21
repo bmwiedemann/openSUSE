@@ -21,12 +21,12 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%define drvver  12.2
+%define drvver  13.0
 %define soname  0
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
 %define _bashcompletionsdir %{_datadir}/bash-completion/completions
 Name:           pulseaudio
-Version:        12.2
+Version:        13.0
 Release:        0
 Summary:        A Networked Sound Server
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -45,17 +45,16 @@ Source99:       baselibs.conf
 Patch0:         disabled-start.diff
 Patch1:         suppress-socket-error-msg.diff
 Patch2:         pulseaudio-wrong-memset.patch
-Patch3:         pulseaudio-alsa.patch
-Patch4:         pa-set-exit-idle-time-to-0-when-we-detect-a-session.patch
 # PATCH-FIX-OPENSUSE qpaeq-shebang.patch Avoid rpmlint error due to using env python shebang
 Patch5:         qpaeq-shebang.patch
+# PATCH-FIX-OPENSUSE Workaround for old systemd on Leap 15.x
+Patch6:         pulseaudio-old-systemd-workaround.patch
 BuildRequires:  alsa-devel >= 1.0.19
 BuildRequires:  bluez-devel >= 5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel >= 3.0
 BuildRequires:  gcc-c++
-BuildRequires:  intltool
 BuildRequires:  jack-devel
 BuildRequires:  libatomic_ops-devel >= 1.2
 BuildRequires:  libavahi-devel
@@ -88,6 +87,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xtst)
+
 Requires:       rtkit
 Requires:       udev >= 146
 ## needs the same liborc version which was used to build against
@@ -95,7 +95,6 @@ Requires:       udev >= 146
 Requires(post): %fillup_prereq
 Requires(pre):  group(audio)
 Requires(pre):  shadow
-Recommends:     %{name}-bash-completion
 Recommends:     %{name}-lang
 Recommends:     alsa-plugins-pulse
 Suggests:       libsoxr0 >= 0.1.1
@@ -319,6 +318,7 @@ Summary:        PulseAudio Bash completion
 Group:          System/Shells
 Requires:       %{name}-utils = %{version}
 Requires:       bash-completion
+Supplements:    packageand(pulseaudio:bash)
 
 %description bash-completion
 Optional dependency offering bash completion for various PulseAudio utilities
@@ -328,6 +328,7 @@ Summary:        PulseAudio zsh completion
 Group:          System/Shells
 Requires:       %{name}-utils = %{version}
 Requires:       zsh
+Supplements:    packageand(pulseaudio:zsh)
 
 %description zsh-completion
 Optional dependency offering zsh completion for various PulseAudio utilities
@@ -339,9 +340,11 @@ Optional dependency offering zsh completion for various PulseAudio utilities
 %patch0
 %patch1 -p1
 %patch2
-%patch3 -p1
-%patch4 -p1
 %patch5
+# workaround for Leap 15.x
+%if 0%{?suse_version} < 1550
+%patch6 -p1
+%endif
 
 %build
 %define _lto_cflags %{nil}
@@ -350,33 +353,33 @@ echo 'HTML_TIMESTAMP=NO' >> doxygen/doxygen.conf.in
 export LDFLAGS="-pie"
 export CFLAGS="%{optflags} -fPIE"
 %configure \
-        --disable-static \
-        --disable-rpath \
+	--disable-static \
+	--disable-rpath \
 %ifarch armv5tel armv6hl
-        --disable-neon-opt \
+	--disable-neon-opt \
 %endif
-        --with-system-user=pulse \
-        --with-system-group=pulse \
-        --with-access-group=pulse-access \
-        --disable-hal-compat \
-        --disable-bluez4 \
-        --enable-webrtc-aec \
-        --enable-adrian-aec \
-        --enable-gconf \
-        --enable-gsettings \
-        --with-udev-rules-dir=%{_udevrulesdir} \
-        --with-pulsedsp-location='%{_prefix}/\\$$LIB/pulseaudio' \
-	--with-systemduserunitdir=%{_userunitdir}
-
-make %{?_smp_mflags} V=1
-make %{?_smp_mflags} doxygen
+	--with-system-user=pulse \
+	--with-system-group=pulse \
+	--with-access-group=pulse-access \
+	--disable-hal-compat \
+	--disable-bluez4 \
+	--enable-webrtc-aec \
+	--enable-adrian-aec \
+	--enable-gconf \
+	--enable-gsettings \
+	--with-udev-rules-dir=%{_udevrulesdir} \
+	--with-pulsedsp-location='%{_prefix}/\\$$LIB/pulseaudio' \
+	--with-systemduserunitdir=%{_userunitdir} \
+	%{nil}
+%make_build
+%make_build doxygen
 
 %install
 %make_install
 rm -rf \
-    "%{buildroot}%{_libdir}"/*.la \
-    "%{buildroot}%{_libdir}/pulse-%{drvver}/modules"/*.la \
-    "%{buildroot}%{_libdir}/pulseaudio"/*.la
+	"%{buildroot}%{_libdir}"/*.la \
+	"%{buildroot}%{_libdir}/pulse-%{drvver}/modules"/*.la \
+	"%{buildroot}%{_libdir}/pulseaudio"/*.la
 
 # configure --disable-static had no effect; delete manually.
 rm -rf "%{buildroot}%{_libdir}"/*.a
@@ -690,6 +693,7 @@ exit 0
 %{_libdir}/pulse-%{drvver}/modules/module-zeroconf-publish.so
 
 %files utils
+%{_bindir}/pa-info
 %{_bindir}/pacat
 %{_bindir}/pacmd
 %{_bindir}/pactl

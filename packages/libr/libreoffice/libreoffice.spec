@@ -52,7 +52,7 @@
 %bcond_with gtk3
 %endif
 Name:           libreoffice
-Version:        6.3.1.1
+Version:        6.3.2.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -101,9 +101,7 @@ Patch1:         scp2-user-config-suse.diff
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
 Patch5:         mdds-1-5.patch
-Patch6:         0001-Fix-buidling-with-older-boost.patch
-Patch7:         old-boost.patch
-Patch8:         old-boost2.patch
+Patch6:         0001-Check-for-EMOJI-content-only-on-ICU-57-and-newer.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -121,7 +119,6 @@ BuildRequires:  curl-devel
 # Needed for tests
 BuildRequires:  dejavu-fonts
 BuildRequires:  doxygen >= 1.8.4
-# Dot is used by doxygen
 BuildRequires:  fdupes
 BuildRequires:  flex >= 2.6.0
 BuildRequires:  flute
@@ -229,10 +226,10 @@ BuildRequires:  pkgconfig(serf-1) >= 1.1.0
 BuildRequires:  pkgconfig(xmlsec1-nss) >= 1.2.24
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xt)
-# We need at least english to launch ourselves.
 Requires:       liberation-fonts
 Requires:       libreoffice-branding >= 6.0
 Requires:       libreoffice-icon-themes = %{version}
+# We need at least english to launch ourselves
 Requires:       libreoffice-l10n-en = %{version}
 Requires:       python3
 Recommends:     dejavu-fonts
@@ -960,6 +957,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %langpack -l st -n Southern_Sotho
 %langpack -l sv -n Swedish -X -m sv_SE -T
 %langpack -l sw_TZ -n Swahili -M -L sw-TZ -g sw_TZ -j sw_TZ
+%langpack -l szl -n Silesian
 %langpack -l ta -n Tamil -s ctl -T
 %langpack -l te -n Telugu -m te_IN
 %langpack -l tg -n Tajik -T
@@ -989,8 +987,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch3
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
 %patch990 -p1
 %patch991 -p1
 

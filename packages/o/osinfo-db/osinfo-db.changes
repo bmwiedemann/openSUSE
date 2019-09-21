@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 18 11:42:59 MDT 2019 - carnold@suse.com
+
+- Update database to version 20190905
+  osinfo-db-20190905.tar.xz
+
+-------------------------------------------------------------------
+Wed Sep  4 15:41:00 MDT 2019 - carnold@suse.com
+
+- Update database to version 20190805
+  osinfo-db-20190805.tar.xz
+- Add support for SLE15-SP2
+  add-sle15sp2-support.patch
+
+-------------------------------------------------------------------
 Fri Jul 26 14:20:04 MDT 2019 - carnold@suse.com
 
 - Update database to version 20190726

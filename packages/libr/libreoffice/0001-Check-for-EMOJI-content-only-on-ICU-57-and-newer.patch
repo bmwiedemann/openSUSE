@@ -1,0 +1,33 @@
+From 40eb50bde3922f23cd071c1e8e0b2cce5ca2d747 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Chv=C3=A1tal?= <tchvatal@suse.com>
+Date: Wed, 11 Sep 2019 09:58:43 +0200
+Subject: [PATCH] Check for EMOJI content only on ICU 57 and newer
+
+The older ICU does not have the logic to work with there as it is
+feature of the new icu only:
+  http://bugs.icu-project.org/trac/ticket/11802
+
+Change-Id: Icd21be1e20b7cb988e94d107406a4f81d00116a7
+---
+ vcl/unx/generic/fontmanager/fontconfig.cxx | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/vcl/unx/generic/fontmanager/fontconfig.cxx b/vcl/unx/generic/fontmanager/fontconfig.cxx
+index c7bfbb47e9bd..a36dfc868329 100644
+--- a/vcl/unx/generic/fontmanager/fontconfig.cxx
++++ b/vcl/unx/generic/fontmanager/fontconfig.cxx
+@@ -798,7 +798,11 @@ namespace
+ 
+     bool isEmoji(sal_uInt32 nCurrentChar)
+     {
++#if U_ICU_VERSION_MAJOR_NUM >= 57
+         return u_hasBinaryProperty(nCurrentChar, UCHAR_EMOJI);
++#else
++	return false;
++#endif
+     }
+ 
+     //returns true if the given code-point couldn't possibly be in rLangTag.
+-- 
+2.23.0
+

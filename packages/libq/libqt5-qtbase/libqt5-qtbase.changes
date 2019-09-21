@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 19 08:08:00 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix focus in some cases (QTBUG-77364):
+  * 0001-QWidget-setFocusProxy-adjust-focus-widget-properly.patch
+
+-------------------------------------------------------------------
 Fri Sep  6 08:03:13 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.13.1:
@@ -381,7 +387,7 @@ Fri Jun 29 07:21:37 UTC 2018 - fabian@ritter-vogt.de
 -------------------------------------------------------------------
 Sat Jun 23 14:03:04 UTC 2018 - fabian@ritter-vogt.de
 
-- Add patches to improve OOTB experience with HiDPI:
+- Add patches to improve OOTB experience with HiDPI (boo#1089932):
   * 0001-Sanitize-QXcbScreen-s-pixelDensity-values.patch
   * 0002-xcb-Use-the-screen-s-physical-DPI-as-logical-DPI-unl.patch
 
@@ -429,6 +435,12 @@ Tue May 22 15:06:56 CEST 2018 - fabian@ritter-vogt.de
   * 0001-sqlite-Check-that-there-are-values-to-be-set-when-bi.patch
   * 0002-sqlite-Bind-duplicated-named-placeholders-correctly.patch
   * 0003-sqlite-Prevent-a-crash-when-sqlite-does-not-detect-a.patch
+- Includes fix to prevent crash with pixmap cursors on XRender-less
+  X servers (bsc#1108889, QTBUG-66935)
+- Includes fix to load libGL.so.1 library if there's no libGL.so symlink
+  (boo#1099874, QTBUG-67537)
+- Includes fix to allow to disable logging of XCB errors (boo#1115541,
+  QTBUG-55167)
 
 -------------------------------------------------------------------
 Tue May  8 10:59:01 CEST 2018 - fabian@ritter-vogt.de
@@ -504,7 +516,7 @@ Thu Mar  1 12:14:13 UTC 2018 - alarrosa@suse.com
 - Rework 0001-Add-remote-print-queue-support.patch so now the remote
   print queue discovery is disabled by default and is only enabled when
   the QT_ENABLE_PRINTER_DISCOVERY environment variable is set
-  (QT_DISABLE_PRINTER_DISCOVERY is no longer used).
+  (QT_DISABLE_PRINTER_DISCOVERY is no longer used) (fixes boo#1064872)
 
 -------------------------------------------------------------------
 Thu Mar  1 09:54:43 CET 2018 - fabian@ritter-vogt.de
@@ -614,7 +626,7 @@ Mon Feb 12 09:23:59 UTC 2018 - fvogt@suse.com
 -------------------------------------------------------------------
 Thu Feb  8 08:48:37 UTC 2018 - fabian@ritter-vogt.de
 
-- Add patch to fix plugin loading with newer MariaDB versions:
+- Add patch to fix plugin loading with newer MariaDB versions (boo#1080048):
   * 0001-Extend-the-MariaDB-define-check-to-cover-the-later-v.patch
 
 -------------------------------------------------------------------
@@ -622,7 +634,7 @@ Fri Feb  2 08:10:28 UTC 2018 - alarrosa@suse.com
 
 - Add 0001-QSimpleDrag-Fix-mouse-release-coords-for-delayed-eve.patch
   to fix a bug causing the wrong desktop icon to look hovered
-  after dragging an icon on the desktop in plasma (QTBUG-66103).
+  after dragging an icon on the desktop in plasma (QTBUG-66103, boo#1080044).
 
 -------------------------------------------------------------------
 Fri Jan 26 11:21:54 UTC 2018 - alarrosa@suse.com

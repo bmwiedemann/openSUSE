@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Sep 16 08:42:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 13.0:
+  * Added support for Dolby TrueHD and DTS-HD Master Audio
+  * Improved initial card profile selection for ALSA cards
+  * Bluetooth card profile choices aren't persistent any more by
+    default.
+  * Added support for SteelSeries Arctis 5 USB headset.
+  * New "max_latency_msec" module argument for module-loopback.
+  * New "stream_name" module argument for module-rtp-send.
+  * Fixed S/PDIF for CMEDIA USB2.0 High-Speed True HD Audio.
+  * Use source sample spec and channel map by default in
+    module-loopback.
+  * New "avoid_resampling" module argument for module-udev-detect
+    and module-alsa-card.
+  * "avoid_resampling" also tries to avoid format conversion if the
+    ALSA device supports it.
+  * New function to enable realtime scheduling for client threads.
+  * Removed BlueZ 4 support.
+  * Dropped intltool.
+  * Introduction of the Meson build system.
+  * Const-ification of parameters across headers.
+  * Minor bug-fixes, bindings updates.
+  * Updated translations.
+- Update drvver to 13.0.
+
+-------------------------------------------------------------------
+Sat Sep  7 23:14:50 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use make_build macros.
+
+-------------------------------------------------------------------
+Tue Aug 27 15:43:10 CEST 2019 - tiwai@suse.de
+
+- Workaround for old systemd on Leap 15.x, as the recent hardening
+  relies on the new systemd:
+  pulseaudio-old-systemd-workaround.patch
+
+-------------------------------------------------------------------
+Tue Aug  6 20:18:24 UTC 2019 - Ondrej Holecek <oholecek@suse.com>
+
+- Update to 13 RC2 (12.99.2)
+  * Added support for Dolby TrueHD and DTS-HD Master Audio
+  * Improved initial card profile selection for ALSA cards
+  * Bluetooth card profile choices aren't persistent any more by default
+  * Added support for SteelSeries Arctis 5 USB headset
+  * New "max_latency_msec" module argument for module-loopback
+  * New "stream_name" module argument for module-rtp-send
+  * Fixed S/PDIF for CMEDIA USB2.0 High-Speed True HD Audio
+  * Use source sample spec and channel map by default in module-loopback
+  * New "avoid_resampling" module argument for module-udev-detect and module-alsa-card
+  * New function to enable realtime scheduling for client threads
+  * Removed BlueZ 4 support
+  * Dropped intltool
+  * Some initial work on a Meson build system
+  * https://www.freedesktop.org/wiki/Software/PulseAudio/Notes/13.0/
+- Removed patches already included in the source:
+  pulseaudio-alsa.patch
+  pa-set-exit-idle-time-to-0-when-we-detect-a-session.patch
+
+-------------------------------------------------------------------
 Thu Jul 11 17:50:21 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Remove SuSEfirewall2 service since SuSEfirewall2 has been

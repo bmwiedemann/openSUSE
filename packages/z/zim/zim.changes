@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Sep 19 20:01:33 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Update to version 0.72:
+  + Improve pathbar with "linked" visual design
+  + Improve statusbar visual style
+  + Change behavior for lists with mixed bullets
+  + Add configuration of keybindings to preferences dialog
+  + Support gnome-screenshot in the insert screenshot pluing
+  + Save size of secondary page window
+  + Add option for linenumbers option in insert code block dialog
+  + Add option to display date column in tasklist side pane
+  + Add warnings if locale does not support unicode
+  + Make SVG thumbnail support configurable
+  + Fix bug for insert equation and other objects
+  + Fix use of escape sequence in table cells
+  + Fix tasklist view for multiple dates in task
+  + Fix "apply heading" to strip list formatting
+  + Make ToC plugin update instead of refresh on save
+  + Fix issue with not-unique headings in tableofcontents
+  + Fix bugs in auto insert bullet at newline
+- Update to version 0.71.1:
+  + Fix robustness for OSError on process startup
+  + Fix for popup menu on page index for Gtk < 3.22
+  + Updated translations
+- Update to version 0.71:
+  + Fix "spill over" between translation files
+  + Fix use of popup menus
+  + Hack to work around textview glitches embedded objects
+  + Make indexer recover from duplicate page names
+  + Fix recovery of broken index file on startup
+  + Restore New Sub Page for index context menu
+  + Let customtools replace autoselected words and insert
+  + Fallback encoding when calling external applications
+  + Hide pathbar in distraction free mode
+  + Merge fix for unicode completion in dialogs
+  + Remember cursor position on reload
+  + Fix inlinecalculator plugin
+  + Update Gtk prerequisite version to 3.18
+  + Updated Russian translation
+- Update to version 0.70:
+  * Ported zim to use Python3 & Gtk3
+  * Refactored application framework, all windows run single process now with single plugin manager and preferences manager
+  * Refactored plugin extension loading code and added functions to find extensions and actions
+  * Removed the notebook "profile" properties
+  * Plugins now can use notebook properties to store settings per notebook
+  * The page index side pane and the pathbar are now plugins
+  * Redesign journal plugin sidepane view and remove dialog
+  * Renamed "calendar" plugin to "journal"
+  * Removed OSX menubar plugin
+  * Image generator plugins now are "inserted objects"
+  * Workaround for missing clipboard.set_with_data()
+  * Improved speed of test suite and refactored test constructs
+  * Support flatpack-spawn to execute processes
+  * Critical fix for updating links on move page and rename page
+  * Critical fix for parsing headers when page has no title
+  * Fix page index issue on delete page
+
+-------------------------------------------------------------------
 Sat Mar  2 23:01:33 UTC 2019 - Karl Cheng <qantas94heavy@gmail.com>
 
 - Fix missing python-xml runtime requirement.
@@ -157,7 +215,7 @@ Sat Sep 23 23:17:45 UTC 2017 - luc14n0@linuxmail.org
 Wed Nov 11 09:41:13 UTC 2015 - thehejik@suse.com
 
 - Updated to version 0.65:
-  + <Control> keybindings fail for older gtk versions, and in 
+  + <Control> keybindings fail for older gtk versions, and in
     particular for the <Control><Space> keybinding.
   + The table editor tends to drop columns of content in the
     precences of empty cells.

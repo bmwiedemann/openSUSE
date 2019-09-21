@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 18 14:58:24 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use openssl for HLS crypto. openssl is required by DTLS, and hls
+  can use any of openssl, gcrypt or gnutls/nettle (since 1.5.1).
+  Drop explicit pkgconfig(nettle) BuildRequires and pass
+  hls-crypto=openssl to configure/meson.
+
+-------------------------------------------------------------------
 Mon Aug 26 09:20:56 UTC 2019 - mvetter@suse.com
 
 - bsc#1144244: Remove dependency on jasper

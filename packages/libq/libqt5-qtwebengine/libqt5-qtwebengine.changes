@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 19 07:48:11 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add gn_args+=link_pulseaudio=true to work around incompatibility
+  with PA 13 headers (QTBUG-77037)
+- Enable kerberos support
+
+-------------------------------------------------------------------
 Fri Sep  6 08:04:49 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.13.1:

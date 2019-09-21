@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Jul 12 21:29:45 UTC 2019 - Andreas Schwab <schwab@linux-m68k.org>
 
-- Update to strace 5.2
+- Update to strace 5.2 (boo#1149727)
   * Improvements
     * Implemented syscall return status filtering with -e status=set option
       and its aliases: -z (limit syscall printing to successful syscalls only)

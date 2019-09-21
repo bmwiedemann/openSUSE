@@ -508,4 +508,14 @@
     <comment>Qt 5.13.1</comment>
     <requestid>729227</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>378b43e6823387edcd54635bebad5896</srcmd5>
+    <version>5.13.1</version>
+    <time>1569079740</time>
+    <user>maxlin_factory</user>
+    <comment>- Add gn_args+=link_pulseaudio=true to work around incompatibility
+  with PA 13 headers (QTBUG-77037)
+- Enable kerberos support</comment>
+    <requestid>731899</requestid>
+  </revision>
 </revisionlist>

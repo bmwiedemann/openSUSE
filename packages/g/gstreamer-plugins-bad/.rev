@@ -860,4 +860,16 @@
     <comment>Resub - minimize changes</comment>
     <requestid>726235</requestid>
   </revision>
+  <revision rev="95" vrev="6">
+    <srcmd5>d898fe49c59365bcc1cc7b4ab628e0c9</srcmd5>
+    <version>1.16.0</version>
+    <time>1569079648</time>
+    <user>maxlin_factory</user>
+    <comment>- Use openssl for HLS crypto. openssl is required by DTLS, and hls
+  can use any of openssl, gcrypt or gnutls/nettle (since 1.5.1).
+  Drop explicit pkgconfig(nettle) BuildRequires and pass
+  hls-crypto=openssl to configure/meson.
+</comment>
+    <requestid>731767</requestid>
+  </revision>
 </revisionlist>

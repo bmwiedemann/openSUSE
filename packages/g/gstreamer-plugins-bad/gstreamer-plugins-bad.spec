@@ -103,7 +103,6 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lrdf)
 BuildRequires:  pkgconfig(mjpegtools)
 BuildRequires:  pkgconfig(neon)
-BuildRequires:  pkgconfig(nettle)
 BuildRequires:  pkgconfig(openssl) >= 0.9.5
 BuildRequires:  pkgconfig(opus) >= 0.9.4
 BuildRequires:  pkgconfig(sbc)
@@ -510,6 +509,7 @@ export PYTHON=%{_bindir}/python3
 	-Dwildmidi=disabled \
 	-Dwpe=disabled \
 	-Dx265=disabled \
+	-Dhls-crypto=openssl \
 	%{nil}
 %{meson_build}
 %else
@@ -537,6 +537,7 @@ autoreconf -fiv
 	--enable-gtk-doc \
 	--enable-wayland \
 	--enable-introspection \
+	--with-hls-crypto=openssl \
 	%{nil}
 make %{?_smp_mflags}
 %endif
