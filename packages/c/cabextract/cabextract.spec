@@ -1,7 +1,7 @@
 #
 # spec file for package cabextract
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cabextract
-Version:        1.9
+Version:        1.9.1
 Release:        0
 Summary:        A Program to Extract Microsoft Cabinet Files
 License:        GPL-3.0-or-later
@@ -25,7 +25,7 @@ Group:          System/Console
 URL:            https://www.cabextract.org.uk/
 Source:         https://www.cabextract.org.uk/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libmspack)
+BuildRequires:  pkgconfig(libmspack) >= 0.8
 
 %description
 Cabinet (.CAB) files are a form of archive, which Microsoft uses to
@@ -33,12 +33,12 @@ distribute their software and things like Windows Font Packs.
 cabextract can be used to unpack these files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure\
 	--with-external-libmspack
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

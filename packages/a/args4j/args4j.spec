@@ -1,7 +1,7 @@
 #
 # spec file for package args4j
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  ant-nodeps
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
 Requires:       java >= 1.8
 BuildArch:      noarch
 
@@ -56,6 +55,11 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
+cp %{SOURCE1} pom.xml
+%pom_remove_parent
+%pom_xpath_inject pom:project "
+  <groupId>args4j</groupId>
+  <version>%{version}</version>"
 
 %build
 mkdir -p build/generated-sources
@@ -68,7 +72,7 @@ ln -sf %{_javadir}/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
+install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
 %add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar
 
 # Java doc

@@ -200,4 +200,15 @@
     <comment></comment>
     <requestid>647277</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>201065a64e29b7b8049c4e85a3a73021</srcmd5>
+    <version>1.9.1</version>
+    <time>1569079798</time>
+    <user>maxlin_factory</user>
+    <comment>- Modernise spec file
+
+- Update to version 1.9.1
+  * Rerelease of 1.9 with some packaging issues fixed</comment>
+    <requestid>732180</requestid>
+  </revision>
 </revisionlist>

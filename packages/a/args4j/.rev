@@ -46,4 +46,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>644924</requestid>
   </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>cb1032dc6ccd60e404b4d9e9c27cff40</srcmd5>
+    <version>2.0.9</version>
+    <time>1569079817</time>
+    <user>maxlin_factory</user>
+    <comment>Make actually work with maven</comment>
+    <requestid>732189</requestid>
+  </revision>
 </revisionlist>
