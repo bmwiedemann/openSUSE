@@ -2082,4 +2082,24 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.13.1</comment>
     <requestid>729199</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>59b5b2bda0920c4eb150b507f1522303</srcmd5>
+    <version>5.13.1</version>
+    <time>1569079722</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch to fix focus in some cases (QTBUG-77364):
+  * 0001-QWidget-setFocusProxy-adjust-focus-widget-properly.patch
+
+- Add patches to improve OOTB experience with HiDPI (boo#1089932):
+- Includes fix to prevent crash with pixmap cursors on XRender-less
+  X servers (bsc#1108889, QTBUG-66935)
+- Includes fix to load libGL.so.1 library if there's no libGL.so symlink
+  (boo#1099874, QTBUG-67537)
+- Includes fix to allow to disable logging of XCB errors (boo#1115541,
+  QTBUG-55167)
+  (QT_DISABLE_PRINTER_DISCOVERY is no longer used) (fixes boo#1064872)
+- Add patch to fix plugin loading with newer MariaDB versions (boo#1080048):
+  after dragging an icon on the desktop in plasma (QTBUG-66103, boo#1080044).</comment>
+    <requestid>731898</requestid>
+  </revision>
 </revisionlist>

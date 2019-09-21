@@ -83,6 +83,8 @@ Patch2000:      0001-Fix-notification-of-QDockWidget-when-it-gets-undocke.patch
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/273050
 Patch2002:      0001-Fix-CMake-config-files-for-libdir-different-from-lib.patch
+# Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/273365
+Patch2003:      0001-QWidget-setFocusProxy-adjust-focus-widget-properly.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cups-devel
 BuildRequires:  double-conversion-devel
