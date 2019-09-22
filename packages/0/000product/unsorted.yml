@@ -10903,6 +10903,7 @@ unsorted:
   - libreoffice-l10n-st 
   - libreoffice-l10n-sv 
   - libreoffice-l10n-sw_TZ 
+  - libreoffice-l10n-szl 
   - libreoffice-l10n-ta 
   - libreoffice-l10n-te 
   - libreoffice-l10n-tg 
@@ -16870,7 +16871,6 @@ unsorted:
   - pulseaudio-qt-devel 
   - pulseaudio-system-wide 
   - pulseaudio-utils-32bit: [x86_64] 
-  - pulseaudio-zsh-completion 
   - pulseeffects 
   - pulseeffects-lang 
   - pulseview 
@@ -31640,6 +31640,9 @@ unsorted:
   - transporter-lang 
   - transset 
   - tre-devel 
+  - treelayout 
+  - treelayout-demo 
+  - treelayout-javadoc 
   - treeline 
   - trello-full-backup 
   - trigger-rally 
