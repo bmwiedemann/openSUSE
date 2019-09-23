@@ -275,4 +275,12 @@
   * e4ecb70 #10345 Disallow API calls in the sandbox.</comment>
     <requestid>714013</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a590730b7f6ae4e1386a5782ad2b919b</srcmd5>
+    <version>0.4.2</version>
+    <time>1569234554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731915</requestid>
+  </revision>
 </revisionlist>
